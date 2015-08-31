@@ -40,8 +40,7 @@
   ```
   -Sämtliche Bennenungen/Namen/Kommentare etc. müssen auf Englisch sein.
   
-  
-  ####2. Rails-Konventionen
+####2. Rails-Konventionen
   
   -Tabellennamen im pluralisiertem snake_case
   ```
