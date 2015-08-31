@@ -13,6 +13,14 @@
   ```
   class ExampleClass
   ```
+  -Methodennamen werden kleingeschrieben.
+  Codebeispiel:
+  ```
+  def my_method
+    puts "hello world"
+  end
+  ```
+  -Sämtliche Bennenungen/Namen/Kommentare etc. müssen auf Englisch sein.
 
 
 
