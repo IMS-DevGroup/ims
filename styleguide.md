@@ -13,6 +13,17 @@
   local_variable
   ```
   -Instanzvariable 
+  ```
+  @instance_variable
+  ```
+  -Klassenvariable
+  ```
+  @@class_variable
+  ```
+  -Konstante
+  ```
+  EXAMPE_CONSTANT
+  ```
   
   
   -Klassennamen werden im CamelCase geschrieben.
