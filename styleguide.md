@@ -46,6 +46,11 @@
   ```
   devices
   ```
+####3. sonstige Konventionen
+  
+  -für jedes Feature neuen Branch aus dem dev Branch
+  
+  -Benutzung der RubyMine IDE
 
 
 
