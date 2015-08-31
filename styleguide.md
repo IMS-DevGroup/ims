@@ -1,14 +1,15 @@
-Projekt-Konventionen für das Projekt der Gruppe C: Verwaltungssystem für Digitalfunkgeräte 
+####Projekt-Konventionen für das Projekt der Gruppe C: Verwaltungssystem für Digitalfunkgeräte 
 
     Version 1.0 --- 31-08-2015
 
--Sämtliche Variablen und Kommentare sollten im Sinne der Ruby     Konventionen auf Englisch geschrieben werden.
--Syntaxbeispiel für Variablen:
-```
- _test
-```
--Verwendung des Design Patterns Model View Controller.
--die einzelnen Module müssen Unit Tests unterzogen werden.
+###1. Ruby Konventionen
+  -Worttrennung bei Variablen mit Unterstrich.
+  Codebeispiel:
+  ```this_is_a_long_variable```
+  -Klassennamen werden im CamelCase geschrieben.
+  Codebeispiel:
+  ```class ExampleClass```
+
 
 
 
