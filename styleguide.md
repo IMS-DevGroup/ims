@@ -6,8 +6,15 @@
   -Worttrennung bei Variablen mit Unterstrich.
   Codebeispiel:
   ```
-  this_is_a_long_variable
+  this_is_a_variable
   ``` 
+  -lokale Variable Codebeispiel:
+  ```
+  local_variable
+  ```
+  -Instanzvariable 
+  
+  
   -Klassennamen werden im CamelCase geschrieben.
   Codebeispiel:
   ```
