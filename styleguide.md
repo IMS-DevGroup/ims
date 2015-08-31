@@ -22,7 +22,7 @@
   ```
   -Konstante
   ```
-  EXAMPE_CONSTANT
+  EXAMPLE_CONSTANT
   ```
   
   
