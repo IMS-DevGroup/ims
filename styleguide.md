@@ -5,10 +5,14 @@
 ####1. Ruby Konventionen
   -Worttrennung bei Variablen mit Unterstrich.
   Codebeispiel:
-  ´´´this_is_a_long_variable´´´ 
+  ```
+  this_is_a_long_variable
+  ``` 
   -Klassennamen werden im CamelCase geschrieben.
   Codebeispiel:
-  ```class ExampleClass```
+  ```
+  class ExampleClass
+  ```
 
 
 
