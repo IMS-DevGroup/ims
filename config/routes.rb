@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  #root 'starts#index'
+  resources :starts
+  resources :todos
   resources :operations
   resources :units
   resources :stocks
