@@ -12,8 +12,9 @@ class User < ActiveRecord::Base
   validates :prename , presence: true
   validates :lastname , presence: true
   validates :username , uniqueness: true
+  validates :unit_id , presence: true
 
-  after_initialize :default_values
+  after_create :default_values
 
   private
     def default_values
