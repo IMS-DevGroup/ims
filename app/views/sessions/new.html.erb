@@ -1,0 +1,13 @@
+<h1>Sessions#new</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+<%= form_for(:session, url: login_path) do |f| %>
+
+    <%= f.label :username %>
+    <%= f.text_field :username, class: 'form-control' %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+
+    <%= f.submit "Log in", class: "btn btn-primary" %>
+<% end %>
+<p> <%= link_to "Passwort vergessen?", reset_password_path %></p>
