@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Receive:</strong>
+  <%= @lending.receive %>
+</p>
+
+<p>
+  <strong>Lending info:</strong>
+  <%= @lending.lending_info %>
+</p>
+
+<p>
+  <strong>Receive info:</strong>
+  <%= @lending.receive_info %>
+</p>
+
+<%= link_to 'Edit', edit_lending_path(@lending) %> |
+<%= link_to 'Back', lendings_path %>
