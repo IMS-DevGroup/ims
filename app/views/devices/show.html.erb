@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ready:</strong>
+  <%= @device.ready %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @device.info %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @device.owner_id %>
+</p>
+
+<%= link_to 'Edit', edit_device_path(@device) %> |
+<%= link_to 'Back', devices_path %>
