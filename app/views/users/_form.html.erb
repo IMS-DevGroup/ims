@@ -1,49 +1,84 @@
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <table border=0 width=300 height=100>
+      <tr>
+        <td>
+          <div class="field">
+            <%= f.label :username %><br>
+            <%= f.text_field :username %>
+          </div>
+        </td>
+        <td>
+          <div class="field">
+            <%= f.label :password %><br>
+            <%= f.text_field :password %>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="field">
+            <%= f.label :prename %><br>
+            <%= f.text_field :prename %>
+          </div>
+        </td>
+        <td>
+          <div class="field">
+            <%= f.label :lastname %><br>
+            <%= f.text_field :lastname %>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="field">
+            <%= f.label :email %><br>
+            <%= f.text_field :email %>
+          </div>
+        </td>
+        <td>
+          <div class="field">
+            <%= f.label :mobile_number %><br>
+            <%= f.number_field :mobile_number %>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <div class="field">
+            <%= f.label :info %><br>
+            <%= f.text_area :info , :rows => 2, :cols => 60%>
+
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="field">
+            <%= f.label :active %><br>
+            <%= f.check_box :active %>
+          </div>
+        </td>
+      </tr>
+
+    </table>
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :active %><br>
-    <%= f.check_box :active %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :prename %><br>
-    <%= f.text_field :prename %>
-  </div>
-  <div class="field">
-    <%= f.label :lastname %><br>
-    <%= f.text_field :lastname %>
-  </div>
-  <div class="field">
-    <%= f.label :mobile_number %><br>
-    <%= f.number_field :mobile_number %>
-  </div>
-  <div class="field">
-    <%= f.label :info %><br>
-    <%= f.text_area :info %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
