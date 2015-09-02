@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902120114) do
+ActiveRecord::Schema.define(version: 20150902120654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(version: 20150902120114) do
     t.boolean  "ready"
     t.text     "info"
     t.integer  "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "device_type_id"
+    t.integer  "stock_id"
   end
 
   create_table "lendings", force: :cascade do |t|
@@ -52,6 +54,8 @@ ActiveRecord::Schema.define(version: 20150902120114) do
     t.integer  "lender_id"
     t.integer  "receiver_id"
     t.text     "signature"
+    t.integer  "device_id"
+    t.integer  "user_id"
   end
 
   create_table "operations", force: :cascade do |t|
@@ -67,20 +71,24 @@ ActiveRecord::Schema.define(version: 20150902120114) do
   create_table "properties", force: :cascade do |t|
     t.string   "name"
     t.text     "info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "data_type_id"
+    t.integer  "device_type_id"
   end
 
   create_table "rights", force: :cascade do |t|
     t.boolean  "manage_rights"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
     t.string   "session_key"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   create_table "startpages", force: :cascade do |t|
@@ -102,6 +110,7 @@ ActiveRecord::Schema.define(version: 20150902120114) do
     t.text     "info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "unit_id"
   end
 
   create_table "stocks_operations", id: false, force: :cascade do |t|
@@ -122,6 +131,7 @@ ActiveRecord::Schema.define(version: 20150902120114) do
     t.integer  "phone_number"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -136,12 +146,15 @@ ActiveRecord::Schema.define(version: 20150902120114) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "salt"
+    t.integer  "unit_id"
   end
 
   create_table "values", force: :cascade do |t|
     t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "property_id"
+    t.integer  "device_id"
   end
 
 end
