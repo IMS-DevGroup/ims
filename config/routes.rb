@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #root 'starts#index'
+  root 'starts#index'
   resources :starts
   resources :todos
   resources :operations
