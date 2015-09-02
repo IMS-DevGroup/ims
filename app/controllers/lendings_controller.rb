@@ -69,6 +69,6 @@ class LendingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lending_params
-      params.require(:lending).permit(:receive, :lending_info, :receive_info)
+      params.require(:lending).permit(:receive, :lending_info, :receive_info, :user_id, :device_id)
     end
 end

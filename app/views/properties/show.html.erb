@@ -10,5 +10,10 @@
   <%= @property.info %>
 </p>
 
+<p>
+  <strong>DataType:</strong>
+  <%= @property.data_type.name %>
+</p>
+
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>
