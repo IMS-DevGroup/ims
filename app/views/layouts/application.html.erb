@@ -10,49 +10,6 @@
 
 <%= stylesheet_link_tag "starts" %>
 
-<p id="notice"><%= notice %></p>
-
-<div id="status">
-  Status
-</div>
-
-<div id="time">
-</div>
-<br>
-<div id="time1">
-</div>
-
-<br>
-
-<div id="menucontainer">
-  <br>
-  <a href="/starts/" style="text-decoration:none"><div class="buttons">Start</div></a>
-  </br>
-  <a href="/starts/" style="text-decoration:none"><div class="buttons">Einsatz</div></a>
-  </br>
-  <a href="/devices/" style="text-decoration:none"><div class="buttons">Ger&auml;te</div></a>
-  </br>
-  <a href="/stocks/" style="text-decoration:none"><div class="buttons">Bestand</div></a>
-  </br>
-  <a href="/users/" style="text-decoration:none"><div class="buttons">User</div></a>
-  </br>
-  <a href="/starts/" style="text-decoration:none"><div class="buttons">Karte</div></a>
-  </br>
-  <a href="/starts/" style="text-decoration:none"><div class="buttons">Suche</div></a>
-  </br>
-  <a href="/starts/" style="text-decoration:none"><div class="buttons">Logout</div></a>
-</div>
-
-
-
-<br>
-
-<div id="contact">
-  Impressum &nbsp;&nbsp;
-  Kontakt &nbsp;&nbsp;
-  © 2015 DBS
-</div>
-
 
 <script type="text/javascript">
 
@@ -81,11 +38,57 @@
         setTimeout(updateTime, 60000);
     }
 
+
+
     window.addEventListener("load", updateTime);
+
 
 </script>
 
-<div id="content">
+
+<p id="notice"><%= notice %></p>
+
+<div id="status">
+  Status
+</div>
+
+<div id="time">
+</div>
+<br>
+<div id="time1">
+</div>
+
+<br>
+
+<div class="nav-stacked" id="menucontainer">
+  <br>
+  <ul class="nav nav-pills nav-stacked ">
+    <li role="navigation" class="active" width=250px><a href="/starts/" >Start</a></li>
+    <li role="navigation" class="active"><a href="/starts/" >Einsatz</a></li>
+    <li role="navigation" class="active"><a href="/devices/" >Ger&auml;te</a></li>
+    <li role="navigation" class="active"><a href="/starts/" >Bestand</a></li>
+    <li role="navigation" class="active"><a href="/users/" >User</a></li>
+    <li role="navigation" class="active"><a href="/starts/" >Karte</a></li>
+    <li role="navigation" class="active"><a href="/starts/" >Suche</a></li>
+    <li role="navigation" class="active"><a href="/starts/" >Logout</a></li>
+  </ul>
+</div>
+
+
+
+<br>
+
+<!--
+<div id="contact">
+  Impressum &nbsp;&nbsp;
+  Kontakt &nbsp;&nbsp;
+  © 2015 DBS
+</div>
+-->
+
+
+
+<div class="error" id="content">
 <%= yield %>
 </div>
 
