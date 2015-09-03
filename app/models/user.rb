@@ -4,14 +4,15 @@ class User < ActiveRecord::Base
 
   has_many :lendings
   belongs_to :unit
-  has_one :unit
   has_one :operation
 
 
 
   validates :prename , presence: true
   validates :lastname , presence: true
-  validates :username , uniqueness: true
+  validates :username , uniqueness: true , allow_nil: true
+
+
   validates :unit_id , presence: true
 
   after_create :default_values
