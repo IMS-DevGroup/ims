@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/OsnaCS/drk-funk.svg)](https://travis-ci.org/OsnaCS/drk-funk)
+
 # Gruppe C - Inventarsystem für Hilfsorganisationen
 Inhalt folgt..
 
