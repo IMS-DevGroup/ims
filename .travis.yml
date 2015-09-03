@@ -1,2 +1,6 @@
 language: ruby
 script: 'true'
+rvm:
+  - 2.2.1
+gemfile:
+  - Gemfile
