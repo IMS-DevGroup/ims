@@ -69,6 +69,6 @@ class DeviceTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_type_params
-      params.require(:device_type).permit(:name, :info, :property_id)
+      params.require(:device_type).permit(:name, :info)
     end
 end

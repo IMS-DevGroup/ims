@@ -15,5 +15,10 @@
   <%= @property.data_type.name %>
 </p>
 
+<p>
+  <strong>DeviceType:</strong>
+  <%= @property.device_type.name %>
+</p>
+
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>

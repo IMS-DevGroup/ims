@@ -23,6 +23,10 @@
     <%= f.label :data_type %>
     <%= f.collection_select :data_type_id, DataType.all, :id, :name %>
   </div>
+  <div class="field">
+    <%= f.label :device_type %>
+    <%= f.collection_select :device_type_id, DeviceType.all, :id, :name, include_blank: "choose device_type"%>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
