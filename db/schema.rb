@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902142207) do
+ActiveRecord::Schema.define(version: 20150903112927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,9 +80,14 @@ ActiveRecord::Schema.define(version: 20150902142207) do
 
   create_table "rights", force: :cascade do |t|
     t.boolean  "manage_rights"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "user_id"
+    t.boolean  "manage_users"
+    t.boolean  "manage_devices"
+    t.boolean  "manage_device_types"
+    t.boolean  "manage_stocks_and_units"
+    t.boolean  "manage_operations"
   end
 
   create_table "sessions", force: :cascade do |t|
