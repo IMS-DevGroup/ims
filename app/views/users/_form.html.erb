@@ -15,7 +15,7 @@
         <td>
           <div class="field">
             <%= f.label :username %><br>
-            <%= f.text_field :username %>
+            <%= f.text_field :username%>
           </div>
         </td>
         <td>
@@ -77,7 +77,7 @@
         <td>
           <div class="field">
             <%= f.label :unit %><br>
-            <%= f.collection_select :unit_id, Unit.all, :id, :name %>
+            <%= f.collection_select :unit_id, Unit.all, :id, :name ,include_blank: "choose unit"%>
           </div>
         </td>
 
