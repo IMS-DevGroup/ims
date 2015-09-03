@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="ims_logo.svg"
+   inkscape:export-filename="/home/elanfer/Pictures/ims_logo.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="134.65132"
+     inkscape:cy="406.39221"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showguides="false"
+     inkscape:window-width="865"
+     inkscape:window-height="626"
+     inkscape:window-x="897"
+     inkscape:window-y="120"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3336"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1000%;font-family:Sans;letter-spacing:89.96038818px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="translate(-6.7857143,31.071429)"><flowRegion
+         id="flowRegion3338"><rect
+           id="rect3340"
+           width="525.71429"
+           height="460"
+           x="74.285713"
+           y="298.07648"
+           style="line-height:1000%;letter-spacing:89.96038818px" /></flowRegion><flowPara
+         id="flowPara3342"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:1000%;font-family:Resagnicto;-inkscape-font-specification:'Resagnicto Bold';letter-spacing:8px">IMS</flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:10.44999981px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="153.03812"
+       y="304.34424"
+       id="text3344"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3346"
+         x="153.03812"
+         y="304.34424"
+         style="font-size:64.99999762%;letter-spacing:0px;baseline-shift:super" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1000%;font-family:Sans;letter-spacing:10.44999981px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="134.37766"
+       y="611.32886"
+       id="text4276"
+       sodipodi:linespacing="1000%"><tspan
+         sodipodi:role="line"
+         id="tspan4278"
+         x="134.37766"
+         y="611.32886"
+         style="font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;font-size:12.5px;font-family:Resagnicto;-inkscape-font-specification:'Resagnicto Medium Italic';letter-spacing:0px;writing-mode:lr;fill:#bf0043;fill-opacity:1"
+         rotate="0 0 0">uo</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:686.00001335%;font-family:Sans;letter-spacing:-1.29999995px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="24.507986"
+       y="627.91949"
+       id="text4280"
+       sodipodi:linespacing="686.00001%"><tspan
+         sodipodi:role="line"
+         id="tspan4282"
+         x="24.507986"
+         y="627.91949"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:12.5px;font-family:Resagnicto;-inkscape-font-specification:'Resagnicto Medium';letter-spacing:-1.29999995px">Inventory Management System</tspan></text>
+  </g>
+</svg>
