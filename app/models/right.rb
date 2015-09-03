@@ -1,5 +1,5 @@
 class Right < ActiveRecord::Base
-  before_create :default_values
+  #after_create :default_values
 
   belongs_to :user
 
