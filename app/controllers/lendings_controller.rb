@@ -61,6 +61,16 @@ class LendingsController < ApplicationController
     end
   end
 
+  #def loan
+  #  @amount = Hash.new
+  #
+  #  @amount.each do |loan|
+  #    loan.params[0] = :receive
+  #    loan.params[3] = :user_id
+  #    loan.create
+  #  end
+  #end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lending
