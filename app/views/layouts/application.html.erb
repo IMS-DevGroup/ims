@@ -3,12 +3,92 @@
 <head>
   <title>DrkFunk</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<%= stylesheet_link_tag "starts" %>
+
+<p id="notice"><%= notice %></p>
+
+<div id="status">
+  Status
+</div>
+
+<div id="time">
+</div>
+<br>
+<div id="time1">
+</div>
+
+<br>
+
+<div id="menucontainer">
+  <br>
+  <a href="/starts/" style="text-decoration:none"><div id="buttons">Start</div></a>
+  </br>
+  <a href="/starts/" style="text-decoration:none"><div id="buttons">Einsatz</div></a>
+  </br>
+  <a href="/devices/" style="text-decoration:none"><div id="buttons">Ger&auml;te</div></a>
+  </br>
+  <a href="/stocks/" style="text-decoration:none"><div id="buttons">Bestand</div></a>
+  </br>
+  <a href="/users/" style="text-decoration:none"><div id="buttons">User</div></a>
+  </br>
+  <a href="/starts/" style="text-decoration:none"><div id="buttons">Karte</div></a>
+  </br>
+  <a href="/starts/" style="text-decoration:none"><div id="buttons">Suche</div></a>
+  </br>
+  <a href="/starts/" style="text-decoration:none"><div id="buttons">Logout</div></a>
+</div>
+
+
+
+<br>
+
+<div id="contact">
+  Impressum &nbsp;&nbsp;
+  Kontakt &nbsp;&nbsp;
+  © 2015 DBS
+</div>
+
+
+<script type="text/javascript">
+
+    function updateTime() {
+        var date = new Date();
+        var stunden = date.getHours();
+        var minuten = date.getMinutes();
+        var tag = date.getDate();
+        var monatDesJahres = date.getMonth();
+        var jahr = date.getFullYear();
+        var tagInWoche = date.getDay();
+        var jahr_t = date.getFullYear() - 2000;
+        var wochentag = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag");
+        var monat = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember");
+        var monat_t = new Array("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
+
+        if(stunden < 10){stunden = "0" + stunden;}
+        if(minuten < 10){minuten = "0" + minuten;}
+        if(tag < 10){tag = "0" + tag;}
+
+        var datum = wochentag[tagInWoche] + ", " + tag + ". " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
+        var datum_t = tag + stunden + minuten + monat_t[monatDesJahres] + jahr_t;
+
+        document.getElementById('time').innerHTML = datum;
+        document.getElementById('time1').innerHTML = datum_t;
+        setTimeout(updateTime, 60000);
+    }
+
+    window.addEventListener("load", updateTime);
+
+</script>
+
+<div id="content">
 <%= yield %>
+</div>
+
 
 </body>
 </html>
