@@ -1,3 +1,4 @@
+<% if(!flash[:error])%>
 <div id="barcode_label" style="display: inline-block; border: 2px solid; padding-bottom: 0px">
 <table style="text-align: left">
   <tr>
@@ -6,16 +7,17 @@
   </tr>
   <tr>
     <th>Produktname:</th>
-    <td>{name}</td>
+    <td><%= @device %></td>
   </tr>
   <tr>
     <th>Besitzer:</th>
-    <td>{owner}</td>
+    <td><%= Unit.find_by_id(Stock.find_by_id(@device.owner_id).id).name %></td>
   </tr>
   <tr>
     <th>Lagerort:</th>
-    <td>{place}</td>
+    <td><%= @device.stock.name %></td>
   </tr>
 </table>
   <img style="display: block;margin-left: auto; margin-right:auto;" src="/barcodes/<%=@prodid%>.png">
 </div>
+<% end%>

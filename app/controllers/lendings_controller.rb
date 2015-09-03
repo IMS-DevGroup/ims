@@ -61,6 +61,16 @@ class LendingsController < ApplicationController
     end
   end
 
+  #def loan
+  #  @amount = Hash.new
+  #
+  #  @amount.each do |loan|
+  #    loan.params[0] = :receive
+  #    loan.params[3] = :user_id
+  #    loan.create
+  #  end
+  #end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lending
@@ -69,6 +79,6 @@ class LendingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lending_params
-      params.require(:lending).permit(:receive, :lending_info, :receive_info)
+      params.require(:lending).permit(:receive, :lending_info, :receive_info, :user_id, :device_id)
     end
 end
