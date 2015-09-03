@@ -24,17 +24,29 @@ class SessionsController < ApplicationController
   # POST /sessions
   # POST /sessions.json
   def create
-    @session = Session.new(session_params)
 
-    respond_to do |format|
-      if @session.save
-        format.html { redirect_to @session, notice: 'Session was successfully created.' }
-        format.json { render :show, status: :created, location: @session }
-      else
-        format.html { render :new }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
-      end
+    user = User.authenticate(params[:username], params[:password_unhashed])
+    if user
+      session[:user_id] = user.id
+      redirect_to root_url, :notice => 'Logged in!'
+
+        #LOG USER IN and show page
+    else
+      flash.now.alert = 'Falscher Username und/oder Passwort'
+      render 'new'
     end
+
+      #@session = Session.new(session_params)
+
+    #respond_to do |format|
+      #if @session.save
+        #format.html { redirect_to @session, notice: 'Session was successfully created.' }
+        #format.json { render :show, status: :created, location: @session }
+      #else
+        #format.html { render :new }
+        #format.json { render json: @session.errors, status: :unprocessable_entity }
+      #end
+    #end
   end
 
   # PATCH/PUT /sessions/1
@@ -54,11 +66,14 @@ class SessionsController < ApplicationController
   # DELETE /sessions/1
   # DELETE /sessions/1.json
   def destroy
-    @session.destroy
-    respond_to do |format|
-      format.html { redirect_to sessions_url, notice: 'Session was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    session[:user_id] = nil
+    redirect_to root_url ##select root
+
+    #@session.destroy
+    #respond_to do |format|
+      #format.html { redirect_to sessions_url, notice: 'Session was successfully destroyed.' }
+      #format.json { head :no_content }
+    #end
   end
 
   private
