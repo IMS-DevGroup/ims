@@ -19,6 +19,13 @@
     <%= f.label :info %><br>
     <%= f.text_area :info %>
   </div>
+
+
+      <div class="field">
+        <%= f.label :unit %><br>
+        <%= f.collection_select :unit_id, Unit.all, :id, :name ,include_blank: "choose unit"%>
+      </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
