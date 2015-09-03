@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "starts" %>
 
 <p id="notice"><%= notice %></p>
-
+<!--
 <div id="status">
   Status
 </div>
@@ -18,7 +18,7 @@
   </br>
   Ger&auml;te</br>
   </br>
-  User</br>
+  <a href="/users/">User</a></br>
   </br>
   Karte</br>
   </br>
@@ -53,6 +53,10 @@
         var wochentag = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag");
         var monat = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember");
 
+        if(stunden < 10){stunden = "0" + stunden;}
+        if(minuten < 10){minuten = "0" + minuten;}
+        if(tag < 10){tag = "0" + tag;}
+
         var datum = wochentag[tagInWoche] + ", " + tag + ". " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
 
         document.getElementById('time').innerHTML = datum;
@@ -64,6 +68,6 @@
 </script>
 
 
-
+-->
 
 <!--<%= link_to 'New Start', new_start_path %>-->
