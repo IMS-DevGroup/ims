@@ -1,0 +1,69 @@
+<%= stylesheet_link_tag "starts" %>
+
+<p id="notice"><%= notice %></p>
+
+<div id="status">
+  Status
+</div>
+
+<div id="time">
+</div>
+<br>
+<br>
+
+<div id="menucontainer">
+  <a href="index.html.erb">Start</a></br>
+  </br>
+  Einsatz</br>
+  </br>
+  Ger&auml;te</br>
+  </br>
+  User</br>
+  </br>
+  Karte</br>
+  </br>
+  Suche</br>
+  </br>
+  Logout</br>
+</div>
+
+<div id="content">
+  Hier könnte Ihre Werbung stehen.<br>
+</div>
+
+<br>
+
+<div id="contact">
+  Impressum &nbsp;&nbsp;
+  Kontakt &nbsp;&nbsp;
+  © 2015 DBS
+</div>
+
+
+<script type="text/javascript">
+
+    function updateTime() {
+        var date = new Date();
+        var stunden = date.getHours();
+        var minuten = date.getMinutes();
+        var tag = date.getDate();
+        var monatDesJahres = date.getMonth();
+        var jahr = date.getFullYear();
+        var tagInWoche = date.getDay();
+        var wochentag = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag");
+        var monat = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember");
+
+        var datum = wochentag[tagInWoche] + ", " + tag + ". " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
+
+        document.getElementById('time').innerHTML = datum;
+        setTimeout(updateTime, 60000);
+    }
+
+    window.addEventListener("load", updateTime);
+
+</script>
+
+
+
+
+<!--<%= link_to 'New Start', new_start_path %>-->
