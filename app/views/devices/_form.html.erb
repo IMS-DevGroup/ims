@@ -39,6 +39,11 @@
     <%= f.check_box :ready %>
   </div>
 
+    <div class="field">
+      <%= f.label :device_type %><br>
+      <%= f.collection_select :device_type_id, DeviceType.all, :id, :name ,include_blank: "choose device type"%>
+    </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
