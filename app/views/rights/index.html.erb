@@ -6,6 +6,11 @@
   <thead>
     <tr>
       <th>Manage rights</th>
+      <th>Manage users</th>
+      <th>Manage devices</th>
+      <th>Manage device types</th>
+      <th>Manage stocks and units</th>
+      <th>Manage operations</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +19,12 @@
     <% @rights.each do |right| %>
       <tr>
         <td><%= right.manage_rights %></td>
+        <td><%= right.manage_users %></td>
+        <td><%= right.manage_devices %></td>
+        <td><%= right.manage_device_types %></td>
+        <td><%= right.manage_stocks_and_units %></td>
+        <td><%= right.manage_operations %></td>
+
         <td><%= link_to 'Show', right %></td>
         <td><%= link_to 'Edit', edit_right_path(right) %></td>
         <td><%= link_to 'Destroy', right, method: :delete, data: { confirm: 'Are you sure?' } %></td>
