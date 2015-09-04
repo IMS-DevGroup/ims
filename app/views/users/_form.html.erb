@@ -11,7 +11,11 @@
         </div>
     <% end %>
 
+
+
+
     <table class="userCreation" width=300 height=100>
+
       <tr>
         <td>
           <div class="field">
@@ -52,7 +56,7 @@
         <td>
           <div class="field">
             <%= f.label :mobile_number %><br>
-            <%= f.number_field :mobile_number %>
+            <%= f.text_field :mobile_number %>
           </div>
         </td>
       </tr>
@@ -76,9 +80,8 @@
         </td>
 
       </tr>
-
-
     </table>
+
 
     <div class="actions">
       <%= f.submit %>
