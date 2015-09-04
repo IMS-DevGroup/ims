@@ -1,4 +1,4 @@
-<%= form_for(@device) do |f| %>
++<%= form_for(@device) do |f| %>
   <% if @device.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:</h2>
@@ -27,6 +27,11 @@
     <div class="field">
       <%= f.label :stock %><br>
       <%= f.collection_select :stock_id, Stock.all, :id, :name ,include_blank: "choose stock"%>
+    </div>
+
+    <div class="field">
+      <%= f.label :device_type %><br>
+      <%= f.collection_select :device_type_id, DeviceType.all, :id, :name ,include_blank: "choose devicetype"%>
     </div>
 
   <div class="actions">
