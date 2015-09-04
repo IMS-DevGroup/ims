@@ -3,6 +3,11 @@
 <p>
   <strong>Manage rights:</strong>
   <%= @right.manage_rights %>
+  <%= @right.manage_users %>
+  <%= @right.manage_devices %>
+  <%= @right.manage_device_types %>
+  <%= @right.manage_stocks_and_units %>
+  <%= @right.manage_operations %>
 </p>
 
 <%= link_to 'Edit', edit_right_path(@right) %> |
