@@ -3,12 +3,96 @@
 <head>
   <title>DrkFunk</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<%= stylesheet_link_tag "starts" %>
+
+
+<script type="text/javascript">
+
+    function updateTime() {
+        var date = new Date();
+        var stunden = date.getHours();
+        var minuten = date.getMinutes();
+        var tag = date.getDate();
+        var monatDesJahres = date.getMonth();
+        var jahr = date.getFullYear();
+        var tagInWoche = date.getDay();
+        var jahr_t = date.getFullYear() - 2000;
+        var wochentag = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag");
+        var monat = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember");
+        var monat_t = new Array("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
+
+        if(stunden < 10){stunden = "0" + stunden;}
+        if(minuten < 10){minuten = "0" + minuten;}
+        if(tag < 10){tag = "0" + tag;}
+
+        var datum = wochentag[tagInWoche] + ", " + tag + ". " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
+        var datum_t = tag + stunden + minuten + monat_t[monatDesJahres] + jahr_t;
+
+        document.getElementById('time').innerHTML = datum;
+        document.getElementById('time1').innerHTML = datum_t;
+        setTimeout(updateTime, 60000);
+    }
+
+
+
+    window.addEventListener("load", updateTime);
+
+
+</script>
+
+
+<p id="notice"><%= notice %></p>
+
+<div id="status">
+  Status
+</div>
+
+<div id="time">
+</div>
+<br>
+<div id="time1">
+</div>
+
+<br>
+
+<div class="nav-stacked" id="menucontainer">
+  <br>
+  <ul class="nav nav-pills nav-stacked ">
+    <li role="presentation" class="active" width=250px><a href="/starts/" >Start</a></li>
+    <li role="presentation" class="active"><a href="/starts/" >Einsatz</a></li>
+    <li role="presentation" class="active"><a href="/devices/" >Ger&auml;te</a></li>
+    <li role="presentation" class="active"><a href="/starts/" >Bestand</a></li>
+    <li role="presentation" class="active"><a href="/users/" >User</a></li>
+    <li role="presentation" class="active"><a href="/starts/" >Karte</a></li>
+    <li role="presentation" class="active"><a href="/starts/" >Suche</a></li>
+    <li role="presentation" class="active"><a href="/starts/" >Logout</a></li>
+  </ul>
+</div>
+
+
+
+<br>
+
+<!--
+<div id="contact">
+  Impressum &nbsp;&nbsp;
+  Kontakt &nbsp;&nbsp;
+  © 2015 DBS
+</div>
+-->
+
+
+
+<div class="error" id="content">
 <%= yield %>
+</div>
+
 
 </body>
 </html>

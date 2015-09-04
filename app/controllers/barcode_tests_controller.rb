@@ -5,17 +5,24 @@ require 'barby/outputter/png_outputter'
 class BarcodeTestsController < ApplicationController
 
 
-
   # GET /barcode_tests
   # GET /barcode_tests.json
   def index
-    @prodid = '00000002'
+    if(!params[:device_id].nil?)
+    @prodid = params[:device_id]
+    @device = Device.find_by_id(@prodid)
     @barcode = Barby::Code128B.new(@prodid)
-    if(!File.exist?('public/barcodes/'+@prodid+'.png'))
-      File.open('public/barcodes/'+@prodid+'.png', 'w'){|f|
+
+    if(!File.exist?('public/barcodes/'+@prodid.to_s+'.png'))
+      File.open('public/barcodes/'+@prodid.to_s+'.png', 'w'){|f|
         f.write @barcode.to_png(:height => 60, :margin => 5)
       }
     end
+    else
+      flash[:error] ="DeviceID is missing!"
+    end
+
+
     remove_old_barcodes
   end
 

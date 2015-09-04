@@ -4,8 +4,6 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    #redirect_to '/units' unless logged_in?
-    ###current_user = User.find_by_id(session[:user_id])
     @users = User.all
   end
 
@@ -71,6 +69,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info, :password_unhashed)
+      params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info,
+                                   :unit_id, :right_id, :password_unhashed)
     end
 end
