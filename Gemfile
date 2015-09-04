@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'node', platforms: :ruby
 gem 'execjs'
-
+gem 'heroku-deflater', :group => :production
 gem 'barby'
 gem 'chunky_png'
 # Use jquery as the JavaScript library
@@ -32,15 +32,14 @@ gem 'rake'
 
 gem 'dotenv-rails'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 gem 'puma'
 
 gem 'travis'
-
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
-
+gem 'rack-mini-profiler', require: false
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'

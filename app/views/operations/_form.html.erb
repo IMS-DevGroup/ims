@@ -1,37 +1,70 @@
 <%= form_for(@operation) do |f| %>
-  <% if @operation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@operation.errors.count, "error") %> prohibited this operation from being saved:</h2>
+    <% if @operation.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@operation.errors.count, "error") %> prohibited this operation from being saved:</h2>
 
-      <ul>
-      <% @operation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @operation.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <table>
+
+      <tr>
+        <td>
+          <div class="field">
+            <%= f.label :operation_type %><br>
+            <%= f.text_field :operation_type %>
+          </div>
+        </td>
+
+        <td>
+          <div class="field">
+            <%= f.label 'Operation Number Dispatch' %><br>
+            <%= f.text_field :number %>
+          </div>
+        </td>
+
+
+      </tr>
+
+      <tr>
+        <td>
+          <div class="field">
+            <%= f.label :location %><br>
+            <%= f.text_field :location%>
+          </div>
+        </td>
+        <td>
+          <div class="field">
+            <%= f.label :stock %><br>
+            <%= f.collection_select :id, Stock.all, :id, :name, include_blank:'choose stock'%>
+          </div>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td colspan="2">
+          <div class="field">
+            <%= f.label :info %><br>
+            <%= f.text_area :info, :rows => 3, :cols => 41 %>
+          </div>
+        </td>
+      </tr>
+
+      <div class="field">
+        <%= f.label :user %><br>
+        <%= f.collection_select :user_id, User.all, :id, :prename, include_blank:'choose user'%>
+      </div>
+
+    </table>
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :number %><br>
-    <%= f.number_field :number %>
-  </div>
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
-  </div>
-  <div class="field">
-    <%= f.label :info %><br>
-    <%= f.text_area :info %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <!--<div class="field">
-    <%= f.label :close_date %><br>
-    <%= f.datetime_select :close_date %>
-  </div>-->
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
