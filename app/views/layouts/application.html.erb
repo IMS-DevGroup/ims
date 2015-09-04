@@ -46,9 +46,8 @@
 
 </script>
 
-<div id="banner">
-  <div id="logo">
-
+<div id="banner" onclick="javascript:window.location.href='/starts/';">
+  <div id="logo" >
   </div>
 </div>
 
@@ -90,12 +89,12 @@
 
   <ul class="nav nav-pills nav-stacked">
     <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Start</a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Einsatz</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'operations' %> "><a href="/operations/" >Einsatz</a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'devices' %> "><a href="/devices/" >Ger&auml;te</a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'stocks' %> "><a href="/starts/" >Bestand</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'stocks' %> "><a href="/stocks/" >Bestand</a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'users' %> "><a href="/users/" >User</a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Karte</a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Suche</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'units' %> "><a href="/units/" >Einheiten</a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Logout</a></li>
   </ul>
 </div>
