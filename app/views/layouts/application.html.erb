@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DrkFunk</title>
+  <title>IMS - Inventory Management System</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= javascript_include_tag 'application' %>
@@ -46,51 +46,64 @@
 
 </script>
 
+<div id="banner">
+  <div id="logo">
 
-<p id="notice"><%= notice %></p>
-
-<div id="status">
-  Status
+  </div>
 </div>
 
-<div id="time">
-</div>
-<br>
-<div id="time1">
+<div id="timebox">
+
+    <div id="time">
+    </div>
+    <div id="time1">
+    </div>
 </div>
 
-<br>
+<div id="bgcontainer">
+  <% if(flash[:success])%>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:success] %>
+      </div>
+  <% end %>
+  <% if(flash[:notice])%>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
+  <% if(flash[:warning])%>
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:warning] %>
+      </div>
+  <% end %>
+  <% if(flash[:error])%>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:error] %>
+      </div>
+  <% end %>
 
 <div class="nav-stacked" id="menucontainer">
-  <br>
-  <ul class="nav nav-pills nav-stacked ">
-    <li role="presentation" class="active" width=250px><a href="/starts/" >Start</a></li>
-    <li role="presentation" class="active"><a href="/starts/" >Einsatz</a></li>
-    <li role="presentation" class="active"><a href="/devices/" >Ger&auml;te</a></li>
-    <li role="presentation" class="active"><a href="/starts/" >Bestand</a></li>
-    <li role="presentation" class="active"><a href="/users/" >User</a></li>
-    <li role="presentation" class="active"><a href="/starts/" >Karte</a></li>
-    <li role="presentation" class="active"><a href="/starts/" >Suche</a></li>
-    <li role="presentation" class="active"><a href="/starts/" >Logout</a></li>
+
+  <ul class="nav nav-pills nav-stacked">
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Start</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Einsatz</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'devices' %> "><a href="/devices/" >Ger&auml;te</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'stocks' %> "><a href="/starts/" >Bestand</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'users' %> "><a href="/users/" >User</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Karte</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Suche</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Logout</a></li>
   </ul>
 </div>
 
 
-
-<br>
-
-<!--
-<div id="contact">
-  Impressum &nbsp;&nbsp;
-  Kontakt &nbsp;&nbsp;
-  © 2015 DBS
+<div id="content">
+    <%= yield %>
 </div>
--->
-
-
-
-<div class="error" id="content">
-<%= yield %>
 </div>
 
 
