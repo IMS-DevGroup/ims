@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DrkFunk</title>
+  <title>IMS - Inventory Management System</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= javascript_include_tag 'application' %>
@@ -53,6 +53,7 @@
 </div>
 
 <div id="timebox">
+
     <div id="time">
     </div>
     <div id="time1">
@@ -60,6 +61,31 @@
 </div>
 
 <div id="bgcontainer">
+  <% if(flash[:success])%>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:success] %>
+      </div>
+  <% end %>
+  <% if(flash[:notice])%>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
+  <% if(flash[:warming])%>
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:warning] %>
+      </div>
+  <% end %>
+  <% if(flash[:error])%>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:error] %>
+      </div>
+  <% end %>
+
 <div class="nav-stacked" id="menucontainer">
 
   <ul class="nav nav-pills nav-stacked">
@@ -75,8 +101,7 @@
 </div>
 
 
-
-<div class="error" id="content">
+<div id="content">
     <%= yield %>
 </div>
 </div>
