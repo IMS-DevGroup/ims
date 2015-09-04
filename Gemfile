@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'node', platforms: :ruby
 gem 'execjs'
-
+gem 'heroku-deflater', :group => :production
 gem 'barby'
 gem 'chunky_png'
 # Use jquery as the JavaScript library
