@@ -24,7 +24,13 @@ class Value < ActiveRecord::Base
     end
   end
   def setConvertedValue(v)
-    self.value=v.to_s
+    type =self.property.data_type.name
+    if type=v.type
+      self.value=v.to_s
+    elsif
+      flash[:ERROR] =self.property.name + " is " + v.type + " not " + type
+    end
+
   end
 
 end
