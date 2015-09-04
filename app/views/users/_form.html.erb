@@ -69,21 +69,20 @@
           </div>
         </td>
       </tr>
-
-      <tr>
-        <td></td>
-        <td>
-          <div class="field">
-            <%= f.label :unit %><br>
-            <%= f.collection_select :unit_id, Unit.all, :id, :name ,include_blank: "choose unit"%>
-          </div>
-        </td>
-
-      </tr>
     </table>
 
-
-    <div class="actions">
-      <%= f.submit %>
+    <div class="field" id="unit_choose">
+      <%= f.label :unit %><br>
+      <%= f.collection_select :unit_id, Unit.all, :id, :name ,include_blank: "choose unit"%>
     </div>
+
+    <br>
+    <div>
+        <div>
+          <a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
+          <%= f.button :submit => "", class: "btn btn-primary", style:"margin-left:230px;"%>
+        </div>
+
+    </div>
+
 <% end %>
