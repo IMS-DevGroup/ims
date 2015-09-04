@@ -29,13 +29,13 @@ class User < ActiveRecord::Base
   end
 
 
-
   def encrypt_password
     if password_unhashed.present?
       self.salt = BCrypt::Engine.generate_salt
       self.password = BCrypt::Engine.hash_secret(password_unhashed, salt)
     end
   end
+
   private
     def default_values
       self.active = true

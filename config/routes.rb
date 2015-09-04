@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root 'users#new'
-  get     'login'   =>  'sessions#new'
-  post    'login'   =>  'sessions#create'
-  delete  'logout'  =>  'sessions#destroy'
+  root  'starts#index'
+  get   'login'   =>  'sessions#new'
+  post  'login'   =>  'sessions#create'
+  get   'logout'  =>  'sessions#remove'
   resources :starts
   resources :todos
   resources :operations

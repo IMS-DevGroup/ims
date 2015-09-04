@@ -1,56 +1,25 @@
 class SessionsController < ApplicationController
   before_action :set_session, only: [:show, :edit, :update, :destroy]
 
-  # GET /sessions
-  # GET /sessions.json
-  def index
-    @sessions = Session.all
-  end
-
-  # GET /sessions/1
-  # GET /sessions/1.json
-  def show
-  end
-
   # GET /sessions/new
   def new
-    @session = Session.new
+    redirect_to root_url if logged_in?
   end
 
-  # GET /sessions/1/edit
-  def edit
-  end
 
   # POST /sessions
   # POST /sessions.json
   def create
-
     user = User.authenticate(params[:username], params[:password_unhashed])
     if user
       log_in user
-
-      #session[:user_id] = user.id
-      redirect_to root_url, :notice => "Logged in!"
-
-        #LOG USER IN and show page
+      redirect_to root_url #, :notice => "Logged in!"
     else
-      flash.now[:error] = "Falscher Username und/oder Passwort" ##doesn't work
-      render 'new'
+      redirect_to '/login' #, :notice => "Falsche Benutzereingabe/n!"
     end
-
-      #@session = Session.new(session_params)
-
-    #respond_to do |format|
-      #if @session.save
-        #format.html { redirect_to @session, notice: 'Session was successfully created.' }
-        #format.json { render :show, status: :created, location: @session }
-      #else
-        #format.html { render :new }
-        #format.json { render json: @session.errors, status: :unprocessable_entity }
-      #end
-    #end
   end
 
+=begin
   # PATCH/PUT /sessions/1
   # PATCH/PUT /sessions/1.json
   def update
@@ -64,20 +33,23 @@ class SessionsController < ApplicationController
       end
     end
   end
+=end
 
+  def remove
+    session[:user_id] = nil
+    log_out
+    redirect_to '/login'
+  end
+
+=begin
   # DELETE /sessions/1
   # DELETE /sessions/1.json
   def destroy
-    #session[:user_id] = nil ----now in session_helper
+    #session[:user_id] = nil #----now in session_helper
     log_out
-    redirect_to root_url ##select root
-
-    #@session.destroy
-    #respond_to do |format|
-      #format.html { redirect_to sessions_url, notice: 'Session was successfully destroyed.' }
-      #format.json { head :no_content }
-    #end
+    redirect_to root_url #
   end
+=end
 
   private
   # Use callbacks to share common setup or constraints between actions.
