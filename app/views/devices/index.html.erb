@@ -9,6 +9,7 @@
       <th>Info</th>
       <th>Owner</th>
       <th>Stock</th>
+      <th>Device type</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= device.info %></td>
         <td><%= device.owner_id %></td>
         <td><%= if device.stock.nil? then else device.stock.name end%></td>
+        <td><%= if device.device_type.nil? then else device.device_type.name end%></td>
         <td><%= link_to 'Show', device %></td>
         <td><%= link_to 'Edit', edit_device_path(device) %></td>
         <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
