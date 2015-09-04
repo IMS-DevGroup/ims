@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :username , uniqueness: true , allow_nil: true
 
 
-  #validates :unit_id , presence: true
+  validates :unit_id , presence: true
 
   after_validation :encrypt_password
   after_create :default_values

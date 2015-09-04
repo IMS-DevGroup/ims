@@ -40,6 +40,7 @@ GEM
     arel (6.0.3)
     backports (3.6.6)
     barby (0.6.2)
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -201,6 +202,7 @@ PLATFORMS
 
 DEPENDENCIES
   barby
+  bcrypt (~> 3.1.7)
   byebug
   chunky_png
   coffee-rails (~> 4.1.0)
