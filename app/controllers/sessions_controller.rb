@@ -19,21 +19,6 @@ class SessionsController < ApplicationController
     end
   end
 
-=begin
-  # PATCH/PUT /sessions/1
-  # PATCH/PUT /sessions/1.json
-  def update
-    respond_to do |format|
-      if @session.update(session_params)
-        format.html { redirect_to @session, notice: 'Session was successfully updated.' }
-        format.json { render :show, status: :ok, location: @session }
-      else
-        format.html { render :edit }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-=end
 
   def remove
     session[:user_id] = nil
@@ -41,15 +26,6 @@ class SessionsController < ApplicationController
     redirect_to '/login'
   end
 
-=begin
-  # DELETE /sessions/1
-  # DELETE /sessions/1.json
-  def destroy
-    #session[:user_id] = nil #----now in session_helper
-    log_out
-    redirect_to root_url #
-  end
-=end
 
   private
   # Use callbacks to share common setup or constraints between actions.
