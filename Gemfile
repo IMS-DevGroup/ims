@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'node', platforms: :ruby
 gem 'execjs'
 
+gem 'barby'
+gem 'chunky_png'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -26,12 +28,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'tilt', '~> 1.4.1'
 
+gem 'rake'
 
 gem 'dotenv-rails'
 
 gem 'rails_12factor'
 
 gem 'puma'
+
+gem 'travis'
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'

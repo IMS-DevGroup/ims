@@ -1,13 +1,7 @@
 Rails.application.routes.draw do
-
-
-  get     'login'   =>  'sessions#new'
-  post    'login'   =>  'sessions#create'
-  delete  'logout'  =>  'sessions#destroy'
-
-  get 'password_reset' => 'users#password_reset'#noch nicht implementiert
-
-
+  root 'starts#index'
+  resources :starts
+  resources :todos
   resources :operations
   resources :units
   resources :stocks
@@ -20,11 +14,12 @@ Rails.application.routes.draw do
   resources :sessions
   resources :users
   resources :rights
+  resources :barcode_tests
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'users#new'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
