@@ -15,16 +15,24 @@ class LendingsController < ApplicationController
   # GET /lendings/new
   def new
     @lending = Lending.new
+    @list = [1,2,3,4]
   end
 
   # GET /lendings/1/edit
   def edit
   end
 
+
   # POST /lendings
   # POST /lendings.json
   def create
     @lending = Lending.new(lending_params)
+    #params as in post-parameters, does not work yet
+    if params[:commit].to_s.equal?('add')
+      puts('yay')
+    else
+      puts('nay')
+    end
 
     respond_to do |format|
       if @lending.save
@@ -79,6 +87,6 @@ class LendingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lending_params
-      params.require(:lending).permit(:receive, :lending_info, :receive_info, :user_id, :device_id)
+      params.require(:lending).permit(:receive, :lending_info, :receive_info, :user_id, :device_id, :lender_id)
     end
 end
