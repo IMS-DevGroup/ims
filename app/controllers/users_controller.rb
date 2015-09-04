@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    #redirect_to '/units' unless logged_in?
+    ###current_user = User.find_by_id(session[:user_id])
     @users = User.all
   end
 

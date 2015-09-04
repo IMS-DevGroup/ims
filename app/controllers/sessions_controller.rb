@@ -27,12 +27,14 @@ class SessionsController < ApplicationController
 
     user = User.authenticate(params[:username], params[:password_unhashed])
     if user
-      session[:user_id] = user.id
-      redirect_to root_url, :notice => 'Logged in!'
+      log_in user
+
+      #session[:user_id] = user.id
+      redirect_to root_url, :notice => "Logged in!"
 
         #LOG USER IN and show page
     else
-      flash.now.alert = 'Falscher Username und/oder Passwort'
+      flash.now[:error] = "Falscher Username und/oder Passwort" ##doesn't work
       render 'new'
     end
 
@@ -66,7 +68,8 @@ class SessionsController < ApplicationController
   # DELETE /sessions/1
   # DELETE /sessions/1.json
   def destroy
-    session[:user_id] = nil
+    #session[:user_id] = nil ----now in session_helper
+    log_out
     redirect_to root_url ##select root
 
     #@session.destroy
