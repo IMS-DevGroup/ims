@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  before_create :default_values
+  after_save :create_rights
+
+
   has_one :right , dependent: :destroy
   has_one :session ,dependent: :destroy
 
@@ -15,10 +19,17 @@ class User < ActiveRecord::Base
 
   validates :unit_id , presence: true
 
-  after_create :default_values
 
-  private
+  protected
     def default_values
       self.active = true
+    end
+
+    def create_rights
+      if !self.username.nil?
+        if self.right.nil?
+          Right.create(:user=>self)
+        end
+      end
     end
 end

@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :device_type %><br>
+    <%= f.collection_select :device_type_id, DeviceType.all, :id, :name ,include_blank: "choose device type"%>
+  </div>
+
+  <div class="field">
     <%= f.label :ready %><br>
     <%= f.check_box :ready %>
   </div>
@@ -23,6 +28,12 @@
     <%= f.label :owner_id %><br>
     <%= f.number_field :owner_id %>
   </div>
+
+    <div class="field">
+      <%= f.label :stock %><br>
+      <%= f.collection_select :stock_id, Stock.all, :id, :name ,include_blank: "choose stock"%>
+    </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

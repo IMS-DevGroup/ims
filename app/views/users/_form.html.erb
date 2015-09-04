@@ -1,8 +1,8 @@
+
 <%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
           <ul>
             <% @user.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
@@ -11,12 +11,16 @@
         </div>
     <% end %>
 
+<<<<<<< HEAD
     <table width=300 height=100>
+=======
+    <table class="userCreation" width=300 height=100>
+>>>>>>> 4e6b0251eaff3c57cb770e23ee01fd90e93a7863
       <tr>
         <td>
           <div class="field">
             <%= f.label :username %><br>
-            <%= f.text_field :username %>
+            <%= f.text_field :username%>
           </div>
         </td>
         <td>
@@ -61,20 +65,22 @@
         <td colspan="2">
           <div class="field">
             <%= f.label :info %><br>
-            <%= f.text_area :info , :rows => 2, :cols => 60%>
-
+            <%= f.text_area :info, :rows => 2, :cols => 60 %>
           </div>
         </td>
       </tr>
 
       <tr>
+        <td></td>
         <td>
           <div class="field">
-            <%= f.label :active %><br>
-            <%= f.check_box :active %>
+            <%= f.label :unit %><br>
+            <%= f.collection_select :unit_id, Unit.all, :id, :name ,include_blank: "choose unit"%>
           </div>
         </td>
+
       </tr>
+
 
     </table>
 
