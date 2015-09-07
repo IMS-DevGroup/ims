@@ -31,6 +31,19 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
+        #get all error messages and save it into a string
+        errorsFoundString = ""
+        errorsFoundArray = @user.errors.full_messages
+
+        #create big string with all error messages
+        errorsFoundArray.each do |e|
+          errorsFoundString += e +", "
+        end
+
+        #remove last characters because of , and show them on screen
+        errorsFoundString = errorsFoundString[0..-3]
+        flash.now[:error] = errorsFoundString
+
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -62,14 +75,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info,
-                                   :unit_id, :right_id, :password_unhashed)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info,
+                                 :unit_id, :right_id, :password_unhashed)
+  end
 end
