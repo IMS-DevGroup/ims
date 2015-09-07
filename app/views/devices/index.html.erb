@@ -4,9 +4,9 @@
   <thead>
     <tr>
       <th>Info</th>
-      <th>Owner</th>
-      <th>Stock</th>
       <th>Device type</th>
+      <th>Owner Stock</th>
+      <th>Stock</th>
       <th>Ready</th>
       <th colspan="3"></th>
     </tr>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= device.info %></td>
         <td><%= if device.device_type.nil? then else device.device_type.name end%></td>
-        <td><%= device.owner_id %></td>
+        <td><%= Stock.find_by_id(device.owner_id).name %></td>
         <td><%= if device.stock.nil? then else device.stock.name end%></td>
         <td><%= device.ready %></td>
         <td><%= link_to 'Show', device, class: 'btn btn-info' %>

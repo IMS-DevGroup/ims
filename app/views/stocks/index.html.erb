@@ -17,7 +17,7 @@
       <tr>
         <td><%= stock.name %></td>
         <td><%= stock.info %></td>
-        <td><%= if stock.unit.nil? then else stock.unit.name end%></td>
+        <td><%= if !(stock.unit.nil?) then stock.unit.name end%></td>
         <td><%= link_to 'Show', stock, class: 'btn btn-info' %>
         <%= link_to 'Edit', edit_stock_path(stock), class: 'btn btn-warning' %>
         <%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
