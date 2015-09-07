@@ -18,7 +18,7 @@
   <tbody>
     <% @operations.each do |operation| %>
       <tr>
-        <td><%= if operation.user.nil? then else operation.user.prename end %></td>
+        <td><%= if !(operation.user.nil?) then operation.user.prename end %></td>
         <td><%= operation.number %></td>
         <td><%= operation.operation_type %></td>
         <td><%= operation.location %></td>
