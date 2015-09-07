@@ -41,7 +41,11 @@
     <span title="Einsätze anlegen und bearbeiten"><%= f.label :manage_operations %></span><br>
 
   </div>
+    <br>
   <div class="actions">
-    <%= f.submit %>
+
+    <%= link_to 'Back to User', edit_user_path(@right.user), class:'btn btn-primary' %>
+    <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
+
   </div>
 <% end %>

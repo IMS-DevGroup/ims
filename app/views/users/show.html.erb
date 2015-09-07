@@ -66,5 +66,6 @@
 </table>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+<a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
+<%= link_to 'Edit', edit_user_path(@user), class:'btn btn-warning' %>
