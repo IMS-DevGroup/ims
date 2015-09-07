@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @unit.name %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @unit.info %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @unit.phone_number %>
+</p>
+
+<%= link_to 'Back', units_path, class:'btn btn-primary' %>
+<%= link_to 'Edit', edit_unit_path(@unit), class:'btn btn-warning' %>

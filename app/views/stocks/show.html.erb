@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<table class="stockCreation" width=300 height=100>
+  <tr>
+    <td>
+      <p>
+      <strong>Name:</strong>
+      <%= @stock.name %>
+      </p>
+    </td>
+    <td>
+      <p>
+      <strong>Unit</strong>
+      <%= @stock.unit.name %>
+      </p>
+    </td>
+    <td>
+      <p>
+      <strong>Info:</strong>
+      <%= @stock.info %>
+      </p>
+    </td>
+  </tr>
+</table>
+
+<%= link_to 'Back', stocks_path, class:'btn btn-primary' %>
+<%= link_to 'Edit', edit_stock_path(@stock), class:'btn btn-warning' %>
+

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ready:</strong>
+  <%= @device.ready %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @device.info %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @device.owner_id %>
+</p>
+
+<p>
+  <strong>Device type</strong>
+  <%= @device.device_type %>
+</p>
+
+<p>
+  <strong>Stock</strong>
+  <%= @device.stock %>
+</p>
+
+<p>
+  <strong>devicetype</strong>
+  <%= @device.device_type %>
+</p>
+
+<a href="/devices/"><button type="button" class = "btn btn-primary" >Back</button></a>
+<%= link_to 'Edit', edit_device_path(@device), class:'btn btn-warning' %>
+

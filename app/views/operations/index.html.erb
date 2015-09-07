@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Operations</h1>
+
+<table id="operations" class="table table-striped">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Number</th>
+      <th>Type</th>
+      <th>Location</th>
+      <th>Info</th>
+      <th>Begin Date</th>
+      <th>Close date</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operations.each do |operation| %>
+      <tr>
+        <td><%= if !(operation.user.nil?) then operation.user.prename end %></td>
+        <td><%= operation.number %></td>
+        <td><%= operation.operation_type %></td>
+        <td><%= operation.location %></td>
+        <td><%= operation.info %></td>
+        <td><%= operation.created_at+7200 %></td>       <!-- Hier Zeitzone Anpassen -->
+        <td><%= operation.close_date %></td>
+        <td><%= link_to 'Show', operation, class: 'btn btn-info' %>
+        <%= link_to 'Edit', edit_operation_path(operation), class: 'btn btn-warning' %>
+        <%= link_to 'Destroy', operation, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Operation', new_operation_path, class: 'btn btn-success' %>

@@ -1,0 +1,33 @@
+<h1>Listing Devices</h1>
+
+<table id="devices" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Info</th>
+      <th>Device type</th>
+      <th>Owner Stock</th>
+      <th>Stock</th>
+      <th>Ready</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @devices.each do |device| %>
+      <tr>
+        <td><%= device.info %></td>
+        <td><%= if device.device_type.nil? then else device.device_type.name end%></td>
+        <td><%= Stock.find_by_id(device.owner_id).name %></td>
+        <td><%= if device.stock.nil? then else device.stock.name end%></td>
+        <td><%= device.ready %></td>
+        <td><%= link_to 'Show', device, class: 'btn btn-info' %>
+        <%= link_to 'Edit', edit_device_path(device), class: 'btn btn-warning' %>
+        <%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Device', new_device_path, class: 'btn btn-success' %>

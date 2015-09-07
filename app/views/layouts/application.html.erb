@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IMS - Inventory Management System</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= stylesheet_link_tag "starts" %>
+
+
+<script type="text/javascript">
+
+    function updateTime() {
+        var date = new Date();
+        var stunden = date.getHours();
+        var minuten = date.getMinutes();
+        var tag = date.getDate();
+        var monatDesJahres = date.getMonth();
+        var jahr = date.getFullYear();
+        var tagInWoche = date.getDay();
+        var jahr_t = date.getFullYear() - 2000;
+        var wochentag = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag");
+        var monat = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember");
+        var monat_t = new Array("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
+
+        if(stunden < 10){stunden = "0" + stunden;}
+        if(minuten < 10){minuten = "0" + minuten;}
+        if(tag < 10){tag = "0" + tag;}
+
+        var datum = wochentag[tagInWoche] + ", " + tag + ". " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
+        var datum_t = tag + stunden + minuten + monat_t[monatDesJahres] + jahr_t;
+
+        document.getElementById('time').innerHTML = datum;
+        document.getElementById('time1').innerHTML = datum_t;
+        setTimeout(updateTime, 60000);
+    }
+
+
+
+    window.addEventListener("load", updateTime);
+
+
+</script>
+
+<div id="banner">
+  <div id="logo" onclick="javascript:window.location.href='/starts/';">
+  </div>
+</div>
+
+<div id="timebox">
+
+    <div id="time">
+    </div>
+    <div id="time1">
+    </div>
+</div>
+
+<div id="bgcontainer">
+  <% if(flash[:success])%>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:success] %>
+      </div>
+  <% end %>
+  <% if(flash[:notice])%>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
+  <% if(flash[:warning])%>
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:warning] %>
+      </div>
+  <% end %>
+  <% if(flash[:error])%>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= flash[:error] %>
+      </div>
+  <% end %>
+
+<div class="nav-stacked" id="menucontainer">
+
+  <ul class="nav nav-pills nav-stacked">
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> " ><a href="/starts/" >Start</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'operations' %> "><a href="/operations/" >Einsatz</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'devices' %> "><a href="/devices/" >Ger&auml;te</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'stocks' %> "><a href="/stocks/" >Bestand</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'users' %> "><a href="/users/" >User</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Karte</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'units' %> "><a href="/units/" >Einheiten</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/logout/" >Logout</a></li>
+  </ul>
+</div>
+
+
+<div id="content">
+    <%= yield %>
+</div>
+</div>
+
+
+</body>
+</html>

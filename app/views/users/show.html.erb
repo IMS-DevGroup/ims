@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<table class="userCreation" width=300 height=100>
+  <tr>
+    <td>
+      <p>
+        <strong>Username:</strong><br>
+        <%= @user.username %>
+      </p>
+    </td>
+
+  </tr>
+
+  <tr>
+    <td>
+      <p>
+        <strong>Prename:</strong><br>
+        <%= @user.prename %>
+      </p>
+    </td>
+
+    <td>
+      <p>
+        <strong>Lastname:</strong><br>
+        <%= @user.lastname %>
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <p>
+        <strong>Email:</strong><br>
+        <%= @user.email %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>Mobile number:</strong><br>
+        <%= @user.mobile_number %>
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <p>
+        <strong>Info:</strong><br>
+        <%= @user.info %>
+      </p>
+    </td>
+  </tr>
+  <tr>
+
+
+    <td>
+      <p>
+        <strong>Unit</strong><br>
+        <%= @user.unit.name %>
+      </p>
+    </td>
+
+  </tr>
+
+
+</table>
+
+
+
+<a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
+<%= link_to 'Edit', edit_user_path(@user), class:'btn btn-warning' %>

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>Listing Users</h1>
+
+<table id="users" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Prename</th>
+      <th>Lastname</th>
+      <th>Unit</th>
+      <th>Email</th>
+      <th>Mobile number</th>
+      <th>Username</th>
+      <th>Info</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.prename %></td>
+        <td><%= user.lastname %></td>
+        <td><%= if user.unit.nil? then else user.unit.name end%></td>
+        <td><%= user.email %></td>
+        <td><%= user.mobile_number %></td>
+        <td><%= user.username %></td>
+        <td><%= user.info %></td>
+        <td><%= link_to 'Show', user, class: 'btn btn-info' %>
+        <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-warning' %>
+        <%= link_to 'Destroy', user, method: :delete, onclick: 'return confirm("Are you sure?")', class: 'btn btn-danger' %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path, class: 'btn btn-success' %>

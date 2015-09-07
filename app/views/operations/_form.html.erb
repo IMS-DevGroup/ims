@@ -1,0 +1,73 @@
+<%= form_for(@operation) do |f| %>
+    <% if @operation.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@operation.errors.count, "error") %> prohibited this operation from being saved:</h2>
+
+          <ul>
+            <% @operation.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+    <table>
+
+      <tr>
+        <td>
+          <div class="form-group">
+            <%= f.label :operation_type %><br>
+            <%= f.text_field :operation_type %>
+          </div>
+        </td>
+
+        <td>
+          <div class="form-group">
+            <%= f.label 'Operation Number Dispatch' %><br>
+            <%= f.text_field :number %>
+          </div>
+        </td>
+
+
+      </tr>
+
+      <tr>
+        <td>
+          <div class="form-group">
+            <%= f.label :location %><br>
+            <%= f.text_field :location%>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <%= f.label :stock %><br>
+            <%= f.collection_select :id, Stock.all, :id, :name, {}, class: "form-control" , include_blank:'choose stock'%>
+          </div>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td colspan="2">
+          <div class="form-group">
+            <%= f.label :info %><br>
+            <%= f.text_area :info, :rows => 3, :cols => 41 %>
+          </div>
+        </td>
+      </tr>
+
+      <div class="form-group">
+        <%= f.label :user %><br>
+        <%= f.collection_select :user_id, User.all, :id, :prename, {}, class: "form-control", include_blank:'choose user'%>
+      </div>
+
+    </table>
+
+    <div class="actions">
+
+      <%= link_to 'Back', operations_path , class:'btn btn-primary'%>
+      <%= link_to 'Show', @operation , class:'btn btn-info'%>
+      <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
+    </div>
+<% end %>
