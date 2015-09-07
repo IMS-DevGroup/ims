@@ -16,6 +16,26 @@
     <%= f.text_area :lending_info %>
   </div>
 
+    <!-- following 3 fields only to enable dummy generation
+    TODO: change to proper fields and add validation-->
+    <div class="field">
+      <%= f.label :user_id %><br>
+      <%= f.number_field :user_id %>
+    </div>
+
+    <div class="field">
+      <%= f.label :device_id %><br>
+      <%= f.number_field :device_id %>
+      <%= f.submit "add" %>
+
+    </div>
+
+
+    <div class="field">
+      <%= f.label :lender_id %><br>
+      <%= f.number_field :lender_id %>
+    </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

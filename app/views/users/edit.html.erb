@@ -2,13 +2,4 @@
 
 <%= render 'form' %>
 
-<% if !Right.find_by_user_id(@user.id).nil? %>
-    <%= link_to 'Rights', edit_right_path(Right.find_by_user_id(@user.id)) %> |
-<% end %>
-
-
-<%= link_to 'Show', @user %> |
-
-<%= link_to 'Back', users_path %>
-
 

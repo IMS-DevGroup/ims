@@ -1,17 +1,5 @@
 
 <%= form_for(@user) do |f| %>
-    <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-
 
 <div id="bgcontainer">
 
@@ -86,7 +74,13 @@
     <div>
         <div>
           <a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
-          <%= f.button :submit => "", class: "btn btn-primary", style:"margin-left:230px;"%>
+          <% if !Right.find_by_user_id(@user.id).nil? %>
+              <%= link_to 'Rights', edit_right_path(Right.find_by_user_id(@user.id)), class: 'btn btn-info' %>
+          <% end %>
+
+
+          <%= link_to 'Show', @user , class:'btn btn-info'%>
+          <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
         </div>
 
     </div>

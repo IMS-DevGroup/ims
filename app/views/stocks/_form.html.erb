@@ -14,7 +14,7 @@
     <table>
       <tr>
         <td>
-          <div class="field">
+          <div class="form-group">
             <%= f.label :name %><br>
             <%= f.text_field :name %>
           </div>
@@ -22,7 +22,7 @@
       </tr>
       <td>
         <tr>
-          <div class="field">
+          <div class="form-group">
             <%= f.label :info %><br>
             <%= f.text_area :info %>
           </div>
@@ -30,16 +30,19 @@
         </tr>
         <tr>
           <td>
-            <div class="field">
+            <div class="form-group">
               <%= f.label :unit %><br>
-              <%= f.collection_select :unit_id, Unit.all, :id, :name, include_blank: "choose unit" %>
+              <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control", include_blank: "choose unit" %>
             </div>
           </td>
         </tr>
         <tr>
           <td>
             <div class="actions">
-              <%= f.submit %>
+              <%= link_to 'Show', @stock , class:'btn btn-info'%>
+              <%= link_to 'Back', stocks_path , class:'btn btn-primary'%>
+
+              <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
             </div>
           </td>
         </tr>

@@ -12,30 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :manage_rights %><br>
+
     <%= f.check_box :manage_rights %>
+    <span title="Darf Rechte vergeben"><%=f.label :manage_rights%></span><br>
+
   </div>
   <div class="field">
-    <%= f.label :manage_users %><br>
     <%= f.check_box :manage_users %>
+    <span title="User anlegen und bearbeiten"><%= f.label :manage_users %></span><br>
   </div>
   <div class="field">
-    <%= f.label :manage_devices %><br>
     <%= f.check_box :manage_devices %>
+    <span title="Geräte anlegen und bearbeiten"><%= f.label :manage_devices %></span><br>
+
   </div>
   <div class="field">
-    <%= f.label :manage_device_types %><br>
     <%= f.check_box :manage_device_types %>
+    <span title="Gertätetypen anlegen und bearbeiten"><%= f.label :manage_device_types %></span><br>
+
   </div>
   <div class="field">
-    <%= f.label :manage_stocks_and_units %><br>
     <%= f.check_box :manage_stocks_and_units %>
+    <span title="Einheiten und Standorte anlegen und bearbeiten"> <%= f.label :manage_stocks_and_units %></span><br>
+
   </div>
   <div class="field">
-    <%= f.label :manage_operations %><br>
     <%= f.check_box :manage_operations %>
+    <span title="Einsätze anlegen und bearbeiten"><%= f.label :manage_operations %></span><br>
+
   </div>
+    <br>
   <div class="actions">
-    <%= f.submit %>
+
+    <%= link_to 'Back to User', edit_user_path(@right.user), class:'btn btn-primary' %>
+    <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
+
   </div>
 <% end %>
