@@ -41,7 +41,6 @@ class Value < ActiveRecord::Base
        flash[:ERROR] =self.property.name + " is " + v.class + " not " + @typ
     end
     self.save
-    return self.value
 
   end
 
