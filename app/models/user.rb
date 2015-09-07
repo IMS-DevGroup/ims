@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true, allow_nil: true
   validates :unit_id, presence: true
   validates_uniqueness_of :email, :allow_nil => true
+  validates_with Users_Validator
 
 
   def self.authenticate(username, password_unhashed)
@@ -61,6 +62,5 @@ class User < ActiveRecord::Base
       self.email = nil
     end
   end
-
 
 end
