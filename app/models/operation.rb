@@ -5,5 +5,6 @@ class Operation < ActiveRecord::Base
 
   validates :location , presence: true
   #validates :user_id, presence: true
+  validates :operation_type, presence: true
 
 end
