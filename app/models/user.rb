@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   after_save :create_rights
 
 
+
   attr_accessor :password_unhashed
 
   has_one :right , dependent: :destroy
@@ -20,7 +21,7 @@ class User < ActiveRecord::Base
   validates :lastname , presence: true
   validates :username , uniqueness: true , allow_nil: true
   validates :unit_id , presence: true
-
+  validates_uniqueness_of :email, :allow_nil => true
 
 
   def self.authenticate(username, password_unhashed)
