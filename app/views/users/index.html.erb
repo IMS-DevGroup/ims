@@ -9,11 +9,9 @@
       <th>Prename</th>
       <th>Lastname</th>
       <th>Unit</th>
-      <th>Active</th>
       <th>Email</th>
       <th>Mobile number</th>
       <th>Username</th>
-      <!--<th>Password</th>-->
       <th>Info</th>
       <th colspan="3"></th>
     </tr>
@@ -24,12 +22,10 @@
       <tr>
         <td><%= user.prename %></td>
         <td><%= user.lastname %></td>
-        <td><%= if !(user.unit.nil?) then user.unit.name end%></td>
-        <td><%= user.active %></td>
+        <td><%= if user.unit.nil? then else user.unit.name end%></td>
         <td><%= user.email %></td>
         <td><%= user.mobile_number %></td>
         <td><%= user.username %></td>
-        <!--<td><%= user.password %></td>-->
         <td><%= user.info %></td>
         <td><%= link_to 'Show', user, class: 'btn btn-info' %>
         <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-warning' %>

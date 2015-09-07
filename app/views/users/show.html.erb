@@ -8,12 +8,7 @@
         <%= @user.username %>
       </p>
     </td>
-    <td>
-      <p>
-        <strong>Password:</strong><br>
-        <%= @user.password %>
-      </p>
-    </td>
+
   </tr>
 
   <tr>
@@ -56,18 +51,12 @@
     </td>
   </tr>
   <tr>
-    <td>
-      <p>
-        <strong>Active:</strong><br>
-        <%= @user.active %>
-      </p>
-    </td>
 
 
     <td>
       <p>
         <strong>Unit</strong><br>
-        <%= @user.unit %>
+        <%= @user.unit.name %>
       </p>
     </td>
 
