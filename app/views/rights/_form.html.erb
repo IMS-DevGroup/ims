@@ -35,7 +35,11 @@
     <%= f.label :manage_operations %><br>
     <%= f.check_box :manage_operations %>
   </div>
+    <br>
   <div class="actions">
-    <%= f.submit %>
+
+    <%= link_to 'Back to User', edit_user_path(@right.user), class:'btn btn-primary' %>
+    <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
+
   </div>
 <% end %>
