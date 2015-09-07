@@ -20,3 +20,6 @@ $ ->
       error: (request, error) ->
         alert 'Request: ' + JSON.stringify(request)
         return
+
+$ ->
+  $('#devices').dataTable()

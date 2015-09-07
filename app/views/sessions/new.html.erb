@@ -1,14 +1,24 @@
 <h1>Log in</h1>
 
 
+
+
 <%= form_tag sessions_path do %>
-    <p>
-      <%= label_tag :username %><br />
-      <%= text_field_tag :username, params[:username] %>
-    </p>
-    <p>
-      <%= label_tag :password %><br />
-      <%= password_field_tag :password_unhashed, params[:password_unhashed] %>
-    </p>
-    <p class="button"><%= submit_tag "Log in" %></p>
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Username or Email</label>
+        <%= text_field_tag :username, params[:username], :placeholder => "Username or Email", class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <%= password_field_tag :password_unhashed, params[:password_unhashed], :placeholder => "Password", class: 'form-control' %>
+      </div>
+      <div class="checkbox">
+        <%= label_tag :remember_me, class: "checkbox inline" do %>
+            <%= check_box_tag :remember_me %>
+            <span>Remember me on this computer</span>
+        <% end %>
+      </div>
+      <p class="button"><%= submit_tag "Log in", class: 'btn btn-success' %></p>
+    </form>
 <% end %>
