@@ -24,8 +24,13 @@
       <tr>
         <td><%= user.prename %></td>
         <td><%= user.lastname %></td>
+<<<<<<< HEAD
         <td><%= if user.unit.nil? then else user.unit.name end%></td>
        <!-- <td><%= user.active %></td> -->
+=======
+        <td><%= if !(user.unit.nil?) then user.unit.name end%></td>
+        <td><%= user.active %></td>
+>>>>>>> 78914b39ba5cb2ae5c753937ed1dc8e41b26477e
         <td><%= user.email %></td>
         <td><%= user.mobile_number %></td>
         <td><%= user.username %></td>

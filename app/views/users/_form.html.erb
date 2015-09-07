@@ -1,17 +1,5 @@
 
 <%= form_for(@user) do |f| %>
-    <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-
 
 <div id="bgcontainer">
 
@@ -29,7 +17,7 @@
         <td>
           <div class="form-group">
             <%= f.label :password %><br>
-            <%= f.text_field :password %>
+            <%= f.password_field :password_unhashed %>
           </div>
         </td>
       </tr>
@@ -53,7 +41,7 @@
         <td>
           <div class="form-group">
             <%= f.label :email %><br>
-            <%= f.text_field :email %>
+            <%= f.email_field :email %>
           </div>
         </td>
         <td>
