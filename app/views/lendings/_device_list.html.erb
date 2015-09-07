@@ -4,8 +4,8 @@
   <thead>Bereits ausgewählte Devices</thead>
 
   <tbody>
-    <% @list.each do |device| %>
-    <td> <%= device %> </td>
+    <% @list.each do |elem| %>
+    <td> <%= elem[:device_id] %> </td>
     <% end %>
   </tbody>
 
