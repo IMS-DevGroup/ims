@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true, allow_nil: true
   validates :unit_id, presence: true
 
+  #Regex for valid usermail
+  validates_format_of :email, :with =>/\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
 
   protected
   def default_values
