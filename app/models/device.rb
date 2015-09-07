@@ -8,5 +8,4 @@ class Device < ActiveRecord::Base
   validates :owner_id, presence: true
   validates :ready , presence: true
 
-
 end
