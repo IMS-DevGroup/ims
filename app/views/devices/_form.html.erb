@@ -26,7 +26,7 @@
 
   <div class="field">
     <%= f.label :owner_id %><br>
-    <%= f.number_field :owner_id %>
+    <%= f.collection_select :owner_id, Stock.all, :id, :name, :prompt => 'Select owner stock' %>
   </div>
 
   <div class="field">
@@ -39,10 +39,7 @@
     <%= f.check_box :ready %>
   </div>
 
-    <div class="field">
-      <%= f.label :device_type %><br>
-      <%= f.collection_select :device_type_id, DeviceType.all, :id, :name ,include_blank: "choose device type"%>
-    </div>
+
 
   <div class="actions">
     <%= f.submit %>
