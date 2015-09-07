@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   after_validation :encrypt_password
   after_create :default_values
   before_save :nil_if_blank
+  before_save { self.email = email.downcase if email}
   after_save :create_rights
 
 
@@ -25,9 +26,10 @@ class User < ActiveRecord::Base
 
   def self.authenticate(username, password_unhashed)
     return nil if username == nil
-    user = find_by_email(username)
+    user = find_by_username(username)
     if user == nil
-      user = find_by_username(username)
+      username.downcase!
+      user = find_by_email(username)
     end
     if user && user.password == BCrypt::Engine.hash_secret(password_unhashed, user.salt)
       user
