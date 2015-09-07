@@ -16,7 +16,8 @@
     <%= f.collection_select :device_type_id, DeviceType.all, :id, :name, :prompt => 'Select device type' %>
   </div>
 
-  <div id="property">
+  <div class="field">
+    <select id="properties" style="display: none"></select>
   </div>
 
   <div class="field">
