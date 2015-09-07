@@ -5,22 +5,20 @@ class User < ActiveRecord::Base
   after_save :create_rights
 
 
-
   attr_accessor :password_unhashed
 
-  has_one :right , dependent: :destroy
-  has_one :session ,dependent: :destroy
+  has_one :right, dependent: :destroy
+  has_one :session, dependent: :destroy
 
   has_many :lendings
   belongs_to :unit
   has_one :operation
 
 
-
-  validates :prename , presence: true
-  validates :lastname , presence: true
-  validates :username , uniqueness: true , allow_nil: true
-  validates :unit_id , presence: true
+  validates :prename, presence: true
+  validates :lastname, presence: true
+  validates :username, uniqueness: true, allow_nil: true
+  validates :unit_id, presence: true
   validates_uniqueness_of :email, :allow_nil => true
 
 
@@ -42,21 +40,27 @@ class User < ActiveRecord::Base
   end
 
   protected
-    def default_values
-      self.active = true
-    end
+  def default_values
+    self.active = true
+  end
 
-    def create_rights
-      if !self.username.nil?
-        if self.right.nil?
-          Right.create(:user => self)
-        end
+  def create_rights
+    if !self.username.nil?
+      if self.right.nil?
+        Right.create(:user => self)
       end
     end
+  end
 
-    def nil_if_blank
-      if self.username.blank?
-        self.username = nil
-      end
+  def nil_if_blank
+    if self.username.blank?
+      self.username = nil
     end
+
+    if self.email.blank?
+      self.email = nil
+    end
+  end
+
+
 end
