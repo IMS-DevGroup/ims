@@ -24,8 +24,9 @@ class User < ActiveRecord::Base
 
 
   def self.authenticate(username, password_unhashed)
+    return nil if username == nil
     user = find_by_email(username)
-    if ( user == nil)
+    if user == nil
       user = find_by_username(username)
     end
     if user && user.password == BCrypt::Engine.hash_secret(password_unhashed, user.salt)
