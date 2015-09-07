@@ -10,6 +10,7 @@
       <th>Type</th>
       <th>Location</th>
       <th>Info</th>
+      <th>Begin Date</th>
       <th>Close date</th>
       <th colspan="3"></th>
     </tr>
@@ -23,6 +24,7 @@
         <td><%= operation.operation_type %></td>
         <td><%= operation.location %></td>
         <td><%= operation.info %></td>
+        <td><%= operation.created_at+7200 %></td>       <!-- Hier Zeitzone Anpassen -->
         <td><%= operation.close_date %></td>
         <td><%= link_to 'Show', operation, class: 'btn btn-info' %>
         <%= link_to 'Edit', edit_operation_path(operation), class: 'btn btn-warning' %>
