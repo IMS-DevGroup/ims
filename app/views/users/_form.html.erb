@@ -1,17 +1,33 @@
 
 <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+
+<div id="bgcontainer">
+
+  <h1>New User</h1>
 
     <table class="userCreation" width=300 height=100>
 
       <tr>
         <td>
-          <div class="field">
+          <div class="form-group">
             <%= f.label :username %><br>
             <%= f.text_field :username%>
           </div>
         </td>
         <td>
-          <div class="field">
+          <div class="form-group">
             <%= f.label :password %><br>
             <%= f.text_field :password %>
           </div>
@@ -20,13 +36,13 @@
 
       <tr>
         <td>
-          <div class="field">
+          <div class="form-group">
             <%= f.label :prename %><br>
             <%= f.text_field :prename %>
           </div>
         </td>
         <td>
-          <div class="field">
+          <div class="form-group">
             <%= f.label :lastname %><br>
             <%= f.text_field :lastname %>
           </div>
@@ -35,13 +51,13 @@
 
       <tr>
         <td>
-          <div class="field">
+          <div class="form-group">
             <%= f.label :email %><br>
             <%= f.text_field :email %>
           </div>
         </td>
         <td>
-          <div class="field">
+          <div class="form-group">
             <%= f.label :mobile_number %><br>
             <%= f.text_field :mobile_number %>
           </div>
@@ -50,25 +66,30 @@
 
       <tr>
         <td colspan="2">
-          <div class="field">
+          <div class="form-group">
             <%= f.label :info %><br>
             <%= f.text_area :info, :rows => 2, :cols => 60 %>
           </div>
         </td>
       </tr>
 
-      <tr>
-        <td>
-          <div class="field">
-            <%= f.label :unit %><br>
-            <%= f.collection_select :unit_id, Unit.all, :id, :name ,include_blank: "choose unit"%>
-          </div>
-        </td>
-
-      </tr>
     </table>
 
-    <div class="actions">
-      <%= f.submit %>
+
+    <div class="form-group ">
+      <%= f.label :unit %>
+      <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control" %>
     </div>
+
+    <br>
+    <br>
+    <div>
+        <div>
+          <a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
+          <%= f.button :submit => "", class: "btn btn-primary", style:"margin-left:230px;"%>
+        </div>
+
+    </div>
+</div>
+
 <% end %>

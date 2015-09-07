@@ -8,28 +8,39 @@ class Value < ActiveRecord::Base
   validates :property_id , presence: true
 
   def getConvertedValue
-    type =self.property.data_type.name
+    typ =self.property.data_type.name
 
-    if type == "string"
+    if typ == "String"
       return self.value
-    elsif type == "integer"
+    elsif typ == "Fixnum"
       return self.value.to_i
-    elsif type == "timestamp"
+    elsif typ == "Time"
       return Time.parse(self.value)
-    elsif type =="boolean"
+    elsif typ =="Boolean"
       return true if self.value=="true"
       return false if self.value=="false"
-    elsif type == "float"
+    elsif typ == "Float"
       return self.value.to_f
     end
   end
-  def setConvertedValue(v)
-    type =self.property.data_type.name
-    if type=v.type
-      self.value=v.to_s
-    elsif
-      flash[:ERROR] =self.property.name + " is " + v.type + " not " + type
+  def setConvertedValue(v_karl)
+
+    typ =self.property.data_type.name
+    if typ==v_karl.class.to_s
+
+    self.value=v_karl.to_s
+
+
+    elsif v_karl.class.to_s=="TrueClass"&& typ="Boolean"
+      self.value="true"
+
+    elsif v_karl.class.to_s=="FalseClass"&& typ="Boolean"
+      self.value="false"
+    #else
+      # flash[:ERROR] =self.property.name + " is " + v.class + " not " + @typ
     end
+    self.save
+    return self.value
 
   end
 
