@@ -5,5 +5,12 @@ class Users_Validator < ActiveModel::Validator
     elsif !(user.username.blank?) && user.password_unhashed.blank?
       user.errors[:base] << "If username is inserted you have to insert a password"
     end
+
+    if !(user.mobile_number.blank?)
+      numberAfterRegex = user.mobile_number.match(/(^(\+?\-?[0-9\(]+)([,0-9]*)([0-9\.\(\)\/-])*$)/)
+      if numberAfterRegex.blank?
+        user.errors[:base] << "Please enter a valid mobil number"
+      end
+    end
   end
 end
