@@ -1,38 +1,62 @@
 class User < ActiveRecord::Base
-  before_create :default_values
-  after_save :create_rights
+  after_validation :encrypt_password
+  after_create :default_values
   before_save :nil_if_blank
+  after_save :create_rights
 
 
-  has_one :right, dependent: :destroy
-  has_one :session, dependent: :destroy
+
+  attr_accessor :password_unhashed
+
+  has_one :right , dependent: :destroy
+  has_one :session ,dependent: :destroy
 
   has_many :lendings
   belongs_to :unit
   has_one :operation
 
-  validates :prename, presence: true
-  validates :lastname, presence: true
-  validates :username, uniqueness: true, allow_nil: true
-  validates :unit_id, presence: true
 
+
+  validates :prename , presence: true
+  validates :lastname , presence: true
+  validates :username , uniqueness: true , allow_nil: true
+  validates :unit_id , presence: true
+  validates_uniqueness_of :email, :allow_nil => true
+
+
+  def self.authenticate(username, password_unhashed)
+    user = find_by_username(username)
+    if user && user.password == BCrypt::Engine.hash_secret(password_unhashed, user.salt)
+      user
+    else
+      nil
+    end
+  end
+
+
+  def encrypt_password
+    if password_unhashed.present?
+      self.salt = BCrypt::Engine.generate_salt
+      self.password = BCrypt::Engine.hash_secret(password_unhashed, salt)
+    end
+  end
 
   protected
-  def default_values
-    self.active = true
-  end
+    def default_values
+      self.active = true
+    end
 
-  def create_rights
-    if !self.username.nil?
-      if self.right.nil?
-        Right.create(:user => self)
+    def create_rights
+      if !self.username.nil?
+        if self.right.nil?
+          Right.create(:user => self)
+        end
       end
     end
-  end
 
-  def nil_if_blank
-    if self.username.blank?
-      self.username = nil
+    def nil_if_blank
+      if self.username.blank?
+        self.username = nil
+      end
     end
-  end
 end
