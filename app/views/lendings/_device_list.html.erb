@@ -1,11 +1,19 @@
 
 
 <table>
-  <thead>Bereits ausgewählte Devices</thead>
+  <thead>Bereits ausgewählte Devices
+    <tr>
+      <th>Device-ID</th>
+    </tr>
+
+  </thead>
 
   <tbody>
     <% @list.each do |elem| %>
-    <td> <%= elem[:device_id] %> </td>
+    <tr>
+      <td> <%= elem[:device_id] %> </td>
+      <td><%= link_to 'Entfernen', delete_from_list_path %></td>
+    </tr>
     <% end %>
   </tbody>
 

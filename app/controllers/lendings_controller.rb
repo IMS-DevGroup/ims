@@ -3,10 +3,12 @@ class LendingsController < ApplicationController
   # Global list of devices that were already selected to be borrowed in this session
   @@global_list = []
 
+
   # GET /lendings
   # GET /lendings.json
   def index
     @lendings = Lending.all
+    puts params
   end
 
   # GET /lendings/1
@@ -57,6 +59,7 @@ class LendingsController < ApplicationController
         @@global_list = []
         format.html {redirect_to :back}
       end
+
 
 #      original code left here as a comment for later json reference
 #        if @lending.save
