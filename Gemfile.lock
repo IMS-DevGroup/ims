@@ -43,6 +43,7 @@ GEM
       json
     backports (3.6.6)
     barby (0.6.2)
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.2)
@@ -209,6 +210,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   barby
+  bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.2.0)
   byebug
   chunky_png
