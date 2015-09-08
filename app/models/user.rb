@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true, allow_nil: true
   validates :unit_id, presence: true
   validates_uniqueness_of :email, :allow_nil => true
-  #validates_with Users_Validator
+  validates_with Users_Validator
 
 
   def self.authenticate(username, password_unhashed)
@@ -60,6 +60,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  #checks for blank username, saves it as nil in the database, not as empty string anymore
+  #checks for blank email, saves it as nil in the database, not as empty string anymore
   def nil_if_blank
     if self.username.blank?
       self.username = nil
