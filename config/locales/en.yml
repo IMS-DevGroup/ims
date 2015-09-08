@@ -1,7 +1,6 @@
 en:
   users:
     form:
-      title: "New User"
       username: "Username"
       password: "Password"
       prename: "Prename *"
@@ -12,6 +11,18 @@ en:
       unit: "Unit *"
     index:
       title: "Listing Users"
+      username: "Username"
+      prename: "Prename"
+      lastname: "Lastname"
+      email: "Email"
+      mobile_number: "Mobile number"
+      info: "Information"
+      unit: "Unit"
+    edit:
+      title: "Editing User"
+    new:
+      title: "New User"
+    show:
       username: "Username"
       prename: "Prename"
       lastname: "Lastname"
