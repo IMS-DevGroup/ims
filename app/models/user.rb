@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token
 
   has_one :right, dependent: :destroy
-  has_one :session, dependent: :destroy
 
   has_many :lendings
   belongs_to :unit
@@ -53,13 +52,12 @@ class User < ActiveRecord::Base
     SecureRandom.urlsafe_base64
   end
 
-  def remember #####NOCH NICHT FUNKTIONSFÄHIG!!
+  def remember
     self.remember_token = User.new_token
     update_attribute(:cookies, BCrypt::Password.create(remember_token))
   end
 
-  def authenticated?(remember_token) #####same
-    return false if session_key == nil
+  def authenticated?(remember_token)
     BCrypt::Password.new(cookies).is_password?(remember_token)
   end
 

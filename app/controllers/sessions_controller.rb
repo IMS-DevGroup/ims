@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   before_action :set_session, only: [:show, :edit, :update, :destroy]
   # GET /sessions/new
   def new
-    redirect_to root_url if logged_in?
+    redirect_to '/starts' if logged_in?
   end
 
   # POST /sessions
@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
   def remove
     session[:user_id] = nil
     log_out
-    redirect_to '/login'
+    redirect_to root_url
   end
 
 
