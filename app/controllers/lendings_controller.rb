@@ -1,7 +1,9 @@
 class LendingsController < ApplicationController
-  before_action :set_lending, only: [:show, :edit, :update, :destroy]
+  before_action :set_lending, only: [:show, :edit, :update, :destroy, :return]
   # Global list of devices that were already selected to be borrowed in this session
-  @@global_list = []
+  # Currently disabled remainder of first try of multiple-device-lending
+  # @@global_list = []
+
 
   # GET /lendings
   # GET /lendings.json
@@ -18,7 +20,8 @@ class LendingsController < ApplicationController
   def new
     @lending = Lending.new
     #local parameter list is needed for device_list partial
-    @list = @@global_list
+    # Currently disabled remainder of first try of multiple-device-lending
+    # @list = @@global_list
   end
 
   # GET /lendings/1/edit
@@ -28,16 +31,16 @@ class LendingsController < ApplicationController
 
   # POST /lendings
   # POST /lendings.json
-  #TODO: Add possibility to delete items
-  #TODO: Add json (currently html-only)
   def create
+
     @lending = Lending.new(lending_params)
 
     respond_to do |format|
+
+=begin
+  # Currently disabled remainder of first try of multiple-device-lending
       # adding more devices, currently old device is filled in by default
-      # TODO: device should be empty after add button was clicked
       if params[:commit].eql?("add")
-        #TODO: Error handling here or upon final creation? (see below)
         @@global_list << lending_params
         @list = @@global_list
         format.html { render :new }
@@ -49,7 +52,6 @@ class LendingsController < ApplicationController
           if @lending.save
             puts("success")
           else
-            #TODO: Error handling
             puts("failure")
           end
         end
@@ -57,15 +59,17 @@ class LendingsController < ApplicationController
         @@global_list = []
         format.html {redirect_to :back}
       end
+=end
 
-#      original code left here as a comment for later json reference
-#        if @lending.save
-#          format.html { redirect_to @lending, notice: 'Lending was successfully created.' }
-#          format.json { render :show, status: :created, location: @lending }
-#        else
-#          format.html { render :new }
-#          format.json { render json: @lending.errors, status: :unprocessable_entity }
-#        end
+
+     # original code
+       if @lending.save
+         format.html { redirect_to @lending, notice: 'Lending was successfully created.' }
+         format.json { render :show, status: :created, location: @lending }
+       else
+         format.html { render :new }
+         format.json { render json: @lending.errors, status: :unprocessable_entity }
+       end
       end
   end
 
@@ -93,6 +97,15 @@ class LendingsController < ApplicationController
     end
   end
 
+  # GET lendings/1/return
+  def return
+  end
+
+  # Currently disabled remainder of first try of multiple-device-lending
+  # def delete_from_list
+  #   puts params
+  #   redirect_to action: :new
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -102,6 +115,6 @@ class LendingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lending_params
-      params.require(:lending).permit(:receive, :lending_info, :receive_info, :user_id, :device_id, :lender_id)
+      params.require(:lending).permit(:receive, :lending_info, :receive_info, :user_id, :device_id, :lender_id, :receiver_id)
     end
 end

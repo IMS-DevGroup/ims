@@ -5,7 +5,8 @@ class Device < ActiveRecord::Base
   belongs_to :device_type
   belongs_to :stock
 
-  validates :owner_id, presence: true
+  validates :owner_id, presence: :true
   validates :ready , presence: true
+  validates :stock_id, presence: :true
 
 end
