@@ -73,6 +73,8 @@
     <ul class="nav nav-tabs" >
       <li role="presentation"><a href="#">Impressum</a></li>
       <li role="presentation"><a href="#">Kontakt</a></li>
+      <%= link_to_unless I18n.locale == :en, "English", set_language_english_path %>
+      <%= link_to_unless I18n.locale == :de, "Deutsch", set_language_german_path %>
       <% if logged_in? %><li role="presentation"><a href="/logout/"><b><%= current_user.username %></b> (Logout)</a></li><% end %>
     </ul>
 </div>
