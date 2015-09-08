@@ -9,7 +9,7 @@ class Users_Validator < ActiveModel::Validator
       user.errors[:base] << "If username is inserted you have to insert a password"
     end
 
-#look for correct mobile number
+    #look for correct mobile number
     if !(user.mobile_number.blank?)
       puts "hier kommt die maus"
       puts user.mobile_number
