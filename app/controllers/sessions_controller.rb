@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   before_action :set_session, only: [:show, :edit, :update, :destroy]
+
+  skip_before_filter :require_login
   # GET /sessions/new
   def new
     redirect_to '/starts' if logged_in?
