@@ -61,6 +61,18 @@ class DevicesController < ApplicationController
     end
   end
 
+  def get_properties
+    prop_ary = Array.new
+    DeviceType.find_by_id(params[:device_type]).properties.each do |property|
+      prop_ary.push(property.name)
+    end
+    respond_to do |format|
+      format.json {
+        render json: { result: prop_ary }
+      }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_device
