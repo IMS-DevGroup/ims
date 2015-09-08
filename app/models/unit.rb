@@ -6,6 +6,7 @@ class Unit < ActiveRecord::Base
 
 
   validates :name , presence: true
+  validates_with Units_Validator
 
 
 end
