@@ -1,8 +1,6 @@
 class AddStandatDataTypes < ActiveRecord::Migration
   def change
 
-    if !DataType.exists
-
 
 
       #Create standart value for String
@@ -34,7 +32,6 @@ class AddStandatDataTypes < ActiveRecord::Migration
       dt_fixnum.name = "Fixnum"
       dt_fixnum.save
 
-    end
 
   end
 end
