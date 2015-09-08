@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 
 
   #removed validation because of own validator using helpers/users_validator.rb
+  #this removes the extra break between label and field if error is thrown
   validates :prename, presence: true
   validates :lastname, presence: true
   validates :username, uniqueness: true, allow_nil: true
