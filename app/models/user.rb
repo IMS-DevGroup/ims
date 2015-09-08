@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
   validates :unit_id, presence: true
   validates_uniqueness_of :email, :allow_nil => true
   validates_with  Users_Validator ,on: :create
-  validates_with Users_Validator, on: :create
 
 
   def self.authenticate(username, password_unhashed)
