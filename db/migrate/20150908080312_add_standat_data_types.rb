@@ -1,7 +1,7 @@
 class AddStandatDataTypes < ActiveRecord::Migration
   def change
 
-    if !DataType.exists
+    if DataType.empty?
 
 
 
