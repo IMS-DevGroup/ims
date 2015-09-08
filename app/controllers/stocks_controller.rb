@@ -54,10 +54,7 @@ class StocksController < ApplicationController
   # DELETE /stocks/1
   # DELETE /stocks/1.json
   def destroy
-    #mögliche idee
-    @stock.operations.delete(stock)
 
-    #standart
     @stock.destroy
     respond_to do |format|
       format.html { redirect_to stocks_url, notice: 'Stock was successfully destroyed.' }
