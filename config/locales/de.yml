@@ -18,35 +18,32 @@ de:
 
   users:
     form:
-      username: "Username"
-      password: "Passwort"
       prename: "Vorname *"
       lastname: "Nachname *"
-      email: "E-mail"
-      mobile_number: "Telefonnummer"
-      info: "Information"
       unit: "Einheit *"
     index:
       title: "Nutzerliste"
-      username: "Username"
-      prename: "Vorname"
-      lastname: "Nachname"
-      email: "E-mail"
-      mobile_number: "Telefonnummer"
-      info: "Information"
-      unit: "Einheit"
     edit:
       title: "Nutzer bearbeiten"
     new:
       title: "Neuen Nutzer anlegen"
-    show:
-      username: "Username"
-      prename: "Vorname"
-      lastname: "Nachname"
-      email: "E-mail"
-      mobile_number: "Telefonnummer"
+
+  operations:
+      linked_user: "User"
+      operation_type: "Operation type"
+      operation_dispatch_number: "Operation number dispatch"
+
+  mixed_fields:
+      email: "Email"
       info: "Information"
-      unit: "Einheit"
+      lastname: "Nachname"
+      location: "Ort"
+      mobile_number: "Handynummer"
+      password: "Passwort"
+      prename: "Vorname"
+      stock: "Lager"
+      unit: "Einheit "
+      username: "Benutzername"
 
   own:
     errors:

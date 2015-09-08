@@ -16,38 +16,34 @@ en:
             email:
               taken: This email address already exists in the database, please choose another one.
 
-
   users:
     form:
-      username: "Username"
-      password: "Password"
       prename: "Prename *"
       lastname: "Lastname *"
-      email: "Email"
-      mobile_number: "Mobile number"
-      info: "Information"
       unit: "Unit *"
     index:
       title: "Listing Users"
-      username: "Username"
-      prename: "Prename"
-      lastname: "Lastname"
-      email: "Email"
-      mobile_number: "Mobile number"
-      info: "Information"
-      unit: "Unit"
     edit:
       title: "Editing User"
     new:
       title: "New User"
-    show:
-      username: "Username"
-      prename: "Prename"
-      lastname: "Lastname"
+
+  operations:
+      linked_user: "User"
+      operation_type: "Operation type"
+      operation_dispatch_number: "Operation number dispatch"
+
+  mixed_fields:
       email: "Email"
+      info: "Info"
+      lastname: "Lastname"
+      location: "Location"
       mobile_number: "Mobile number"
-      info: "Information"
+      password: "Password"
+      prename: "Prename"
+      stock: "Stock"
       unit: "Unit"
+      username: "Username"
 
   own:
     errors:
@@ -59,3 +55,5 @@ en:
       user_updated: User successfully updated.
       user_created: User successfully created.
       user_login: User login was successful.
+
+
