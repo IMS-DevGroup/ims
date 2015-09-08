@@ -1,0 +1,49 @@
+<%= form_for(@lending) do |f| %>
+<% if @lending.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lending.errors.count, "error") %> prohibited this lending from being saved:</h2>
+
+      <ul>
+        <% @lending.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<div>
+    <p>
+      <strong>User:</strong>
+      <%= @lending.user_id %>
+    </p>
+
+    <p>
+      <strong>Lending:</strong>
+      <%= @lending.created_at %>
+    </p>
+
+    <p>
+      <strong>Lending info:</strong>
+      <%= @lending.lending_info %>
+    </p>
+
+    <!-- TODO: Change to username instead of ID -->
+    <p>
+      <strong>Lender:</strong>
+      <%= @lending.lender_id %>
+    </p>
+</div>
+
+    <div class="field">
+  <%= f.label :recieve_info %><br>
+  <%= f.text_area :receive_info %>
+</div>
+
+    <%= f.hidden_field :receiver_id , :value => current_user.id %>
+    <%= f.hidden_field :receive , :value => Time.now %>
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
