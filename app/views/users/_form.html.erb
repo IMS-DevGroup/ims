@@ -1,7 +1,5 @@
 <%= form_for(@user) do |f| %>
 
-<div id="bgcontainer">
-
   <h1>New User</h1>
 
     <table class="userCreation" width=300 height=100>
@@ -71,7 +69,6 @@
     <br>
     <br>
     <div>
-        <div>
           <a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
           <% if !Right.find_by_user_id(@user.id).nil? %>
               <%= link_to 'Rights', edit_right_path(Right.find_by_user_id(@user.id)), class: 'btn btn-info' %>
@@ -79,10 +76,8 @@
 
 
           <%= link_to 'Show', @user , class:'btn btn-info'%>
-          <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
-        </div>
+        <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
 
     </div>
-</div>
 
 <% end %>
