@@ -3,4 +3,5 @@ class Session < ActiveRecord::Base
 
   validates :user_id , presence: true
   validates :session_key , presence: true
+
 end
