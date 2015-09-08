@@ -50,6 +50,8 @@ class StocksController < ApplicationController
         format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
         format.json { render :show, status: :ok, location: @stock }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@stock.errors.full_messages).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @stock.errors, status: :unprocessable_entity }
       end
