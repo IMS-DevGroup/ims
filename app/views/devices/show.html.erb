@@ -11,24 +11,20 @@
 </p>
 
 <p>
-  <strong>Owner:</strong>
-  <%= @device.owner_id %>
+  <strong>Owner Stock:</strong>
+  <%= Stock.find_by_id(@device.owner_id).name %>
 </p>
 
 <p>
   <strong>Device type</strong>
-  <%= @device.device_type %>
+  <%= @device.device_type.name %>
 </p>
 
 <p>
   <strong>Stock</strong>
-  <%= @device.stock %>
+  <%= @device.stock.name%>
 </p>
 
-<p>
-  <strong>devicetype</strong>
-  <%= @device.device_type %>
-</p>
 
 <a href="/devices/"><button type="button" class = "btn btn-primary" >Back</button></a>
 <%= link_to 'Edit', edit_device_path(@device), class:'btn btn-warning' %>

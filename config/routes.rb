@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get   'login'   =>  'sessions#new'
   post  'login'   =>  'sessions#create'
   get   'logout'  =>  'sessions#remove'
+  post  'get-prop' => 'devices#get_properties'
   resources :starts
   resources :todos
   resources :operations
