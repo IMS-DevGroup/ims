@@ -33,7 +33,7 @@ class UsersController < ApplicationController
         format.json { render :show, status: :created, location: @user }
       else
         #get all error messages and save it into a string
-        flash[:error] = (@user.errors.values).join("<br/>").html_safe
+        flash.now[:error] = (@user.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
