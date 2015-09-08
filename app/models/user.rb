@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :password_unhashed
   attr_accessor :remember_token
+  #attr_accessor :remember_me
 
   has_one :right, dependent: :destroy
 
@@ -58,6 +59,7 @@ class User < ActiveRecord::Base
   end
 
   def authenticated?(remember_token)
+    return false if cookies == nil
     BCrypt::Password.new(cookies).is_password?(remember_token)
   end
 

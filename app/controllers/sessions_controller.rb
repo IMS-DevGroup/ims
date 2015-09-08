@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:username], params[:password_unhashed])
     if user
       log_in user
-      remember user
+      params[:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to root_url
       flash[:success] ="Login erfolgreich"
     else
@@ -35,9 +35,8 @@ class SessionsController < ApplicationController
   end
 
   def remove
-    session[:user_id] = nil
-    log_out
-    redirect_to root_url
+      log_out if logged_in?
+      redirect_to root_url
   end
 
 
@@ -49,6 +48,6 @@ class SessionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def session_params
-    params.require(:session).permit(:session_key)
+    params.require(:session).permit(:session_key, :remember_me)
   end
 end
