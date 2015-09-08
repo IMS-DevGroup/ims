@@ -11,8 +11,6 @@ class Users_Validator < ActiveModel::Validator
 
     #look for correct mobile number
     if !(user.mobile_number.blank?)
-      puts "hier kommt die maus"
-      puts user.mobile_number
       numberAfterRegex = (user.mobile_number.to_s).match(/(^(\+?\-?[0-9\(]+)([,0-9]*)([0-9\.\(\)\/-])*$)/)
       if numberAfterRegex.blank?
         user.errors[:base] << "Please enter a valid mobil number"
