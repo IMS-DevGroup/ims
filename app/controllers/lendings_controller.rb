@@ -32,6 +32,7 @@ class LendingsController < ApplicationController
   # POST /lendings
   # POST /lendings.json
   def create
+
     @lending = Lending.new(lending_params)
 
     respond_to do |format|

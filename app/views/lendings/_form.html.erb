@@ -31,11 +31,8 @@
 
     </div>
 
-
-    <div class="field">
-      <%= f.label :lender_id %><br>
-      <%= f.number_field :lender_id %>
-    </div>
+    <!-- hidden field to automatically include current user as lender -->
+    <%= f.hidden_field :lender_id, :value => current_user.id %>
 
   <div class="actions">
     <%= f.submit %>
