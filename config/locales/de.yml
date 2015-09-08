@@ -1,0 +1,32 @@
+de:
+  users:
+    form:
+      username: "Username"
+      password: "Passwort"
+      prename: "Vorname *"
+      lastname: "Nachname *"
+      email: "E-mail"
+      mobile_number: "Telefonnummer"
+      info: "Information"
+      unit: "Einheit *"
+    index:
+      title: "Nutzerliste"
+      username: "Username"
+      prename: "Vorname"
+      lastname: "Nachname"
+      email: "E-mail"
+      mobile_number: "Telefonnummer"
+      info: "Information"
+      unit: "Einheit"
+    edit:
+      title: "Nutzer bearbeiten"
+    new:
+      title: "Neuen Nutzer anlegen"
+    show:
+      username: "Username"
+      prename: "Vorname"
+      lastname: "Nachname"
+      email: "E-mail"
+      mobile_number: "Telefonnummer"
+      info: "Information"
+      unit: "Einheit"
