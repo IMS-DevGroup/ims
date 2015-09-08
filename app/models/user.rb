@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
 
   attr_accessor :password_unhashed
   attr_accessor :remember_token
-  #attr_accessor :remember_me
 
   has_one :right, dependent: :destroy
 
