@@ -1,0 +1,21 @@
+de:
+  users:
+    form:
+      title: "Neuer Nutzer"
+      username: "Username"
+      password: "Passwort"
+      prename: "Vorname *"
+      lastname: "Nachname *"
+      email: "E-mail"
+      mobile_number: "Telefonnummer"
+      info: "Information"
+      unit: "Einheit *"
+    index:
+      title: "Nutzerliste"
+      username: "Username"
+      prename: "Vorname"
+      lastname: "Nachname"
+      email: "E-mail"
+      mobile_number: "Telefonnummer"
+      info: "Information"
+      unit: "Einheit"
