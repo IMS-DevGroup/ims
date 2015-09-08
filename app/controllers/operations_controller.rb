@@ -32,18 +32,7 @@ class OperationsController < ApplicationController
         format.json { render :show, status: :created, location: @operation }
       else
         #get all error messages and save it into a string
-        errorsFoundString = ""
-        errorsFoundArray = @operation.errors.full_messages
-
-        #create big string with all error messages
-        errorsFoundArray.each do |e|
-          errorsFoundString += e +", "
-        end
-
-        #remove last characters because of , and show them on screen
-        errorsFoundString = errorsFoundString[0..-3]
-        flash.now[:error] = errorsFoundString
-
+        flash.now[:error] = (@operation.errors.full_messages).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @operation.errors, status: :unprocessable_entity }
       end
@@ -58,6 +47,8 @@ class OperationsController < ApplicationController
         format.html { redirect_to @operation, notice: 'Operation was successfully updated.' }
         format.json { render :show, status: :ok, location: @operation }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@user.errors.full_messages).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @operation.errors, status: :unprocessable_entity }
       end
