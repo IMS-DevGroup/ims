@@ -1,4 +1,6 @@
 
+<!-- Partial for first try of multiple-device-lending
+ CURRENTLY UNUSED -->
 
 <table>
   <thead>Bereits ausgewählte Devices
@@ -12,7 +14,8 @@
     <% @list.each do |elem| %>
     <tr>
       <td> <%= elem[:device_id] %> </td>
-      <td><%= link_to 'Entfernen', delete_from_list_path %></td>
+      <%= position = @list.index(elem) %>
+      <td><%= link_to 'Entfernen', '/delete_from_list', {method: :post , position: position} %></td>
     </tr>
     <% end %>
   </tbody>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post  'login'   =>  'sessions#create'
   get   'logout'  =>  'sessions#remove'
   post  'get-prop' => 'devices#get_properties'
+  # route for first try of multiple-device-lending
+  # post  'delete_from_list' => 'lendings#delete_from_list'
   resources :starts
   resources :todos
   resources :operations
