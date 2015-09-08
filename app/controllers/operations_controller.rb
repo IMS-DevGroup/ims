@@ -31,6 +31,8 @@ class OperationsController < ApplicationController
         format.html { redirect_to @operation, notice: 'Operation was successfully created.' }
         format.json { render :show, status: :created, location: @operation }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@operation.errors.full_messages).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @operation.errors, status: :unprocessable_entity }
       end
@@ -45,6 +47,8 @@ class OperationsController < ApplicationController
         format.html { redirect_to @operation, notice: 'Operation was successfully updated.' }
         format.json { render :show, status: :ok, location: @operation }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@operation.errors.full_messages).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @operation.errors, status: :unprocessable_entity }
       end
