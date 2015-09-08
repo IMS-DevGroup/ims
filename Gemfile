@@ -5,6 +5,7 @@ ruby "2.2.2"
 gem 'rails'
 
 gem 'bootstrap-switch-rails'
+gem 'flag-icon-sass'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'

@@ -85,6 +85,8 @@ GEM
     faraday_middleware (0.10.0)
       faraday (>= 0.7.4, < 0.10)
     ffi (1.9.10)
+    flag-icon-sass (0.1)
+      sass (>= 3.2.19)
     gh (0.14.0)
       addressable
       backports
@@ -229,6 +231,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   dotenv-rails
   execjs
+  flag-icon-sass
   heroku-deflater
   jbuilder (~> 2.0)
   jquery-datatables-rails!
