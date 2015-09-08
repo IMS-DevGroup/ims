@@ -17,7 +17,8 @@ $ ->
         success: (data) ->
           $('#properties').empty()
           $.each data.result, (index, value) ->
-            $('#properties').append('<tr height=35><td>' + value + '</td><td>' + '<input type="text" id="prop_in">' + '</td></tr>')
+            textfield = '<input type="text" id="prop' + index + '">'
+            $('#properties').append('<tr height=35><td>' + value.name + '</td><td>' + textfield + '</td></tr>')
             return
           return
         error: (request, error) ->
@@ -25,12 +26,14 @@ $ ->
           return
     else $('#properties').empty()
 
-#$ ->
-#  $('#submit').click ->
-#    $.ajax
-#      url: '/set-val'
-#      type: 'POST'
-#      dataType: 'JSON'
-#      data: {
-#        prop_value: $('#device') $('#prop_in').val()
-#      }
+$ ->
+  $('#submit').click ->
+    for i in [0...index]
+      console.log(value.id)
+      $.ajax
+        url: '/set-val'
+        type: 'POST'
+        dataType: 'JSON'
+        data: {
+          prop_value: $('#prop' + i + '').val() value.id $('#device_id')
+        }

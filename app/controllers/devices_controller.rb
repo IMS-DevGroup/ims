@@ -64,7 +64,7 @@ class DevicesController < ApplicationController
   def get_properties
     prop_ary = Array.new
     DeviceType.find_by_id(params[:device_type]).properties.each do |property|
-      prop_ary.push(property.name)
+      prop_ary.push(property)
     end
     respond_to do |format|
       format.json {
@@ -81,6 +81,7 @@ class DevicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_params
-      params.require(:device).permit(:ready, :info, :owner_id, :value_id, :stock_id, :device_type_id)
+      params.require(:device).permit(:ready, :info, :owner_id,
+                                     :stock_id, :device_type_id)
     end
 end

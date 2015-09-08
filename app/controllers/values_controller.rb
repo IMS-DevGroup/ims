@@ -61,6 +61,10 @@ class ValuesController < ApplicationController
     end
   end
 
+  def transfer
+    Value.create(params[:prop_value])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_value
@@ -69,6 +73,6 @@ class ValuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def value_params
-      params.require(:value).permit(:value, :property_id)
+      params.require(:value).permit(:value, :property_id, :device_id)
     end
 end
