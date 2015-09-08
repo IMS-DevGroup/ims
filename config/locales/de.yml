@@ -11,9 +11,9 @@ de:
             unit:
               blank: Bitte eine Einheit wählen.
             username:
-              taken: Dieser Username ist bereits vergeben, bitte einen anderen wählen.
+              taken: Dieser Username ist bereits vergeben.
             email:
-              taken: Diese e-Mail Adresse existiert bereits, bitte eine andere eingeben.
+              taken: Diese e-Mail Adresse existiert bereits.
 
 
   users:
