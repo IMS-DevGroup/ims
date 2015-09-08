@@ -4,7 +4,7 @@ class Value < ActiveRecord::Base
   belongs_to :property
 
   validates :value , presence: true
-  validates :property_id , presence: true
+  #validates :property_id , presence: true
 
 
   def getConvertedValue

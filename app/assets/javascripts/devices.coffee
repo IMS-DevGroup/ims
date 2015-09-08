@@ -1,6 +1,8 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+values = []
+
 $ ->
   $('#devices').dataTable()
 
@@ -17,6 +19,8 @@ $ ->
         success: (data) ->
           $('#properties').empty()
           $.each data.result, (index, value) ->
+            window.index = index
+            values.push value.id
             textfield = '<input type="text" id="prop' + index + '">'
             $('#properties').append('<tr height=35><td>' + value.name + '</td><td>' + textfield + '</td></tr>')
             return
@@ -28,12 +32,11 @@ $ ->
 
 $ ->
   $('#submit').click ->
-    for i in [0...index]
-      console.log(value.id)
+    for i in [0...index + 1]
       $.ajax
         url: '/set-val'
         type: 'POST'
         dataType: 'JSON'
         data: {
-          prop_value: $('#prop' + i + '').val() value.id $('#device_id')
+          prop: $('#prop' + i + '').val()
         }
