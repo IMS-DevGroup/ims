@@ -33,18 +33,7 @@ class StocksController < ApplicationController
 
       else
         #get all error messages and save it into a string
-        errorsFoundString = ""
-        errorsFoundArray = @stock.errors.full_messages
-
-        #create big string with all error messages
-        errorsFoundArray.each do |e|
-          errorsFoundString += e +", "
-        end
-
-        #remove last characters because of , and show them on screen
-        errorsFoundString = errorsFoundString[0..-3]
-        flash.now[:error] = errorsFoundString
-
+        flash.now[:error] = (@stock.errors.full_messages).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @stock.errors, status: :unprocessable_entity }
 
@@ -85,6 +74,6 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:name, :info, :unit_id)
+      params.require(:stock).permit(:name, :info, :unit_id, :operation)
     end
 end
