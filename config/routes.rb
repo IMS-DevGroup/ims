@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  root  'starts#index'
-  get   'login'   =>  'sessions#new'
-  post  'login'   =>  'sessions#create'
-  get   'logout'  =>  'sessions#remove'
-  post  'get-prop' => 'devices#get_properties'
+
+  get 'set_language/english'
+
+  get 'set_language/german'
+
+  root 'starts#index'
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  get 'logout' => 'sessions#remove'
+  post 'get-prop' => 'devices#get_properties'
   resources :starts
   resources :todos
   resources :operations
@@ -19,6 +24,7 @@ Rails.application.routes.draw do
   resources :users
   resources :rights
   resources :barcode_tests
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
