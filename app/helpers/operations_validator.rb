@@ -4,7 +4,7 @@ class Operations_Validator < ActiveModel::Validator
       operation.errors[:base] << "Operationtype not insert!"
     elsif
       operation.location.blank? && !(operation.operation_type.blank?)
-      operation.errors[:base] <<"Location not insert!"
+      operation.errors[:base] << "Location not insert!"
     end
   end
 end
