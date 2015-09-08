@@ -4,8 +4,8 @@ class Value < ActiveRecord::Base
   belongs_to :property
 
   validates :value , presence: true
-  validates :device_id , presence: true
   validates :property_id , presence: true
+
 
   def getConvertedValue
     typ =self.property.data_type.name
@@ -26,6 +26,7 @@ class Value < ActiveRecord::Base
   def setConvertedValue(v_karl)
 
     typ =self.property.data_type.name
+    puts typ
     if typ==v_karl.class.to_s
 
     self.value=v_karl.to_s
@@ -36,11 +37,10 @@ class Value < ActiveRecord::Base
 
     elsif v_karl.class.to_s=="FalseClass"&& typ="Boolean"
       self.value="false"
-    #else
-      # flash[:ERROR] =self.property.name + " is " + v.class + " not " + @typ
+    else
+       flash[:ERROR] =self.property.name + " is " + v.class + " not " + @typ
     end
     self.save
-    return self.value
 
   end
 
