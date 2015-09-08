@@ -53,6 +53,8 @@ de:
       only_pw_no_username: Bitte auch einen Usernamen angeben, wenn ein Passwort eingegeben wird.
       only_username_no_pw: Bitte auch ein Passwort angeben, wenn ein Username eingegeben wird.
       mobile_number_not_valid: Bitte eine gültige Telefonnummer angeben.
+      user_login: Benutzername und/oder Passwort sind nicht korrekt
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
+      user_login: Benutzer erfolgreich eingeloggt.
