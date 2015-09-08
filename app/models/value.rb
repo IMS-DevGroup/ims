@@ -4,8 +4,8 @@ class Value < ActiveRecord::Base
   belongs_to :property
 
   validates :value , presence: true
-  validates :device_id , presence: true
   validates :property_id , presence: true
+
 
   def getConvertedValue
     typ =self.property.data_type.name

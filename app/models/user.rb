@@ -23,11 +23,8 @@ class User < ActiveRecord::Base
   #validates :username, uniqueness: true, allow_nil: true
   validates :unit_id, presence: true
   validates_uniqueness_of :email, :allow_nil => true
-<<<<<<< HEAD
   validates_with  Users_Validator ,on: :create
-=======
   validates_with Users_Validator, on: :create
->>>>>>> 7ce444526ba3bcba46833ffeaff719cce89f61f7
 
 
   def self.authenticate(username, password_unhashed)
