@@ -31,7 +31,7 @@ class AddStandatDataTypes < ActiveRecord::Migration
       dt_fixnum = DataType.new
       dt_fixnum.name = "Fixnum"
       dt_fixnum.save
-    
+
 
   end
 end
