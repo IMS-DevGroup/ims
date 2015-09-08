@@ -6,8 +6,6 @@ class Stock < ActiveRecord::Base
 
   validates :unit_id , presence: true
   validates :name , presence: true
-  validates :city, presence: :true
-  validates :street, presence: :true
 
 
 end
