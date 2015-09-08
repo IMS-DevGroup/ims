@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
   get 'set_language/english'
-
   get 'set_language/german'
 
-  root 'starts#index'
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  get 'logout' => 'sessions#remove'
-  post 'get-prop' => 'devices#get_properties'
+  root  'sessions#new'
+  get   'login'   =>  'sessions#new'
+  post  'login'   =>  'sessions#create'
+  get   'logout'  =>  'sessions#remove'
+  post  'get-prop' => 'devices#get_properties'
+  get   'lendings/:id/return' => 'lendings#return'
+  # route for first try of multiple-device-lending
+  # post  'delete_from_list' => 'lendings#delete_from_list'
   resources :starts
   resources :todos
   resources :operations
