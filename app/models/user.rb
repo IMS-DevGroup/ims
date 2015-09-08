@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_one :operation
 
 
+  #removed validation because of own validator using helpers/users_validator.rb
   validates :prename, presence: true
   validates :lastname, presence: true
   validates :username, uniqueness: true, allow_nil: true
@@ -59,6 +60,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  #checks for blank username, saves it as nil in the database, not as empty string anymore
+  #checks for blank email, saves it as nil in the database, not as empty string anymore
   def nil_if_blank
     if self.username.blank?
       self.username = nil

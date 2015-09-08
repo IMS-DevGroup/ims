@@ -54,6 +54,10 @@ class StocksController < ApplicationController
   # DELETE /stocks/1
   # DELETE /stocks/1.json
   def destroy
+    #mögliche idee
+    @stock.operations.delete(stock)
+
+    #standart
     @stock.destroy
     respond_to do |format|
       format.html { redirect_to stocks_url, notice: 'Stock was successfully destroyed.' }
@@ -69,6 +73,6 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_params
-      params.require(:stock).permit(:name, :info, :unit_id)
+      params.require(:stock).permit(:name, :info, :unit_id, :city, :street)
     end
 end
