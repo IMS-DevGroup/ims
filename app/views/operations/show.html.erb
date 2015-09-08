@@ -19,7 +19,16 @@
   <strong>Location:</strong>
   <%= @operation.location %>
 </p>
+<p>
+  <strong>User:</strong>
+  <%= @operation.user.prename%>
+  <%= @operation.user.lastname%>
+</p>
 
+<p>
+  <strong>Begin date:</strong>
+  <%= @operation.created_at+7200 %>
+</p>
 <p>
   <strong>Close date:</strong>
   <%= @operation.close_date %>

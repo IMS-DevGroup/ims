@@ -26,7 +26,6 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -48,6 +47,8 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@user.errors.full_messages).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
