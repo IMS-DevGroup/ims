@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   after_validation :encrypt_password
   after_create :default_values
   before_save :nil_if_blank
+  before_save { self.email = email.downcase if email}
   after_save :create_rights
 
 
@@ -15,16 +16,27 @@ class User < ActiveRecord::Base
   has_one :operation
 
 
-  validates :prename, presence: true
-  validates :lastname, presence: true
-  validates :username, uniqueness: true, allow_nil: true
+  #removed validation because of own validator using helpers/users_validator.rb
+  #this removes the extra break between label and field if error is thrown
+  #validates :prename, presence: true
+  #validates :lastname, presence: true
+  #validates :username, uniqueness: true, allow_nil: true
   validates :unit_id, presence: true
   validates_uniqueness_of :email, :allow_nil => true
+<<<<<<< HEAD
   validates_with  Users_Validator ,on: :create
+=======
+  validates_with Users_Validator, on: :create
+>>>>>>> 7ce444526ba3bcba46833ffeaff719cce89f61f7
 
 
   def self.authenticate(username, password_unhashed)
+    return nil if username == nil
     user = find_by_username(username)
+    if user == nil
+      username.downcase!
+      user = find_by_email(username)
+    end
     if user && user.password == BCrypt::Engine.hash_secret(password_unhashed, user.salt)
       user
     else
