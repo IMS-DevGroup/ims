@@ -1,5 +1,5 @@
 class LendingsController < ApplicationController
-  before_action :set_lending, only: [:show, :edit, :update, :destroy]
+  before_action :set_lending, only: [:show, :edit, :update, :destroy, :return]
   # Global list of devices that were already selected to be borrowed in this session
   # Currently disabled remainder of first try of multiple-device-lending
   # @@global_list = []
@@ -97,6 +97,10 @@ class LendingsController < ApplicationController
     end
   end
 
+  # GET lendings/1/return
+  def return
+  end
+
   # Currently disabled remainder of first try of multiple-device-lending
   # def delete_from_list
   #   puts params
@@ -111,6 +115,6 @@ class LendingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lending_params
-      params.require(:lending).permit(:receive, :lending_info, :receive_info, :user_id, :device_id, :lender_id)
+      params.require(:lending).permit(:receive, :lending_info, :receive_info, :user_id, :device_id, :lender_id, :receiver_id)
     end
 end
