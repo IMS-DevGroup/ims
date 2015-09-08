@@ -1,4 +1,22 @@
 en:
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            prename:
+              blank: Please insert a prename.
+            lastname:
+              blank: Please insert a lastname.
+            unit:
+              blank: Please choose a unit.
+            username:
+              taken: This username is already taken, please choose another one.
+            email:
+              taken: This email address already exists in the database, please choose another one.
+
+
   users:
     form:
       username: "Username"
@@ -30,3 +48,9 @@ en:
       mobile_number: "Mobile number"
       info: "Information"
       unit: "Unit"
+
+  own:
+    errors:
+      only_pw_no_username: Please insert a username if you want to have a password.
+      only_username_no_pw: Please insert a password if you want to have a username.
+      mobile_number_not_valid: Please insert a valid mobile number.

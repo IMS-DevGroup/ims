@@ -1,4 +1,21 @@
 de:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            prename:
+              blank: Bitte einen Vornamen eingeben.
+            lastname:
+              blank: Bitte einen Nachnamen eingeben.
+            unit:
+              blank: Bitte eine Einheit wählen.
+            username:
+              taken: Dieser Username ist bereits vergeben, bitte einen anderen wählen.
+            email:
+              taken: Diese e-Mail Adresse existiert bereits, bitte eine andere eingeben.
+
+
   users:
     form:
       username: "Username"
@@ -30,3 +47,10 @@ de:
       mobile_number: "Telefonnummer"
       info: "Information"
       unit: "Einheit"
+
+  own:
+    errors:
+      only_pw_no_username: Bitte auch einen Usernamen angeben, wenn ein Passwort eingegeben wird.
+      only_username_no_pw: Bitte auch ein Passwort angeben, wenn ein Username eingegeben wird.
+      mobile_number_not_valid: Bitte eine gültige Telefonnummer angeben.
+    notices:
