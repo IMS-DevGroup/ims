@@ -1,7 +1,7 @@
 <%= form_for(@unit) do |f| %>
 
     <div class="form-group">
-    <%= f.label t "units.name_req" %><br>
+    <%= f.label (t "units.name") + " *" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="form-group">

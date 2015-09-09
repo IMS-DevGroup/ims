@@ -33,7 +33,7 @@ class UnitsController < ApplicationController
         format.json { render :show, status: :created, location: @unit }
       else
         #get all error messages and save it into a string
-        flash.now[:error] = (@unit.errors.full_messages).join("<br/>").html_safe
+        flash.now[:error] = (@unit.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @unit.errors, status: :unprocessable_entity }
       end
@@ -50,7 +50,7 @@ class UnitsController < ApplicationController
         format.json { render :show, status: :ok, location: @unit }
       else
         #get all error messages and save it into a string
-        flash.now[:error] = (@unit.errors.full_messages).join("<br/>").html_safe
+        flash.now[:error] = (@unit.errors.values).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @unit.errors, status: :unprocessable_entity }
       end

@@ -4,37 +4,37 @@
   <tr>
     <td>
       <p>
-      <strong>Name:</strong>
+      <strong><%= (t "mixed_fields.name") + ":" %></strong>
       <%= @stock.name %>
       </p>
     </td>
     <td>
       <p>
-      <strong>Unit</strong>
+      <strong><%= (t "stocks.unit") + ":" %></strong>
       <%= @stock.unit.name %>
       </p>
     </td>
     <td>
       <p>
-      <strong>Info:</strong>
+      <strong><%= (t "mixed_fields.info") + ":" %></strong>
       <%= @stock.info %>
       </p>
     </td>
     <td>
       <p>
-        <strong>City</strong>
+        <strong><%= (t "stocks.city") + ":" %></strong>
         <%= @stock.city %>
       </p>
     </td>
     <td>
       <p>
-        <strong>Street</strong>
+        <strong><%= (t "stocks.street") + ":" %></strong>
         <%= @stock.street %>
       </p>
     </td>
   </tr>
 </table>
 
-<%= link_to 'Back', stocks_path, class:'btn btn-primary' %>
-<%= link_to 'Edit', edit_stock_path(@stock), class:'btn btn-warning' %>
+<%= link_to (t "buttons.back"), stocks_path, class:'btn btn-primary' %>
+<%= link_to (t "buttons.edit"), edit_stock_path(@stock), class:'btn btn-warning' %>
 
