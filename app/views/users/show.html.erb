@@ -56,7 +56,9 @@
     <td>
       <p>
         <strong><%= t "mixed_fields.show.unit" %></strong><br>
-        <%= @user.unit.name %>
+        <% unless @user.unit.nil?%>
+            <%= @user.unit.name %>
+        <%end%>
       </p>
     </td>
 
