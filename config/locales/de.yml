@@ -119,6 +119,12 @@ de:
     destroy: Löschen
     new:
       user: Neuer User
+    main_menu:
+      operations: Einsätze
+      devices: Geräte
+      users: Benutzer
+      stocks: Lagerorte
+      units: Einheiten
 
   own:
     errors:

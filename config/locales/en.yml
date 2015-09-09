@@ -120,6 +120,12 @@ en:
     destroy: Delete
     new:
       user: New User
+    main_menu:
+      operations: Operations
+      devices: Devices
+      users: User
+      stocks: Stocks
+      units: Units
 
   own:
     errors:
