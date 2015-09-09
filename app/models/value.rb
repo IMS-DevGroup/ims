@@ -26,16 +26,15 @@ class Value < ActiveRecord::Base
   def setConvertedValue(v_karl)
 
     typ =self.property.data_type.name
-    puts typ
     if typ==v_karl.class.to_s
 
     self.value=v_karl.to_s
 
 
-    elsif v_karl.class.to_s=="TrueClass"&& typ="Boolean"
+    elsif v_karl.class.to_s=="TrueClass"&& typ=="Boolean"
       self.value="true"
 
-    elsif v_karl.class.to_s=="FalseClass"&& typ="Boolean"
+    elsif v_karl.class.to_s=="FalseClass"&& typ=="Boolean"
       self.value="false"
     else
        flash[:ERROR] =self.property.name + " is " + v.class + " not " + @typ
@@ -43,5 +42,38 @@ class Value < ActiveRecord::Base
     self.save
 
   end
+
+  def self.fill
+
+
+    dt = Value.new
+    #dt.value = "Test String"
+    dt.property = Property.find_by_name("Property1")
+    dt.device = Device.find_by_info("Info1")
+    dt.setConvertedValue("Test String")
+
+
+    dt = Value.new
+    #dt.value = true
+    dt.property = Property.find_by_name("Property2")
+    dt.device = Device.find_by_info("Info2")
+    dt.setConvertedValue(true)
+
+
+    dt = Value.new
+    #dt.value = 3
+    dt.property = Property.find_by_name("Property3")
+    dt.device = Device.find_by_info("Info2")
+    dt.setConvertedValue(3)
+
+
+    dt = Value.new
+    #dt.value = 3.14
+    dt.property = Property.find_by_name("Property4")
+    dt.device = Device.find_by_info("Info2")
+    dt.setConvertedValue(3.14)
+
+  end
+
 
 end
