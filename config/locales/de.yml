@@ -14,13 +14,34 @@ de:
               taken: Dieser Username ist bereits vergeben.
             email:
               taken: Diese e-Mail Adresse existiert bereits.
-
+        operation:
+          attributes:
+            operation_type:
+              blank: Bitte eine Einsatzart eingeben.
+            name:
+              blank: Bitte einen Einsatznamen eingeben.
+            location:
+              blank: Bitte einen Ort angeben.
+        stock:
+          attributes:
+            unit:
+              blank: Bitte eine Einheit wählen.
+            name:
+              blank: Bitte einen Namen angeben.
+        unit:
+          attributes:
+            name:
+              blank: Bitte einen Namen angeben.
+        device:
+          attributes:
+            owner_id:
+              blank: Bitte einen Besitzer wählen.
+            stock:
+              blank: Bitte ein Lager auswählen.
+            ready:
+              blank: Bitte angeben, ob das Gerät bereit ist.
 
   users:
-    form:
-      prename: "Vorname *"
-      lastname: "Nachname *"
-      unit: "Einheit *"
     index:
       title: "Nutzerliste"
     edit:
@@ -30,12 +51,10 @@ de:
 
   operations:
     operation_type: "Einsatzart"
-    operation_type_req: "Einsatzart *"
     operation_dispatch_number: "Einsatznummer"
-    begin_date: "Startdatum"
-    ending_date: "Enddatum"
+    begin_date: "Einsatzbeginn"
+    ending_date: "Einsatzende"
     user: "Einsatzleiter"
-    user_req: "Einsatzleiter *"
     new:
       title: "Neuen Einsatz anlegen"
     index:
@@ -47,7 +66,6 @@ de:
 
   units:
     name: "Name"
-    name_req: "Name *"
     phone_number: "Telefonnummer"
     index:
       title: "Einheitenliste"
@@ -56,22 +74,43 @@ de:
     new:
       title: "Neue Einheit anlegen"
 
+  stocks:
+    city: "Stadt"
+    street: "Straße"
+    index:
+      title: "Lagerliste"
+    edit:
+      title: "Lager bearbeiten"
+    new:
+      title: "Neues Lager anlegen"
+
+  devices:
+    device_type: "Gerätetyp"
+    owner: "Besitzer"
+    stock: "Lager"
+    ready: "Bereit"
+    index:
+      title: "Geräteliste"
+    edit:
+      title: "Gerät bearbeiten"
+    new:
+      title: "Neues Gerät anlegen"
 
 
 
   mixed_fields:
-      email: "Email"
-      info: "Information"
-      lastname: "Nachname"
-      location: "Ort"
-      location_req: "Ort *"
-      mobile_number: "Handynummer"
-      password: "Passwort"
-      prename: "Vorname"
-      stock: "Lager"
-      unit: "Einheit "
-      user: "Benutzer"
-      username: "Benutzername"
+    email: "Email"
+    info: "Information"
+    lastname: "Nachname"
+    location: "Ort"
+    mobile_number: "Handynummer"
+    password: "Passwort"
+    prename: "Vorname"
+    stock: "Lager"
+    unit: "Einheit "
+    user: "Benutzer"
+    username: "Benutzername"
+    name: "Name"
 
   own:
     errors:
@@ -87,3 +126,7 @@ de:
       operation_created: Einsatz erfolgreich angelegt.
       unit_updated: Einheit erfolgreich geupdated.
       unit_created: Einheit erfolgreich angelegt.
+      stock_updated: Lager erfolgreich geupdated.
+      stock_created: Lager erfolgreich angelegt.
+      device_updated: Gerät erfolgreich geupdated.
+      device_created: Gerät erfolgreich angelegt.
