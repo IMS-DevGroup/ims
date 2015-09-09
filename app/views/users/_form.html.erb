@@ -20,13 +20,13 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label t "mixed_fields.prename"%><br>
+            <%= f.label (t "mixed_fields.prename") + " *"%><br>
             <%= f.text_field :prename %>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label t "mixed_fields.lastname" %><br>
+            <%= f.label (t "mixed_fields.lastname") + " *" %><br>
             <%= f.text_field :lastname %>
           </div>
         </td>
@@ -60,7 +60,7 @@
 
 
     <div class="form-group ">
-      <%= f.label t "mixed_fields.unit" %>
+      <%= f.label (t "mixed_fields.unit") + " *" %>
       <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control" %>
     </div>
 
