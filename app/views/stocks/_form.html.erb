@@ -4,7 +4,7 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label :name %><br>
+            <%= f.label (t "mixed_fields.name") + " *" %><br>
             <%= f.text_field :name %>
           </div>
         </td>
@@ -12,21 +12,21 @@
       <td>
         <tr>
           <div class="form-group">
-            <%= f.label :info %><br>
+            <%= f.label t "mixed_fields.info" %><br>
             <%= f.text_area :info %>
           </div>
           </td>
         </tr>
         <tr>
           <div class="form-group">
-            <%= f.label :city %><br>
+            <%= f.label t "stocks.city" %><br>
             <%= f.text_field :city %>
           </div>
           </td>
         </tr>
         <tr>
           <div class="form-group">
-            <%= f.label :street %><br>
+            <%= f.label t "stocks.street" %><br>
             <%= f.text_field :street %>
           </div>
           </td>
@@ -34,7 +34,7 @@
         <tr>
           <td>
             <div class="form-group">
-              <%= f.label :unit %><br>
+              <%= f.label (t "mixed_fields.unit") + " *" %><br>
               <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control", include_blank: "choose unit" %>
             </div>
           </td>
