@@ -113,6 +113,12 @@ en:
     username: "Username"
     name: "Name"
 
+  menu:
+    back: Back
+    show: Show
+    edit: Edit
+    destroy: Delete
+
   own:
     errors:
       only_pw_no_username: Please insert a username if you want to have a password.

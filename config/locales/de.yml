@@ -112,6 +112,12 @@ de:
     username: "Benutzername"
     name: "Name"
 
+  menu:
+    back: Zurück
+    show: Anzeigen
+    edit: Ändern
+    destroy: Löschen
+
   own:
     errors:
       only_pw_no_username: Bitte auch einen Usernamen angeben, wenn ein Passwort eingegeben wird.
