@@ -118,8 +118,13 @@ en:
     show: Show
     edit: Edit
     destroy: Delete
+    rights: Rights
     new:
       user: New User
+      stock: New Stock
+      operation: New Operation
+      unit: New Unit
+      device: New Device
 
   own:
     errors:
