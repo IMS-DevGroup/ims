@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>IMS - Inventory Management System</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
 
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -12,14 +12,8 @@
       .logoutdiv { text-align: right; margin-right: 4px}
   </style>
 
-<!--
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
--->
-
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 
 </head>
 <body>
@@ -28,7 +22,6 @@
 
 
 <script type="text/javascript">
-
     function updateTime() {
         var date = new Date();
         var stunden = date.getHours();
@@ -62,12 +55,13 @@
 </script>
 
 <!-- class="hidden-xs hidden-sm"-->
-<div class="hidden-xs">
+<div>
 
 <div id="banner" >
   <div id="logo" onclick="javascript:window.location.href='/starts/';"></div>
-
-
+    <div id="language">
+    <input id="switch"  type="checkbox" checked />
+    </div>
 
 <div id="infobar">
     <ul class="nav nav-tabs" >
@@ -160,43 +154,8 @@
 
 </div>
 
-
-
-
-
-
 </div>
 
-
-<!-- Moblie version
-<nav class="navbar navbar-stacked navbar-inverse" id="menucontainer">
-
-    <% if logged_in? %>
-        <ul class="nav nav-pills nav-stacked">
-          <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> " ><a href="/starts/" >Start</a></li>
-          <li role="presentation" class="<%= 'active'if params[:controller] == 'operations' %> "><a href="/operations/" >Einsatz</a></li>
-          <li role="presentation" class="<%= 'active'if params[:controller] == 'devices' %> "><a href="/devices/" >Ger&auml;te</a></li>
-          <li role="presentation" class="<%= 'active'if params[:controller] == 'stocks' %> "><a href="/stocks/" >Lagerorte</a></li>
-          <li role="presentation" class="<%= 'active'if params[:controller] == 'users' %> "><a href="/users/" >User</a></li>
-          <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Karte</a></li>
-          <li role="presentation" class="<%= 'active'if params[:controller] == 'units' %> "><a href="/units/" >Einheiten</a></li>
-        </ul>
-    <% end %>
-
-    <% if !logged_in? %>
-        <ul class="nav nav-pills nav-stacked">
-          <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> " ><a href="/login/" >Start</a></li>
-          <li role="presentation" class="<%= 'inactive'if params[:controller] == 'operations' %> "><a href="/login/" >Einsatz</a></li>
-          <li role="presentation" class="<%= 'inactive'if params[:controller] == 'devices' %> "><a href="/login/" >Ger&auml;te</a></li>
-          <li role="presentation" class="<%= 'inactive'if params[:controller] == 'stocks' %> "><a href="/login/" >Lagerorte</a></li>
-          <li role="presentation" class="<%= 'inactive'if params[:controller] == 'users' %> "><a href="/login/" >User</a></li>
-          <li role="presentation" class="<%= 'inactive'if params[:controller] == 'starts' %> "><a href="/login/" >Karte</a></li>
-          <li role="presentation" class="<%= 'inactive'if params[:controller] == 'units' %> "><a href="/login/" >Einheiten</a></li>
-        </ul>
-    <% end %>
-  </nav>
-
- -->
 
 
 
