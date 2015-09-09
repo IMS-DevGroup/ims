@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :lendings
   belongs_to :unit
-  has_one :operation
+  has_many :operation
 
 
   #removed validation because of own validator using helpers/users_validator.rb

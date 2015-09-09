@@ -44,7 +44,8 @@ class DataType < ActiveRecord::Base
     Stock.fill
     Device.fill
     Value.fill
-
+    Operation.fill
+    Lending.fill
   end
 
 
