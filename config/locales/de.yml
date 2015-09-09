@@ -29,20 +29,48 @@ de:
       title: "Neuen Nutzer anlegen"
 
   operations:
-      linked_user: "User"
-      operation_type: "Operation type"
-      operation_dispatch_number: "Operation number dispatch"
+    operation_type: "Einsatzart"
+    operation_type_req: "Einsatzart *"
+    operation_dispatch_number: "Einsatznummer"
+    begin_date: "Startdatum"
+    ending_date: "Enddatum"
+    user: "Einsatzleiter"
+    user_req: "Einsatzleiter *"
+    new:
+      title: "Neuen Einsatz anlegen"
+    index:
+      title: "Einsatzliste"
+    form:
+      linked_user: "Benutzer"
+    edit:
+      title: "Einsatz bearbeiten"
+
+  units:
+    name: "Name"
+    name_req: "Name *"
+    phone_number: "Telefonnummer"
+    index:
+      title: "Einheitenliste"
+    edit:
+      title: "Einheit bearbeiten"
+    new:
+      title: "Neue Einheit anlegen"
+
+
+
 
   mixed_fields:
       email: "Email"
       info: "Information"
       lastname: "Nachname"
       location: "Ort"
+      location_req: "Ort *"
       mobile_number: "Handynummer"
       password: "Passwort"
       prename: "Vorname"
       stock: "Lager"
       unit: "Einheit "
+      user: "Benutzer"
       username: "Benutzername"
 
   own:
@@ -50,8 +78,12 @@ de:
       only_pw_no_username: Bitte auch einen Usernamen angeben, wenn ein Passwort eingegeben wird.
       only_username_no_pw: Bitte auch ein Passwort angeben, wenn ein Username eingegeben wird.
       mobile_number_not_valid: Bitte eine gültige Telefonnummer angeben.
-      user_login: Benutzername und/oder Passwort sind nicht korrekt
+      user_login: Benutzername und/oder Passwort sind nicht korrekt.
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
       user_login: Benutzer erfolgreich eingeloggt.
+      operation_updated: Einsatz erfolgreich geupdated.
+      operation_created: Einsatz erfolgreich angelegt.
+      unit_updated: Einheit erfolgreich geupdated.
+      unit_created: Einheit erfolgreich angelegt.
