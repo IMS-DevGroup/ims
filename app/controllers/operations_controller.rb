@@ -28,7 +28,8 @@ class OperationsController < ApplicationController
 
     respond_to do |format|
       if @operation.save
-        format.html { redirect_to @operation, notice: 'Operation was successfully created.' }
+        flash[:success] = (I18n.t "own.success.operation_created").to_s
+        format.html { redirect_to @operation }
         format.json { render :show, status: :created, location: @operation }
       else
         #get all error messages and save it into a string
@@ -44,7 +45,8 @@ class OperationsController < ApplicationController
   def update
     respond_to do |format|
       if @operation.update(operation_params)
-        format.html { redirect_to @operation, notice: 'Operation was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.operation_updated").to_s
+        format.html { redirect_to @operation }
         format.json { render :show, status: :ok, location: @operation }
       else
         #get all error messages and save it into a string

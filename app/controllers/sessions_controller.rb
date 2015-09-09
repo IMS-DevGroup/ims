@@ -15,10 +15,10 @@ class SessionsController < ApplicationController
       log_in user
       params[:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to root_url
-      flash[:success] ="Login erfolgreich"
+      flash[:success] = (I18n.t "own.success.user_login").to_s
     else
       redirect_to '/login'
-      flash[:error] ="Falsche Benutzereingabe/n"
+      flash[:error] = (I18n.t "own.errors.user_login").to_s
     end
   end
 
