@@ -33,7 +33,7 @@ class DevicesController < ApplicationController
         format.json { render :show, status: :created, location: @device }
       else
         #get all error messages and save it into a string
-        flash.now[:error] = (@device.errors.full_messages).join("<br/>").html_safe
+        flash.now[:error] = (@device.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @device.errors, status: :unprocessable_entity }
       end
@@ -49,6 +49,7 @@ class DevicesController < ApplicationController
         format.html { redirect_to @device }
         format.json { render :show, status: :ok, location: @device }
       else
+        flash.now[:error] = (@device.errors.values).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @device.errors, status: :unprocessable_entity }
       end
