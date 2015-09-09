@@ -22,9 +22,9 @@
         <td><%= if !(stock.unit.nil?) then stock.unit.name end%></td>
         <td><%= stock.city %></td>
         <td><%= stock.street %></td>
-        <td><%= link_to 'Show', stock, class: 'btn btn-info' %>
-        <%= link_to 'Edit', edit_stock_path(stock), class: 'btn btn-warning' %>
-        <%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <td><%= link_to (t "buttons.show"), stock, class: 'btn btn-info' %>
+        <%= link_to (t "buttons.edit"), edit_stock_path(stock), class: 'btn btn-warning' %>
+        <%= link_to (t "buttons.destroy"), stock, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Stock', new_stock_path, class: 'btn btn-success' %>
+<%= link_to (t "buttons.new.stock"), new_stock_path, class: 'btn btn-success' %>
