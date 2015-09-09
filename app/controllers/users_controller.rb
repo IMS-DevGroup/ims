@@ -76,4 +76,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info,
                                  :unit_id, :right_id, :password_unhashed)
   end
+
 end
+
+
