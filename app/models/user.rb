@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates :unit_id, presence: true
   validates_uniqueness_of :email, :allow_nil => true
   validates_with Users_Validator, :on => :create
-  validates_with Update_Validator, :on => :update
+  validates_with UserUpdateValidator, :on => :update
 
 
 
