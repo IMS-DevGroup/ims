@@ -26,6 +26,6 @@
 </p>
 
 
-<a href="/devices/"><button type="button" class = "btn btn-primary" >Back</button></a>
-<%= link_to 'Edit', edit_device_path(@device), class:'btn btn-warning' %>
+<a href="/devices/"><button type="button" class = "btn btn-primary" ><%= t "buttons.back"%></button></a>
+<%= link_to (t "buttons.edit"), edit_device_path(@device), class:'btn btn-warning' %>
 

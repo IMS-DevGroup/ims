@@ -45,7 +45,7 @@
   <tr>
     <td>
       <p>
-        <strong><%= (t "mixed_fields.show.info") + ":" %></strong><br>
+        <strong><%= (t "mixed_fields.info") + ":" %></strong><br>
         <%= @user.info %>
       </p>
     </td>
@@ -55,11 +55,10 @@
 
     <td>
       <p>
-        <strong><%= (t "mixed_fields.show.unit") + ":" %></strong><br>
+        <strong><%= (t "mixed_fields.unit") + ":" %></strong><br>
         <%= @user.unit.name %>
       </p>
     </td>
-
   </tr>
 
 
@@ -67,5 +66,5 @@
 
 
 
-<a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
-<%= link_to 'Edit', edit_user_path(@user), class:'btn btn-warning' %>
+<a href="/users/"><button type="button" class = "btn btn-primary" ><%= t "buttons.back" %></button></a>
+<%= link_to (t "buttons.edit"), edit_user_path(@user), class:'btn btn-warning' %>
