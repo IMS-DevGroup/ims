@@ -71,6 +71,7 @@ class User < ActiveRecord::Base
   protected
   def default_values
     self.active = true
+    self.save
   end
 
   def create_rights
