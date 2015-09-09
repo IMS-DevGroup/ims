@@ -19,7 +19,7 @@
       <tr>
         <td><%= stock.name %></td>
         <td><%= stock.info %></td>
-        <td><%= if !(stock.unit.nil?) then stock.unit.name end%></td>
+        <td><% unless stock.unit.nil?%>  <%= stock.unit.name %> <%end%> </td>
         <td><%= stock.city %></td>
         <td><%= stock.street %></td>
         <td><%= link_to 'Show', stock, class: 'btn btn-info' %>
