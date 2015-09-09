@@ -25,14 +25,6 @@ class User < ActiveRecord::Base
    validates :email, uniqueness: true, allow_nil: true
   #validates_uniqueness_of :email, :allow_nil => true
 
-  #this removes the extra break between label and field if error is thrown
-  validates :prename, presence: true
-  validates :lastname, presence: true
-  validates :username, uniqueness: true, allow_nil: true
-  validates :unit_id, presence: true
-  validates_uniqueness_of :email, :allow_nil => true
-  validates_with Users_Validator
-
 
   def self.authenticate(username, password_unhashed)
     return nil if username == nil
