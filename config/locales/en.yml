@@ -113,11 +113,13 @@ en:
     username: "Username"
     name: "Name"
 
-  menu:
+  buttons:
     back: Back
     show: Show
     edit: Edit
     destroy: Delete
+    new:
+      user: New User
 
   own:
     errors:
