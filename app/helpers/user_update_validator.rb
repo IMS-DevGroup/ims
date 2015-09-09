@@ -1,4 +1,4 @@
-class Update_Validator < ActiveModel::Validator
+class UserUpdateValidator < ActiveModel::Validator
 
 
   def validate(user)
