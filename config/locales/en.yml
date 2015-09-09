@@ -1,32 +1,86 @@
 en:
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            prename:
+              blank: Please insert a prename.
+            lastname:
+              blank: Please insert a lastname.
+            unit:
+              blank: Please choose a unit.
+            username:
+              taken: This username is already taken, please choose another one.
+            email:
+              taken: This email address already exists in the database, please choose another one.
+
   users:
     form:
-      username: "Username"
-      password: "Password"
       prename: "Prename *"
       lastname: "Lastname *"
-      email: "Email"
-      mobile_number: "Mobile number"
-      info: "Information"
       unit: "Unit *"
     index:
       title: "Listing Users"
-      username: "Username"
-      prename: "Prename"
-      lastname: "Lastname"
-      email: "Email"
-      mobile_number: "Mobile number"
-      info: "Information"
-      unit: "Unit"
     edit:
       title: "Editing User"
     new:
       title: "New User"
-    show:
-      username: "Username"
-      prename: "Prename"
-      lastname: "Lastname"
+
+  operations:
+    operation_type: "Operation type"
+    operation_type_req: "Operation type *"
+    operation_dispatch_number: "Operation number dispatch"
+    begin_date: "Begin date"
+    ending_date: "Close date"
+    user: "Squad Leader"
+    user_req: "Squad Leader *"
+    new:
+      title: "New Operation"
+    index:
+      title: "Listing Operations"
+    form:
+      linked_user: "User"
+    edit:
+      title: "Editing Operation"
+
+  units:
+    name: "Name"
+    name_req: "Name *"
+    phone_number: "Phone Number"
+    index:
+      title: "Listing Units"
+    edit:
+      title: "Editing Unit"
+    new:
+      title: "New Unit"
+
+  mixed_fields:
       email: "Email"
+      info: "Info"
+      lastname: "Lastname"
+      location: "Location"
+      location_req: "Location *"
       mobile_number: "Mobile number"
-      info: "Information"
+      password: "Password"
+      prename: "Prename"
+      stock: "Stock"
       unit: "Unit"
+      user: "User"
+      username: "Username"
+
+  own:
+    errors:
+      only_pw_no_username: Please insert a username if you want to have a password.
+      only_username_no_pw: Please insert a password if you want to have a username.
+      mobile_number_not_valid: Please insert a valid mobile number.
+      user_login: Username and/or password are not valid.
+    success:
+      user_updated: User successfully updated.
+      user_created: User successfully created.
+      user_login: User login was successful.
+      operation_updated: Operation successfully updated.
+      operation_created: Operation successfully created.
+      unit_updated: Unit successfully updated.
+      unit_created: Unit successfully created.
