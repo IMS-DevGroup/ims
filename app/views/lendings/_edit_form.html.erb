@@ -1,15 +1,4 @@
 <%= form_for(@lending) do |f| %>
-    <% if @lending.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@lending.errors.count, "error") %> prohibited this lending from being saved:</h2>
-
-          <ul>
-            <% @lending.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
 
     <div class="field">
       <%= f.label :user_id %><br>
