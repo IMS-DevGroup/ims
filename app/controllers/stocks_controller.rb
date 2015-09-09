@@ -28,7 +28,8 @@ class StocksController < ApplicationController
 
     respond_to do |format|
       if @stock.save
-        format.html { redirect_to @stock, notice: 'Stock was successfully created.' }
+        flash[:success] = (I18n.t "own.success.stock_created").to_s
+        format.html { redirect_to @stock }
         format.json { render :show, status: :created, location: @stock }
 
       else
@@ -47,7 +48,8 @@ class StocksController < ApplicationController
   def update
     respond_to do |format|
       if @stock.update(stock_params)
-        format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.stock_updated").to_s
+        format.html { redirect_to @stock }
         format.json { render :show, status: :ok, location: @stock }
       else
         #get all error messages and save it into a string

@@ -28,7 +28,8 @@ class DevicesController < ApplicationController
 
     respond_to do |format|
       if @device.save
-        format.html { redirect_to @device, notice: 'Device was successfully created.' }
+        flash[:success] = (I18n.t "own.success.device_created").to_s
+        format.html { redirect_to @device }
         format.json { render :show, status: :created, location: @device }
       else
         #get all error messages and save it into a string
@@ -44,7 +45,8 @@ class DevicesController < ApplicationController
   def update
     respond_to do |format|
       if @device.update(device_params)
-        format.html { redirect_to @device, notice: 'Device was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.device_updated").to_s
+        format.html { redirect_to @device }
         format.json { render :show, status: :ok, location: @device }
       else
         format.html { render :edit }
