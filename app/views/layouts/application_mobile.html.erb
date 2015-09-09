@@ -170,7 +170,7 @@
 
 
         <div id="language">
-          <input id="switch"  type="checkbox" checked />
+          <input id="switch"  type="checkbox" data-cur_lang="<%= I18n.locale %>" <% if I18n.locale == :en %>checked<% end %> />
         </div>
       </div>
     </div>
