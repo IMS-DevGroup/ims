@@ -60,15 +60,13 @@
 <div id="banner" >
   <div id="logo" onclick="javascript:window.location.href='/starts/';"></div>
     <div id="language">
-    <input id="switch"  type="checkbox" checked />
+    <input id="switch"  type="checkbox" data-cur_lang="<%= I18n.locale %>" <% if I18n.locale == :en %>checked<% end %> />
     </div>
 
 <div id="infobar">
     <ul class="nav nav-tabs" >
       <li role="presentation"><a href="#">Impressum</a></li>
       <li role="presentation"><a href="#">Kontakt</a></li>
-      <%= link_to_unless I18n.locale == :en, "English", set_language_english_path %>
-      <%= link_to_unless I18n.locale == :de, "Deutsch", set_language_german_path %>
       <% if logged_in? %><li role="presentation"><a href="/logout/"><b><%= current_user.username %></b> (Logout)</a></li><% end %>
     </ul>
 </div>

@@ -1,0 +1,37 @@
+<%= form_for(@lending) do |f| %>
+
+    <div class="field">
+      <%= f.label :user_id %><br>
+      <%= f.number_field :user_id %>
+    </div>
+
+    <div class="field">
+      <%= f.label :device_id %><br>
+      <%= f.number_field :device_id %>
+    </div>
+
+    <div class="field">
+      <%= f.label :lending_info %><br>
+      <%= f.text_area :lending_info %>
+    </div>
+
+    <div class="field">
+      <%= f.label :lender_id %><br>
+      <%= f.number_field :lender_id %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label :recieve_info %><br>
+      <%= f.text_area :receive_info %>
+    </div>
+
+    <div class="field">
+      <%= f.label :receiver_id %><br>
+      <%= f.number_field :receiver_id %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
