@@ -15,15 +15,16 @@ class User < ActiveRecord::Base
   belongs_to :unit
   has_one :operation
 
+  #this removes the extra break between label and field if error is thrown
+  validates :prename, presence: true
+  validates :lastname, presence: true
+  validates :username, uniqueness: true, allow_nil: true
+  validates :unit_id, presence: true
+  validates_uniqueness_of :email, :allow_nil => true
+  validates_with Users_Validator, :on => :create
+  validates_with Update_Validator, :on => :update
 
-  #removed validation because of own validator using helpers/users_validator.rb
-   validates_with Users_Validator
-   validates :prename, presence: true
-   validates :lastname, presence: true
-   validates :username, uniqueness: true, allow_nil: true
-   validates :unit_id, presence: true
-   validates :email, uniqueness: true, allow_nil: true
-  #validates_uniqueness_of :email, :allow_nil => true
+
 
 
   def self.authenticate(username, password_unhashed)
