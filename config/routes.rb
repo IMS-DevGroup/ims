@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post  'login'   =>  'sessions#create'
   get   'logout'  =>  'sessions#remove'
   post  'get-prop' => 'devices#get_properties'
+  post  'get_devices' => 'lendings_selector#get_devices'
   resources :starts
   resources :todos
   resources :operations
