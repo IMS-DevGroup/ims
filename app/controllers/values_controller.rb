@@ -62,7 +62,7 @@ class ValuesController < ApplicationController
   end
 
   def transfer
-    Value.create(:value => :prop)
+    Value.create(:value => params[:prop_val], :property_id => params[:prop_id])
   end
 
   private

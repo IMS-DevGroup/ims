@@ -38,5 +38,6 @@ $ ->
         type: 'POST'
         dataType: 'JSON'
         data: {
-          prop: $('#prop' + i + '').val()
+          prop_val: $('#prop' + i + '').val()
+          prop_id: values[i]
         }
