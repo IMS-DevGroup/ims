@@ -5,6 +5,9 @@ values = []
 
 $ ->
   $('#devices').dataTable()
+  $('#switch').bootstrapSwitch('offText', '<span class="flag-icon flag-icon-de"></span>')
+  $('#switch').bootstrapSwitch('onText', '<span class="flag-icon flag-icon-gb"></span>')
+  $('#switch').bootstrapSwitch('offColor', 'primary')
 
 $ ->
   $('#device_device_type_id').change ->
@@ -41,8 +44,3 @@ $ ->
           prop_val: $('#prop' + i + '').val()
           prop_id: values[i]
         }
-
-$('#devices').dataTable()
-$('#switch').bootstrapSwitch('offText', '<span class="flag-icon flag-icon-de"></span>')
-$('#switch').bootstrapSwitch('onText', '<span class="flag-icon flag-icon-gb"></span>')
-$('#switch').bootstrapSwitch('offColor', 'primary')
