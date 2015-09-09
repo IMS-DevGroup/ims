@@ -36,7 +36,7 @@ de:
           attributes:
             owner_id:
               blank: Bitte einen Besitzer wählen.
-            stock:
+            stock_id:
               blank: Bitte ein Lager auswählen.
             ready:
               blank: Bitte angeben, ob das Gerät bereit ist.

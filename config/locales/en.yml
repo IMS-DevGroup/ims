@@ -37,7 +37,7 @@ en:
           attributes:
             owner_id:
               blank: Please choose an owner.
-            stock:
+            stock_id:
               blank: Please choose a stock.
             ready:
               blank: Please insert if the device is ready.
