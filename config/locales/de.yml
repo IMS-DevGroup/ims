@@ -117,8 +117,13 @@ de:
     show: Anzeigen
     edit: Ändern
     destroy: Löschen
+    rights: Rechte
     new:
       user: Neuer User
+      stock: Neues Lager
+      operation: Neuer Einsatz
+      unit: Neue Einheit
+      device: Neues Gerät
     main_menu:
       operations: Einsätze
       devices: Geräte

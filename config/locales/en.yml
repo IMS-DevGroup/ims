@@ -118,14 +118,13 @@ en:
     show: Show
     edit: Edit
     destroy: Delete
+    rights: Rights
     new:
       user: New User
-    main_menu:
-      operations: Operations
-      devices: Devices
-      users: User
-      stocks: Stocks
-      units: Units
+      stock: New Stock
+      operation: New Operation
+      unit: New Unit
+      device: New Device
 
   own:
     errors:
