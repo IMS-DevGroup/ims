@@ -1,17 +1,16 @@
 <%= form_for(@operation) do |f| %>
     <table>
-
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label :operation_type %><br>
+            <%= f.label  t "operations.operation_type_req" %><br>
             <%= f.text_field :operation_type %>
           </div>
         </td>
 
         <td>
           <div class="form-group">
-            <%= f.label 'Operation Number Dispatch' %><br>
+            <%= f.label t "operations.operation_dispatch_number" %><br>
             <%= f.text_field :number %>
           </div>
         </td>
@@ -22,13 +21,13 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label :location %><br>
+            <%= f.label t "mixed_fields.location_req" %><br>
             <%= f.text_field :location%>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label :stock %><br>
+            <%= f.label t "mixed_fields.stock" %><br>
             <%= f.collection_select :id, Stock.all, :id, :name, {}, class: "form-control" , include_blank:'choose stock'%>
           </div>
         </td>
@@ -38,14 +37,14 @@
       <tr>
         <td colspan="2">
           <div class="form-group">
-            <%= f.label :info %><br>
+            <%= f.label t "mixed_fields.info" %><br>
             <%= f.text_area :info, :rows => 3, :cols => 41 %>
           </div>
         </td>
       </tr>
 
       <div class="form-group">
-        <%= f.label :user %><br>
+        <%= f.label t "operations.user_req" %> <br>
         <%= f.collection_select :user_id, User.all, :id, :prename, {}, class: "form-control", include_blank:'choose user'%>
       </div>
 

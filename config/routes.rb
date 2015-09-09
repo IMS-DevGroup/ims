@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   post  'login'   =>  'sessions#create'
   get   'logout'  =>  'sessions#remove'
   post  'get-prop' => 'devices#get_properties'
-  get   'lendings/:id/return' => 'lendings#return'
+  post  'set-val' =>  'values#transfer'
+  get   'lendings/:id/return' => 'lendings#return' , as: 'return_lending'
   # route for first try of multiple-device-lending
   # post  'delete_from_list' => 'lendings#delete_from_list'
   resources :starts
