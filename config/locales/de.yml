@@ -112,11 +112,13 @@ de:
     username: "Benutzername"
     name: "Name"
 
-  menu:
+  buttons:
     back: Zurück
     show: Anzeigen
     edit: Ändern
     destroy: Löschen
+    new:
+      user: Neuer User
 
   own:
     errors:
