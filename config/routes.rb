@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   get 'set_language/english'
   get 'set_language/german'
 
@@ -9,6 +13,7 @@ Rails.application.routes.draw do
   get   'logout'  =>  'sessions#remove'
   post  'get-prop' => 'devices#get_properties'
   get   'lendings/:id/return' => 'lendings#return'
+  get 'pwr' => 'password_resets#new'
   # route for first try of multiple-device-lending
   # post  'delete_from_list' => 'lendings#delete_from_list'
   resources :starts
@@ -26,6 +31,8 @@ Rails.application.routes.draw do
   resources :users
   resources :rights
   resources :barcode_tests
+  resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -12,12 +12,16 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(params[:username], params[:password_unhashed])
     if user
-      log_in user
-      params[:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to root_url
-      flash[:success] ="Login erfolgreich"
+      if true #user.activated == true #evtl user.activated?
+        log_in user
+        params[:remember_me] == '1' ? remember(user) : forget(user)
+        redirect_to root_url
+        flash[:success] ="Login erfolgreich"
+      else
+        flash[:warning] ="Account noch nicht aktiviert. Aktivierungslink wurde an Ihre Email gesendet."
+      end
     else
-      redirect_to '/login'
+        redirect_to root_url
       flash[:error] ="Falsche Benutzereingabe/n"
     end
   end

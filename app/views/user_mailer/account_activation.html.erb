@@ -1,0 +1,10 @@
+<h1>UserMailer#account_activation</h1>
+
+<p>
+
+  Moin <%= @user.username %>,
+  voll krasser Email-Test oder?
+</p>
+
+
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>
