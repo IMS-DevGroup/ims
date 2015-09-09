@@ -17,6 +17,14 @@ class User < ActiveRecord::Base
 
 
   #removed validation because of own validator using helpers/users_validator.rb
+   validates_with Users_Validator
+   validates :prename, presence: true
+   validates :lastname, presence: true
+   validates :username, uniqueness: true, allow_nil: true
+   validates :unit_id, presence: true
+   validates :email, uniqueness: true, allow_nil: true
+  #validates_uniqueness_of :email, :allow_nil => true
+
   #this removes the extra break between label and field if error is thrown
   validates :prename, presence: true
   validates :lastname, presence: true
@@ -74,7 +82,7 @@ class User < ActiveRecord::Base
 
   def create_rights
     if !self.username.nil?
-      if self.right.nil?
+      if Right.find_by_user_id(self.id).nil?
         Right.create(:user => self)
       end
     end
@@ -90,6 +98,31 @@ class User < ActiveRecord::Base
     if self.email.blank?
       self.email = nil
     end
+  end
+  def self.fill
+
+
+    dt = User.new
+    dt.prename = "prename"
+    dt.lastname = "lastname"
+    dt.unit=Unit.first
+    dt.save
+
+
+    dt = User.new
+    dt.prename = "test"
+    dt.lastname = "user"
+    dt.username = "test"
+    dt.email=nil
+    dt.mobile_number="054654065401234"
+    dt.info="INFÖN1234"
+    dt.salt=BCrypt::Engine.generate_salt
+    dt.password = BCrypt::Engine.hash_secret("test", dt.salt)
+    dt.unit=Unit.first
+    dt.active=false
+    dt.save
+
+
   end
 
 end
