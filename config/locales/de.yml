@@ -1,32 +1,89 @@
 de:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            prename:
+              blank: Bitte einen Vornamen eingeben.
+            lastname:
+              blank: Bitte einen Nachnamen eingeben.
+            unit:
+              blank: Bitte eine Einheit wählen.
+            username:
+              taken: Dieser Username ist bereits vergeben.
+            email:
+              taken: Diese e-Mail Adresse existiert bereits.
+
+
   users:
     form:
-      username: "Username"
-      password: "Passwort"
       prename: "Vorname *"
       lastname: "Nachname *"
-      email: "E-mail"
-      mobile_number: "Telefonnummer"
-      info: "Information"
       unit: "Einheit *"
     index:
       title: "Nutzerliste"
-      username: "Username"
-      prename: "Vorname"
-      lastname: "Nachname"
-      email: "E-mail"
-      mobile_number: "Telefonnummer"
-      info: "Information"
-      unit: "Einheit"
     edit:
       title: "Nutzer bearbeiten"
     new:
       title: "Neuen Nutzer anlegen"
-    show:
-      username: "Username"
-      prename: "Vorname"
-      lastname: "Nachname"
-      email: "E-mail"
-      mobile_number: "Telefonnummer"
+
+  operations:
+    operation_type: "Einsatzart"
+    operation_type_req: "Einsatzart *"
+    operation_dispatch_number: "Einsatznummer"
+    begin_date: "Startdatum"
+    ending_date: "Enddatum"
+    user: "Einsatzleiter"
+    user_req: "Einsatzleiter *"
+    new:
+      title: "Neuen Einsatz anlegen"
+    index:
+      title: "Einsatzliste"
+    form:
+      linked_user: "Benutzer"
+    edit:
+      title: "Einsatz bearbeiten"
+
+  units:
+    name: "Name"
+    name_req: "Name *"
+    phone_number: "Telefonnummer"
+    index:
+      title: "Einheitenliste"
+    edit:
+      title: "Einheit bearbeiten"
+    new:
+      title: "Neue Einheit anlegen"
+
+
+
+
+  mixed_fields:
+      email: "Email"
       info: "Information"
-      unit: "Einheit"
+      lastname: "Nachname"
+      location: "Ort"
+      location_req: "Ort *"
+      mobile_number: "Handynummer"
+      password: "Passwort"
+      prename: "Vorname"
+      stock: "Lager"
+      unit: "Einheit "
+      user: "Benutzer"
+      username: "Benutzername"
+
+  own:
+    errors:
+      only_pw_no_username: Bitte auch einen Usernamen angeben, wenn ein Passwort eingegeben wird.
+      only_username_no_pw: Bitte auch ein Passwort angeben, wenn ein Username eingegeben wird.
+      mobile_number_not_valid: Bitte eine gültige Telefonnummer angeben.
+      user_login: Benutzername und/oder Passwort sind nicht korrekt.
+    success:
+      user_updated: Benutzer erfolgreich geupdated.
+      user_created: Benutzer erfolgreich angelegt.
+      user_login: Benutzer erfolgreich eingeloggt.
+      operation_updated: Einsatz erfolgreich geupdated.
+      operation_created: Einsatz erfolgreich angelegt.
+      unit_updated: Einheit erfolgreich geupdated.
+      unit_created: Einheit erfolgreich angelegt.

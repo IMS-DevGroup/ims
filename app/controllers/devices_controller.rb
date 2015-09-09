@@ -66,7 +66,7 @@ class DevicesController < ApplicationController
   def get_properties
     prop_ary = Array.new
     DeviceType.find_by_id(params[:device_type]).properties.each do |property|
-      prop_ary.push(property.name)
+      prop_ary.push(property)
     end
     respond_to do |format|
       format.json {

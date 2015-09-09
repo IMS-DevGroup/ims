@@ -14,6 +14,7 @@
     <% @values.each do |value| %>
       <tr>
         <td><%= value.value %></td>
+        <td><%= value.property_id %></td>
         <td><%= link_to 'Show', value %></td>
         <td><%= link_to 'Edit', edit_value_path(value) %></td>
         <td><%= link_to 'Destroy', value, method: :delete, data: { confirm: 'Are you sure?' } %></td>

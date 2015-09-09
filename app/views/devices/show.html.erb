@@ -17,7 +17,7 @@
 
 <p>
   <strong>Device type</strong>
-  <%= @device.device_type.name %>
+  <% if !@device.device_type.nil? %> <%= @device.device_type.name%><% end %>
 </p>
 
 <p>
