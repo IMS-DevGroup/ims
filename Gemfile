@@ -3,6 +3,10 @@ ruby "2.2.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
+
+gem 'bootstrap-switch-rails'
+gem 'flag-icon-sass'
+
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
