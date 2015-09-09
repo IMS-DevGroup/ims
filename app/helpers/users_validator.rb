@@ -2,7 +2,7 @@ class Users_Validator < ActiveModel::Validator
 
   def validate(user)
 
-    #removed if.user.active?
+    if !user.active?
     #look for username and password combination
    if !(user.password_unhashed.blank?) && user.username.blank?
      user.errors[:base] << "If password is inserted you have to insert a username"
@@ -16,6 +16,7 @@ class Users_Validator < ActiveModel::Validator
         user.errors[:base] << "Please enter a valid mobil number"
       end
     end
+    end
   end
-
 end
+
