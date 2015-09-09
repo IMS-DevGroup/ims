@@ -1,20 +1,9 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-values = []
 
-$ ->
-  $('#devices').dataTable()
-  $('#switch').bootstrapSwitch('offText', '<span class="flag-icon flag-icon-de"></span>')
-  $('#switch').bootstrapSwitch('onText', '<span class="flag-icon flag-icon-gb"></span>')
-  $('#switch').bootstrapSwitch('offColor', 'primary')
-  $('#switch').on("switchChange.bootstrapSwitch",
-    (e, state) ->
-      if $(e.target).data("cur_lang") == 'de'
-        window.location.href = '/set_language/english'
-      else
-        window.location.href = '/set_language/german'
-  )
+
+values = []
 
 $ ->
   $('#device_device_type_id').change ->

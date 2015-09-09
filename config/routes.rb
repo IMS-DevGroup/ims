@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   resources :users
   resources :rights
   resources :barcode_tests
+  resources :contacts, only: [:new, :create]
+  match '/contacts',     to: 'contacts#new',             via: 'get'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
