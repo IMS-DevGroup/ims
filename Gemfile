@@ -7,6 +7,9 @@ gem 'rails'
 gem 'bootstrap-switch-rails'
 gem 'flag-icon-sass'
 
+gem 'mail_form'
+gem 'simple_form'
+
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
