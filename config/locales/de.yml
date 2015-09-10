@@ -137,6 +137,7 @@ de:
       users: Benutzer
       stocks: Lagerorte
       units: Einheiten
+      lendings: Ausleihen
 
   own:
     errors:
