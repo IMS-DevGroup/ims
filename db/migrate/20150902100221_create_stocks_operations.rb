@@ -6,3 +6,4 @@ class CreateStocksOperations < ActiveRecord::Migration
     end
   end
 end
+#

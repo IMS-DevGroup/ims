@@ -12,17 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :receive %><br>
-    <%= f.datetime_select :receive %>
-  </div>
-  <div class="field">
     <%= f.label :lending_info %><br>
     <%= f.text_area :lending_info %>
   </div>
-  <div class="field">
-    <%= f.label :receive_info %><br>
-    <%= f.text_area :receive_info %>
-  </div>
+
+    <!-- following 2 fields only to enable dummy generation
+    TODO: change to proper fields-->
+    <div class="field">
+      <%= f.label :user_id %><br>
+      <%= f.number_field :user_id %>
+    </div>
+
+    <div class="field">
+      <%= f.label :device_id %><br>
+      <%= f.number_field :device_id %>
+      <!-- Currently disabled remainder of first try of multiple-device-lending
+      %= f.submit "add" % -->
+
+    </div>
+
+    <!-- hidden field to automatically include current user as lender -->
+    <%= f.hidden_field :lender_id, :value => current_user.id %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -28,9 +28,12 @@ class OperationsController < ApplicationController
 
     respond_to do |format|
       if @operation.save
-        format.html { redirect_to @operation, notice: 'Operation was successfully created.' }
+        flash[:success] = (I18n.t "own.success.operation_created").to_s
+        format.html { redirect_to @operation }
         format.json { render :show, status: :created, location: @operation }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@operation.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @operation.errors, status: :unprocessable_entity }
       end
@@ -42,9 +45,12 @@ class OperationsController < ApplicationController
   def update
     respond_to do |format|
       if @operation.update(operation_params)
-        format.html { redirect_to @operation, notice: 'Operation was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.operation_updated").to_s
+        format.html { redirect_to @operation }
         format.json { render :show, status: :ok, location: @operation }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@operation.errors.values).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @operation.errors, status: :unprocessable_entity }
       end
@@ -69,6 +75,6 @@ class OperationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def operation_params
-      params.require(:operation).permit(:number, :type, :info, :location, :close_date)
+      params.require(:operation).permit(:number, :operation_type, :info, :location, :close_date, :user_id, :stock_id)
     end
 end

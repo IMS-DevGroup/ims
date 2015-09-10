@@ -61,6 +61,16 @@ class ValuesController < ApplicationController
     end
   end
 
+  def ValuesController.transfer(prop_val, prop_id, device)
+    prop_val.each do |i, val|
+      v = Value.new
+      v.value = val
+      v.property_id = prop_id[i]
+      v.device_id = device.id
+      v.save
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_value
@@ -69,6 +79,6 @@ class ValuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def value_params
-      params.require(:value).permit(:value)
+      params.require(:value).permit(:value, :property_id, :device_id)
     end
 end

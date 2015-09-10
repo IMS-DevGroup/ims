@@ -1,44 +1,73 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<table class="userCreation" width=300 height=100>
+  <tr>
+    <td>
+      <p>
+        <strong><%= t "mixed_fields.username" %></strong><br>
+        <%= @user.username %>
+      </p>
+    </td>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+  </tr>
 
-<p>
-  <strong>Active:</strong>
-  <%= @user.active %>
-</p>
+  <tr>
+    <td>
+      <p>
+        <strong><%= t "mixed_fields.prename" %></strong><br>
+        <%= @user.prename %>
+      </p>
+    </td>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+    <td>
+      <p>
+        <strong><%= t "mixed_fields.lastname" %></strong><br>
+        <%= @user.lastname %>
+      </p>
+    </td>
+  </tr>
 
-<p>
-  <strong>Prename:</strong>
-  <%= @user.prename %>
-</p>
+  <tr>
+    <td>
+      <p>
+        <strong><%= t "mixed_fields.email" %></strong><br>
+        <%= @user.email %>
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong><%= t "mixed_fields.mobile_number" %></strong><br>
+        <%= @user.mobile_number %>
+      </p>
+    </td>
+  </tr>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @user.lastname %>
-</p>
+  <tr>
+    <td>
+      <p>
+        <strong><%= t "mixed_fields.show.info" %></strong><br>
+        <%= @user.info %>
+      </p>
+    </td>
+  </tr>
+  <tr>
 
-<p>
-  <strong>Mobile number:</strong>
-  <%= @user.mobile_number %>
-</p>
 
-<p>
-  <strong>Info:</strong>
-  <%= @user.info %>
-</p>
+    <td>
+      <p>
+        <strong><%= t "mixed_fields.show.unit" %></strong><br>
+        <% unless @user.unit.nil?%>
+            <%= @user.unit.name %>
+        <%end%>
+      </p>
+    </td>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  </tr>
+
+
+</table>
+
+
+
+<a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
+<%= link_to 'Edit', edit_user_path(@user), class:'btn btn-warning' %>

@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-  root 'starts#index'
+
+  get 'set_language/english'
+  get 'set_language/german'
+
+  root  'sessions#new'
+  get   'login'   =>  'sessions#new'
+  post  'login'   =>  'sessions#create'
+  get   'logout'  =>  'sessions#remove'
+  post  'get-prop' => 'devices#get_properties'
+  get   'lendings/:id/return' => 'lendings#return' , as: 'return_lending'
+  # route for first try of multiple-device-lending
+  # post  'delete_from_list' => 'lendings#delete_from_list'
   resources :starts
   resources :todos
   resources :operations
@@ -15,6 +26,12 @@ Rails.application.routes.draw do
   resources :users
   resources :rights
   resources :barcode_tests
+  resources :lendings_selector
+  resources :contacts, only: [:new, :create]
+  match '/contacts',     to: 'contacts#new',             via: 'get'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

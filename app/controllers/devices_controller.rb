@@ -4,7 +4,7 @@ class DevicesController < ApplicationController
   # GET /devices
   # GET /devices.json
   def index
-    @devices = Device.all
+    @devices = Device.all.eager_load(:stock, :device_type)
   end
 
   # GET /devices/1
@@ -28,9 +28,13 @@ class DevicesController < ApplicationController
 
     respond_to do |format|
       if @device.save
-        format.html { redirect_to @device, notice: 'Device was successfully created.' }
+        ValuesController.transfer(params['prop_val'], params['prop_id'], @device)
+        flash[:success] = (I18n.t "own.success.device_created").to_s
+        format.html { redirect_to @device }
         format.json { render :show, status: :created, location: @device }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@device.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @device.errors, status: :unprocessable_entity }
       end
@@ -42,9 +46,11 @@ class DevicesController < ApplicationController
   def update
     respond_to do |format|
       if @device.update(device_params)
-        format.html { redirect_to @device, notice: 'Device was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.device_updated").to_s
+        format.html { redirect_to @device }
         format.json { render :show, status: :ok, location: @device }
       else
+        flash.now[:error] = (@device.errors.values).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @device.errors, status: :unprocessable_entity }
       end
@@ -61,6 +67,18 @@ class DevicesController < ApplicationController
     end
   end
 
+  def get_properties
+    prop_ary = Array.new
+    DeviceType.find_by_id(params[:device_type]).properties.each do |property|
+      prop_ary.push(property)
+    end
+    respond_to do |format|
+      format.json {
+        render json: { result: prop_ary }
+      }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_device
@@ -69,6 +87,6 @@ class DevicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_params
-      params.require(:device).permit(:ready, :info, :owner_id)
+      params.require(:device).permit(:ready, :info, :owner_id, :stock_id, :device_type_id)
     end
 end

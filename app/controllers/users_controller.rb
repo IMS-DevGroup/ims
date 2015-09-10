@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.eager_load(:unit).order(:lastname)
   end
 
   # GET /users/1
@@ -24,13 +24,16 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
 
+    @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        flash[:success] = (I18n.t "own.success.user_created").to_s
+        format.html { redirect_to @user }
         format.json { render :show, status: :created, location: @user }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@user.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -42,9 +45,12 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.user_updated").to_s
+        format.html { redirect_to @user }
         format.json { render :show, status: :ok, location: @user }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@user.errors.values).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -62,13 +68,17 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info,
+                                 :unit_id, :right_id, :password_unhashed)
+  end
+
 end
+
+

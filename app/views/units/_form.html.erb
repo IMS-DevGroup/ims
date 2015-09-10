@@ -1,29 +1,21 @@
 <%= form_for(@unit) do |f| %>
-  <% if @unit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
 
-      <ul>
-      <% @unit.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
+    <div class="form-group">
+    <%= f.label (t "units.name") + " *" %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :info %><br>
+  <div class="form-group">
+    <%= f.label t "mixed_fields.info" %><br>
     <%= f.text_area :info %>
   </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.number_field :phone_number %>
+  <div class="form-group">
+    <%= f.label t "units.phone_number" %><br>
+    <%= f.text_field :phone_number %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+
+    <%= link_to 'Back', units_path,class:'btn btn-primary' %>
+    <%= link_to 'Show', @unit, class:'btn btn-info'%>
+    <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
   </div>
 <% end %>

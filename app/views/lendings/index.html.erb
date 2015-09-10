@@ -5,8 +5,11 @@
 <table>
   <thead>
     <tr>
-      <th>Receive</th>
+      <th>User</th>
+      <th>Device</th>
+      <th>Borrowed at</th>
       <th>Lending info</th>
+      <th>Receive</th>
       <th>Receive info</th>
       <th colspan="3"></th>
     </tr>
@@ -15,12 +18,16 @@
   <tbody>
     <% @lendings.each do |lending| %>
       <tr>
-        <td><%= lending.receive %></td>
+        <td><% unless lending.user.nil?%>  <%=lending.user.prename %> <%= lending.user.lastname %> <%end%></td>
+        <td><% unless lending.device.nil?%>  <%= lending.device.info %> <%end%></td>
+        <td><%= lending.created_at %></td>
         <td><%= lending.lending_info %></td>
+        <td><%= lending.receive %></td>
         <td><%= lending.receive_info %></td>
         <td><%= link_to 'Show', lending %></td>
         <td><%= link_to 'Edit', edit_lending_path(lending) %></td>
         <td><%= link_to 'Destroy', lending, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Return', return_lending_path(lending) %></td>
       </tr>
     <% end %>
   </tbody>
