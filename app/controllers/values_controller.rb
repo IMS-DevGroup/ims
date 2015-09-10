@@ -65,8 +65,8 @@ class ValuesController < ApplicationController
    if !prop_val.nil?
     prop_val.each do |i, val|
       v = Value.new
-      v.value = val
       v.property_id = prop_id[i]
+      v.value=prop_val[i]
       v.device_id = device.id
       v.save
     end
