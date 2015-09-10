@@ -131,7 +131,7 @@
   <% if !logged_in? %>
       <ul class="nav nav-pills nav-stacked">
         <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> " ><a href="/login/" >Start</a></li>
-        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'operations' %> "><a href="/login/" ><%= t "buttons.main_menu.operations" %>></a></li>
+        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'operations' %> "><a href="/login/" ><%= t "buttons.main_menu.operations" %></a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'devices' %> "><a href="/login/" ><%= t "buttons.main_menu.devices" %></a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'stocks' %> "><a href="/login/" ><%= t "buttons.main_menu.stocks" %></a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'users' %> "><a href="/login/" ><%= t "buttons.main_menu.users" %></a></li>

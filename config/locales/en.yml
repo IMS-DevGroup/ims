@@ -125,6 +125,12 @@ en:
       operation: New Operation
       unit: New Unit
       device: New Device
+    main_menu:
+      operations: Operations
+      devices: Devices
+      users: Users
+      stocks: Stocks
+      units: Units
 
   own:
     errors:
