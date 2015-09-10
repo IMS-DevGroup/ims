@@ -123,6 +123,8 @@ de:
     destroy: Löschen
     rights: Rechte
     submit: Speichern
+    confirmation_sure_message: Sind Sie sicher?
+
     new:
       user: Neuer User
       stock: Neues Lager

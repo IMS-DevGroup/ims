@@ -124,6 +124,8 @@ en:
     destroy: Delete
     rights: Rights
     submit: Submit
+    confirmation_sure_message: Are you sure?
+
     new:
       user: New User
       stock: New Stock
