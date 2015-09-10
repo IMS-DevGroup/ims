@@ -62,7 +62,8 @@ class UnitsController < ApplicationController
   def destroy
     @unit.destroy
     respond_to do |format|
-      format.html { redirect_to units_url, notice: 'Unit was successfully destroyed.' }
+      flash[:success] = (I18n.t "own.success.unit_destroyed").to_s
+      format.html { redirect_to @unit }
       format.json { head :no_content }
     end
   end

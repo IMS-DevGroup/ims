@@ -62,7 +62,8 @@ class OperationsController < ApplicationController
   def destroy
     @operation.destroy
     respond_to do |format|
-      format.html { redirect_to operations_url, notice: 'Operation was successfully destroyed.' }
+      flash[:success] = (I18n.t "own.success.operation_destroyed").to_s
+      format.html { redirect_to @operation }
       format.json { head :no_content }
     end
   end

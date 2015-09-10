@@ -123,6 +123,7 @@ en:
     edit: Edit
     destroy: Delete
     rights: Rights
+    submit: Submit
     new:
       user: New User
       stock: New Stock
@@ -145,12 +146,17 @@ en:
     success:
       user_updated: User successfully updated.
       user_created: User successfully created.
+      user_destroyed: User successfully deleted.
       user_login: User login was successful.
       operation_updated: Operation successfully updated.
       operation_created: Operation successfully created.
+      operation_destroyed: Operation successfully deleted.
       unit_updated: Unit successfully updated.
       unit_created: Unit successfully created.
+      unit_destroyed: Uni successfully deleted.
       stock_updated: Stock successfully updated.
       stock_created: Stock successfully created.
+      stock_destroyed: Stock successfully deleted.
       device_updated: Device successfully updated.
       device_created: Device successfully created.
+      device_destroyed: Device successfully deleted.
