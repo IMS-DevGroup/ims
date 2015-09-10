@@ -61,7 +61,8 @@ class DevicesController < ApplicationController
   def destroy
     @device.destroy
     respond_to do |format|
-      format.html { redirect_to devices_url, notice: 'Device was successfully destroyed.' }
+      flash[:success] = (I18n.t "own.success.device_destroyed").to_s
+      format.html { redirect_to @device }
       format.json { head :no_content }
     end
   end
