@@ -15,7 +15,6 @@ $ ->
   device_array = []
   devcnt = 0
   $('button.add-dev').click (event) ->
-    console.log('Pass auf!')
     devid = event.target.id
     if(devid == 'adddev')
       devid = $('#barcode').val()
@@ -39,6 +38,8 @@ $ ->
         $('#'+devid).removeClass('btn btn-success').addClass('btn btn-danger')
         $('#'+devid).html('<span class="glyphicon glyphicon-minus-sign" aria-hidden="true">')
     $('#seldevices').empty()
+    $('#deviceids').empty()
+    $('#deviceids').val(device_array)
     $('#btnselection').html('Auswahl <span class="badge">'+ devcnt + '</span>')
     for x in device_array
       $('#seldevices').append('<li class="list-group-item">'+gon.devices[x].type+' (<strong>'+gon.devices[x].owner+'</strong>, '+gon.devices[x].stock+')')
