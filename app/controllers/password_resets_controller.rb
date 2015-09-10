@@ -13,9 +13,13 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by(email: params[:password_reset][:email].downcase) #delete[:password_reset]
     if @user
       @user.create_reset_key
-      @user.send_password_reset_email
-      flash[:notice] = "Email zum Zurücksetzen des Passworts gesendet."
-      redirect_to root_url
+      if @user.validated
+        @user.send_password_reset_email
+        flash[:notice] = "Email zum Zurücksetzen des Passworts gesendet."
+        redirect_to root_url
+      else
+        @user.send_activation_email
+      end
     else
       flash[:error] = "Gesuchte Emailadresse nicht gefunden."
       render 'new'
@@ -31,7 +35,7 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     elsif @user.update_attributes(user_params)
       log_in @user
-      flash[:success] = 'Passwort wurde erfolgreich geändert'
+      flash[:success] = 'Passwort wurde erfolgreich geändert/gesetzt'
       redirect_to 'starts#index'
     else
       render 'edit'
@@ -50,7 +54,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def valid_user
-    unless @user && @user.activated == true && @user.activated?(:reset, params[:id])
+    unless @user && @user.validated == true && @user.activated?(:reset, params[:id])
     redirect_to root_url
     end
   end

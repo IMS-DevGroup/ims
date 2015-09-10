@@ -29,8 +29,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
 
-        @user.send_activation_email
-        flash[:info] = "Please check your email to activate your account." #auskommentieren!
+        unless @user.email.nil? && @user.password.nil?
+          @user.send_activation_email
+          flash[:info] = "Please check your email to activate your account." #auskommentieren!
+        end
 
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
