@@ -1,32 +1,151 @@
 de:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            prename:
+              blank: Bitte einen Vornamen eingeben.
+            lastname:
+              blank: Bitte einen Nachnamen eingeben.
+            unit:
+              blank: Bitte eine Einheit wählen.
+            username:
+              taken: Dieser Username ist bereits vergeben.
+            email:
+              taken: Diese e-Mail Adresse existiert bereits.
+        operation:
+          attributes:
+            operation_type:
+              blank: Bitte eine Einsatzart eingeben.
+            name:
+              blank: Bitte einen Einsatznamen eingeben.
+            location:
+              blank: Bitte einen Ort angeben.
+        stock:
+          attributes:
+            unit:
+              blank: Bitte eine Einheit wählen.
+            name:
+              blank: Bitte einen Namen angeben.
+        unit:
+          attributes:
+            name:
+              blank: Bitte einen Namen angeben.
+        device:
+          attributes:
+            owner_id:
+              blank: Bitte einen Besitzer wählen.
+            stock_id:
+              blank: Bitte ein Lager auswählen.
+            ready:
+              blank: Bitte angeben, ob das Gerät bereit ist.
+
   users:
-    form:
-      username: "Username"
-      password: "Passwort"
-      prename: "Vorname *"
-      lastname: "Nachname *"
-      email: "E-mail"
-      mobile_number: "Telefonnummer"
-      info: "Information"
-      unit: "Einheit *"
     index:
       title: "Nutzerliste"
-      username: "Username"
-      prename: "Vorname"
-      lastname: "Nachname"
-      email: "E-mail"
-      mobile_number: "Telefonnummer"
-      info: "Information"
-      unit: "Einheit"
     edit:
       title: "Nutzer bearbeiten"
     new:
       title: "Neuen Nutzer anlegen"
-    show:
-      username: "Username"
-      prename: "Vorname"
-      lastname: "Nachname"
-      email: "E-mail"
-      mobile_number: "Telefonnummer"
-      info: "Information"
-      unit: "Einheit"
+
+  operations:
+    operation_type: "Einsatzart"
+    operation_dispatch_number: "Einsatznummer"
+    begin_date: "Einsatzbeginn"
+    ending_date: "Einsatzende"
+    user: "Einsatzleiter"
+    new:
+      title: "Neuen Einsatz anlegen"
+    index:
+      title: "Einsatzliste"
+    form:
+      linked_user: "Benutzer"
+    edit:
+      title: "Einsatz bearbeiten"
+
+  units:
+    name: "Name"
+    phone_number: "Telefonnummer"
+    index:
+      title: "Einheitenliste"
+    edit:
+      title: "Einheit bearbeiten"
+    new:
+      title: "Neue Einheit anlegen"
+
+  stocks:
+    city: "Stadt"
+    street: "Straße"
+    index:
+      title: "Lagerliste"
+    edit:
+      title: "Lager bearbeiten"
+    new:
+      title: "Neues Lager anlegen"
+
+  devices:
+    device_type: "Gerätetyp"
+    owner: "Besitzer"
+    stock: "Lager"
+    ready: "Bereit"
+    index:
+      title: "Geräteliste"
+    edit:
+      title: "Gerät bearbeiten"
+    new:
+      title: "Neues Gerät anlegen"
+
+
+
+  mixed_fields:
+    email: "Email"
+    info: "Information"
+    lastname: "Nachname"
+    location: "Ort"
+    mobile_number: "Handynummer"
+    password: "Passwort"
+    prename: "Vorname"
+    stock: "Lager"
+    unit: "Einheit "
+    user: "Benutzer"
+    username: "Benutzername"
+    name: "Name"
+
+  buttons:
+    back: Zurück
+    show: Anzeigen
+    edit: Ändern
+    destroy: Löschen
+    rights: Rechte
+    new:
+      user: Neuer User
+      stock: Neues Lager
+      operation: Neuer Einsatz
+      unit: Neue Einheit
+      device: Neues Gerät
+    main_menu:
+      operations: Einsätze
+      devices: Geräte
+      users: Benutzer
+      stocks: Lagerorte
+      units: Einheiten
+
+  own:
+    errors:
+      only_pw_no_username: Bitte auch einen Usernamen angeben, wenn ein Passwort eingegeben wird.
+      only_username_no_pw: Bitte auch ein Passwort angeben, wenn ein Username eingegeben wird.
+      mobile_number_not_valid: Bitte eine gültige Telefonnummer angeben.
+      user_login: Benutzername und/oder Passwort sind nicht korrekt.
+    success:
+      user_updated: Benutzer erfolgreich geupdated.
+      user_created: Benutzer erfolgreich angelegt.
+      user_login: Benutzer erfolgreich eingeloggt.
+      operation_updated: Einsatz erfolgreich geupdated.
+      operation_created: Einsatz erfolgreich angelegt.
+      unit_updated: Einheit erfolgreich geupdated.
+      unit_created: Einheit erfolgreich angelegt.
+      stock_updated: Lager erfolgreich geupdated.
+      stock_created: Lager erfolgreich angelegt.
+      device_updated: Gerät erfolgreich geupdated.
+      device_created: Gerät erfolgreich angelegt.

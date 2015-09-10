@@ -60,15 +60,13 @@
 <div id="banner" >
   <div id="logo" onclick="javascript:window.location.href='/starts/';"></div>
     <div id="language">
-    <input id="switch"  type="checkbox" checked />
+    <input id="switch"  type="checkbox" data-cur_lang="<%= I18n.locale %>" <% if I18n.locale == :en %>checked<% end %> />
     </div>
 
 <div id="infobar">
     <ul class="nav nav-tabs" >
       <li role="presentation"><a href="#">Impressum</a></li>
-      <li role="presentation"><a href="#">Kontakt</a></li>
-      <%= link_to_unless I18n.locale == :en, "English", set_language_english_path %>
-      <%= link_to_unless I18n.locale == :de, "Deutsch", set_language_german_path %>
+      <li role="presentation"><a href= "/contacts/">Kontakt</a></li>
       <% if logged_in? %><li role="presentation"><a href="/logout/"><b><%= current_user.username %></b> (Logout)</a></li><% end %>
     </ul>
 </div>
@@ -121,24 +119,24 @@
   <% if logged_in? %>
   <ul class="nav nav-pills nav-stacked">
     <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> " ><a href="/starts/" >Start</a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'operations' %> "><a href="/operations/" >Einsatz</a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'devices' %> "><a href="/devices/" >Ger&auml;te</a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'stocks' %> "><a href="/stocks/" >Lagerorte</a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'users' %> "><a href="/users/" >User</a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >Karte</a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'units' %> "><a href="/units/" >Einheiten</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'operations' %> "><a href="/operations/" ><%= t "buttons.main_menu.operations" %></a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'devices' %> "><a href="/devices/" ><%= t "buttons.main_menu.devices" %></a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'stocks' %> "><a href="/stocks/" ><%= t "buttons.main_menu.stocks" %></a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'users' %> "><a href="/users/" ><%= t "buttons.main_menu.users" %></a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >What</a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'units' %> "><a href="/units/" ><%= t "buttons.main_menu.units" %></a></li>
     </ul>
   <% end %>
 
   <% if !logged_in? %>
       <ul class="nav nav-pills nav-stacked">
         <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> " ><a href="/login/" >Start</a></li>
-        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'operations' %> "><a href="/login/" >Einsatz</a></li>
-        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'devices' %> "><a href="/login/" >Ger&auml;te</a></li>
-        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'stocks' %> "><a href="/login/" >Lagerorte</a></li>
-        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'users' %> "><a href="/login/" >User</a></li>
-        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'starts' %> "><a href="/login/" >Karte</a></li>
-        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'units' %> "><a href="/login/" >Einheiten</a></li>
+        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'operations' %> "><a href="/login/" ><%= t "buttons.main_menu.operations" %></a></li>
+        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'devices' %> "><a href="/login/" ><%= t "buttons.main_menu.devices" %></a></li>
+        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'stocks' %> "><a href="/login/" ><%= t "buttons.main_menu.stocks" %></a></li>
+        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'users' %> "><a href="/login/" ><%= t "buttons.main_menu.users" %></a></li>
+        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'starts' %> "><a href="/login/" >What</a></li>
+        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'units' %> "><a href="/login/" ><%= t "buttons.main_menu.units" %></a></li>
   </ul>
   <% end %>
 </div>

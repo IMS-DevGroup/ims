@@ -3,9 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $('#devices').dataTable()
-  $('#switch').bootstrapSwitch('offText', '<span class="flag-icon flag-icon-de"></span>')
-  $('#switch').bootstrapSwitch('onText', '<span class="flag-icon flag-icon-gb"></span>')
-  $('#switch').bootstrapSwitch('offColor', 'primary')
 
 $ ->
   $('#device_device_type_id').change ->

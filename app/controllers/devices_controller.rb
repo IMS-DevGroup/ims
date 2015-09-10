@@ -29,11 +29,12 @@ class DevicesController < ApplicationController
     respond_to do |format|
       if @device.save
         ValuesController.transfer(params['prop_val'], params['prop_id'], @device)
-        format.html { redirect_to @device, notice: 'Device was successfully created.' }
+        flash[:success] = (I18n.t "own.success.device_created").to_s
+        format.html { redirect_to @device }
         format.json { render :show, status: :created, location: @device }
       else
         #get all error messages and save it into a string
-        flash.now[:error] = (@device.errors.full_messages).join("<br/>").html_safe
+        flash.now[:error] = (@device.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @device.errors, status: :unprocessable_entity }
       end
@@ -45,9 +46,11 @@ class DevicesController < ApplicationController
   def update
     respond_to do |format|
       if @device.update(device_params)
-        format.html { redirect_to @device, notice: 'Device was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.device_updated").to_s
+        format.html { redirect_to @device }
         format.json { render :show, status: :ok, location: @device }
       else
+        flash.now[:error] = (@device.errors.values).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @device.errors, status: :unprocessable_entity }
       end

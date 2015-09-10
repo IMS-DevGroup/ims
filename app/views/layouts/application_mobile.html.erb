@@ -165,12 +165,12 @@
       <div class="navbar navbar-text" >
 
         <a href="#">Impressum</a> |
-        <a href="#">Kontakt</a>
+        <a href="/contacts/">Kontakt</a>
         <% if logged_in? %> | Hallo: <a href="/logout/"><b><%= current_user.username %></b> (Logout)</a><% end %>
 
 
         <div id="language">
-          <input id="switch"  type="checkbox" checked />
+          <input id="switch"  type="checkbox" data-cur_lang="<%= I18n.locale %>" <% if I18n.locale == :en %>checked<% end %> />
         </div>
       </div>
     </div>

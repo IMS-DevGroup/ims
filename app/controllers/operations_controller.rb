@@ -28,11 +28,12 @@ class OperationsController < ApplicationController
 
     respond_to do |format|
       if @operation.save
-        format.html { redirect_to @operation, notice: 'Operation was successfully created.' }
+        flash[:success] = (I18n.t "own.success.operation_created").to_s
+        format.html { redirect_to @operation }
         format.json { render :show, status: :created, location: @operation }
       else
         #get all error messages and save it into a string
-        flash.now[:error] = (@operation.errors.full_messages).join("<br/>").html_safe
+        flash.now[:error] = (@operation.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @operation.errors, status: :unprocessable_entity }
       end
@@ -44,11 +45,12 @@ class OperationsController < ApplicationController
   def update
     respond_to do |format|
       if @operation.update(operation_params)
-        format.html { redirect_to @operation, notice: 'Operation was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.operation_updated").to_s
+        format.html { redirect_to @operation }
         format.json { render :show, status: :ok, location: @operation }
       else
         #get all error messages and save it into a string
-        flash.now[:error] = (@operation.errors.full_messages).join("<br/>").html_safe
+        flash.now[:error] = (@operation.errors.values).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @operation.errors, status: :unprocessable_entity }
       end

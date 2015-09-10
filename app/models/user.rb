@@ -13,17 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :lendings
   belongs_to :unit
-  has_one :operation
-
-
-  #removed validation because of own validator using helpers/users_validator.rb
-   validates_with Users_Validator
-   validates :prename, presence: true
-   validates :lastname, presence: true
-   validates :username, uniqueness: true, allow_nil: true
-   validates :unit_id, presence: true
-   validates :email, uniqueness: true, allow_nil: true
-  #validates_uniqueness_of :email, :allow_nil => true
+  has_many :operation
 
   #this removes the extra break between label and field if error is thrown
   validates :prename, presence: true
@@ -31,7 +21,10 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true, allow_nil: true
   validates :unit_id, presence: true
   validates_uniqueness_of :email, :allow_nil => true
-  validates_with Users_Validator
+  validates_with Users_Validator, :on => :create
+  validates_with UserUpdateValidator, :on => :update
+
+
 
 
   def self.authenticate(username, password_unhashed)
@@ -78,6 +71,7 @@ class User < ActiveRecord::Base
   protected
   def default_values
     self.active = true
+    self.save
   end
 
   def create_rights

@@ -1,19 +1,17 @@
 <%= form_for(@user) do |f| %>
 
-  <!--  <h1><%= t "users.form.title" %></h1> -->
-
     <table class="userCreation" width=300 height=100>
 
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label t "users.form.username"%><br>
+            <%= f.label t "mixed_fields.username"%><br>
             <%= f.text_field :username%>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label t "users.form.password" %><br>
+            <%= f.label t "mixed_fields.password" %><br>
             <%= f.password_field :password_unhashed %>
           </div>
         </td>
@@ -22,13 +20,13 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label t "users.form.prename"%><br>
+            <%= f.label (t "mixed_fields.prename") + " *"%><br>
             <%= f.text_field :prename %>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label t "users.form.lastname" %><br>
+            <%= f.label (t "mixed_fields.lastname") + " *" %><br>
             <%= f.text_field :lastname %>
           </div>
         </td>
@@ -37,13 +35,13 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label t "users.form.email" %><br>
+            <%= f.label t "mixed_fields.email" %><br>
             <%= f.email_field :email %>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label t "users.form.mobile_number" %><br>
+            <%= f.label t "mixed_fields.mobile_number" %><br>
             <%= f.text_field :mobile_number %>
           </div>
         </td>
@@ -52,7 +50,7 @@
       <tr>
         <td colspan="2">
           <div class="form-group">
-            <%= f.label t "users.form.info" %><br>
+            <%= f.label t "mixed_fields.info" %><br>
             <%= f.text_area :info, :rows => 2, :cols => 60 %>
           </div>
         </td>
@@ -62,21 +60,21 @@
 
 
     <div class="form-group ">
-      <%= f.label t "users.form.unit" %>
+      <%= f.label (t "mixed_fields.unit") + " *" %>
       <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control" %>
     </div>
 
     <br>
     <br>
     <div>
-          <a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
+          <a href="/users/"><button type="button" class = "btn btn-primary" ><%= (t "buttons.back")%></button></a>
           <% if !Right.find_by_user_id(@user.id).nil? %>
-              <%= link_to 'Rights', edit_right_path(Right.find_by_user_id(@user.id)), class: 'btn btn-info' %>
+              <%= link_to (t "buttons.rights"), edit_right_path(Right.find_by_user_id(@user.id)), class: 'btn btn-info' %>
           <% end %>
 
 
-          <%= link_to 'Show', @user , class:'btn btn-info'%>
-        <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
+          <%= link_to (t "buttons.show"), @user , class:'btn btn-info'%>
+        <%= f.submit (t "buttons.new.user"), class:'btn btn-success', style:"margin-left:230px;"%>
 
     </div>
 

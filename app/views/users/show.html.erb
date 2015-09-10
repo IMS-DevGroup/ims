@@ -4,7 +4,7 @@
   <tr>
     <td>
       <p>
-        <strong><%= t "users.show.username" %></strong><br>
+        <strong><%= t "mixed_fields.username" %></strong><br>
         <%= @user.username %>
       </p>
     </td>
@@ -14,14 +14,14 @@
   <tr>
     <td>
       <p>
-        <strong><%= t "users.show.prename" %></strong><br>
+        <strong><%= t "mixed_fields.prename" %></strong><br>
         <%= @user.prename %>
       </p>
     </td>
 
     <td>
       <p>
-        <strong><%= t "users.show.lastname" %></strong><br>
+        <strong><%= t "mixed_fields.lastname" %></strong><br>
         <%= @user.lastname %>
       </p>
     </td>
@@ -30,13 +30,13 @@
   <tr>
     <td>
       <p>
-        <strong><%= t "users.show.email" %></strong><br>
+        <strong><%= t "mixed_fields.email" %></strong><br>
         <%= @user.email %>
       </p>
     </td>
     <td>
       <p>
-        <strong><%= t "users.show.mobile_number" %></strong><br>
+        <strong><%= t "mixed_fields.mobile_number" %></strong><br>
         <%= @user.mobile_number %>
       </p>
     </td>
@@ -45,7 +45,7 @@
   <tr>
     <td>
       <p>
-        <strong><%= t "users.show.info" %></strong><br>
+        <strong><%= t "mixed_fields.show.info" %></strong><br>
         <%= @user.info %>
       </p>
     </td>
@@ -55,8 +55,10 @@
 
     <td>
       <p>
-        <strong><%= t "users.show.unit" %></strong><br>
-        <%= @user.unit.name %>
+        <strong><%= t "mixed_fields.show.unit" %></strong><br>
+        <% unless @user.unit.nil?%>
+            <%= @user.unit.name %>
+        <%end%>
       </p>
     </td>
 

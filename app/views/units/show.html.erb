@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= (t "units.name") + ":" %></strong>
   <%= @unit.name %>
 </p>
 
 <p>
-  <strong>Info:</strong>
+  <strong><%= (t "mixed_fields.info") + ":" %></strong>
   <%= @unit.info %>
 </p>
 
 <p>
-  <strong>Phone number:</strong>
+  <strong><%= (t "units.phone_number") + ":" %></strong>
   <%= @unit.phone_number %>
 </p>
 
-<%= link_to 'Back', units_path, class:'btn btn-primary' %>
-<%= link_to 'Edit', edit_unit_path(@unit), class:'btn btn-warning' %>
+<%= link_to (t "buttons.back"), units_path, class:'btn btn-primary' %>
+<%= link_to (t "buttons.edit"), edit_unit_path(@unit), class:'btn btn-warning' %>

@@ -1,36 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Number:</strong>
+  <strong><%= (t "operations.operation_dispatch_number") + ":" %></strong>
   <%= @operation.number %>
 </p>
 
 <p>
-  <strong>Type:</strong>
+  <strong><%= (t "operations.operation_type") + ":" %></strong>
   <%= @operation.operation_type %>
 </p>
 
 <p>
-  <strong>Info:</strong>
+  <strong><%= (t "mixed_fields.info") + ":" %></strong>
   <%= @operation.info %>
 </p>
 
 <p>
-  <strong>Location:</strong>
+  <strong><%= (t "mixed_fields.location") + ":" %></strong>
   <%= @operation.location %>
 </p>
 <p>
-  <strong>User:</strong>
-  <%= @operation.user.prename%>
-  <%= @operation.user.lastname%>
+  <strong><%= (t "operations.user") + ":" %></strong>
+  <% unless @operation.user.nil?%>
+      <%= @operation.user.prename%>
+      <%= @operation.user.lastname%>
+  <%end%>
+
 </p>
 
 <p>
-  <strong>Begin date:</strong>
+  <strong><%= (t "operations.begin_date") + ":" %></strong>
   <%= @operation.created_at+7200 %>
 </p>
 <p>
-  <strong>Close date:</strong>
+  <strong><%= (t "operations.ending_date") + ":" %></strong>
   <%= @operation.close_date %>
 </p>
 
