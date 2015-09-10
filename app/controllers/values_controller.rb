@@ -62,6 +62,7 @@ class ValuesController < ApplicationController
   end
 
   def ValuesController.transfer(prop_val, prop_id, device)
+   if !prop_val.nil?
     prop_val.each do |i, val|
       v = Value.new
       v.property_id = prop_id[i]
@@ -70,7 +71,7 @@ class ValuesController < ApplicationController
       v.save
     end
   end
-
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_value

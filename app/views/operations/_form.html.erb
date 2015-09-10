@@ -45,15 +45,15 @@
 
       <div class="form-group">
         <%= f.label (t "operations.user") + " *" %> <br>
-        <%= f.collection_select :user_id, User.all, :id, :prename, {}, class: "form-control", include_blank:'choose user'%>
+        <%= f.collection_select :user_id, User.all, :id, :username, {}, class: "form-control", include_blank:'choose user'%>
       </div>
 
     </table>
 
     <div class="actions">
 
-      <%= link_to 'Back', operations_path , class:'btn btn-primary'%>
-      <%= link_to 'Show', @operation , class:'btn btn-info'%>
-      <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
+      <%= link_to (t "buttons.back"), operations_path , class:'btn btn-primary'%>
+      <%= link_to (t "buttons.show"), @operation , class:'btn btn-info'%>
+      <%= f.submit (t "buttons.submit"), class:'btn btn-success', style:"margin-left:230px;"%>
     </div>
 <% end %>
