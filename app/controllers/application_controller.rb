@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
   before_filter :require_login
 
   def require_login
+    if NO_LOGIN_ROUTES.include? request.env['PATH_INFO']
+      return
+    end
     unless current_user
       redirect_to '/login/'
     end
@@ -27,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   private
   MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
-
+  NO_LOGIN_ROUTES = ["/contacts"]
 
 
 
