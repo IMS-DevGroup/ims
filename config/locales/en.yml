@@ -163,3 +163,8 @@ en:
       device_updated: Device successfully updated.
       device_created: Device successfully created.
       device_destroyed: Device successfully deleted.
+
+  contact:
+    title: Send a message to us
+    submit: Send message
+    message: Message
