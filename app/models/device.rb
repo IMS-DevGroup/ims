@@ -8,7 +8,7 @@ class Device < ActiveRecord::Base
   belongs_to :stock
 
   validates :owner_id, presence: :true
-  validates :ready , presence: true
+
   validates :stock_id, presence: :true
 
 

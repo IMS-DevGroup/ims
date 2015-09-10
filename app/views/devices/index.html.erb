@@ -1,5 +1,8 @@
 <h1><%= t "devices.index.title" %></h1>
 
+
+
+
 <table id="devices" class="table table-striped">
   <thead>
     <tr>
@@ -8,11 +11,14 @@
       <th><%= t "devices.owner" %></th>
       <th><%= t "devices.stock" %></th>
       <th><%= t "devices.ready" %></th>
+      <th><%= t "penis" %></th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
+
+
     <% @devices.each do |device| %>
       <tr>
         <td><%= device.info %></td>
@@ -23,6 +29,7 @@
         <td><%= link_to (t "buttons.show"), device, class: 'btn btn-info' %>
         <%= link_to (t "buttons.edit"), edit_device_path(device), class: 'btn btn-warning' %>
         <%= link_to (t "buttons.destroy"), device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <td><%= device.ready %></td>
       </tr>
     <% end %>
   </tbody>
