@@ -43,74 +43,78 @@ de:
 
   users:
     index:
-      title: "Nutzerliste"
+      title: Nutzerliste
     edit:
-      title: "Nutzer bearbeiten"
+      title: Nutzer bearbeiten
     new:
-      title: "Neuen Nutzer anlegen"
+      title: Neuen Nutzer anlegen
 
   operations:
-    operation_type: "Einsatzart"
-    operation_dispatch_number: "Einsatznummer"
-    begin_date: "Einsatzbeginn"
-    ending_date: "Einsatzende"
-    user: "Einsatzleiter"
+    operation_type: Einsatzart
+    operation_dispatch_number: Einsatznummer
+    begin_date: Einsatzbeginn
+    ending_date: Einsatzende
+    user: Einsatzleiter
     new:
-      title: "Neuen Einsatz anlegen"
+      title: Neuen Einsatz anlegen
     index:
-      title: "Einsatzliste"
+      title: Einsatzliste
     form:
-      linked_user: "Benutzer"
+      linked_user: Benutzer
     edit:
-      title: "Einsatz bearbeiten"
+      title: Einsatz bearbeiten
 
   units:
-    name: "Name"
-    phone_number: "Telefonnummer"
+    name: Name
+    phone_number: Telefonnummer
     index:
-      title: "Einheitenliste"
+      title: Einheitenliste
     edit:
-      title: "Einheit bearbeiten"
+      title: Einheit bearbeiten
     new:
-      title: "Neue Einheit anlegen"
+      title: Neue Einheit anlegen
 
   stocks:
-    city: "Stadt"
-    street: "Straße"
+    city: Stadt
+    street: Straße
     index:
-      title: "Lagerliste"
+      title: Lagerliste
     edit:
-      title: "Lager bearbeiten"
+      title: Lager bearbeiten
     new:
-      title: "Neues Lager anlegen"
+      title: Neues Lager anlegen
 
   devices:
-    device_type: "Gerätetyp"
-    owner: "Besitzer"
-    stock: "Lager"
-    ready: "Bereit"
+    device_type: Gerätetyp
+    owner: Besitzer
+    stock: Lager
+    ready: Bereit
     index:
-      title: "Geräteliste"
+      title: Geräteliste
+    form:
+      select_device_typ: Wähle Gerätetyp
+      select_owner_stock: Wähle Lager des Besitzers
+      select_current_stock: Wähle aktuelles Lager
     edit:
-      title: "Gerät bearbeiten"
+      title: Gerät bearbeiten
     new:
-      title: "Neues Gerät anlegen"
+      title: Neues Gerät anlegen
 
 
 
   mixed_fields:
-    email: "Email"
-    info: "Information"
-    lastname: "Nachname"
-    location: "Ort"
-    mobile_number: "Handynummer"
-    password: "Passwort"
-    prename: "Vorname"
-    stock: "Lager"
-    unit: "Einheit "
-    user: "Benutzer"
-    username: "Benutzername"
-    name: "Name"
+    email: Email
+    info: Information
+    lastname: Nachname
+    location: Ort
+    mobile_number: Handynummer
+    password: Passwort
+    prename: Vorname
+    stock: Lager
+    unit: Einheit
+    user: Benutzer
+    username: Benutzername
+    name: Name
 
   buttons:
     back: Zurück
@@ -118,6 +122,9 @@ de:
     edit: Ändern
     destroy: Löschen
     rights: Rechte
+    submit: Speichern
+    confirmation_sure_message: Sind Sie sicher?
+
     new:
       user: Neuer User
       stock: Neues Lager
@@ -140,12 +147,17 @@ de:
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
+      user_destroyed: Benutzer erfolgreich gelöscht.
       user_login: Benutzer erfolgreich eingeloggt.
       operation_updated: Einsatz erfolgreich geupdated.
       operation_created: Einsatz erfolgreich angelegt.
+      operation_destroyed: Einsatz erfolgreich gelöscht.
       unit_updated: Einheit erfolgreich geupdated.
       unit_created: Einheit erfolgreich angelegt.
+      unit_destroyed: Einheit erfolgreich gelöscht.
       stock_updated: Lager erfolgreich geupdated.
       stock_created: Lager erfolgreich angelegt.
+      stock_destroyed: Lager erfolgreich gelöscht.
       device_updated: Gerät erfolgreich geupdated.
       device_created: Gerät erfolgreich angelegt.
+      device_destroyed: Gerät erfolgreich gelöscht.

@@ -26,3 +26,4 @@ $ ->
           alert 'Request: ' + JSON.stringify(request)
           return
     else $('#properties').empty()
+
