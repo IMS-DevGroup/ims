@@ -45,73 +45,77 @@ en:
 
   users:
     index:
-      title: "Listing Users"
+      title: Listing Users
     edit:
-      title: "Editing User"
+      title: Editing User
     new:
-      title: "New User"
+      title: New User
 
   operations:
-    operation_type: "Operation type"
-    operation_dispatch_number: "Operation number dispatch"
-    begin_date: "Begin date"
-    ending_date: "Close date"
-    user: "Squad Leader"
+    operation_type: Operation type
+    operation_dispatch_number: Operation number dispatch
+    begin_date: Begin date
+    ending_date: Close date
+    user: Squad Leader
     new:
-      title: "New Operation"
+      title: New Operation
     index:
-      title: "Listing Operations"
+      title: Listing Operations
     form:
-      linked_user: "User"
+      linked_user: User
     edit:
-      title: "Editing Operation"
+      title: Editing Operation
 
   units:
-    name: "Name"
-    phone_number: "Phone Number"
+    name: Name
+    phone_number: Phone Number
     index:
-      title: "Listing Units"
+      title: Listing Units
     edit:
-      title: "Editing Unit"
+      title: Editing Unit
     new:
-      title: "New Unit"
+      title: New Unit
 
   stocks:
-    city: "City"
-    street: "Street"
+    city: City
+    street: Street
     index:
-      title: "Listing Stocks"
+      title: Listing Stocks
     edit:
-      title: "Editing Stock"
+      title: Editing Stock
     new:
-      title: "New Stock"
+      title: New Stock
 
   devices:
-    device_type: "Device Type"
-    owner: "Owner"
-    stock: "Stock"
-    ready: "Ready"
+    device_type: Device Type
+    owner: Owner
+    stock: Stock
+    ready: Ready
     index:
-      title: "Listing Devices"
+      title: Listing Devices
+    form:
+      select_device_typ: Select device type
+      select_owner_stock: Select owner stock
+      select_current_stock: Select current stock
     edit:
-      title: "Editing Device"
+      title: Editing Device
     new:
-      title: "New Device"
+      title: New Device
 
 
   mixed_fields:
-    email: "Email"
-    info: "Info"
-    lastname: "Lastname"
-    location: "Location"
-    mobile_number: "Mobile number"
-    password: "Password"
-    prename: "Prename"
-    stock: "Stock"
-    unit: "Unit"
-    user: "User"
-    username: "Username"
-    name: "Name"
+    email: Email
+    info: Info
+    lastname: Lastname
+    location: Location
+    mobile_number: Mobile number
+    password: Password
+    prename: Prename
+    stock: Stock
+    unit: Unit
+    user: User
+    username: Username
+    name: Name
 
   buttons:
     back: Back
@@ -120,6 +124,8 @@ en:
     destroy: Delete
     rights: Rights
     submit: Submit
+    confirmation_sure_message: Are you sure?
+
     new:
       user: New User
       stock: New Stock
