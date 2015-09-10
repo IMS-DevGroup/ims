@@ -24,14 +24,13 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
 
-        unless @user.email.nil? && @user.password.nil?
+        if !@user.email.nil? && @user.password == nil
           @user.send_activation_email
-          flash[:info] = "Please check your email to activate your account." #auskommentieren!
+          flash[:warning] = "Please check your email to activate your account." #auskommentieren!
         end
 
         format.html { redirect_to @user, notice: 'User was successfully created.' }

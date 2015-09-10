@@ -35,6 +35,7 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     elsif @user.update_attributes(user_params)
       log_in @user
+      @user.validated = true
       flash[:success] = 'Passwort wurde erfolgreich geändert/gesetzt'
       redirect_to 'starts#index'
     else
@@ -54,15 +55,17 @@ class PasswordResetsController < ApplicationController
   end
 
   def valid_user
-    unless @user && @user.validated == true && @user.activated?(:reset, params[:id])
+    unless @user && @user.activated?(params[:id])
     redirect_to root_url
     end
   end
 
   def check_expiration
-    if @user.password_reset_expired?
-      flash[:error] = 'Ihr Link zum Zurücksetzen des Pasworts ist bereits abgelaufen.'
-      redirect_to new_password_reset_url
+    unless @user.validated
+      if @user.password_reset_expired?
+        flash[:error] = 'Ihr Link zum Zurücksetzen des Pasworts ist bereits abgelaufen.'
+        redirect_to new_password_reset_url
+      end
     end
   end
 

@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   private
   MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
-  NO_LOGIN_ROUTES = ["/contacts"]
+  NO_LOGIN_ROUTES = ["/contacts", "/pwr"] #passwort reset path to be added
 
 
 

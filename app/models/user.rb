@@ -1,13 +1,12 @@
 class User < ActiveRecord::Base
   after_validation :encrypt_password
-  before_create :create_activation_key
-  after_create :default_values
+  after_create :default_values, :create_reset_key
   before_save :nil_if_blank
   before_save { self.email = email.downcase if email}
   after_save :create_rights
 
 
-  attr_accessor :password_unhashed, :remember_token, :activation_token, :reset_token
+  attr_accessor :password_unhashed, :remember_token, :reset_token
 
   has_one :right, dependent: :destroy
 
@@ -69,19 +68,14 @@ class User < ActiveRecord::Base
   end
 
 
-  def activated?(attribute, token)
-    value = send("#{attribute}_key")
-    return false if value == nil
-    BCrypt::Password.new(value).is_password?(token)
+  def activated?(reset_token)
+    return false if reset_key == nil
+    BCrypt::Password.new(reset_key).is_password?(reset_token)
   end
 
-  def activate
-    update_attribute(:validated, true)
-    #update_attribute(:activated_at, Time.zone.now)
-  end
 
   def send_activation_email
-    UserMailer.account_acctivation(self).deliver_now
+    UserMailer.account_activation(self).deliver_now
   end
 
   def create_reset_key
@@ -148,11 +142,4 @@ class User < ActiveRecord::Base
 
 
   end
-
-  private
-  def create_activation_key
-    self.activation_token = User.new_token
-    self.activation_key = BCrypt::Password.create(activation_token)
-  end
-
 end
