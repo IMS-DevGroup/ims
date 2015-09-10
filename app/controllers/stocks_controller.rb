@@ -65,7 +65,8 @@ class StocksController < ApplicationController
 
     @stock.destroy
     respond_to do |format|
-      format.html { redirect_to stocks_url, notice: 'Stock was successfully destroyed.' }
+      flash[:success] = (I18n.t "own.success.stock_destroyed").to_s
+      format.html { redirect_to @stock }
       format.json { head :no_content }
     end
   end
