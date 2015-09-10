@@ -1,4 +1,14 @@
 <h1><%= t "devices.edit.title" %></h1>
 
-<%= render 'form' %>
-
+<div class="container">
+  <div class="row">
+    <div class='col-sm-6'>
+        <%= render 'form' %>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker4').datetimepicker();
+        });
+    </script>
+  </div>
+</div>
