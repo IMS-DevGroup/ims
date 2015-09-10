@@ -28,9 +28,12 @@ class UnitsController < ApplicationController
 
     respond_to do |format|
       if @unit.save
-        format.html { redirect_to @unit, notice: 'Unit was successfully created.' }
+        flash[:success] = (I18n.t "own.success.unit_updated").to_s
+        format.html { redirect_to @unit }
         format.json { render :show, status: :created, location: @unit }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@unit.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @unit.errors, status: :unprocessable_entity }
       end
@@ -42,9 +45,12 @@ class UnitsController < ApplicationController
   def update
     respond_to do |format|
       if @unit.update(unit_params)
-        format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.unit_updated").to_s
+        format.html { redirect_to @unit }
         format.json { render :show, status: :ok, location: @unit }
       else
+        #get all error messages and save it into a string
+        flash.now[:error] = (@unit.errors.values).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @unit.errors, status: :unprocessable_entity }
       end

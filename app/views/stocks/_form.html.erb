@@ -1,49 +1,56 @@
 <%= form_for(@stock) do |f| %>
-    <% if @stock.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
-
-          <ul>
-            <% @stock.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
 
     <table>
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label :name %><br>
+            <%= f.label (t "mixed_fields.name") + " *" %><br>
             <%= f.text_field :name %>
           </div>
         </td>
-      </tr>
-      <td>
-        <tr>
+        <td>
           <div class="form-group">
-            <%= f.label :info %><br>
+            <%= f.label (t "mixed_fields.unit") + " *" %><br>
+            <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control", include_blank: "choose unit" %>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="form-group">
+            <%= f.label t "stocks.city" %><br>
+            <%= f.text_field :city %>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <%= f.label t "stocks.street" %><br>
+            <%= f.text_field :street %>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="form-group">
+            <%= f.label t "mixed_fields.info" %><br>
             <%= f.text_area :info %>
           </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="form-group">
-              <%= f.label :unit %><br>
-              <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control", include_blank: "choose unit" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="actions">
-              <%= link_to 'Back', stocks_path , class:'btn btn-primary'%>
-              <%= link_to 'Show', @stock , class:'btn btn-info'%>
-              <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
-            </div>
-          </td>
-        </tr>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="actions">
+            <%= link_to 'Back', stocks_path, class: 'btn btn-primary' %>
+            <%= link_to 'Show', @stock, class: 'btn btn-info' %>
+          </div>
+        </td>
+        <td>
+          <div class="actions">
+            <%= f.button :submit => "", class: 'btn btn-success', style: "margin-left:0px;" %>
+          </div>
+        </td>
+      </tr>
     </table>
 <% end %>

@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Operations</h1>
+<h1><%= t "operations.index.title" %></h1>
 
 <table id="operations" class="table table-striped">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Number</th>
-      <th>Type</th>
-      <th>Location</th>
-      <th>Info</th>
-      <th>Begin Date</th>
-      <th>Close date</th>
+      <th><%= t "operations.user" %></th>
+      <th><%= t "operations.operation_dispatch_number" %></th>
+      <th><%= t "operations.operation_type" %></th>
+      <th><%= t "mixed_fields.location" %></th>
+      <th><%= t "mixed_fields.info" %></th>
+      <th><%= t "operations.begin_date" %></th>
+      <th><%= t "operations.ending_date" %></th>
       <th></th>
     </tr>
   </thead>
@@ -19,16 +19,16 @@
   <tbody>
     <% @operations.each do |operation| %>
       <tr>
-        <td><%= if !(operation.user.nil?) then operation.user.prename end %></td>
+        <td><%= if !(operation.user.nil?) then operation.user.prename+" "+operation.user.lastname end %></td>
         <td><%= operation.number %></td>
         <td><%= operation.operation_type %></td>
         <td><%= operation.location %></td>
         <td><%= operation.info %></td>
         <td><%= operation.created_at+7200 %></td>       <!-- Hier Zeitzone Anpassen -->
         <td><%= operation.close_date %></td>
-        <td><%= link_to 'Show', operation, class: 'btn btn-info' %>
-        <%= link_to 'Edit', edit_operation_path(operation), class: 'btn btn-warning' %>
-        <%= link_to 'Destroy', operation, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <td><%= link_to (t "buttons.show"), operation, class: 'btn btn-info' %>
+        <%= link_to (t "buttons.edit"), edit_operation_path(operation), class: 'btn btn-warning' %>
+        <%= link_to (t "buttons.destroy"), operation, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Operation', new_operation_path, class: 'btn btn-success' %>
+<%= link_to (t "buttons.new.operation"), new_operation_path, class: 'btn btn-success' %>

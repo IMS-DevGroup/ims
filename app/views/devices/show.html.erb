@@ -1,35 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Ready:</strong>
+  <strong><%= (t "devices.ready") + ":" %></strong>
   <%= @device.ready %>
 </p>
 
 <p>
-  <strong>Info:</strong>
+  <strong><%= (t "mixed_fields.info") + ":"%></strong>
   <%= @device.info %>
 </p>
 
 <p>
-  <strong>Owner:</strong>
-  <%= @device.owner_id %>
+  <strong><%= (t "devices.owner") + ":"%></strong>
+  <%= Stock.find_by_id(@device.owner_id).name %>
 </p>
 
 <p>
-  <strong>Device type</strong>
-  <%= @device.device_type %>
+  <strong><%= (t "devices.device_type") + ":"%></strong>
+  <% if !@device.device_type.nil? %> <%= @device.device_type.name%><% end %>
 </p>
 
 <p>
-  <strong>Stock</strong>
-  <%= @device.stock %>
+  <strong><%= (t "devices.stock") + ":"%></strong>
+  <%= @device.stock.name%>
 </p>
 
-<p>
-  <strong>devicetype</strong>
-  <%= @device.device_type %>
-</p>
 
-<a href="/devices/"><button type="button" class = "btn btn-primary" >Back</button></a>
-<%= link_to 'Edit', edit_device_path(@device), class:'btn btn-warning' %>
+<a href="/devices/"><button type="button" class = "btn btn-primary" ><%= t "buttons.back"%></button></a>
+<%= link_to (t "buttons.edit"), edit_device_path(@device), class:'btn btn-warning' %>
 

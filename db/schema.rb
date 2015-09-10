@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907080028) do
+ActiveRecord::Schema.define(version: 20150909122728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,11 @@ ActiveRecord::Schema.define(version: 20150907080028) do
     t.integer  "user_id"
   end
 
+  create_table "operations_stocks", id: false, force: :cascade do |t|
+    t.integer "stock_id"
+    t.integer "operation_id"
+  end
+
   create_table "properties", force: :cascade do |t|
     t.string   "name"
     t.text     "info"
@@ -90,21 +95,7 @@ ActiveRecord::Schema.define(version: 20150907080028) do
     t.boolean  "manage_operations"
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.string   "session_key"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id"
-  end
-
   create_table "startpages", force: :cascade do |t|
-    t.string   "title"
-    t.text     "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "starts", force: :cascade do |t|
     t.string   "title"
     t.text     "notes"
     t.datetime "created_at", null: false
@@ -136,7 +127,7 @@ ActiveRecord::Schema.define(version: 20150907080028) do
   create_table "units", force: :cascade do |t|
     t.string   "name"
     t.text     "info"
-    t.integer  "phone_number"
+    t.string   "phone_number"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
@@ -149,12 +140,13 @@ ActiveRecord::Schema.define(version: 20150907080028) do
     t.string   "email"
     t.string   "prename"
     t.string   "lastname"
-    t.integer  "mobile_number"
+    t.string   "mobile_number"
     t.text     "info"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "salt"
     t.integer  "unit_id"
+    t.string   "cookies"
   end
 
   create_table "values", force: :cascade do |t|

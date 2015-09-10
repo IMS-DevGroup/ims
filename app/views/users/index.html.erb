@@ -1,18 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-
-<h1>Listing Users</h1>
+<h1><%= t "users.index.title" %></h1>
 
 <table id="users" class="table table-striped">
   <thead>
     <tr>
-      <th>Prename</th>
-      <th>Lastname</th>
-      <th>Unit</th>
-      <th>Email</th>
-      <th>Mobile number</th>
-      <th>Username</th>
-      <th>Info</th>
+      <th><%= t "mixed_fields.prename" %></th>
+      <th><%= t "mixed_fields.lastname" %></th>
+      <th><%= t "mixed_fields.unit" %></th>
+      <th><%= t "mixed_fields.email" %></th>
+      <th><%= t "mixed_fields.mobile_number" %></th>
+      <th><%= t "mixed_fields.username" %></th>
+      <th><%= t "mixed_fields.index.info" %></th>
       <th></th>
     </tr>
   </thead>
@@ -27,9 +26,9 @@
         <td><%= user.mobile_number %></td>
         <td><%= user.username %></td>
         <td><%= user.info %></td>
-        <td><%= link_to 'Show', user, class: 'btn btn-info' %>
-        <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-warning' %>
-        <%= link_to 'Destroy', user, method: :delete, onclick: 'return confirm("Are you sure?")', class: 'btn btn-danger' %></td>
+        <td><%= link_to (t "buttons.show"), user, class: 'btn btn-info' %>
+        <%= link_to (t "buttons.edit"), edit_user_path(user), class: 'btn btn-warning' %>
+        <%= link_to (t "buttons.destroy"), user, method: :delete, onclick: 'return confirm("Are you sure?")', class: 'btn btn-danger' %></td>
 
       </tr>
     <% end %>
@@ -38,4 +37,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path, class: 'btn btn-success' %>
+<%= link_to (t "buttons.new.user"), new_user_path, class: 'btn btn-success' %>

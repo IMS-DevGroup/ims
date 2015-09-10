@@ -1,0 +1,37 @@
+class AddStandatDataTypes < ActiveRecord::Migration
+  def change
+
+
+
+      #Create standart value for String
+      dt_string = DataType.new
+      dt_string.name = "String"
+      dt_string.save
+
+
+      #Create standart value for Float
+      dt_float = DataType.new
+      dt_float.name = "Float"
+      dt_float.save
+
+
+      #Create standart value for Timestamp
+      dt_time= DataType.new
+      dt_time.name = "Time"
+      dt_time.save
+
+
+      #Create standart value for Boolean
+      dt_boolean = DataType.new
+      dt_boolean.name = "Boolean"
+      dt_boolean.save
+
+      #Create standart value for Integer
+      #handle ths as an integer
+      dt_fixnum = DataType.new
+      dt_fixnum.name = "Fixnum"
+      dt_fixnum.save
+
+
+  end
+end

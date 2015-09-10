@@ -58,6 +58,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
+    bootstrap-switch-rails (3.3.3)
     builder (3.2.2)
     byebug (6.0.2)
     chunky_png (1.3.4)
@@ -84,6 +85,8 @@ GEM
     faraday_middleware (0.10.0)
       faraday (>= 0.7.4, < 0.10)
     ffi (1.9.10)
+    flag-icon-sass (0.1)
+      sass (>= 3.2.19)
     gh (0.14.0)
       addressable
       backports
@@ -228,11 +231,13 @@ DEPENDENCIES
   barby
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.2.0)
+  bootstrap-switch-rails
   byebug
   chunky_png
   coffee-rails (~> 4.1.0)
   dotenv-rails
   execjs
+  flag-icon-sass
   gon
   heroku-deflater
   jbuilder (~> 2.0)
