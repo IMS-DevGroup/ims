@@ -55,4 +55,4 @@
 
 
 <a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
-<%= link_to 'Edit', edit_user_path(@user), class:'btn btn-warning' %>
+<%if current_user.right.manage_users==true%><%= link_to 'Edit', edit_user_path(@user), class:'btn btn-warning' %><%end%>

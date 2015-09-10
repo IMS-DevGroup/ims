@@ -27,9 +27,9 @@
         <td><%= user.mobile_number %></td>
         <td><%= user.username %></td>
         <td><%= user.info %></td>
-        <td><%= link_to (t "buttons.show"), user, class: 'btn btn-info' %>
-        <%= link_to (t "buttons.edit"), edit_user_path(user), class: 'btn btn-warning' %>
-        <%= link_to (t "buttons.destroy"), user, method: :delete, onclick: 'return confirm("Are you sure?")', class: 'btn btn-danger' %></td>
+        <td><%= link_to (t "buttons.show"), user, class: 'btn btn-info'%>
+          <%if current_user.right.manage_users==true%><%= link_to (t "buttons.edit"), edit_user_path(user), class: 'btn btn-warning' %><%end%>
+          <%if current_user.right.manage_users==true%> <%= link_to (t "buttons.destroy"), user, method: :delete, onclick: 'return confirm("Are you sure?")', class: 'btn btn-danger' %></td><%end%>
 
       </tr>
     <% end %>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to (t "buttons.new.user"), new_user_path, class: 'btn btn-success' %>
+              <%if current_user.right.manage_users==true%><%= link_to (t "buttons.new.user"), new_user_path, class: 'btn btn-success' %><%end%>

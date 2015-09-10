@@ -14,11 +14,18 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    if current_user.right.manage_users == false
+      redirect_to '/users/'
+    else
     @user = User.new
+    end
   end
 
   # GET /users/1/edit
   def edit
+    if current_user.right.manage_users == false
+      redirect_to '/users/'
+    end
   end
 
   # POST /users
