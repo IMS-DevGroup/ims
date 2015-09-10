@@ -1,9 +1,5 @@
 <h1><%= t 'devices.index.title' %></h1>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 779184572bbb22d5ba730e25bc105c3acd220068
 <table id='devices' class='table table-striped'>
   <thead>
     <tr>
@@ -30,7 +26,7 @@
         <td width="180px"><%= link_to (t "buttons.show"), device, class: 'btn btn-info' %>
        <%= link_to (t 'buttons.edit'), edit_device_path(device), class: 'btn btn-warning' %>
         <%= link_to (t 'buttons.destroy'), device, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td>
-        
+
       </tr>
     <% end %>
   </tbody>
