@@ -12,12 +12,16 @@
 
 <p>
   <strong>DataType:</strong>
-  <%= @property.data_type.name %>
+  <% unless @property.data_type.nil?%>
+      <%= @property.data_type.name %>
+  <%end%>
 </p>
 
 <p>
   <strong>DeviceType:</strong>
-  <%= @property.device_type.name %>
+  <% unless @property.device_type.nil?%>
+      <%= @property.device_type.name %>
+  <%end%>
 </p>
 
 <%= link_to 'Edit', edit_property_path(@property) %> |

@@ -21,7 +21,7 @@
       <tr>
         <td><%= user.prename %></td>
         <td><%= user.lastname %></td>
-        <td><%= if user.unit.nil? then else user.unit.name end%></td>
+        <td><% unless user.unit.nil?%>  <%= user.unit.name %> <%end%></td>
         <td><%= user.email %></td>
         <td><%= user.mobile_number %></td>
         <td><%= user.username %></td>

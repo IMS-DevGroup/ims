@@ -11,7 +11,9 @@
     <td>
       <p>
       <strong><%= (t "stocks.unit") + ":" %></strong>
-      <%= @stock.unit.name %>
+        <% unless @stock.unit.nil?%>
+            <%= @stock.unit.name %>
+        <%end%>
       </p>
     </td>
     <td>

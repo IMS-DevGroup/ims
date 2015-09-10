@@ -96,6 +96,11 @@ GEM
       net-http-pipeline
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gon (6.0.1)
+      actionpack (>= 3.0)
+      json
+      multi_json
+      request_store (>= 1.0)
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
     highline (1.7.3)
@@ -174,6 +179,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    request_store (1.2.0)
     sass (3.4.18)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -238,6 +244,7 @@ DEPENDENCIES
   dotenv-rails
   execjs
   flag-icon-sass
+  gon
   heroku-deflater
   jbuilder (~> 2.0)
   jquery-datatables-rails!

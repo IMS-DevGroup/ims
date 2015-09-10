@@ -21,8 +21,11 @@
 </p>
 <p>
   <strong><%= (t "operations.user") + ":" %></strong>
-  <%= @operation.user.prename%>
-  <%= @operation.user.lastname%>
+  <% unless @operation.user.nil?%>
+      <%= @operation.user.prename%>
+      <%= @operation.user.lastname%>
+  <%end%>
+
 </p>
 
 <p>

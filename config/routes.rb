@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   post  'login'   =>  'sessions#create'
   get   'logout'  =>  'sessions#remove'
   post  'get-prop' => 'devices#get_properties'
-  post  'set-val' =>  'values#transfer'
   get   'lendings/:id/return' => 'lendings#return' , as: 'return_lending'
   # route for first try of multiple-device-lending
   # post  'delete_from_list' => 'lendings#delete_from_list'
@@ -27,6 +26,7 @@ Rails.application.routes.draw do
   resources :users
   resources :rights
   resources :barcode_tests
+  resources :lendings_selector
   resources :contacts, only: [:new, :create]
   match '/contacts',     to: 'contacts#new',             via: 'get'
 

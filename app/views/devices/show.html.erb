@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong><%= (t "devices.ready") + ":" %></strong>
-  <%= @device.ready %>
+  <strong><%= (t "devices.device_type") + ":"%></strong>
+  <% unless @device.device_type.nil?  %>
+      <%= @device.device_type.name %>
+  <% end %>
 </p>
 
 <p>
@@ -12,20 +14,22 @@
 
 <p>
   <strong><%= (t "devices.owner") + ":"%></strong>
-  <%= Stock.find_by_id(@device.owner_id).name %>
-</p>
-
-<p>
-  <strong><%= (t "devices.device_type") + ":"%></strong>
-  <% if !@device.device_type.nil? %> <%= @device.device_type.name%><% end %>
+  <% unless (tmp = Stock.find_by_id(@device.owner_id)).nil?  %>
+  <%= tmp.name %>
+  <% end %>
 </p>
 
 <p>
   <strong><%= (t "devices.stock") + ":"%></strong>
-  <%= @device.stock.name%>
+  <% unless @device.stock.nil?  %>
+      <%= @device.stock.name %>
+  <% end %>
 </p>
 
+<p>
+<strong><%= (t "devices.ready") + ":" %></strong>
+<%= @device.ready %>
+</p>
 
 <a href="/devices/"><button type="button" class = "btn btn-primary" ><%= t "buttons.back"%></button></a>
 <%= link_to (t "buttons.edit"), edit_device_path(@device), class:'btn btn-warning' %>
-
