@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :lendings
   belongs_to :unit
-  has_one :operation
+  has_many :operation
 
   #this removes the extra break between label and field if error is thrown
   validates :prename, presence: true
@@ -101,6 +101,7 @@ class User < ActiveRecord::Base
   protected
   def default_values
     self.active = true
+    self.save
   end
 
   def create_rights

@@ -24,7 +24,7 @@
 <!-- TODO: Change to username instead of ID -->
 <p>
   <strong>Lender:</strong>
-  <%= if !(@lending.lender_id.nil?) then User.find_by_id(@lending.lender_id).username end %>
+  <%= @lending.lender_id %>
 </p>
 
 <p>
@@ -40,7 +40,7 @@
 <!-- TODO: Change to username instead of ID -->
 <p>
   <strong>Receiver:</strong>
-  <%= if !(@lending.receiver_id.nil?) then User.find_by_id(@lending.receiver_id).username end %>
+  <%= @lending.receiver_id %>
 </p>
 
 <%= link_to 'Edit', edit_lending_path(@lending) %> |

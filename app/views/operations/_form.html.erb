@@ -3,7 +3,7 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label  t "operations.operation_type_req" %><br>
+            <%= f.label  (t "operations.operation_type") + " *" %><br>
             <%= f.text_field :operation_type %>
           </div>
         </td>
@@ -21,7 +21,7 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label t "mixed_fields.location_req" %><br>
+            <%= f.label (t "mixed_fields.location") + " *" %><br>
             <%= f.text_field :location%>
           </div>
         </td>
@@ -44,7 +44,7 @@
       </tr>
 
       <div class="form-group">
-        <%= f.label t "operations.user_req" %> <br>
+        <%= f.label (t "operations.user") + " *" %> <br>
         <%= f.collection_select :user_id, User.all, :id, :prename, {}, class: "form-control", include_blank:'choose user'%>
       </div>
 
