@@ -15,12 +15,35 @@ en:
               taken: This username is already taken, please choose another one.
             email:
               taken: This email address already exists in the database, please choose another one.
+        operation:
+          attributes:
+            type:
+              blank: Please insert an operation type.
+            name:
+              blank: Please insert an operation name.
+            location:
+              blank: Please insert a location.
+        stock:
+          attributes:
+            unit:
+              blank: Please choose a unit.
+            name:
+              blank: Please insert a stock name.
+        unit:
+          attributes:
+            name:
+              blank: Please insert a name.
+        device:
+          attributes:
+            owner_id:
+              blank: Please choose an owner.
+            stock_id:
+              blank: Please choose a stock.
+            ready:
+              blank: Please insert if the device is ready.
+
 
   users:
-    form:
-      prename: "Prename *"
-      lastname: "Lastname *"
-      unit: "Unit *"
     index:
       title: "Listing Users"
     edit:
@@ -30,12 +53,10 @@ en:
 
   operations:
     operation_type: "Operation type"
-    operation_type_req: "Operation type *"
     operation_dispatch_number: "Operation number dispatch"
     begin_date: "Begin date"
     ending_date: "Close date"
     user: "Squad Leader"
-    user_req: "Squad Leader *"
     new:
       title: "New Operation"
     index:
@@ -47,7 +68,6 @@ en:
 
   units:
     name: "Name"
-    name_req: "Name *"
     phone_number: "Phone Number"
     index:
       title: "Listing Units"
@@ -56,19 +76,55 @@ en:
     new:
       title: "New Unit"
 
+  stocks:
+    city: "City"
+    street: "Street"
+    index:
+      title: "Listing Stocks"
+    edit:
+      title: "Editing Stock"
+    new:
+      title: "New Stock"
+
+  devices:
+    device_type: "Device Type"
+    owner: "Owner"
+    stock: "Stock"
+    ready: "Ready"
+    index:
+      title: "Listing Devices"
+    edit:
+      title: "Editing Device"
+    new:
+      title: "New Device"
+
+
   mixed_fields:
-      email: "Email"
-      info: "Info"
-      lastname: "Lastname"
-      location: "Location"
-      location_req: "Location *"
-      mobile_number: "Mobile number"
-      password: "Password"
-      prename: "Prename"
-      stock: "Stock"
-      unit: "Unit"
-      user: "User"
-      username: "Username"
+    email: "Email"
+    info: "Info"
+    lastname: "Lastname"
+    location: "Location"
+    mobile_number: "Mobile number"
+    password: "Password"
+    prename: "Prename"
+    stock: "Stock"
+    unit: "Unit"
+    user: "User"
+    username: "Username"
+    name: "Name"
+
+  buttons:
+    back: Back
+    show: Show
+    edit: Edit
+    destroy: Delete
+    rights: Rights
+    new:
+      user: New User
+      stock: New Stock
+      operation: New Operation
+      unit: New Unit
+      device: New Device
 
   own:
     errors:
@@ -84,3 +140,7 @@ en:
       operation_created: Operation successfully created.
       unit_updated: Unit successfully updated.
       unit_created: Unit successfully created.
+      stock_updated: Stock successfully updated.
+      stock_created: Stock successfully created.
+      device_updated: Device successfully updated.
+      device_created: Device successfully created.
