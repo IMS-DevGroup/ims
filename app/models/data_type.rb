@@ -37,13 +37,6 @@ class DataType < ActiveRecord::Base
     dt_fixnum.name = "Fixnum"
     dt_fixnum.save
 
-    DeviceType.fill
-    Property.fill
-    Unit.fill
-    User.fill
-    Stock.fill
-    Device.fill
-    Value.fill
 
   end
 

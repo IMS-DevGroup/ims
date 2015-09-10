@@ -1,13 +1,13 @@
-<h1>Listing Devices</h1>
+<h1><%= t "devices.index.title" %></h1>
 
 <table id="devices" class="table table-striped">
   <thead>
     <tr>
-      <th>Info</th>
-      <th>Device type</th>
-      <th>Owner</th>
-      <th>Stock</th>
-      <th>Ready</th>
+      <th><%= t "mixed_fields.info" %></th>
+      <th><%= t "devices.device_type" %></th>
+      <th><%= t "devices.owner" %></th>
+      <th><%= t "devices.stock" %></th>
+      <th><%= t "devices.ready" %></th>
       <th></th>
     </tr>
   </thead>
@@ -20,9 +20,9 @@
         <td><% unless (tmp = Stock.find_by_id(device.owner_id)).nil? %> <%=tmp.name %> <%end%></td>
         <td><% unless device.stock.nil?%> <%= device.stock.name %> <%end%></td>
         <td><%= device.ready %></td>
-        <td><%= link_to 'Show', device, class: 'btn btn-info' %>
-        <%= link_to 'Edit', edit_device_path(device), class: 'btn btn-warning' %>
-        <%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <td><%= link_to (t "buttons.show"), device, class: 'btn btn-info' %>
+        <%= link_to (t "buttons.edit"), edit_device_path(device), class: 'btn btn-warning' %>
+        <%= link_to (t "buttons.destroy"), device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Device', new_device_path, class: 'btn btn-success' %>
+<%= link_to (t "buttons.new.device"), new_device_path, class: 'btn btn-success' %>
