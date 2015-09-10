@@ -31,18 +31,51 @@
         var jahr = date.getFullYear();
         var tagInWoche = date.getDay();
         var jahr_t = date.getFullYear() - 2000;
-        var wochentag = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag");
-        var monat = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember");
+        var wochentag;
+        var monat;
+        var datum;
         var monat_t = new Array("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
 
-        if(stunden < 10){stunden = "0" + stunden;}
-        if(minuten < 10){minuten = "0" + minuten;}
-        if(tag < 10){tag = "0" + tag;}
+        if (<%=I18n.locale.to_s == "de"%>) {
+            <%= puts I18n.locale %>
+            <%= puts "hier kommt die maus deutsche sprache" %>
+            wochentag = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag")
+            monat = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember")
+        }else{
+            <%= puts I18n.locale %>
+            <%= puts "hier kommt die maus englische sprache" %>
+            wochentag = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+            monat = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+        }
 
-        var datum = wochentag[tagInWoche] + ", " + tag + ". " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
-        var datum_t = tag + "" + stunden + "" + minuten + "" + monat_t[monatDesJahres] + "" + jahr_t;
+        if (stunden < 10) {
+            stunden = "0" + stunden;
+        }
+        if (minuten < 10) {
+            minuten = "0" + minuten;
+        }
+        if (tag < 10) {
+            tag = "0" + tag;
+        }
+
+        if (<%=I18n.locale.to_s == "de"%>) {
+            datum = wochentag[tagInWoche] + ", " + tag + ". " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
+        } else { <!-- englisches Datum -->
+            if(tag == 1 || tag == 21 || tag == 31) {
+                datum = wochentag[tagInWoche] + ", the " + + tag + "st of " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
+            } else if(tag == 2 || tag == 22){
+                datum = wochentag[tagInWoche] + ", the " + + tag + "nd of " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
+            } else if(tag == 3 || tag == 23){
+                datum = wochentag[tagInWoche] + ", the " + + tag + "rd of " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
+            } else{
+                datum = wochentag[tagInWoche] + ", the " + + tag + "th of " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
+            }
+        }
 
         document.getElementById('time').innerHTML = datum;
+        var datum_t = tag + "" + stunden + "" + minuten + "" + monat_t[monatDesJahres] + "" + jahr_t;
+
+        <!--document.getElementById('time').innerHTML = datum;-->
         document.getElementById('time1').innerHTML = datum_t;
         setTimeout(updateTime, 60000);
     }
