@@ -5,8 +5,8 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label t "mixed_fields.username"%><br>
-            <%= f.text_field :username%>
+            <%= f.label t "mixed_fields.username" %><br>
+            <%= f.text_field :username %>
           </div>
         </td>
         <td>
@@ -20,7 +20,7 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label (t "mixed_fields.prename") + " *"%><br>
+            <%= f.label (t "mixed_fields.prename") + " *" %><br>
             <%= f.text_field :prename %>
           </div>
         </td>
@@ -55,6 +55,22 @@
           </div>
         </td>
       </tr>
+      <tr>
+        <td>
+            <div class="form-group ">
+              <%= f.label (t "mixed_fields.unit") + " *" %>
+              <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control" %>
+            </div>
+        </td>
+        <td>
+          <% if @user.persisted? then %>
+              <div class="form-group">
+                <%= f.label (t 'users.edit.active') %><br>
+                <%= f.check_box :active %>
+              </div>
+          <% end %>
+        </td>
+      </tr>
 
       <div class="form-group">
       <%= f.label (t "devices.ready") + " *" %><br>
@@ -64,23 +80,22 @@
     </table>
 
 
-    <div class="form-group ">
-      <%= f.label (t "mixed_fields.unit") + " *" %>
-      <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control" %>
-    </div>
 
     <br>
     <br>
+
     <div>
-          <a href="/users/"><button type="button" class = "btn btn-primary" ><%= (t "buttons.back")%></button></a>
-          <% if !Right.find_by_user_id(@user.id).nil? %>
-              <%= link_to (t "buttons.rights"), edit_right_path(Right.find_by_user_id(@user.id)), class: 'btn btn-info' %>
-          <% end %>
+      <a href="/users/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+      <% if !Right.find_by_user_id(@user.id).nil? %>
+          <%= link_to (t "buttons.rights"), edit_right_path(Right.find_by_user_id(@user.id)), class: 'btn btn-info' %>
+      <% end %>
 
 
-          <%= link_to (t "buttons.show"), @user , class:'btn btn-info'%>
-        <%= f.submit (t "buttons.submit"), class:'btn btn-success', style:"margin-left:230px;"%>
+      <%= link_to (t "buttons.show"), @user, class: 'btn btn-info' %>
+      <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
 
     </div>
+
+
 
 <% end %>
