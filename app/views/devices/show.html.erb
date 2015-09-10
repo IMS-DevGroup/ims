@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Ready:</strong>
-  <%= @device.ready %>
+  <strong>Device type</strong>
+  <%= @device.device_type.name %>
 </p>
 
 <p>
@@ -16,16 +16,14 @@
 </p>
 
 <p>
-  <strong>Device type</strong>
-  <%= @device.device_type.name %>
-</p>
-
-<p>
   <strong>Stock</strong>
   <%= @device.stock.name%>
 </p>
 
+<p>
+  <strong>Ready:</strong>
+  <%= @device.ready %>
+</p>
 
 <a href="/devices/"><button type="button" class = "btn btn-primary" >Back</button></a>
 <%= link_to 'Edit', edit_device_path(@device), class:'btn btn-warning' %>
-

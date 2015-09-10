@@ -28,6 +28,7 @@ class DevicesController < ApplicationController
 
     respond_to do |format|
       if @device.save
+        ValuesController.transfer(params['prop_val'], params['prop_id'], @device)
         format.html { redirect_to @device, notice: 'Device was successfully created.' }
         format.json { render :show, status: :created, location: @device }
       else
@@ -83,6 +84,6 @@ class DevicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_params
-      params.require(:device).permit(:ready, :info, :owner_id, :value_id, :stock_id, :device_type_id)
+      params.require(:device).permit(:ready, :info, :owner_id, :stock_id, :device_type_id)
     end
 end

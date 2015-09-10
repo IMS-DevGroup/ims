@@ -61,8 +61,14 @@ class ValuesController < ApplicationController
     end
   end
 
-  def transfer
-    Value.create(:value => params[:prop_val], :property_id => params[:prop_id])
+  def ValuesController.transfer(prop_val, prop_id, device)
+    prop_val.each do |i, val|
+      v = Value.new
+      v.value = val
+      v.property_id = prop_id[i]
+      v.device_id = device.id
+      v.save
+    end
   end
 
   private
