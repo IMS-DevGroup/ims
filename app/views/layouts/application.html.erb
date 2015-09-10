@@ -6,7 +6,7 @@
 
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-
+  <%= include_gon %>
   <style>
       #impressum { text-align: right; margin-right: 4px}
       .logoutdiv { text-align: right; margin-right: 4px}
@@ -84,7 +84,6 @@
     <div id="time1">
     </div>
 </div>
-
 <div id="bgcontainer">
   <% if(flash[:success])%>
       <div class="alert alert-success alert-dismissible" role="alert">
