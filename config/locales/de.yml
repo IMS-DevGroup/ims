@@ -118,6 +118,7 @@ de:
     edit: Ändern
     destroy: Löschen
     rights: Rechte
+    submit: Speichern
     new:
       user: Neuer User
       stock: Neues Lager
@@ -140,12 +141,17 @@ de:
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
+      user_destroyed: Benutzer erfolgreich gelöscht.
       user_login: Benutzer erfolgreich eingeloggt.
       operation_updated: Einsatz erfolgreich geupdated.
       operation_created: Einsatz erfolgreich angelegt.
+      operation_destroyed: Einsatz erfolgreich gelöscht.
       unit_updated: Einheit erfolgreich geupdated.
       unit_created: Einheit erfolgreich angelegt.
+      unit_destroyed: Einheit erfolgreich gelöscht.
       stock_updated: Lager erfolgreich geupdated.
       stock_created: Lager erfolgreich angelegt.
+      stock_destroyed: Lager erfolgreich gelöscht.
       device_updated: Gerät erfolgreich geupdated.
       device_created: Gerät erfolgreich angelegt.
+      device_destroyed: Gerät erfolgreich gelöscht.
