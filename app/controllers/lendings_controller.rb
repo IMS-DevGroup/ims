@@ -32,45 +32,29 @@ class LendingsController < ApplicationController
   # POST /lendings
   # POST /lendings.json
   def create
-
     @lending = Lending.new(lending_params)
-
-    respond_to do |format|
-
-=begin
-  # Currently disabled remainder of first try of multiple-device-lending
-      # adding more devices, currently old device is filled in by default
-      if params[:commit].eql?("add")
-        @@global_list << lending_params
-        @list = @@global_list
-        format.html { render :new }
-
-      # saving the objects from the list (caution currently no error handling!)
+    # handle quick-generation of user
+    if params[:commit].eql?("Quick User")
+      user = User.new(prename: params[:user_prename], lastname: params[:user_lastname], unit_id: params[:user_unit], info: params[:user_info])
+      puts user
+      if user.save
+        @lending.user_id = user.id
+      end
+      render :new
+    #submit of entire lending (currently one)
+    else
+      respond_to do |format|
+      if @lending.save
+        format.html { redirect_to @lending, notice: 'Lending was successfully created.' }
+        format.json { render :show, status: :created, location: @lending }
       else
-        @@global_list.each do |len_params|
-          @lending = Lending.new(len_params)
-          if @lending.save
-            puts("success")
-          else
-            puts("failure")
-          end
-        end
-        #reset global list to empty
-        @@global_list = []
-        format.html {redirect_to :back}
+        format.html { render :new }
+        format.json { render json: @lending.errors, status: :unprocessable_entity }
       end
-=end
+    end
 
+    end
 
-     # original code
-       if @lending.save
-         format.html { redirect_to @lending, notice: 'Lending was successfully created.' }
-         format.json { render :show, status: :created, location: @lending }
-       else
-         format.html { render :new }
-         format.json { render json: @lending.errors, status: :unprocessable_entity }
-       end
-      end
   end
 
   # PATCH/PUT /lendings/1
@@ -100,12 +84,6 @@ class LendingsController < ApplicationController
   # GET lendings/1/return
   def return
   end
-
-  # Currently disabled remainder of first try of multiple-device-lending
-  # def delete_from_list
-  #   puts params
-  #   redirect_to action: :new
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
