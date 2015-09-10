@@ -18,11 +18,8 @@
   <tbody>
     <% @lendings.each do |lending| %>
       <tr>
-        <td><% if lending.user.nil? then else %>
-              <%=lending.user.prename %> <%= lending.user.lastname %>
-            <%end%>
-        </td>
-        <td><%= if lending.device.nil? then else lending.device.info end%></td>
+        <td><% unless lending.user.nil?%>  <%=lending.user.prename %> <%= lending.user.lastname %> <%end%></td>
+        <td><% unless lending.device.nil?%>  <%= lending.device.info %> <%end%></td>
         <td><%= lending.created_at %></td>
         <td><%= lending.lending_info %></td>
         <td><%= lending.receive %></td>
