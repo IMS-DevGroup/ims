@@ -4,21 +4,30 @@ class RightsController < ApplicationController
   # GET /rights
   # GET /rights.json
   def index
-    @rights = Right.all
+    redirect_to '/starts/'
+    #this reactivates the link to /rights
+     #@rights = Right.all
   end
 
   # GET /rights/1
   # GET /rights/1.json
   def show
+    #delete the following to reactivate link
+    redirect_to '/starts/'
   end
 
   # GET /rights/new
   def new
-    @right = Right.new
+
+    redirect_to '/starts/'
+    #this reactivates the link to /rights
+    #@right = Right.new
   end
 
   # GET /rights/1/edit
   def edit
+    #delete the following to reactivate link
+    redirect_to '/starts/'
   end
 
   # POST /rights

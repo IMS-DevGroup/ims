@@ -61,6 +61,10 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def get_data_type_name
+    return @property.data_type.name
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_property

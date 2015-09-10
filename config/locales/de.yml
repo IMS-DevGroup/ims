@@ -46,6 +46,7 @@ de:
       title: Nutzerliste
     edit:
       title: Nutzer bearbeiten
+      active: Aktiv
     new:
       title: Neuen Nutzer anlegen
 

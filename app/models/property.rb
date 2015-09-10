@@ -6,9 +6,7 @@ class Property < ActiveRecord::Base
 
   validates :name , presence: true
   validates :data_type_id , presence: true
-  #validates :device_type_id , presence: true
-
-
+  validates :device_type_id , presence: true
 
   def self.fill
 

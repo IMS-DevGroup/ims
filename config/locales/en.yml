@@ -48,6 +48,7 @@ en:
       title: Listing Users
     edit:
       title: Editing User
+      active: Active
     new:
       title: New User
 

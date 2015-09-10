@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910104325) do
+ActiveRecord::Schema.define(version: 20150910133709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20150910104325) do
     t.boolean  "manage_device_types"
     t.boolean  "manage_stocks_and_units"
     t.boolean  "manage_operations"
+    t.boolean  "admin"
   end
 
   create_table "startpages", force: :cascade do |t|
@@ -152,6 +153,11 @@ ActiveRecord::Schema.define(version: 20150910104325) do
     t.string   "reset_key"
     t.datetime "reset_sent_at"
     t.string   "language"
+  end
+
+  create_table "users_rights", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "right_id"
   end
 
   create_table "values", force: :cascade do |t|
