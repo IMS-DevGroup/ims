@@ -1,5 +1,4 @@
 <%= form_for(@device) do |f| %>
-
     <div class="form-group">
     <%= f.label t "devices.device_type" %><br>
     <%= f.collection_select :device_type_id, DeviceType.all, :id, :name, { prompt: 'Select device type' },
