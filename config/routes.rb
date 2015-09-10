@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get 'password_resets/new'
-
   get 'password_resets/edit'
 
   get 'set_language/english'
@@ -11,7 +10,8 @@ Rails.application.routes.draw do
   get   'login'   =>  'sessions#new'
   post  'login'   =>  'sessions#create'
   get   'logout'  =>  'sessions#remove'
-  post  'get-prop' => 'devices#get_properties'
+  post  'get-prop'=>  'devices#get_properties'
+  post  'set-val' =>  'values#transfer'
   get   'lendings/:id/return' => 'lendings#return'
   get 'pwr' => 'password_resets#new'
   # route for first try of multiple-device-lending
@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   resources :users
   resources :rights
   resources :barcode_tests
+  resources :contacts, only: [:new, :create]
+  match '/contacts', to: 'contacts#new', via: 'get'
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
