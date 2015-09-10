@@ -20,7 +20,7 @@
         <td><% unless (tmp = Stock.find_by_id(device.owner_id)).nil? %> <%=tmp.name %> <%end%></td>
         <td><% unless device.stock.nil?%> <%= device.stock.name %> <%end%></td>
         <td><%= device.ready %></td>
-        <td><%= link_to (t "buttons.show"), device, class: 'btn btn-info' %>
+        <td width="180px"><%= link_to (t "buttons.show"), device, class: 'btn btn-info' %>
         <%= link_to (t "buttons.edit"), edit_device_path(device), class: 'btn btn-warning' %>
         <%= link_to (t "buttons.destroy"), device, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
