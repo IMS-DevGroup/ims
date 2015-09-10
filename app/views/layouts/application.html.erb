@@ -6,7 +6,7 @@
 
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-
+  <%= include_gon %>
   <style>
       #impressum { text-align: right; margin-right: 4px}
       .logoutdiv { text-align: right; margin-right: 4px}
@@ -40,7 +40,7 @@
         if(tag < 10){tag = "0" + tag;}
 
         var datum = wochentag[tagInWoche] + ", " + tag + ". " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
-        var datum_t = tag + stunden + minuten + monat_t[monatDesJahres] + jahr_t;
+        var datum_t = tag + "" + stunden + "" + minuten + "" + monat_t[monatDesJahres] + "" + jahr_t;
 
         document.getElementById('time').innerHTML = datum;
         document.getElementById('time1').innerHTML = datum_t;
@@ -84,7 +84,6 @@
     <div id="time1">
     </div>
 </div>
-
 <div id="bgcontainer">
   <% if(flash[:success])%>
       <div class="alert alert-success alert-dismissible" role="alert">
@@ -131,7 +130,7 @@
   <% if !logged_in? %>
       <ul class="nav nav-pills nav-stacked">
         <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> " ><a href="/login/" >Start</a></li>
-        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'operations' %> "><a href="/login/" ><%= t "buttons.main_menu.operations" %>></a></li>
+        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'operations' %> "><a href="/login/" ><%= t "buttons.main_menu.operations" %></a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'devices' %> "><a href="/login/" ><%= t "buttons.main_menu.devices" %></a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'stocks' %> "><a href="/login/" ><%= t "buttons.main_menu.stocks" %></a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'users' %> "><a href="/login/" ><%= t "buttons.main_menu.users" %></a></li>
