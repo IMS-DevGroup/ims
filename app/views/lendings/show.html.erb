@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<!-- TODO: Change to username instead of ID -->
+
 <p>
   <strong>User:</strong>
-  <%= @lending.user.prename %> <%=@lending.user.lastname %>
+  <% unless @lending.user.nil?%>
+      <%=@lending.user.prename %> <%= @lending.user.lastname %>
+  <%end%>
 </p>
 
 <p>
   <strong>Device:</strong>
-  <%= @lending.device %>
+  <% unless @lending.device.nil?%>
+      <%= @lending.device.info %>
+  <%end%>
 </p>
 
 <p>
@@ -21,10 +25,11 @@
   <%= @lending.lending_info %>
 </p>
 
-<!-- TODO: Change to username instead of ID -->
 <p>
   <strong>Lender:</strong>
-  <%= @lending.lender_id %>
+  <% unless (tmp = User.find_by_id(@lending.lender_id)).nil?  %>
+      <%= tmp.username %>
+  <% end %>
 </p>
 
 <p>
@@ -37,10 +42,11 @@
   <%= @lending.receive_info %>
 </p>
 
-<!-- TODO: Change to username instead of ID -->
 <p>
   <strong>Receiver:</strong>
-  <%= @lending.receiver_id %>
+  <% unless (tmp = User.find_by_id(@lending.receiver_id)).nil?  %>
+      <%= tmp.username %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_lending_path(@lending) %> |

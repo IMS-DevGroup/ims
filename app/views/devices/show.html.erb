@@ -12,17 +12,23 @@
 
 <p>
   <strong><%= (t "devices.owner") + ":"%></strong>
-  <%= Stock.find_by_id(@device.owner_id).name %>
+  <% unless (tmp = Stock.find_by_id(@device.owner_id)).nil?  %>
+  <%= tmp.name %>
+  <% end %>
 </p>
 
 <p>
   <strong><%= (t "devices.device_type") + ":"%></strong>
-  <% if !@device.device_type.nil? %> <%= @device.device_type.name%><% end %>
+  <% unless @device.device_type.nil?  %>
+      <%= @device.device_type.name %>
+  <% end %>
 </p>
 
 <p>
   <strong><%= (t "devices.stock") + ":"%></strong>
-  <%= @device.stock.name%>
+  <% unless @device.stock.nil?  %>
+      <%= @device.stock.name %>
+  <% end %>
 </p>
 
 
