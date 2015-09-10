@@ -14,19 +14,19 @@ class Operation < ActiveRecord::Base
     dt = Operation.new
     dt.location = "Osnabrück"
     dt.user = User.last
-    dt.operation_type = "Operation am offenen Bruch"
+    dt.operation_type = "Operation_1"
     dt.save
 
     dt = Operation.new
     dt.location = "Borken"
     dt.user = User.first
-    dt.operation_type ="Hirn Amputation "
+    dt.operation_type ="Operation_2"
     dt.save
 
     dt = Operation.new
     dt.location = "Meppen"
     dt.user = User.first
-    dt.operation_type="Eier Amputation"
+    dt.operation_type="Operation_3"
     dt.save
 
 
