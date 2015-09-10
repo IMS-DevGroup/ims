@@ -14,8 +14,8 @@
   </div>
   <div class="actions">
 
-    <%= link_to 'Back', units_path,class:'btn btn-primary' %>
-    <%= link_to 'Show', @unit, class:'btn btn-info'%>
-    <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
+    <%= link_to (t "buttons.back"), units_path,class:'btn btn-primary' %>
+    <%= link_to (t "buttons.show"), @unit, class:'btn btn-info'%>
+    <%= f.submit (t "buttons.submit"), class:'btn btn-success', style:"margin-left:230px;"%>
   </div>
 <% end %>
