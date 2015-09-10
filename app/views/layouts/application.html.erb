@@ -40,7 +40,7 @@
         if(tag < 10){tag = "0" + tag;}
 
         var datum = wochentag[tagInWoche] + ", " + tag + ". " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
-        var datum_t = tag + stunden + minuten + monat_t[monatDesJahres] + jahr_t;
+        var datum_t = tag + "" + stunden + "" + minuten + "" + monat_t[monatDesJahres] + "" + jahr_t;
 
         document.getElementById('time').innerHTML = datum;
         document.getElementById('time1').innerHTML = datum_t;
