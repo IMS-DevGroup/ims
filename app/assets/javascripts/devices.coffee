@@ -4,6 +4,8 @@
 
 
 values = []
+$ ->
+  $('#devices').dataTable()
 
 $ ->
   $('#device_device_type_id').change ->

@@ -10,7 +10,6 @@
 
 
 $ ->
-  $('#devices').dataTable()
   $('#switch').bootstrapSwitch('offText', '<span class="flag-icon flag-icon-de"></span>')
   $('#switch').bootstrapSwitch('onText', '<span class="flag-icon flag-icon-gb"></span>')
   $('#switch').bootstrapSwitch('offColor', 'primary')
