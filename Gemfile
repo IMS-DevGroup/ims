@@ -37,7 +37,7 @@ gem 'dotenv-rails'
 gem 'rails_12factor', group: :production
 
 gem 'puma'
-
+gem 'gon'
 gem 'travis'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'

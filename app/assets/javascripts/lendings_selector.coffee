@@ -3,11 +3,18 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   device_array = []
-  $('button').click (event) ->
+  $('button.add-dev').click (event) ->
     devid = event.target.id
     if(devid == 'adddev')
       devid = $('#barcode').val()
+      devid = parseInt(devid)-86324120
+      $('#barcode').val('')
+    if gon.devices[devid] == undefined
+      console.log("Wolfgang gib mir eine richtige ID")
+      return true
     if(devid>0)
+      devid = parseInt(devid)
+      console.log(device_array)
       if devid in device_array
         index = device_array.indexOf(devid)
         if(index != -1)
@@ -18,7 +25,11 @@ $ ->
         device_array.push(devid)
         $('#'+devid).removeClass('btn btn-success').addClass('btn btn-danger')
         $('#'+devid).html('<span class="glyphicon glyphicon-minus-sign" aria-hidden="true">')
+        console.log(device_array)
     $('#seldevices').empty()
-    $('#seldevices').append(device_array)
+    for x in device_array
+      moped = gon.devices[x].info
+      $('#seldevices').append(moped)
+
 
 
