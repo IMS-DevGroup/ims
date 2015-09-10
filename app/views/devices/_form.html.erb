@@ -15,23 +15,23 @@
   </div>
 
   <div class="form-group">
-    <%= f.label (t 'devices.owner') + " *" %><br>
+    <%= f.label (t 'devices.owner') + '' *' %><br>
     <%= f.collection_select :owner_id, Stock.all, :id, :name, { prompt: (t 'devices.form.select_owner_stock') }, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label (t 'devices.stock') + " *" %><br>
+    <%= f.label (t 'devices.stock') + ' *' %><br>
     <%= f.collection_select :stock_id, Stock.all, :id, :name, { prompt: (t 'devices.form.select_current_stock') }, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label (t 'devices.ready') + " *" %><br>
+    <%= f.label (t 'devices.ready') + ' *' %><br>
     <%= f.check_box :ready %>
   </div>
 
   <div class="actions">
-    <a href="/devices/"><button type="button" class="btn btn-primary" ><%=(t "buttons.back")%></button></a>
-    <%= link_to (t "buttons.show"), @device, class: 'btn btn-info' %>
-    <%= f.submit (t "buttons.submit"), submit: '', class: 'btn btn-success', style: 'margin-left:230px' %>
+    <a href="/devices/"><button type="button" class="btn btn-primary" ><%=(t 'buttons.back')%></button></a>
+    <%= link_to (t 'buttons.show'), @device, class: 'btn btn-info' %>
+    <%= f.submit (t 'buttons.submit'), submit: '', class: 'btn btn-success', style: 'margin-left:230px' %>
   </div>
 <% end %>
