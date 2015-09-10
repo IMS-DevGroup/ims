@@ -67,8 +67,6 @@ class LendingsController < ApplicationController
          format.html { redirect_to @lending, notice: 'Lending was successfully created.' }
          format.json { render :show, status: :created, location: @lending }
        else
-         #get all error messages and save it into a string
-         flash.now[:error] = (@lending.errors.full_messages).join("<br/>").html_safe
          format.html { render :new }
          format.json { render json: @lending.errors, status: :unprocessable_entity }
        end
@@ -83,8 +81,6 @@ class LendingsController < ApplicationController
         format.html { redirect_to @lending, notice: 'Lending was successfully updated.' }
         format.json { render :show, status: :ok, location: @lending }
       else
-        #get all error messages and save it into a string
-        flash.now[:error] = (@lending.errors.full_messages).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @lending.errors, status: :unprocessable_entity }
       end
