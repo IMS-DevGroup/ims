@@ -64,6 +64,8 @@ en:
       title: Listing Operations
     form:
       linked_user: User
+      select_stock: Select stock
+      select_user: Select Squad Leader
     edit:
       title: Editing Operation
 
@@ -80,6 +82,8 @@ en:
   stocks:
     city: City
     street: Street
+    form:
+      select_unit: Select unit
     index:
       title: Listing Stocks
     edit:
@@ -139,6 +143,7 @@ en:
       users: Users
       stocks: Stocks
       units: Units
+      contact: Contact
 
   own:
     errors:
