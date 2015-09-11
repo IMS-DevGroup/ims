@@ -11,15 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label (t "mixed_fields.name") %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label (t "mixed_fields.info") %><br>
     <%= f.text_area :info %>
   </div>
   <div class="actions">
-    <%= f.submit (t "buttons.submit")%>
+    <a href="/device_groups/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+    <%= link_to (t "buttons.show"), @device_group, class: 'btn btn-info' %>
+    <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
+
   </div>
 <% end %>

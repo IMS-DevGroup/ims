@@ -1,5 +1,4 @@
 en:
-
   activerecord:
     errors:
       models:
@@ -44,6 +43,8 @@ en:
 
 
   users:
+    choose_active_stock: Please choose your active stock
+    active_stock_all: All
     index:
       title: Listing Users
     edit:
@@ -150,7 +151,8 @@ en:
     rights: Rights
     submit: Submit
     confirmation_sure_message: Are you sure?
-
+    start:
+      set_stock: Set stock
     new:
       user: New User
       stock: New Stock
@@ -198,3 +200,8 @@ en:
       device_group_created: Device group successfully created.
       device_group_destroyed: Device group successfully deleted.
 
+
+  contact:
+    title: Send a message to us
+    submit: Send message
+    message: Message

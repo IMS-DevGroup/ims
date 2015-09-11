@@ -4,8 +4,14 @@ class DevicesController < ApplicationController
   # GET /devices
   # GET /devices.json
   def index
-    @devices = Device.all.eager_load(:stock, :device_type)
+    #check for set stock
+    if @current_user.stock.nil?
+      @devices = Device.all.eager_load(:stock, :device_type)
+    else
+      @devices = Device.where(stock_id: @current_user.stock_id).find_each
+    end
   end
+
 
   # GET /devices/1
   # GET /devices/1.json
@@ -82,20 +88,21 @@ class DevicesController < ApplicationController
     end
     respond_to do |format|
       format.json {
-        render json: { result: prop_ary }
+        render json: {result: prop_ary}
       }
     end
   end
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_device
-      @device = Device.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_device
+    @device = Device.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def device_params
-      params.require(:device).permit(:ready, :info, :owner_id, :stock_id, :device_type_id, :data_type_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def device_params
+    params.require(:device).permit(:ready, :info, :owner_id, :stock_id, :device_type_id, :data_type_id)
+  end
+
 end
