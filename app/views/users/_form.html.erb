@@ -59,7 +59,7 @@
         <td>
             <div class="form-group ">
               <%= f.label (t "mixed_fields.unit") + " *" %>
-              <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control" %>
+              <%= f.collection_select :unit_id, Unit.all, :id, :name, {prompt: (t 'stocks.form.select_unit')}, class: "form-control" %>
             </div>
         </td>
         <td>
