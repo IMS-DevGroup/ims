@@ -1,5 +1,4 @@
 en:
-
   activerecord:
     errors:
       models:
@@ -44,6 +43,8 @@ en:
 
 
   users:
+    choose_active_stock: Please choose your active stock
+    active_stock_all: All
     index:
       title: Listing Users
     edit:
@@ -126,7 +127,8 @@ en:
     rights: Rights
     submit: Submit
     confirmation_sure_message: Are you sure?
-
+    start:
+      set_stock: Set stock
     new:
       user: New User
       stock: New Stock
@@ -139,6 +141,7 @@ en:
       users: Users
       stocks: Stocks
       units: Units
+
 
   own:
     errors:

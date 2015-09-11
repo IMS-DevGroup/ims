@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if current_user.right.manage_users == false
       redirect_to '/users/'
     else
-    @user = User.new
+      @user = User.new
     end
   end
 
@@ -50,11 +50,18 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
     respond_to do |format|
       if @user.update(user_params)
+        puts 'hier kommt die maus 2'
+        puts params[:commit]
         flash[:success] = (I18n.t "own.success.user_updated").to_s
-        format.html { redirect_to @user }
-        format.json { render :show, status: :ok, location: @user }
+        if params[:commit] == (t 'buttons.start.set_stock')
+          format.html { redirect_to starts_url  }
+        else
+          format.html { redirect_to @user }
+          format.json { render :show, status: :ok, location: @user }
+        end
       else
         #get all error messages and save it into a string
         flash.now[:error] = (@user.errors.values).join("<br/>").html_safe
@@ -63,6 +70,11 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def test_test
+
+  end
+
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -84,7 +96,7 @@ class UsersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info,
-                                 :unit_id, :right_id, :password_unhashed)
+                                 :unit_id, :right_id, :password_unhashed, :stock_id)
   end
 
 end

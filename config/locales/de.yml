@@ -42,6 +42,8 @@ de:
               blank: Bitte angeben, ob das Gerät bereit ist.
 
   users:
+    choose_active_stock: 'Bitte wählen Sie den Lagerort'
+    active_stock_all: Alle
     index:
       title: Nutzerliste
     edit:
@@ -101,8 +103,6 @@ de:
     new:
       title: Neues Gerät anlegen
 
-
-
   mixed_fields:
     email: Email
     info: Information
@@ -125,7 +125,8 @@ de:
     rights: Rechte
     submit: Speichern
     confirmation_sure_message: Sind Sie sicher?
-
+    start:
+      set_stock: Bestätige Lager
     new:
       user: Neuer User
       stock: Neues Lager
