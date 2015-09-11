@@ -42,6 +42,8 @@ de:
               blank: Bitte angeben, ob das Gerät bereit ist.
 
   users:
+    choose_active_stock: 'Bitte wählen Sie den Lagerort'
+    active_stock_all: Alle
     index:
       title: Nutzerliste
     edit:
@@ -148,7 +150,8 @@ de:
     rights: Rechte
     submit: Speichern
     confirmation_sure_message: Sind Sie sicher?
-
+    start:
+      set_stock: Bestätige Lager
     new:
       user: Neuer User
       stock: Neues Lager
@@ -195,3 +198,8 @@ de:
       device_group_updated: Gerätegruppe erfolgreich geupdated.
       device_group_created: Gerätegruppe erfolgreich angelegt.
       device_group_destroyed: Gerätegruppe erfolgreich gelöscht.
+
+  contact:
+    title: Senden Sie uns eine Nachricht
+    submit: Nachricht senden
+    message: Nachricht
