@@ -17,8 +17,8 @@
         <td><%= device_group.name %></td>
         <td><%= device_group.info %></td>
         <td><%= link_to 'Show', device_group %></td>
-        <td><%= link_to 'Edit', edit_device_group_path(device_group) %></td>
-        <td><%= link_to 'Destroy', device_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%if current_user.right.manage_devices==true%><%= link_to 'Edit', edit_device_group_path(device_group) %></td><%end%>
+        <td><%if current_user.right.manage_devices==true%><%= link_to 'Destroy', device_group, method: :delete, data: { confirm: 'Are you sure?' } %></td><%end%>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Device group', new_device_group_path %>
+<%if current_user.right.manage_devices==true%><%= link_to 'New Device group', new_device_group_path %><%end%>

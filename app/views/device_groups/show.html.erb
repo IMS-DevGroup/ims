@@ -10,5 +10,5 @@
   <%= @device_group.info %>
 </p>
 
-<%= link_to 'Edit', edit_device_group_path(@device_group) %> |
+<%if current_user.right.manage_devices==true%><%= link_to 'Edit', edit_device_group_path(@device_group) %> |<%end%>
 <%= link_to 'Back', device_groups_path %>
