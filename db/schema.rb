@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911090345) do
+ActiveRecord::Schema.define(version: 20150911103017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20150911090345) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "device_groups", force: :cascade do |t|
+    t.string   "name"
+    t.text     "info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "device_types", force: :cascade do |t|
     t.string   "name"
     t.text     "info"
@@ -39,10 +46,11 @@ ActiveRecord::Schema.define(version: 20150911090345) do
     t.boolean  "ready"
     t.text     "info"
     t.integer  "owner_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "device_type_id"
     t.integer  "stock_id"
+    t.integer  "device_group_id"
   end
 
   create_table "lendings", force: :cascade do |t|
