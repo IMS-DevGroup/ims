@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= (t "operations.operation_dispatch_number") + ":" %></strong>
+  <%= @operation.number %>
+</p>
+
+<p>
+  <strong><%= (t "operations.operation_type") + ":" %></strong>
+  <%= @operation.operation_type %>
+</p>
+
+<p>
+  <strong><%= (t "mixed_fields.info") + ":" %></strong>
+  <%= @operation.info %>
+</p>
+
+<p>
+  <strong><%= (t "mixed_fields.location") + ":" %></strong>
+  <%= @operation.location %>
+</p>
+<p>
+  <strong><%= (t "operations.user") + ":" %></strong>
+  <% unless @operation.user.nil?%>
+      <%= @operation.user.prename%>
+      <%= @operation.user.lastname%>
+  <%end%>
+
+</p>
+
+<p>
+  <strong><%= (t "operations.begin_date") + ":" %></strong>
+  <%= @operation.created_at+7200 %>
+</p>
+<p>
+  <strong><%= (t "operations.ending_date") + ":" %></strong>
+  <%= @operation.close_date %>
+</p>
+
+<%= link_to (t "buttons.back"), operations_path , class:'btn btn-primary'%>
+
+<%= link_to (t "buttons.edit"), edit_operation_path(@operation), class:'btn btn-warning' %>

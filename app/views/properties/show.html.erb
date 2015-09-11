@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @property.name %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @property.info %>
+</p>
+
+<p>
+  <strong>DataType:</strong>
+  <% unless @property.data_type.nil?%>
+      <%= @property.data_type.name %>
+  <%end%>
+</p>
+
+<p>
+  <strong>DeviceType:</strong>
+  <% unless @property.device_type.nil?%>
+      <%= @property.device_type.name %>
+  <%end%>
+</p>
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>

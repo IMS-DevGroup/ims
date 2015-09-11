@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @device_type.name %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @device_type.info %>
+</p>
+
+<%= link_to (t "buttons.edit"), edit_device_type_path(@device_type) %> |
+<%= link_to (t "buttons.back"), device_types_path %>

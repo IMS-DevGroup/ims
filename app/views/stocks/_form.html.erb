@@ -1,0 +1,56 @@
+<%= form_for(@stock) do |f| %>
+
+    <table>
+      <tr>
+        <td>
+          <div class="form-group">
+            <%= f.label (t "mixed_fields.name") + " *" %><br>
+            <%= f.text_field :name %>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <%= f.label (t "mixed_fields.unit") + " *" %><br>
+            <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control", include_blank: "choose unit" %>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="form-group">
+            <%= f.label t "stocks.city" %><br>
+            <%= f.text_field :city %>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <%= f.label t "stocks.street" %><br>
+            <%= f.text_field :street %>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="form-group">
+            <%= f.label t "mixed_fields.info" %><br>
+            <%= f.text_area :info %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="actions">
+            <%= link_to (t "buttons.back"), stocks_path, class: 'btn btn-primary' %>
+            <%= link_to (t "buttons.show"), @stock, class: 'btn btn-info' %>
+          </div>
+        </td>
+        <td>
+          <div class="actions">
+            <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:0px;" %>
+          </div>
+        </td>
+      </tr>
+    </table>
+<% end %>

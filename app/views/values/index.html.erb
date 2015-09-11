@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Values</h1>
+
+<table id="values" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Property</th>
+      <th>Device</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @values.each do |value| %>
+      <tr>
+        <td><%= value.value %></td>
+        <td><%= value.property_id %></td>
+        <td><%= value.device_id %></td>
+        <td width="180px"><%= link_to 'Show', value , class: 'btn btn-info'%>
+        <%= link_to 'Edit', edit_value_path(value), class: 'btn btn-warning' %>
+        <%= link_to 'Destroy', value, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Value', new_value_path , class: 'btn btn-success'%>

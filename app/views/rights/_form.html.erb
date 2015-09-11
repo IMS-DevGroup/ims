@@ -1,0 +1,51 @@
+<%= form_for(@right) do |f| %>
+  <% if @right.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@right.errors.count, "error") %> prohibited this right from being saved:</h2>
+
+      <ul>
+      <% @right.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+
+    <%= f.check_box :manage_rights %>
+    <span title="Darf Rechte vergeben"><%=f.label :manage_rights%></span><br>
+
+  </div>
+  <div class="field">
+    <%= f.check_box :manage_users %>
+    <span title="User anlegen und bearbeiten"><%= f.label :manage_users %></span><br>
+  </div>
+  <div class="field">
+    <%= f.check_box :manage_devices %>
+    <span title="Geräte anlegen und bearbeiten"><%= f.label :manage_devices %></span><br>
+
+  </div>
+  <div class="field">
+    <%= f.check_box :manage_device_types %>
+    <span title="Gertätetypen anlegen und bearbeiten"><%= f.label :manage_device_types %></span><br>
+
+  </div>
+  <div class="field">
+    <%= f.check_box :manage_stocks_and_units %>
+    <span title="Einheiten und Standorte anlegen und bearbeiten"> <%= f.label :manage_stocks_and_units %></span><br>
+
+  </div>
+  <div class="field">
+    <%= f.check_box :manage_operations %>
+    <span title="Einsätze anlegen und bearbeiten"><%= f.label :manage_operations %></span><br>
+
+  </div>
+    <br>
+  <div class="actions">
+
+    <%= link_to 'Back to User', edit_user_path(@right.user), class:'btn btn-primary' %>
+    <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
+
+  </div>
+<% end %>

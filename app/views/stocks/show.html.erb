@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<table class="stockCreation" width=300 height=100>
+  <tr>
+      <p>
+      <strong><%= (t "mixed_fields.name") + ":" %></strong>
+      <%= @stock.name %>
+      </p>
+      <p>
+      <strong><%= (t "stocks.unit") + ":" %></strong>
+        <% unless @stock.unit.nil?%>
+            <%= @stock.unit.name %>
+        <%end%>
+      </p>
+      <p>
+      <strong><%= (t "mixed_fields.info") + ":" %></strong>
+      <%= @stock.info %>
+      </p>
+      <p>
+        <strong><%= (t "stocks.city") + ":" %></strong>
+        <%= @stock.city %>
+      </p>
+      <p>
+        <strong><%= (t "stocks.street") + ":" %></strong>
+        <%= @stock.street %>
+      </p>
+    </td>
+  </tr>
+</table>
+
+<%= link_to (t "buttons.back"), stocks_path, class:'btn btn-primary' %>
+<%= link_to (t "buttons.edit"), edit_stock_path(@stock), class:'btn btn-warning' %>
+

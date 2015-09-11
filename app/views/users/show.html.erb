@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<table class="userCreation" width=300 height=100>
+  <tr>
+      <p>
+        <strong><%= (t "mixed_fields.username") + ": " %></strong>
+        <%= @user.username %>
+      </p>
+
+  </tr>
+
+  <tr>
+      <p>
+        <strong><%= (t "mixed_fields.prename") + ": " %></strong>
+        <%= @user.prename %>
+      </p>
+
+      <p>
+        <strong><%= (t "mixed_fields.lastname") + ": " %></strong>
+        <%= @user.lastname %>
+      </p>
+  </tr>
+
+  <tr>
+      <p>
+        <strong><%= (t "mixed_fields.email") + ": " %></strong>
+        <%= @user.email %>
+      </p>
+
+      <p>
+        <strong><%= (t "mixed_fields.mobile_number") + ": " %></strong>
+        <%= @user.mobile_number %>
+      </p>
+  </tr>
+
+  <tr>
+      <p>
+        <strong><%= (t "mixed_fields.show.info") + ": " %></strong>
+        <%= @user.info %>
+      </p>
+  </tr>
+  <tr>
+      <p>
+        <strong><%= (t "mixed_fields.show.unit") + ": " %></strong>
+        <% unless @user.unit.nil?%>
+            <%= @user.unit.name %>
+        <%end%>
+      </p>
+
+  </tr>
+
+
+</table>
+
+
+
+<a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
+<%if current_user.right.manage_users==true%><%= link_to 'Edit', edit_user_path(@user), class:'btn btn-warning' %><%end%>

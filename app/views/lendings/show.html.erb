@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>User:</strong>
+  <% unless @lending.user.nil?%>
+      <%=@lending.user.prename %> <%= @lending.user.lastname %>
+  <%end%>
+</p>
+
+<p>
+  <strong>Device:</strong>
+  <% unless @lending.device.nil?%>
+      <%= @lending.device.info %>
+  <%end%>
+</p>
+
+<p>
+  <strong>Lending:</strong>
+  <%= @lending.created_at %>
+</p>
+
+<p>
+  <strong>Lending info:</strong>
+  <%= @lending.lending_info %>
+</p>
+
+<p>
+  <strong>Lender:</strong>
+  <% unless (tmp = User.find_by_id(@lending.lender_id)).nil?  %>
+      <%= tmp.username %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Receive:</strong>
+  <%= @lending.receive %>
+</p>
+
+<p>
+  <strong>Receive info:</strong>
+  <%= @lending.receive_info %>
+</p>
+
+<p>
+  <strong>Receiver:</strong>
+  <% unless (tmp = User.find_by_id(@lending.receiver_id)).nil?  %>
+      <%= tmp.username %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_lending_path(@lending) %> |
+<%= link_to 'Back', lendings_path %>

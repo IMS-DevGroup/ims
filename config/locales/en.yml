@@ -1,23 +1,165 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            prename:
+              blank: Please insert a prename.
+            lastname:
+              blank: Please insert a lastname.
+            unit:
+              blank: Please choose a unit.
+            username:
+              taken: This username is already taken, please choose another one.
+            email:
+              taken: This email address already exists in the database, please choose another one.
+        operation:
+          attributes:
+            type:
+              blank: Please insert an operation type.
+            name:
+              blank: Please insert an operation name.
+            location:
+              blank: Please insert a location.
+        stock:
+          attributes:
+            unit:
+              blank: Please choose a unit.
+            name:
+              blank: Please insert a stock name.
+        unit:
+          attributes:
+            name:
+              blank: Please insert a name.
+        device:
+          attributes:
+            owner_id:
+              blank: Please choose an owner.
+            stock_id:
+              blank: Please choose a stock.
+            ready:
+              blank: Please insert if the device is ready.
+
+
+  users:
+    index:
+      title: Listing Users
+    edit:
+      title: Editing User
+      active: Active
+    new:
+      title: New User
+
+  operations:
+    operation_type: Operation type
+    operation_dispatch_number: Operation number dispatch
+    begin_date: Begin date
+    ending_date: Close date
+    user: Squad Leader
+    new:
+      title: New Operation
+    index:
+      title: Listing Operations
+    form:
+      linked_user: User
+    edit:
+      title: Editing Operation
+
+  units:
+    name: Name
+    phone_number: Phone Number
+    index:
+      title: Listing Units
+    edit:
+      title: Editing Unit
+    new:
+      title: New Unit
+
+  stocks:
+    city: City
+    street: Street
+    index:
+      title: Listing Stocks
+    edit:
+      title: Editing Stock
+    new:
+      title: New Stock
+
+  devices:
+    device_type: Device Type
+    owner: Owner
+    stock: Stock
+    ready: Ready
+    index:
+      title: Listing Devices
+    form:
+      select_device_typ: Select device type
+      select_owner_stock: Select owner stock
+      select_current_stock: Select current stock
+    edit:
+      title: Editing Device
+    new:
+      title: New Device
+
+
+  mixed_fields:
+    email: Email
+    info: Info
+    lastname: Lastname
+    location: Location
+    mobile_number: Mobile number
+    password: Password
+    prename: Prename
+    stock: Stock
+    unit: Unit
+    user: User
+    username: Username
+    name: Name
+
+  buttons:
+    back: Back
+    show: Show
+    edit: Edit
+    destroy: Delete
+    rights: Rights
+    submit: Submit
+    confirmation_sure_message: Are you sure?
+
+    new:
+      user: New User
+      stock: New Stock
+      operation: New Operation
+      unit: New Unit
+      device: New Device
+    main_menu:
+      operations: Operations
+      devices: Devices
+      users: Users
+      stocks: Stocks
+      units: Units
+
+  own:
+    errors:
+      only_pw_no_username: Please insert a username if you want to have a password.
+      only_username_no_pw: Please insert a password if you want to have a username.
+      mobile_number_not_valid: Please insert a valid mobile number.
+      user_login: Username and/or password are not valid.
+    success:
+      user_updated: User successfully updated.
+      user_created: User successfully created.
+      user_destroyed: User successfully deleted.
+      user_login: User login was successful.
+      operation_updated: Operation successfully updated.
+      operation_created: Operation successfully created.
+      operation_destroyed: Operation successfully deleted.
+      unit_updated: Unit successfully updated.
+      unit_created: Unit successfully created.
+      unit_destroyed: Uni successfully deleted.
+      stock_updated: Stock successfully updated.
+      stock_created: Stock successfully created.
+      stock_destroyed: Stock successfully deleted.
+      device_updated: Device successfully updated.
+      device_created: Device successfully created.
+      device_destroyed: Device successfully deleted.

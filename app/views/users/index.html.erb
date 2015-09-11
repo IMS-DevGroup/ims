@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
+
+<h1><%= t "users.index.title" %></h1>
+
+<table id="users" class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= t "mixed_fields.prename" %></th>
+      <th><%= t "mixed_fields.lastname" %></th>
+      <th><%= t "mixed_fields.unit" %></th>
+      <th><%= t "mixed_fields.email" %></th>
+      <th><%= t "mixed_fields.mobile_number" %></th>
+      <th><%= t "mixed_fields.username" %></th>
+      <th><%= t "mixed_fields.index.info" %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.prename %></td>
+        <td><%= user.lastname %></td>
+        <td><% unless user.unit.nil?%>  <%= user.unit.name %> <%end%></td>
+        <td><%= user.email %></td>
+        <td><%= user.mobile_number %></td>
+        <td><%= user.username %></td>
+        <td><%= user.info %></td>
+
+        <td width="180px"><%= link_to (t "buttons.show"), user, class: 'btn btn-info' %>
+          <%if current_user.right.manage_users==true%> <%= link_to (t "buttons.edit"), edit_user_path(user), class: 'btn btn-warning' %><%end%>
+              <%if current_user.right.manage_users==true%> <%= link_to (t "buttons.destroy"), user, method: :delete, onclick: 'return confirm("Are you sure?")', class: 'btn btn-danger' %></td><%end%>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+              <%if current_user.right.manage_users==true%><%= link_to (t "buttons.new.user"), new_user_path, class: 'btn btn-success' %><%end%>
