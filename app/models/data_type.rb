@@ -22,7 +22,7 @@ class DataType < ActiveRecord::Base
 
     #Create standart value for Timestamp
     dt_time= DataType.new
-    dt_time.name = "Time"
+    dt_time.name = "Datetime"
     dt_time.save
 
 

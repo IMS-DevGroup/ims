@@ -6,6 +6,8 @@ class Device < ActiveRecord::Base
   has_many :values
   belongs_to :device_type
   belongs_to :stock
+  belongs_to :device_group
+
 
   validates :owner_id, presence: :true
 

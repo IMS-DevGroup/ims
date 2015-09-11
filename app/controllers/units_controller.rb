@@ -14,11 +14,18 @@ class UnitsController < ApplicationController
 
   # GET /units/new
   def new
+    if current_user.right.manage_stocks_and_units == false
+      redirect_to '/units/'
+    else
     @unit = Unit.new
+      end
   end
 
   # GET /units/1/edit
   def edit
+    if current_user.right.manage_stocks_and_units == false
+      redirect_to '/units/'
+    end
   end
 
   # POST /units

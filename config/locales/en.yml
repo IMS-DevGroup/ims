@@ -107,6 +107,16 @@ en:
     new:
       title: New Device
 
+  properties:
+    propertie: Properties
+
+  device_types:
+    index:
+      title: Listing Device Types
+    edit:
+      title: Editing Device Type
+    new:
+      title: New Device Type
 
   mixed_fields:
     email: Email
@@ -137,6 +147,7 @@ en:
       operation: New Operation
       unit: New Unit
       device: New Device
+      device_types: New Device Type
     main_menu:
       operations: Operations
       devices: Devices
@@ -144,6 +155,7 @@ en:
       stocks: Stocks
       units: Units
       contact: Contact
+      lendings: Lendings
 
   own:
     errors:
@@ -168,3 +180,7 @@ en:
       device_updated: Device successfully updated.
       device_created: Device successfully created.
       device_destroyed: Device successfully deleted.
+      device_type_updated: Device type successfully updated.
+      device_type_created: Device type successfully created.
+      device_type_destroyed: Device type successfully deleted.
+

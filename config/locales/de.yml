@@ -105,7 +105,16 @@ de:
     new:
       title: Neues Gerät anlegen
 
+  properties:
+    propertie: Eigenschaften
 
+  device_types:
+    index:
+      title: Gerätetypliste
+    edit:
+      title: Gerätetyp bearbeiten
+    new:
+      title: Neuer Gerätetyp
 
   mixed_fields:
     email: Email
@@ -136,6 +145,7 @@ de:
       operation: Neuer Einsatz
       unit: Neue Einheit
       device: Neues Gerät
+      device_types: Neuer Gerätetyp
     main_menu:
       operations: Einsätze
       devices: Geräte
@@ -143,6 +153,7 @@ de:
       stocks: Lagerorte
       units: Einheiten
       contact: Kontakt
+      lendings: Ausleihen
 
   own:
     errors:
@@ -167,3 +178,6 @@ de:
       device_updated: Gerät erfolgreich geupdated.
       device_created: Gerät erfolgreich angelegt.
       device_destroyed: Gerät erfolgreich gelöscht.
+      device_type_updated: Gerätetyp erfolgreich geupdated.
+      device_type_created: Gerätetyp erfolgreich angelegt.
+      device_type_destroyed: Gerätetyp erfolgreich gelöscht.
