@@ -32,4 +32,4 @@
 </p>
 
 <a href="/devices/"><button type="button" class = "btn btn-primary" ><%= t 'buttons.back'%></button></a>
-<%= link_to (t 'buttons.edit'), edit_device_path(@device), class:'btn btn-warning' %>
+<%if current_user.right.manage_devices==true%><%= link_to (t 'buttons.edit'), edit_device_path(@device), class:'btn btn-warning' %><%end%>

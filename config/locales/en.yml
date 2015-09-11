@@ -103,6 +103,8 @@ en:
     new:
       title: New Device
 
+  properties:
+    propertie: Properties
 
   mixed_fields:
     email: Email
@@ -139,6 +141,7 @@ en:
       users: Users
       stocks: Stocks
       units: Units
+      lendings: Lendings
 
   own:
     errors:

@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :lending_info %><br>
     <%= f.text_area :lending_info %>
   </div>
@@ -20,19 +20,19 @@
 
       <div class = "collapse" id = "quick_generation">
         <div class = "well">
-          <div class = "field">
+          <div class = "form-group">
             <%= label_tag (t "mixed_fields.prename") + " *"%><br>
             <%= text_field_tag(:user_prename)  %>
           </div>
-          <div class = "field">
+          <div class = "form-group">
             <%= label_tag (t "mixed_fields.lastname") + " *"%><br>
             <%= text_field_tag(:user_lastname)  %>
           </div>
-          <div class = "field">
+          <div class = "form-group">
             <%= label_tag (t "mixed_fields.unit") + " *"%><br>
             <%= select_tag('user_unit' , options_from_collection_for_select(Unit.all, 'id', 'name'))   %>
           </div>
-          <div class = "field">
+          <div class = "form-group">
             <%= label_tag (t "mixed_fields.info")%><br>
             <%= text_area_tag(:user_info)  %>
           </div>
@@ -45,9 +45,9 @@
 
     <!-- following 2 fields only to enable dummy generation
     TODO: change to proper fields-->
-    <div class="field">
+    <div class="form-group">
       <%= f.label :user_id %><br>
-      <%= f.number_field :user_id %>
+      <%= f.text_field :user_id %>
     </div>
 
     <!-- hidden field to automatically include current user as lender -->
@@ -61,5 +61,9 @@
       <%= f.submit %>
     </div>
 
-
+  <div class="actions">
+    <a href="/lendings/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+    <%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %>
+    <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
+  </div>
 <% end %>

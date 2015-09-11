@@ -49,5 +49,6 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_lending_path(@lending) %> |
-<%= link_to 'Back', lendings_path %>
+
+<a href="/lendings/"><button type="button" class = "btn btn-primary" >Back</button></a>
+<%= link_to 'Edit', edit_lending_path(@lending), class:'btn btn-warning' %>
