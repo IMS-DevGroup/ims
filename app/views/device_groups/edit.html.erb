@@ -1,6 +1,6 @@
-<h1>Editing Device Group</h1>
+<h1><%= t "device_groups.edit.title" %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @device_group %> |
-<%= link_to 'Back', device_groups_path %>
+<%= link_to (t "buttons.show"), @device_group %> |
+<%= link_to (t "buttons.back"), device_groups_path %>
