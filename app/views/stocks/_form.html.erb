@@ -4,13 +4,13 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label (t "mixed_fields.name") + " *" %><br>
+            <%= f.label :label_text, (t "mixed_fields.name") + " *" %><br>
             <%= f.text_field :name %>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label (t "mixed_fields.unit") + " *" %><br>
+            <%= f.label :label_text, (t "mixed_fields.unit") + " *" %><br>
             <%= f.collection_select :unit_id, Unit.all, :id, :name, {prompt: (t 'stocks.form.select_unit')}, class: "form-control", include_blank: "choose unit" %>
           </div>
         </td>
@@ -19,13 +19,13 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label t "stocks.city" %><br>
+            <%= f.label :label_text, (t "stocks.city") %><br>
             <%= f.text_field :city %>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label t "stocks.street" %><br>
+            <%= f.label :label_text, (t "stocks.street") %><br>
             <%= f.text_field :street %>
           </div>
         </td>
@@ -34,7 +34,7 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label t "mixed_fields.info" %><br>
+            <%= f.label :label_text, (t "mixed_fields.info") %><br>
             <%= f.text_area :info %>
           </div>
         </td>
