@@ -6,6 +6,13 @@ $ ->
 
 $ ->
   $('#device_device_type_id').change ->
+    loadProperties()
+
+$ ->
+  $('#device_device_type_id').ready ->
+    loadProperties()
+
+loadProperties = () ->
     if $('#device_device_type_id').val().length != 0 then $ ->
       $.ajax
         url: '/get-prop'

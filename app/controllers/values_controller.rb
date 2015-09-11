@@ -4,9 +4,9 @@ class ValuesController < ApplicationController
   # GET /values
   # GET /values.json
   def index
-    redirect_to '/starts/'
+   #redirect_to '/starts/'
    #this reactivates the link to /values
-   # @values = Value.all
+   @values = Value.all
   end
 
   # GET /values/1
