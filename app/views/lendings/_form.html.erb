@@ -50,20 +50,18 @@
       <%= f.text_field :user_id %>
     </div>
 
-    <div class="form-group">
-      <%= f.label :device_id %><br>
-      <%= f.text_field :device_id %>
-      <!-- Currently disabled remainder of first try of multiple-device-lending
-      %= f.submit "add" % -->
-
-    </div>
-
     <!-- hidden field to automatically include current user as lender -->
     <%= f.hidden_field :lender_id, :value => current_user.id %>
 
+    <div>
+      <%= render partial: 'lendings_selector/index', :locals => {:devices => @devices }%>
+    </div>
+
+
   <div class="actions">
     <a href="/lendings/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
-    <%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %>
+    <!-- todo multiple device lending show -->
+    <!--%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %-->
     <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
   </div>
 <% end %>
