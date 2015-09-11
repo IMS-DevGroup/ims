@@ -1,5 +1,6 @@
 class LendingsController < ApplicationController
   before_action :set_lending, only: [:show, :edit, :update, :destroy, :return]
+  before_action :set_devices, only: [:new, :create]
   # Global list of devices that were already selected to be borrowed in this session
   # Currently disabled remainder of first try of multiple-device-lending
   # @@global_list = []
@@ -19,9 +20,6 @@ class LendingsController < ApplicationController
   # GET /lendings/new
   def new
     @lending = Lending.new
-    #local parameter list is needed for device_list partial
-    # Currently disabled remainder of first try of multiple-device-lending
-    # @list = @@global_list
   end
 
   # GET /lendings/1/edit
@@ -33,6 +31,7 @@ class LendingsController < ApplicationController
   # POST /lendings.json
   def create
     @lending = Lending.new(lending_params)
+
     # handle quick-generation of user
     if params[:commit].eql?("Quick User")
       user = User.new(prename: params[:user_prename], lastname: params[:user_lastname], unit_id: params[:user_unit], info: params[:user_info])
@@ -41,15 +40,30 @@ class LendingsController < ApplicationController
         @lending.user_id = user.id
       end
       render :new
-    #submit of entire lending (currently one)
+
+    #submission of entire lending
+    #TODO: Error handling, json (?)
     else
+      device_list = params[:deviceids].delete(' ').split(',')
+      device_list.each do |d|
+        tmp_params = lending_params
+        tmp_params[:device_id] = d
+        @lending = Lending.new(tmp_params)
+        @failures = false
+        if @lending.save
+          puts 'success'
+        else
+          puts 'failure'
+          @failures = true
+        end
+      end
       respond_to do |format|
-      if @lending.save
-        format.html { redirect_to @lending, notice: 'Lending was successfully created.' }
-        format.json { render :show, status: :created, location: @lending }
+      if !@failures
+        format.html { redirect_to '/lendings', notice: 'Lendings were successfully created.' }
+        #format.json { render :show, status: :created, location: @lending }
       else
         format.html { render :new }
-        format.json { render json: @lending.errors, status: :unprocessable_entity }
+        #format.json { render json: @lending.errors, status: :unprocessable_entity }
       end
     end
 
@@ -89,6 +103,15 @@ class LendingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_lending
       @lending = Lending.find(params[:id])
+    end
+
+    def set_devices
+      @devices = Device.all.eager_load(:stock, :device_type)
+      devmap = {}
+      @devices.each do |dev|
+        devmap[dev.id] = { :type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+      end
+      gon.devices = devmap
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
