@@ -118,6 +118,16 @@ en:
     new:
       title: New Device Type
 
+  device_groups:
+    index:
+      title: Listing Device Groups
+    edit:
+      title: Editing Device Groups
+    new:
+      title: New Device Group
+    form:
+      h2: 'prohibited this device_group from being saved:'
+
   mixed_fields:
     email: Email
     info: Info
@@ -148,6 +158,7 @@ en:
       unit: New Unit
       device: New Device
       device_types: New Device Type
+      device_groups: New Device Group
     main_menu:
       operations: Operations
       devices: Devices
@@ -183,4 +194,7 @@ en:
       device_type_updated: Device type successfully updated.
       device_type_created: Device type successfully created.
       device_type_destroyed: Device type successfully deleted.
+      device_group_updated: Device group successfully updated.
+      device_group_created: Device group successfully created.
+      device_group_destroyed: Device group successfully deleted.
 

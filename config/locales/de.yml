@@ -116,6 +116,16 @@ de:
     new:
       title: Neuer Gerätetyp
 
+  device_groups:
+    index:
+      title: Gerätegruppenliste
+    edit:
+      title: Gerätegruppe bearbeiten
+    new:
+      title: Neue Gerätegruppe
+    form:
+      h2: 'Das Speichern dieser Gerätegruppe wurde abgefangen:'
+
   mixed_fields:
     email: Email
     info: Information
@@ -146,6 +156,7 @@ de:
       unit: Neue Einheit
       device: Neues Gerät
       device_types: Neuer Gerätetyp
+      device_groups: Neue Gerätegruppe
     main_menu:
       operations: Einsätze
       devices: Geräte
@@ -181,3 +192,6 @@ de:
       device_type_updated: Gerätetyp erfolgreich geupdated.
       device_type_created: Gerätetyp erfolgreich angelegt.
       device_type_destroyed: Gerätetyp erfolgreich gelöscht.
+      device_group_updated: Gerätegruppe erfolgreich geupdated.
+      device_group_created: Gerätegruppe erfolgreich angelegt.
+      device_group_destroyed: Gerätegruppe erfolgreich gelöscht.
