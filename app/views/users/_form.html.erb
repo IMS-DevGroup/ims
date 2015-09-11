@@ -5,13 +5,13 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label t "mixed_fields.username" %><br>
+            <%= f.label :label_text, (t "mixed_fields.username") %><br>
             <%= f.text_field :username %>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label t "mixed_fields.password" %><br>
+            <%= f.label :label_text, (t "mixed_fields.password") %><br>
             <%= f.password_field :password_unhashed %>
           </div>
         </td>
@@ -20,13 +20,13 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label (t "mixed_fields.prename") + " *" %><br>
+            <%= f.label :label_text, (t "mixed_fields.prename") + " *" %><br>
             <%= f.text_field :prename %>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label (t "mixed_fields.lastname") + " *" %><br>
+            <%= f.label :label_text, (t "mixed_fields.lastname") + " *" %><br>
             <%= f.text_field :lastname %>
           </div>
         </td>
@@ -35,13 +35,13 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label t "mixed_fields.email" %><br>
+            <%= f.label :label_text, (t "mixed_fields.email") %><br>
             <%= f.email_field :email %>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label t "mixed_fields.mobile_number" %><br>
+            <%= f.label :label_text, (t "mixed_fields.mobile_number") %><br>
             <%= f.text_field :mobile_number %>
           </div>
         </td>
@@ -50,7 +50,7 @@
       <tr>
         <td colspan="2">
           <div class="form-group">
-            <%= f.label t "mixed_fields.info" %><br>
+            <%= f.label :label_text, (t "mixed_fields.info") %><br>
             <%= f.text_area :info, :rows => 2, :cols => 60 %>
           </div>
         </td>
@@ -58,14 +58,14 @@
       <tr>
         <td>
             <div class="form-group ">
-              <%= f.label (t "mixed_fields.unit") + " *" %>
+              <%= f.label :label_text, (t "mixed_fields.unit") + " *" %>
               <%= f.collection_select :unit_id, Unit.all, :id, :name, {prompt: (t 'stocks.form.select_unit')}, class: "form-control" %>
             </div>
         </td>
         <td>
           <% if @user.persisted? then %>
               <div class="form-group">
-                <%= f.label (t 'users.edit.active') %><br>
+                <%= f.label :label_text, (t 'users.edit.active') %><br>
                 <%= f.check_box :active %>
               </div>
           <% end %>
@@ -73,7 +73,7 @@
       </tr>
 
       <div class="form-group">
-      <%= f.label (t "devices.ready") + " *" %><br>
+      <%= f.label :label_text, (t "devices.ready") + " *" %><br>
       <%= f.check_box :active %>
       </div>
 
