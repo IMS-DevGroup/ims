@@ -10,5 +10,5 @@
   <%= @device_group.info %>
 </p>
 
-<%= link_to 'Edit', edit_device_group_path(@device_group) %> |
-<%= link_to 'Back', device_groups_path %>
+<a href="/device_groups/"><button type="button" class = "btn btn-primary" >Back</button></a>
+<%if current_user.right.manage_users==true%><%= link_to 'Edit', edit_device_group_path(@device_group), class:'btn btn-warning' %><%end%>
