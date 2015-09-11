@@ -53,10 +53,9 @@
     <div class="field">
       <%= f.label :device_id %><br>
       <%= f.number_field :device_id %>
-      <!-- Currently disabled remainder of first try of multiple-device-lending
-      %= f.submit "add" % -->
-
     </div>
+
+    <%= render partial: 'lendings_selector/index', :locals => {:devices => @devices }%>
 
     <!-- hidden field to automatically include current user as lender -->
     <%= f.hidden_field :lender_id, :value => current_user.id %>

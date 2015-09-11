@@ -1,5 +1,6 @@
 class LendingsController < ApplicationController
   before_action :set_lending, only: [:show, :edit, :update, :destroy, :return]
+  before_action :set_devices, only: [:new, :create]
   # Global list of devices that were already selected to be borrowed in this session
   # Currently disabled remainder of first try of multiple-device-lending
   # @@global_list = []
@@ -18,10 +19,8 @@ class LendingsController < ApplicationController
 
   # GET /lendings/new
   def new
+    puts params
     @lending = Lending.new
-    #local parameter list is needed for device_list partial
-    # Currently disabled remainder of first try of multiple-device-lending
-    # @list = @@global_list
   end
 
   # GET /lendings/1/edit
@@ -32,6 +31,7 @@ class LendingsController < ApplicationController
   # POST /lendings
   # POST /lendings.json
   def create
+    puts params
     @lending = Lending.new(lending_params)
     # handle quick-generation of user
     if params[:commit].eql?("Quick User")
@@ -89,6 +89,15 @@ class LendingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_lending
       @lending = Lending.find(params[:id])
+    end
+
+    def set_devices
+      @devices = Device.all.eager_load(:stock, :device_type)
+      devmap = {}
+      @devices.each do |dev|
+        devmap[dev.id] = { :type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+      end
+      gon.devices = devmap
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
