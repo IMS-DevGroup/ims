@@ -65,6 +65,8 @@ en:
       title: Listing Operations
     form:
       linked_user: User
+      select_stock: Select stock
+      select_user: Select Squad Leader
     edit:
       title: Editing Operation
 
@@ -81,6 +83,8 @@ en:
   stocks:
     city: City
     street: Street
+    form:
+      select_unit: Select unit
     index:
       title: Listing Stocks
     edit:
@@ -106,6 +110,24 @@ en:
 
   properties:
     propertie: Properties
+
+  device_types:
+    index:
+      title: Listing Device Types
+    edit:
+      title: Editing Device Type
+    new:
+      title: New Device Type
+
+  device_groups:
+    index:
+      title: Listing Device Groups
+    edit:
+      title: Editing Device Groups
+    new:
+      title: New Device Group
+    form:
+      h2: 'prohibited this device_group from being saved:'
 
   mixed_fields:
     email: Email
@@ -137,14 +159,16 @@ en:
       operation: New Operation
       unit: New Unit
       device: New Device
+      device_types: New Device Type
+      device_groups: New Device Group
     main_menu:
       operations: Operations
       devices: Devices
       users: Users
       stocks: Stocks
       units: Units
+      contact: Contact
       lendings: Lendings
-
 
   own:
     errors:
@@ -169,6 +193,13 @@ en:
       device_updated: Device successfully updated.
       device_created: Device successfully created.
       device_destroyed: Device successfully deleted.
+      device_type_updated: Device type successfully updated.
+      device_type_created: Device type successfully created.
+      device_type_destroyed: Device type successfully deleted.
+      device_group_updated: Device group successfully updated.
+      device_group_created: Device group successfully created.
+      device_group_destroyed: Device group successfully deleted.
+
 
   contact:
     title: Send a message to us
