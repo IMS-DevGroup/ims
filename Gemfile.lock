@@ -255,7 +255,7 @@ DEPENDENCIES
   jquery-datatables-rails!
   jquery-rails
   mail_form
-  momentjs-rails (>= 2.9.0)
+  momentjs-rails
   node
   pg
   puma
