@@ -162,3 +162,8 @@ de:
       device_updated: Gerät erfolgreich geupdated.
       device_created: Gerät erfolgreich angelegt.
       device_destroyed: Gerät erfolgreich gelöscht.
+
+  contact:
+    title: Senden Sie uns eine Nachricht
+    submit: Nachricht senden
+    message: Nachricht
