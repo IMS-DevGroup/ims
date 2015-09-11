@@ -28,7 +28,7 @@
         <td>
           <div class="form-group">
             <%= f.label t "mixed_fields.stock" %><br>
-            <%= f.collection_select :id, Stock.all, :id, :name, {}, class: "form-control" , include_blank:'choose stock'%>
+            <%= f.collection_select :id, Stock.all, :id, :name, { prompt: (t 'operations.form.select_stock') }, class: "form-control" , include_blank:'choose stock'%>
           </div>
         </td>
       </tr>
@@ -45,7 +45,7 @@
 
       <div class="form-group">
         <%= f.label (t "operations.user") + " *" %> <br>
-        <%= f.collection_select :user_id, User.all, :id, :username, {}, class: "form-control", include_blank:'choose user'%>
+        <%= f.collection_select :user_id, User.all, :id, :username, { prompt: (t 'operations.form.select_user') }, class: "form-control", include_blank:'choose user'%>
       </div>
 
     </table>
