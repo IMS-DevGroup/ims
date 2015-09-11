@@ -37,13 +37,9 @@
         var monat_t = new Array("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
 
         if (<%=I18n.locale.to_s == "de"%>) {
-            <%= puts I18n.locale %>
-            <%= puts "hier kommt die maus deutsche sprache" %>
             wochentag = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag")
             monat = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember")
         }else{
-            <%= puts I18n.locale %>
-            <%= puts "hier kommt die maus englische sprache" %>
             wochentag = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
             monat = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
         }
