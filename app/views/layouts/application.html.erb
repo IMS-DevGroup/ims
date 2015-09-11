@@ -99,7 +99,7 @@
 <div id="infobar">
     <ul class="nav nav-tabs" >
       <li role="presentation"><a href="#">Impressum</a></li>
-      <li role="presentation"><a href= "/contacts/">Kontakt</a></li>
+      <li role="presentation"><a href= "/contacts/"><%=t "buttons.main_menu.contact" %></a></li>
       <% if logged_in? %><li role="presentation"><a href="/logout/"><b><%= current_user.username %></b> (Logout)</a></li><% end %>
     </ul>
 </div>
