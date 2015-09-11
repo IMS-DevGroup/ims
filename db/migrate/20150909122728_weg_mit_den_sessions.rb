@@ -1,7 +1,7 @@
 class WegMitDenSessions < ActiveRecord::Migration
   def change
 
-    remove_column :rights, :admin
+    drop_table :sessions
 
 
   end
