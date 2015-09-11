@@ -242,7 +242,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.2.0)
   bootstrap-switch-rails
-  bootstrap3-datetimepicker-rails (~> 4.15.35)
+  bootstrap3-datetimepicker-rails
   byebug
   chunky_png
   coffee-rails (~> 4.1.0)
@@ -255,7 +255,6 @@ DEPENDENCIES
   jquery-datatables-rails!
   jquery-rails
   mail_form
-  momentjs-rails (>= 2.9.0)
   node
   pg
   puma
