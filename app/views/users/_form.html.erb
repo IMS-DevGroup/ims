@@ -62,6 +62,12 @@
               <%= f.collection_select :unit_id, Unit.all, :id, :name, {}, class: "form-control" %>
             </div>
         </td>
+      <tr>
+        <td>
+          <div class="form-group">
+          <%= f.select("language", options_for_select([["DE", "de",], ["EN", "en"]])) %>
+          </div>
+        </td>
         <td>
           <% if @user.persisted? then %>
               <div class="form-group">
@@ -71,6 +77,7 @@
           <% end %>
         </td>
       </tr>
+
 
       <div class="form-group">
       <%= f.label (t "devices.ready") + " *" %><br>
