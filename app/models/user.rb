@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :lendings
   belongs_to :unit
   has_many :operation
+  has_one :stock
 
   #this removes the extra break between label and field if error is thrown
   validates :prename, presence: true
