@@ -101,7 +101,8 @@ de:
     new:
       title: Neues Gerät anlegen
 
-
+  properties:
+    propertie: Eigenschaften
 
   mixed_fields:
     email: Email
