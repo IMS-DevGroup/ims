@@ -71,7 +71,7 @@ group :development, :test do
   gem 'spring'
 
 
-  gem 'momentjs-rails'
-  gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
+  gem 'momentjs-rails', github: 'derekprior/momentjs-rails'
+  gem 'bootstrap3-datetimepicker-rails'
 end
 
