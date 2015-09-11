@@ -50,6 +50,8 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'rack-mini-profiler', require: false
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'bootstrap3-datetimepicker-rails'
+
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
@@ -69,7 +71,5 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  gem 'bootstrap3-datetimepicker-rails'
 end
 
