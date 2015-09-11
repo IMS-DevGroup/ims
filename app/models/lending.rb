@@ -6,7 +6,7 @@ class Lending < ActiveRecord::Base
   validates :user_id , presence: true
   validates :device_id , presence: true
   validates :lender_id , presence: true
-  validates_with :Lendings_Validator
+  validates_with Lendings_Validator
 
 
 
