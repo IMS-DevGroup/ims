@@ -19,7 +19,6 @@ class LendingsController < ApplicationController
 
   # GET /lendings/new
   def new
-    puts params
     @lending = Lending.new
   end
 
@@ -31,8 +30,8 @@ class LendingsController < ApplicationController
   # POST /lendings
   # POST /lendings.json
   def create
-    puts params
     @lending = Lending.new(lending_params)
+
     # handle quick-generation of user
     if params[:commit].eql?("Quick User")
       user = User.new(prename: params[:user_prename], lastname: params[:user_lastname], unit_id: params[:user_unit], info: params[:user_info])
@@ -41,15 +40,30 @@ class LendingsController < ApplicationController
         @lending.user_id = user.id
       end
       render :new
-    #submit of entire lending (currently one)
+
+    #submission of entire lending
+    #TODO: Error handling, json (?)
     else
+      device_list = params[:deviceids].delete(' ').split(',')
+      device_list.each do |d|
+        tmp_params = lending_params
+        tmp_params[:device_id] = d
+        @lending = Lending.new(tmp_params)
+        @failures = false
+        if @lending.save
+          puts 'success'
+        else
+          puts 'failure'
+          @failures = true
+        end
+      end
       respond_to do |format|
-      if @lending.save
-        format.html { redirect_to @lending, notice: 'Lending was successfully created.' }
-        format.json { render :show, status: :created, location: @lending }
+      if !@failures
+        format.html { redirect_to '/lendings', notice: 'Lendings were successfully created.' }
+        #format.json { render :show, status: :created, location: @lending }
       else
         format.html { render :new }
-        format.json { render json: @lending.errors, status: :unprocessable_entity }
+        #format.json { render json: @lending.errors, status: :unprocessable_entity }
       end
     end
 

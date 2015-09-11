@@ -50,17 +50,16 @@
       <%= f.number_field :user_id %>
     </div>
 
-    <div class="field">
-      <%= f.label :device_id %><br>
-      <%= f.number_field :device_id %>
-    </div>
-
-    <%= render partial: 'lendings_selector/index', :locals => {:devices => @devices }%>
-
     <!-- hidden field to automatically include current user as lender -->
     <%= f.hidden_field :lender_id, :value => current_user.id %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div>
+      <%= render partial: 'lendings_selector/index', :locals => {:devices => @devices }%>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+
+
 <% end %>
