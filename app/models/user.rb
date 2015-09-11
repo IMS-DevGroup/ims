@@ -118,6 +118,14 @@ class User < ActiveRecord::Base
     dt.active=false
     dt.save
 
+    r=Right.find_by_user_id(User.find_by_username("test"))
+    r.manage_devices=true
+    r.manage_rights=true
+    r.manage_users=true
+    r.manage_stocks_and_units=true
+    r.manage_device_types=true
+    r.manage_operations=true
+    r.save
 
   end
 
