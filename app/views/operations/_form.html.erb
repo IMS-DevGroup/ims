@@ -3,14 +3,14 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label  (t "operations.operation_type") + " *" %><br>
+            <%= f.label :label_text, (t "operations.operation_type") + " *" %><br>
             <%= f.text_field :operation_type %>
           </div>
         </td>
 
         <td>
           <div class="form-group">
-            <%= f.label t "operations.operation_dispatch_number" %><br>
+            <%= f.label :label_text, (t "operations.operation_dispatch_number") %><br>
             <%= f.text_field :number %>
           </div>
         </td>
@@ -21,14 +21,14 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label (t "mixed_fields.location") + " *" %><br>
+            <%= f.label :label_text, (t "mixed_fields.location") + " *" %><br>
             <%= f.text_field :location%>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label t "mixed_fields.stock" %><br>
-            <%= f.collection_select :id, Stock.all, :id, :name, {}, class: "form-control" , include_blank:'choose stock'%>
+            <%= f.label :label_text, (t "mixed_fields.stock") %><br>
+            <%= f.collection_select :id, Stock.all, :id, :name, { prompt: (t 'operations.form.select_stock') }, class: "form-control" , include_blank:'choose stock'%>
           </div>
         </td>
       </tr>
@@ -37,15 +37,15 @@
       <tr>
         <td colspan="2">
           <div class="form-group">
-            <%= f.label t "mixed_fields.info" %><br>
+            <%= f.label :label_text, (t "mixed_fields.info") %><br>
             <%= f.text_area :info, :rows => 3, :cols => 41 %>
           </div>
         </td>
       </tr>
 
       <div class="form-group">
-        <%= f.label (t "operations.user") + " *" %> <br>
-        <%= f.collection_select :user_id, User.all, :id, :username, {}, class: "form-control", include_blank:'choose user'%>
+        <%= f.label :label_text, (t "operations.user") + " *" %> <br>
+        <%= f.collection_select :user_id, User.all, :id, :username, { prompt: (t 'operations.form.select_user') }, class: "form-control", include_blank:'choose user'%>
       </div>
 
     </table>
