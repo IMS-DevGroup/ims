@@ -11,38 +11,40 @@
         </div>
     <% end %>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :user_id %><br>
-      <%= f.number_field :user_id %>
+      <%= f.text_field :user_id %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :device_id %><br>
-      <%= f.number_field :device_id %>
+      <%= f.text_field :device_id %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :lending_info %><br>
       <%= f.text_area :lending_info %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :lender_id %><br>
-      <%= f.number_field :lender_id %>
+      <%= f.text_field :lender_id %>
     </div>
 
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :recieve_info %><br>
       <%= f.text_area :receive_info %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :receiver_id %><br>
-      <%= f.number_field :receiver_id %>
+      <%= f.text_field :receiver_id %>
     </div>
 
     <div class="actions">
-      <%= f.submit %>
+      <a href="/lendings/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+      <%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %>
+      <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
     </div>
 <% end %>

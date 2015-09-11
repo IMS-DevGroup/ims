@@ -53,8 +53,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        puts 'hier kommt die maus 2'
-        puts params[:commit]
         flash[:success] = (I18n.t "own.success.user_updated").to_s
         if params[:commit] == (t 'buttons.start.set_stock')
           format.html { redirect_to starts_url  }

@@ -20,11 +20,18 @@ class DevicesController < ApplicationController
 
   # GET /devices/new
   def new
+    if current_user.right.manage_devices == false
+      redirect_to "/device/"
+    else
     @device = Device.new
+      end
   end
 
   # GET /devices/1/edit
   def edit
+    if current_user.right.manage_devices == false
+      redirect_to "/device/"
+    end
   end
 
   # POST /devices

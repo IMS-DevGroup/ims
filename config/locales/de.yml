@@ -103,6 +103,9 @@ de:
     new:
       title: Neues Gerät anlegen
 
+  properties:
+    propertie: Eigenschaften
+
   mixed_fields:
     email: Email
     info: Information
@@ -139,6 +142,7 @@ de:
       users: Benutzer
       stocks: Lagerorte
       units: Einheiten
+      lendings: Ausleihen
 
   own:
     errors:
