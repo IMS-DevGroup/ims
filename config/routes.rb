@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :users
   resources :rights
-  resources :barcode_tests
+  resources :barcodes
   resources :lendings_selector
   resources :contacts, only: [:new, :create]
   match '/contacts',     to: 'contacts#new',             via: 'get'
