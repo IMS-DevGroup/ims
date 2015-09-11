@@ -62,6 +62,8 @@ de:
       title: Einsatzliste
     form:
       linked_user: Benutzer
+      select_stock: Wähle Lager
+      select_user: Wähle Einsatzleiter
     edit:
       title: Einsatz bearbeiten
 
@@ -78,6 +80,8 @@ de:
   stocks:
     city: Stadt
     street: Straße
+    form:
+      select_unit: Wähle Einheit
     index:
       title: Lagerliste
     edit:
@@ -103,6 +107,24 @@ de:
 
   properties:
     propertie: Eigenschaften
+
+  device_types:
+    index:
+      title: Gerätetypliste
+    edit:
+      title: Gerätetyp bearbeiten
+    new:
+      title: Neuer Gerätetyp
+
+  device_groups:
+    index:
+      title: Gerätegruppenliste
+    edit:
+      title: Gerätegruppe bearbeiten
+    new:
+      title: Neue Gerätegruppe
+    form:
+      h2: 'Das Speichern dieser Gerätegruppe wurde abgefangen:'
 
   mixed_fields:
     email: Email
@@ -133,12 +155,15 @@ de:
       operation: Neuer Einsatz
       unit: Neue Einheit
       device: Neues Gerät
+      device_types: Neuer Gerätetyp
+      device_groups: Neue Gerätegruppe
     main_menu:
       operations: Einsätze
       devices: Geräte
       users: Benutzer
       stocks: Lagerorte
       units: Einheiten
+      contact: Kontakt
       lendings: Ausleihen
 
   own:
@@ -164,3 +189,9 @@ de:
       device_updated: Gerät erfolgreich geupdated.
       device_created: Gerät erfolgreich angelegt.
       device_destroyed: Gerät erfolgreich gelöscht.
+      device_type_updated: Gerätetyp erfolgreich geupdated.
+      device_type_created: Gerätetyp erfolgreich angelegt.
+      device_type_destroyed: Gerätetyp erfolgreich gelöscht.
+      device_group_updated: Gerätegruppe erfolgreich geupdated.
+      device_group_created: Gerätegruppe erfolgreich angelegt.
+      device_group_destroyed: Gerätegruppe erfolgreich gelöscht.
