@@ -2,7 +2,7 @@
 
 <h1>Listing Lendings</h1>
 
-<table>
+<table id="lendings" class="table table-striped">
   <thead>
     <tr>
       <th>User</th>
@@ -11,7 +11,7 @@
       <th>Lending info</th>
       <th>Receive</th>
       <th>Receive info</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -24,10 +24,9 @@
         <td><%= lending.lending_info %></td>
         <td><%= lending.receive %></td>
         <td><%= lending.receive_info %></td>
-        <td><%= link_to 'Show', lending %></td>
-        <td><%= link_to 'Edit', edit_lending_path(lending) %></td>
-        <td><%= link_to 'Destroy', lending, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Return', return_lending_path(lending) %></td>
+        <td width="190px"><%= link_to 'Show', lending, class: 'btn btn-info' %>
+        <%= link_to 'Edit', edit_lending_path(lending), class: 'btn btn-warning' %>
+        <%= link_to 'Destroy', lending, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Lending', new_lending_path %>
+<%= link_to 'New Lending', new_lending_path, class: 'btn btn-success' %>
