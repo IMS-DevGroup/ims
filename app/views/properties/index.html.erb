@@ -18,7 +18,7 @@
         <td><%= property.info %></td>
         <td width="190px"><%= link_to 'Show', property, class: 'btn btn-info' %>
         <%= link_to 'Edit', edit_property_path(property), class: 'btn btn-warning' %>
-        <%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <%= link_to 'Destroy', property, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
