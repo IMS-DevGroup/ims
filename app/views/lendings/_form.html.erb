@@ -16,6 +16,33 @@
     <%= f.text_area :lending_info %>
   </div>
 
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#quick_generation" aria-expanded="false" aria-controls="quick_generation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+
+      <div class = "collapse" id = "quick_generation">
+        <div class = "well">
+          <div class = "field">
+            <%= label_tag (t "mixed_fields.prename") + " *"%><br>
+            <%= text_field_tag(:user_prename)  %>
+          </div>
+          <div class = "field">
+            <%= label_tag (t "mixed_fields.lastname") + " *"%><br>
+            <%= text_field_tag(:user_lastname)  %>
+          </div>
+          <div class = "field">
+            <%= label_tag (t "mixed_fields.unit") + " *"%><br>
+            <%= select_tag('user_unit' , options_from_collection_for_select(Unit.all, 'id', 'name'))   %>
+          </div>
+          <div class = "field">
+            <%= label_tag (t "mixed_fields.info")%><br>
+            <%= text_area_tag(:user_info)  %>
+          </div>
+          <div>
+            <!-- Caution when translating, implies changes in lendings controller as well -->
+            <%= submit_tag("Quick User") %>
+          </div>
+        </div>
+      </div>
+
     <!-- following 2 fields only to enable dummy generation
     TODO: change to proper fields-->
     <div class="field">
