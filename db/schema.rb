@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911113708) do
+ActiveRecord::Schema.define(version: 20150914133207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20150911113708) do
     t.integer  "device_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "boss_configs", force: :cascade do |t|
+    t.boolean  "db_state"
+    t.string   "org_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "data_types", force: :cascade do |t|
@@ -74,6 +82,7 @@ ActiveRecord::Schema.define(version: 20150911113708) do
     t.datetime "updated_at", null: false
     t.integer  "unit_id"
     t.integer  "user_id"
+    t.integer  "device_id"
   end
 
   create_table "operations", force: :cascade do |t|
@@ -166,7 +175,6 @@ ActiveRecord::Schema.define(version: 20150911113708) do
     t.string   "salt"
     t.integer  "unit_id"
     t.string   "cookies"
-    t.boolean  "validated"
     t.string   "reset_key"
     t.datetime "reset_sent_at"
     t.string   "language"
