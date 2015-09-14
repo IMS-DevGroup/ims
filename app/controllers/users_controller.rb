@@ -37,16 +37,14 @@ class UsersController < ApplicationController
 
         if !@user.email.nil? && @user.password == nil && @user.username != nil
           @user.activate
-          #@user.create_activation_key
-          #@user.send_activation_email
           flash[:success] = (I18n.t "own.success.user_without_pw").to_s
         end
-
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        flash[:success] = (I18n.t "own.success.user_created").to_s
+        format.html { redirect_to @user }
         format.json { render :show, status: :created, location: @user }
       else
         #get all error messages and save it into a string
-        flash.now[:error] = (@user.errors.full_messages).join("<br/>").html_safe
+        flash.now[:error] = (@user.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -58,11 +56,16 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        flash[:success] = (I18n.t "own.success.user_updated").to_s
+        if params[:commit] == (t 'buttons.start.set_stock')
+          format.html { redirect_to starts_url  }
+        else
+          format.html { redirect_to @user }
+          format.json { render :show, status: :ok, location: @user }
+        end
       else
         #get all error messages and save it into a string
-        flash.now[:error] = (@user.errors.full_messages).join("<br/>").html_safe
+        flash.now[:error] = (@user.errors.values).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -91,6 +94,6 @@ class UsersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info,
-                                 :unit_id, :right_id, :password_unhashed, :password_unhashed_confirmation)
+                                 :unit_id, :right_id, :password_unhashed, :password_unhashed_confirmation, :stock_id)
   end
 end
