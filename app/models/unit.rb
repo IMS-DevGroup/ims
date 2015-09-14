@@ -40,4 +40,11 @@ class Unit < ActiveRecord::Base
 
   end
 
+  def self.echo
+    puts "====================================================="
+    puts "habs geschafft du wichser"
+    puts Time.now
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+  end
+
 end
