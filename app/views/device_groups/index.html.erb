@@ -20,8 +20,9 @@
         <td><%= device_group.info %></td>
 
         <td width="180px"><%= link_to (t "buttons.show"), device_group, class: 'btn btn-info' %>
-        <%= link_to (t "buttons.edit"), edit_device_group_path(device_group), class: 'btn btn-warning' %>
-        <%= link_to (t "buttons.destroy"), device_group, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td>
+        <%if current_user.right.manage_devices==true%><%= link_to (t "buttons.edit"), edit_device_group_path(device_group), class: 'btn btn-warning' %><%end%>
+        <%if current_user.right.manage_devices==true%><%= link_to (t "buttons.destroy"), device_group, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %><%end%></td>
+
 
       </tr>
     <% end %>
@@ -32,5 +33,5 @@
 
 
 <%if current_user.right.manage_devices==true%><%= link_to (t "buttons.new.device_groups"), new_device_group_path, class: 'btn btn-success' %><%end%>
-<%if current_user.right.manage_devices==true%><%= link_to (t 'devices.index.title'), devices_path, class: 'btn btn-success', style: "margin-left:230px;" %><%end%>
+<%if current_user.right.manage_devices==true%><%= link_to (t 'buttons.device_group'), devices_path, class: 'btn btn-success', style: "margin-left:230px;" %><%end%>
 

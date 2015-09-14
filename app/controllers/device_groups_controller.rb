@@ -14,11 +14,17 @@ class DeviceGroupsController < ApplicationController
 
   # GET /device_groups/new
   def new
+    if current_user.right.manage_devices == false
+      redirect_to '/device_groups/'
+    else
     @device_group = DeviceGroup.new
+    end
   end
-
   # GET /device_groups/1/edit
   def edit
+    if current_user.right.manage_devices == false
+      redirect_to '/device_groups/'
+    end
   end
 
   # POST /device_groups

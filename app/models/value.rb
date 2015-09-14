@@ -16,6 +16,8 @@ class Value < ActiveRecord::Base
       return self.value.to_i
     elsif typ == "Datetime"
       return Time.parse(self.value)
+    elsif typ == "DateNote"
+      return Time.parse(self.value)
     elsif typ =="Boolean"
       return true if self.value=="true"
       return false if self.value=="false"
@@ -47,6 +49,8 @@ class Value < ActiveRecord::Base
     elsif typ=="Datetime"
       self.value=Time.parse(v).to_s
 
+    elsif typ=="DateNote"
+      self.value=Time.parse(v).to_s
     else
        #flash[:ERROR] =self.property.name + " is " + v.class + " not " + @typ
     end

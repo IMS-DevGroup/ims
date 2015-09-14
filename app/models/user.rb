@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   belongs_to :unit
   has_many :operation
   belongs_to :stock
+  has_many :notifications
 
   #this removes the extra break between label and field if error is thrown
   validates :prename, presence: true

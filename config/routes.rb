@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :notifications
   resources :device_groups
   get 'set_language/english'
   get 'set_language/german'
