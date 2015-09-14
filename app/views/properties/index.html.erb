@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Properties</h1>
+<h1><%= (t "properties.index.title") %></h1>
 
 <table id="properties" class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Info</th>
+      <th><%= t "mixed_fields.name" %></th>
+      <th><%= t "mixed_fields.info" %></th>
       <th></th>
     </tr>
   </thead>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= property.name %></td>
         <td><%= property.info %></td>
-        <td width="190px"><%= link_to 'Show', property, class: 'btn btn-info' %>
-        <%= link_to 'Edit', edit_property_path(property), class: 'btn btn-warning' %>
-        <%= link_to 'Destroy', property, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td>
+        <td width="190px"><%= link_to (t "buttons.show"), property, class: 'btn btn-info' %>
+        <%= link_to (t "buttons.edit"), edit_property_path(property), class: 'btn btn-warning' %>
+        <%= link_to (t "buttons.destroy"), property, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Property', new_property_path, class: 'btn btn-success' %>
+<%= link_to (t "buttons.new.property"), new_property_path, class: 'btn btn-success' %>
