@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Boss Configs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Db state</th>
+      <th>Org name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @boss_configs.each do |boss_config| %>
+      <tr>
+        <td><%= boss_config.db_state %></td>
+        <td><%= boss_config.org_name %></td>
+        <td><%= link_to 'Show', boss_config %></td>
+        <td><%= link_to 'Edit', edit_boss_config_path(boss_config) %></td>
+        <td><%= link_to 'Destroy', boss_config, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Boss config', new_boss_config_path %>
