@@ -16,6 +16,8 @@ class Value < ActiveRecord::Base
       return self.value.to_i
     elsif typ == "Datetime"
       return Time.parse(self.value)
+    elsif typ == "DateNote"
+      return Time.parse(self.value)
     elsif typ =="Boolean"
       return true if self.value=="true"
       return false if self.value=="false"
@@ -47,6 +49,8 @@ class Value < ActiveRecord::Base
     elsif typ=="Datetime"
       self.value=Time.parse(v).to_s
 
+    elsif typ=="DateNote"
+      self.value=Time.parse(v).to_s
     else
        #flash[:ERROR] =self.property.name + " is " + v.class + " not " + @typ
     end
@@ -61,27 +65,35 @@ class Value < ActiveRecord::Base
     dt.property = Property.find_by_name("Property1")
     dt.device = Device.find_by_info("Info1")
     dt.setConvertedValue("Test String")
-
+    dt.save
 
     dt = Value.new
     #dt.value = true
     dt.property = Property.find_by_name("Property2")
     dt.device = Device.find_by_info("Info2")
     dt.setConvertedValue(true)
-
+    dt.save
 
     dt = Value.new
     #dt.value = 3
     dt.property = Property.find_by_name("Property3")
     dt.device = Device.find_by_info("Info2")
     dt.setConvertedValue(3)
-
+    dt.save
 
     dt = Value.new
     #dt.value = 3.14
     dt.property = Property.find_by_name("Property4")
     dt.device = Device.find_by_info("Info2")
     dt.setConvertedValue(3.14)
+    dt.save
+
+    dt = Value.new
+    #dt.value = 3.14
+    dt.property = Property.find_by_name("Property6")
+    dt.device = Device.find_by_info("Info2")
+    dt.setConvertedValue(Time.now.to_s)
+    dt.save
 
   end
 

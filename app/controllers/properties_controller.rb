@@ -28,7 +28,8 @@ class PropertiesController < ApplicationController
 
     respond_to do |format|
       if @property.save
-        format.html { redirect_to @property, notice: 'Property was successfully created.' }
+        flash[:success] = (I18n.t "own.success.property_created").to_s
+        format.html { redirect_to @property }
         format.json { render :show, status: :created, location: @property }
       else
         format.html { render :new }
@@ -42,7 +43,8 @@ class PropertiesController < ApplicationController
   def update
     respond_to do |format|
       if @property.update(property_params)
-        format.html { redirect_to @property, notice: 'Property was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.property_updated").to_s
+        format.html { redirect_to @property }
         format.json { render :show, status: :ok, location: @property }
       else
         format.html { render :edit }
@@ -56,7 +58,8 @@ class PropertiesController < ApplicationController
   def destroy
     @property.destroy
     respond_to do |format|
-      format.html { redirect_to properties_url, notice: 'Property was successfully destroyed.' }
+      flash[:success] = (I18n.t "own.success.property_destroyed").to_s
+      format.html { redirect_to @property }
       format.json { head :no_content }
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911103017) do
+ActiveRecord::Schema.define(version: 20150914111146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,17 @@ ActiveRecord::Schema.define(version: 20150911103017) do
     t.text     "signature"
     t.integer  "device_id"
     t.integer  "user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string   "subject"
+    t.text     "info"
+    t.datetime "checked"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "unit_id"
+    t.integer  "user_id"
+    t.integer  "device_id"
   end
 
   create_table "operations", force: :cascade do |t|
@@ -156,7 +167,6 @@ ActiveRecord::Schema.define(version: 20150911103017) do
     t.string   "salt"
     t.integer  "unit_id"
     t.string   "cookies"
-    t.boolean  "validated"
     t.string   "reset_key"
     t.datetime "reset_sent_at"
     t.string   "language"

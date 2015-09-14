@@ -2,6 +2,7 @@ class Unit < ActiveRecord::Base
 
   has_many :stocks
   has_many :users
+  has_many :notifications
 
 
 
@@ -37,6 +38,13 @@ class Unit < ActiveRecord::Base
     dt.info = "Info4"
     dt.save
 
+  end
+
+  def self.echo
+    puts "====================================================="
+    puts "habs geschafft du wichser"
+    puts Time.now
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
   end
 
 end
