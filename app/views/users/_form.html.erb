@@ -65,7 +65,8 @@
       <tr>
         <td>
           <div class="form-group">
-          <%= f.select("language", options_for_select([["DE", "de",], ["EN", "en"]])) %>
+            <%= f.label "locale", t(:"language") %>
+            <%= select_tag 'locale', options_for_select(I18n.available_locales, I18n.locale.to_sym),:onchange => :update %>
           </div>
         </td>
         <td>
