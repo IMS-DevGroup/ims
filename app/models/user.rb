@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
 
   has_many :lendings
   belongs_to :unit
+
+  belongs_to :boss_config
+
   has_many :operation
   belongs_to :stock
   has_many :notifications
