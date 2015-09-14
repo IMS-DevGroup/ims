@@ -39,4 +39,4 @@
 <br>
 
 <%if current_user.right.manage_devices==true%><%= link_to (t 'buttons.new.device'), new_device_path, class: 'btn btn-success' %><%end%>
-<%if current_user.right.manage_devices==true%><%= link_to (t 'buttons.new.device_group'), device_groups_path, class: 'btn btn-success', style: "margin-left:230px;" %><%end%>
+<%if current_user.right.manage_devices==true%><%= link_to (t 'device_groups.index.title'), device_groups_path, class: 'btn btn-success', style: "margin-left:230px;" %><%end%>

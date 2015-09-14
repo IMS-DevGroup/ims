@@ -8,7 +8,7 @@ de:
               blank: Bitte einen Vornamen eingeben.
             lastname:
               blank: Bitte einen Nachnamen eingeben.
-            unit:
+            unit_id:
               blank: Bitte eine Einheit wählen.
             username:
               taken: Dieser Username ist bereits vergeben.
@@ -107,8 +107,6 @@ de:
     new:
       title: Neues Gerät anlegen
 
-  properties:
-    propertie: Eigenschaften
 
   device_types:
     index:
@@ -128,6 +126,26 @@ de:
     form:
       h2: 'Das Speichern dieser Gerätegruppe wurde abgefangen:'
 
+  rights:
+    edit:
+      title: Rechte bearbeiten von
+    manage_rights: Darf Rechte vergeben
+    manage_users: User anlegen und bearbeiten
+    manage_devices: Geräte anlegen und bearbeiten
+    manage_device_types: Gerätetypen anlegen und bearbeiten
+    manage_stocks_and_units: Einheiten und Standorte anlegen und bearbeiten
+    manage_operations: Einsätze anlegen und bearbeiten
+
+  properties:
+    propertie: Eigenschaften
+    edit:
+      title: Eigenschaften bearbeiten
+    new:
+      title: Neue Eigenschaft
+    index:
+      title: Eigenschaftenliste
+
+
   mixed_fields:
     email: Email
     info: Information
@@ -141,6 +159,7 @@ de:
     user: Benutzer
     username: Benutzername
     name: Name
+    data_type: Datentyp
 
   buttons:
     back: Zurück
@@ -160,6 +179,7 @@ de:
       device: Neues Gerät
       device_types: Neuer Gerätetyp
       device_groups: Neue Gerätegruppe
+      property: Neue Eigenschaft
     main_menu:
       operations: Einsätze
       devices: Geräte
@@ -175,6 +195,7 @@ de:
       only_username_no_pw: Bitte auch ein Passwort angeben, wenn ein Username eingegeben wird.
       mobile_number_not_valid: Bitte eine gültige Telefonnummer angeben.
       user_login: Benutzername und/oder Passwort sind nicht korrekt.
+      username: "Ungültiger Benutzername, erlaubte Zeichen: Groß- und Kleinbuchstaben, Zahlen, Unterstrich, Punkt."
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
@@ -198,6 +219,11 @@ de:
       device_group_updated: Gerätegruppe erfolgreich geupdated.
       device_group_created: Gerätegruppe erfolgreich angelegt.
       device_group_destroyed: Gerätegruppe erfolgreich gelöscht.
+      right_updated: Rechte erfolgreich geupdated.
+      property_updated: Eigenschaft erfolgreich geupdated.
+      property_created: Eigenschaft erfolgreich angelegt.
+      property_destroyed: Eigenschaft erfolgreich gelöscht.
+
 
   contact:
     title: Senden Sie uns eine Nachricht
