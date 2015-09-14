@@ -16,24 +16,54 @@ $ ->
 loadProperties = () ->
   if $('#device_device_type_id').val().length != 0
     $('#properties').empty()
-    index = 0
-    for x of gon.properties
-      if parseInt($('#device_device_type_id').val()) == parseInt(gon.properties[x].device_type)
-        if gon.properties[x].value == null
-          switch gon.properties[x].data_type
-            when "Fixnum" then input = '<div class="col-sm-6"><input type="text" placeholder="Please insert integer" pattern="^[0-9]+$" name="prop_val[' + index + ']"></div>'
-            when "Float" then input = '<div class="col-sm-6"><input type="text" placeholder="Please insert float" pattern="^[0-9]+((.|,)[0-9]+){0,1}$" name="prop_val[' + index + ']"></div>'
-            when "Boolean" then input = '<div class="col-sm-6"><input type="checkbox" name="prop_val[' + index + ']"></div>'
-            when "Datetime" then input = '<div class="col-sm-6"><input type="text" class="form-control jsdatepicker" name="prop_val[' + index + ']" value="'+gon.value+'"></div>'
-            else input = '<div class="col-sm-6"><input type="text" placeholder="Please insert string" name="prop_val[' + index + ']"></div>'
+    i = 0
+    for p of gon.properties
+      if parseInt($('#device_device_type_id').val()) == parseInt(gon.properties[p].device_type)
+        if gon.properties[p].value != null
+          switch gon.properties[p].data_type
+            when "Fixnum" then input =
+              '<div class="col-sm-6">' +
+                '<input type="text" name="prop_val[' + i + ']" value="' + gon.properties[p].value + '" pattern="^[0-9]+$" required>' +
+              '</div>'
+            when "Float" then input =
+              '<div class="col-sm-6">' +
+                '<input type="text" name="prop_val[' + i + ']" value="' + gon.properties[p].value + '" pattern="^[0-9]+((.|,)[0-9]+){0,1}$" required>' +
+              '</div>'
+            when "Boolean" then input =
+              '<div class="col-sm-6">' +
+                '<input type="checkbox" name="prop_val[' + i + ']" checked="' + gon.properties[p].value + '">' +
+              '</div>'
+            when "Datetime" then input =
+              '<div class="col-sm-6">' +
+                '<input type="text" class="form-control jsdatepicker" name="prop_val[' + i + ']" value="' + gon.properties[p].value + '">' +
+              '</div>'
+            else input =
+              '<div class="col-sm-6">' +
+                '<input type="text" name="prop_val[' + i + ']" value="' + gon.properties[p].value + '" required>' +
+              '</div>'
         else
-          switch gon.properties[x].data_type
-            when "Fixnum" then input = '<div class="col-sm-6"><input type="text" value="' + gon.properties[x].value + '" pattern="^[0-9]+$" name="prop_val[' + index + ']"></div>'
-            when "Float" then input = '<div class="col-sm-6"><input type="text" value="' + gon.properties[x].value + '" pattern="^[0-9]+((.|,)[0-9]+){0,1}$" name="prop_val[' + index + ']"></div>'
-            when "Boolean" then input = '<div class="col-sm-6"><input type="checkbox" name="prop_val[' + index + ']"></div>'
-            when "Datetime" then input = '<div class="col-sm-6"><input type="text" class="form-control jsdatepicker" name="prop_val[' + index + ']" value="'+gon.value+'"></div>'
-            else input = '<div class="col-sm-6"><input type="text" value="' + gon.properties[x].value + '" name="prop_val[' + index + ']"></div>'
-        id = '<input type="hidden" name="prop_id[' + index + ']" value="' + gon.properties[x].id + '">'
-        $('#properties').append('<tr height=35><td>' + gon.properties[x].name + '</td><td>' + input + id + '</td></tr>')
-        $('.jsdatepicker').datetimepicker({defaultDate: new Date().getTime()})
-        index = index + 1
+          switch gon.properties[p].data_type
+            when "Fixnum" then input =
+              '<div class="col-sm-6">' +
+                '<input type="text" name="prop_val[' + i + ']" placeholder="Please insert integer" pattern="^[0-9]+$" required>' +
+              '</div>'
+            when "Float" then input =
+              '<div class="col-sm-6">' +
+                '<input type="text" name="prop_val[' + i + ']" placeholder="Please insert float" pattern="^[0-9]+((.|,)[0-9]+){0,1}$" required>' +
+              '</div>'
+            when "Boolean" then input =
+              '<div class="col-sm-6">' +
+                '<input type="checkbox" name="prop_val[' + i + ']">' +
+              '</div>'
+            when "Datetime" then input =
+              '<div class="col-sm-6">' +
+                '<input type="text" class="form-control jsdatepicker" name="prop_val[' + i + ']" value="' + gon.value + '">' +
+              '</div>'
+            else input =
+              '<div class="col-sm-6">' +
+                '<input type="text" name="prop_val[' + i + ']" placeholder="Please insert string" required>' +
+              '</div>'
+        hidden = '<input type="hidden" name="prop_id[' + i + ']" value="' + gon.properties[p].id + '">'
+        $('#properties').append('<tr height=35><td>' + gon.properties[p].name + '</td><td>' + input + hidden + '</td></tr>')
+        $('.jsdatepicker').datetimepicker({ defaultDate: new Date().getTime() })
+        i = i + 1
