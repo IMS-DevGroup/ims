@@ -20,7 +20,32 @@
 # Learn more: http://github.com/javan/whenever
 
 
-every 8.hours do
+
+#env :PATH, ENV['PATH']
+
+
+
+#every 2.minutes do
+#  runner "Untit.echo"
+#end###
+#######
+
+#every 2.minutes do
+#  # specify the task name as a string
+#  runner 'Device.throw_expired_note'
+#  runner "puts '====================================================='"
+#  runner "puts 'habs geschafft du arsch'"
+#  runner "puts Time.now"
+#  runner "puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'"
+
+#end
+
+
+#every 2.minutes do
   # specify the task name as a string
-  runner 'Device.throw_expired_note'
-end
+#  runner 'Device.throw_expired_note'
+#  puts "====================================================="
+#  puts "habs geschafft du penner"
+#  puts Time.now
+#  puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+#end
