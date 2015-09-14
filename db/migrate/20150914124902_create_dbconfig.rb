@@ -3,7 +3,7 @@ class CreateDbconfig < ActiveRecord::Migration
     create_table :dbconfigs do |t|
       t.boolean :db_status
       t.string :org_name
-      t.user :org_head_user
+      t.references :org_head_user
     end
   end
 end
