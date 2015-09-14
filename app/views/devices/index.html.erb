@@ -1,5 +1,9 @@
-<h1><%= t 'devices.index.title' %></h1>
+<% currentStock = t 'users.active_stock_all' %>
+<% if !(@current_user.stock.nil?) then currentStock = @current_user.stock.name end %>
 
+<h1><%= (t 'devices.index.title') + '  (' +currentStock+ ')'%></h1>
+
+<br>
 <table id='devices' class='table table-striped'>
   <thead>
     <tr>
@@ -24,8 +28,8 @@
         <td><%= device.ready %></td>
 
         <td width="180px"><%= link_to (t "buttons.show"), device, class: 'btn btn-info' %>
-       <%= link_to (t 'buttons.edit'), edit_device_path(device), class: 'btn btn-warning' %>
-        <%= link_to (t 'buttons.destroy'), device, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td>
+          <%if current_user.right.manage_devices==true%> <%= link_to (t 'buttons.edit'), edit_device_path(device), class: 'btn btn-warning' %><%end%>
+              <%if current_user.right.manage_devices==true%><%= link_to (t 'buttons.destroy'), device, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td><%end%>
 
       </tr>
     <% end %>
@@ -34,4 +38,5 @@
 
 <br>
 
-<%= link_to (t 'buttons.new.device'), new_device_path, class: 'btn btn-success' %>
+<%if current_user.right.manage_devices==true%><%= link_to (t 'buttons.new.device'), new_device_path, class: 'btn btn-success' %><%end%>
+<%if current_user.right.manage_devices==true%><%= link_to (t 'buttons.new.device_group'), device_groups_path, class: 'btn btn-success', style: "margin-left:230px;" %><%end%>

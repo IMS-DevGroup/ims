@@ -11,23 +11,26 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :info %><br>
     <%= f.text_area :info %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :data_type %>
-    <%= f.collection_select :data_type_id, DataType.all, :id, :name %>
+    <%= f.collection_select :data_type_id, DataType.all, :id, :name, {}, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :device_type %>
-    <%= f.collection_select :device_type_id, DeviceType.all, :id, :name, include_blank: "choose device_type"%>
+    <%= f.collection_select :device_type_id, DeviceType.all, :id, :name, {}, class: "form-control", include_blank: "choose device_type"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <a href="/properties/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+    <%= link_to (t "buttons.show"), @property, class: 'btn btn-info' %>
+    <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
+
   </div>
 <% end %>
