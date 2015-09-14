@@ -7,9 +7,18 @@
 #= require_tree .
 #= require bootstrap-sprockets
 #= require bootstrap-switch
+#= require moment
+#= require bootstrap-datetimepicker
 
 
 $ ->
+  console.log(gon.locale)
+  locale = ''
+  if gon.locale == 'de'
+    locale = '../lang/German.json'
+  $('.dataTableJS').dataTable
+    language:
+      url: locale
   $('#switch').bootstrapSwitch('offText', '<span class="flag-icon flag-icon-de"></span>')
   $('#switch').bootstrapSwitch('onText', '<span class="flag-icon flag-icon-gb"></span>')
   $('#switch').bootstrapSwitch('offColor', 'primary')

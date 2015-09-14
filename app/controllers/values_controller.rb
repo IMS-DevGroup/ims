@@ -4,17 +4,23 @@ class ValuesController < ApplicationController
   # GET /values
   # GET /values.json
   def index
-    @values = Value.all
+   #redirect_to '/starts/'
+   #this reactivates the link to /values
+   @values = Value.all
   end
 
   # GET /values/1
   # GET /values/1.json
   def show
+    #delete the following to reactivate link
+    redirect_to '/starts/'
   end
 
   # GET /values/new
   def new
-    @value = Value.new
+    redirect_to '/starts/'
+    #this reactivates the link to /values/new
+    # @value = Value.new
   end
 
   # GET /values/1/edit
@@ -62,12 +68,14 @@ class ValuesController < ApplicationController
   end
 
   def ValuesController.transfer(prop_val, prop_id, device)
-    prop_val.each do |i, val|
-      v = Value.new
-      v.value = val
-      v.property_id = prop_id[i]
-      v.device_id = device.id
-      v.save
+    if !prop_val.nil?
+      prop_val.each do |i, val|
+        v = Value.new
+        v.property_id = prop_id[i]
+        v.value=prop_val[i]
+        v.device_id = device.id
+        v.save
+      end
     end
   end
 

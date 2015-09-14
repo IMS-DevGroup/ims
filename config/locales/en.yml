@@ -1,5 +1,4 @@
 en:
-
   activerecord:
     errors:
       models:
@@ -9,7 +8,7 @@ en:
               blank: Please insert a prename.
             lastname:
               blank: Please insert a lastname.
-            unit:
+            unit_id:
               blank: Please choose a unit.
             username:
               taken: This username is already taken, please choose another one.
@@ -44,75 +43,123 @@ en:
 
 
   users:
+    choose_active_stock: Please choose your active stock
+    active_stock_all: All
     index:
-      title: "Listing Users"
+      title: Listing Users
     edit:
-      title: "Editing User"
+      title: Editing User
+      active: Active
     new:
-      title: "New User"
+      title: New User
 
   operations:
-    operation_type: "Operation type"
-    operation_dispatch_number: "Operation number dispatch"
-    begin_date: "Begin date"
-    ending_date: "Close date"
-    user: "Squad Leader"
+    operation_type: Operation type
+    operation_dispatch_number: Operation number dispatch
+    begin_date: Begin date
+    ending_date: Close date
+    user: Squad Leader
     new:
-      title: "New Operation"
+      title: New Operation
     index:
-      title: "Listing Operations"
+      title: Listing Operations
     form:
-      linked_user: "User"
+      linked_user: User
+      select_stock: Select stock
+      select_user: Select Squad Leader
     edit:
-      title: "Editing Operation"
+      title: Editing Operation
 
   units:
-    name: "Name"
-    phone_number: "Phone Number"
+    name: Name
+    phone_number: Phone Number
     index:
-      title: "Listing Units"
+      title: Listing Units
     edit:
-      title: "Editing Unit"
+      title: Editing Unit
     new:
-      title: "New Unit"
+      title: New Unit
 
   stocks:
-    city: "City"
-    street: "Street"
+    city: City
+    street: Street
+    form:
+      select_unit: Select unit
     index:
-      title: "Listing Stocks"
+      title: Listing Stocks
     edit:
-      title: "Editing Stock"
+      title: Editing Stock
     new:
-      title: "New Stock"
+      title: New Stock
 
   devices:
-    device_type: "Device Type"
-    owner: "Owner"
-    stock: "Stock"
-    ready: "Ready"
+    device_type: Device Type
+    owner: Owner
+    stock: Stock
+    ready: Ready
     index:
-      title: "Listing Devices"
+      title: Listing Devices
+    form:
+      select_device_typ: Select device type
+      select_owner_stock: Select owner stock
+      select_current_stock: Select current stock
     edit:
-      title: "Editing Device"
+      title: Editing Device
     new:
-      title: "New Device"
+      title: New Device
 
+  device_types:
+    index:
+      title: Listing Device Types
+    edit:
+      title: Editing Device Type
+    new:
+      title: New Device Type
+
+  device_groups:
+    index:
+      title: Listing Device Groups
+    edit:
+      title: Editing Device Groups
+    new:
+      title: New Device Group
+    form:
+      h2: 'prohibited this device_group from being saved:'
+
+  rights:
+    edit:
+      title: Editing Rights of
+    manage_rights: Manage Rights
+    manage_users: Manage Users
+    manage_devices: Manage Devices
+    manage_device_types: Manage Device Types
+    manage_stocks_and_units: Manage Stocks and Units
+    manage_operations: Manage Operations
+
+  properties:
+    propertie: properties
+    edit:
+      title: Editing Property
+    new:
+      title: New Property
+    index:
+      title: Listing Properties
 
   mixed_fields:
-    email: "Email"
-    info: "Info"
-    lastname: "Lastname"
-    location: "Location"
-    mobile_number: "Mobile number"
-    password: "Password"
-    prename: "Prename"
-    stock: "Stock"
-    unit: "Unit"
-    user: "User"
-    username: "Username"
-    name: "Name"
-    passwordconf: "Password confirmation"
+    email: Email
+    info: Info
+    lastname: Lastname
+    location: Location
+    mobile_number: Mobile number
+    password: Password
+    prename: Prename
+    stock: Stock
+    unit: Unit
+    user: User
+    username: Username
+    name: Name
+    data_type: Data Type
+    passwordconf: Password confirmation
 
   buttons:
     back: Back
@@ -120,18 +167,27 @@ en:
     edit: Edit
     destroy: Delete
     rights: Rights
+    submit: Submit
+    confirmation_sure_message: Are you sure?
+    start:
+      set_stock: Set stock
     new:
       user: New User
       stock: New Stock
       operation: New Operation
       unit: New Unit
       device: New Device
+      device_types: New Device Type
+      device_groups: New Device Group
+      property: New Property
     main_menu:
       operations: Operations
       devices: Devices
       users: Users
       stocks: Stocks
       units: Units
+      contact: Contact
+      lendings: Lendings
 
   own:
     errors:
@@ -139,15 +195,37 @@ en:
       only_username_no_pw: Please insert a password if you want to have a username.
       mobile_number_not_valid: Please insert a valid mobile number.
       user_login: Username and/or password are not valid.
+      username: "Username is not valid, allowed characters are letters, numbers, underline and dot."
     success:
       user_updated: User successfully updated.
       user_created: User successfully created.
+      user_destroyed: User successfully deleted.
       user_login: User login was successful.
       operation_updated: Operation successfully updated.
       operation_created: Operation successfully created.
+      operation_destroyed: Operation successfully deleted.
       unit_updated: Unit successfully updated.
       unit_created: Unit successfully created.
+      unit_destroyed: Uni successfully deleted.
       stock_updated: Stock successfully updated.
       stock_created: Stock successfully created.
+      stock_destroyed: Stock successfully deleted.
       device_updated: Device successfully updated.
       device_created: Device successfully created.
+      device_destroyed: Device successfully deleted.
+      device_type_updated: Device type successfully updated.
+      device_type_created: Device type successfully created.
+      device_type_destroyed: Device type successfully deleted.
+      device_group_updated: Device group successfully updated.
+      device_group_created: Device group successfully created.
+      device_group_destroyed: Device group successfully deleted.
+      right_updated: Rights were successfully updated.
+      property_updated: Property successfully updated.
+      property_created: Property successfully created.
+      property_destroyed: Property successfully deleted.
+
+
+  contact:
+    title: Send a message to us
+    submit: Send message
+    message: Message

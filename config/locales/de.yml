@@ -8,7 +8,7 @@ de:
               blank: Bitte einen Vornamen eingeben.
             lastname:
               blank: Bitte einen Nachnamen eingeben.
-            unit:
+            unit_id:
               blank: Bitte eine Einheit wählen.
             username:
               taken: Dieser Username ist bereits vergeben.
@@ -42,76 +42,125 @@ de:
               blank: Bitte angeben, ob das Gerät bereit ist.
 
   users:
+    choose_active_stock: 'Bitte wählen Sie den Lagerort'
+    active_stock_all: Alle
     index:
-      title: "Nutzerliste"
+      title: Nutzerliste
     edit:
-      title: "Nutzer bearbeiten"
+      title: Nutzer bearbeiten
+      active: Aktiv
     new:
-      title: "Neuen Nutzer anlegen"
+      title: Neuen Nutzer anlegen
 
   operations:
-    operation_type: "Einsatzart"
-    operation_dispatch_number: "Einsatznummer"
-    begin_date: "Einsatzbeginn"
-    ending_date: "Einsatzende"
-    user: "Einsatzleiter"
+    operation_type: Einsatzart
+    operation_dispatch_number: Einsatznummer
+    begin_date: Einsatzbeginn
+    ending_date: Einsatzende
+    user: Einsatzleiter
     new:
-      title: "Neuen Einsatz anlegen"
+      title: Neuen Einsatz anlegen
     index:
-      title: "Einsatzliste"
+      title: Einsatzliste
     form:
-      linked_user: "Benutzer"
+      linked_user: Benutzer
+      select_stock: Wähle Lager
+      select_user: Wähle Einsatzleiter
     edit:
-      title: "Einsatz bearbeiten"
+      title: Einsatz bearbeiten
 
   units:
-    name: "Name"
-    phone_number: "Telefonnummer"
+    name: Name
+    phone_number: Telefonnummer
     index:
-      title: "Einheitenliste"
+      title: Einheitenliste
     edit:
-      title: "Einheit bearbeiten"
+      title: Einheit bearbeiten
     new:
-      title: "Neue Einheit anlegen"
+      title: Neue Einheit anlegen
 
   stocks:
-    city: "Stadt"
-    street: "Straße"
+    city: Stadt
+    street: Straße
+    form:
+      select_unit: Wähle Einheit
     index:
-      title: "Lagerliste"
+      title: Lagerliste
     edit:
-      title: "Lager bearbeiten"
+      title: Lager bearbeiten
     new:
-      title: "Neues Lager anlegen"
+      title: Neues Lager anlegen
 
   devices:
-    device_type: "Gerätetyp"
-    owner: "Besitzer"
-    stock: "Lager"
-    ready: "Bereit"
+    device_type: Gerätetyp
+    owner: Besitzer
+    stock: Lager
+    ready: Bereit
     index:
-      title: "Geräteliste"
+      title: Geräteliste
+    form:
+      select_device_typ: Wähle Gerätetyp
+      select_owner_stock: Wähle Lager des Besitzers
+      select_current_stock: Wähle aktuelles Lager
     edit:
-      title: "Gerät bearbeiten"
+      title: Gerät bearbeiten
     new:
-      title: "Neues Gerät anlegen"
+      title: Neues Gerät anlegen
 
+
+  device_types:
+    index:
+      title: Gerätetypliste
+    edit:
+      title: Gerätetyp bearbeiten
+    new:
+      title: Neuer Gerätetyp
+
+  device_groups:
+    index:
+      title: Gerätegruppenliste
+    edit:
+      title: Gerätegruppe bearbeiten
+    new:
+      title: Neue Gerätegruppe
+    form:
+      h2: 'Das Speichern dieser Gerätegruppe wurde abgefangen:'
+
+  rights:
+    edit:
+      title: Rechte bearbeiten von
+    manage_rights: Darf Rechte vergeben
+    manage_users: User anlegen und bearbeiten
+    manage_devices: Geräte anlegen und bearbeiten
+    manage_device_types: Gerätetypen anlegen und bearbeiten
+    manage_stocks_and_units: Einheiten und Standorte anlegen und bearbeiten
+    manage_operations: Einsätze anlegen und bearbeiten
+
+  properties:
+    propertie: Eigenschaften
+    edit:
+      title: Eigenschaften bearbeiten
+    new:
+      title: Neue Eigenschaft
+    index:
+      title: Eigenschaftenliste
 
 
   mixed_fields:
-    email: "Email"
-    info: "Information"
-    lastname: "Nachname"
-    location: "Ort"
-    mobile_number: "Handynummer"
-    password: "Passwort"
-    prename: "Vorname"
-    stock: "Lager"
-    unit: "Einheit "
-    user: "Benutzer"
-    username: "Benutzername"
-    name: "Name"
-    passwordconf: "Passwort bestätigen"
+    email: Email
+    info: Information
+    lastname: Nachname
+    location: Ort
+    mobile_number: Handynummer
+    password: Passwort
+    prename: Vorname
+    stock: Lager
+    unit: Einheit
+    user: Benutzer
+    username: Benutzername
+    name: Name
+    data_type: Datentyp
+    passwordconf: Passwort bestätigen
 
   buttons:
     back: Zurück
@@ -119,18 +168,27 @@ de:
     edit: Ändern
     destroy: Löschen
     rights: Rechte
+    submit: Speichern
+    confirmation_sure_message: Sind Sie sicher?
+    start:
+      set_stock: Bestätige Lager
     new:
       user: Neuer User
       stock: Neues Lager
       operation: Neuer Einsatz
       unit: Neue Einheit
       device: Neues Gerät
+      device_types: Neuer Gerätetyp
+      device_groups: Neue Gerätegruppe
+      property: Neue Eigenschaft
     main_menu:
       operations: Einsätze
       devices: Geräte
       users: Benutzer
       stocks: Lagerorte
       units: Einheiten
+      contact: Kontakt
+      lendings: Ausleihen
 
   own:
     errors:
@@ -138,15 +196,37 @@ de:
       only_username_no_pw: Bitte auch ein Passwort angeben, wenn ein Username eingegeben wird.
       mobile_number_not_valid: Bitte eine gültige Telefonnummer angeben.
       user_login: Benutzername und/oder Passwort sind nicht korrekt.
+      username: "Ungültiger Benutzername, erlaubte Zeichen: Groß- und Kleinbuchstaben, Zahlen, Unterstrich, Punkt."
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
+      user_destroyed: Benutzer erfolgreich gelöscht.
       user_login: Benutzer erfolgreich eingeloggt.
       operation_updated: Einsatz erfolgreich geupdated.
       operation_created: Einsatz erfolgreich angelegt.
+      operation_destroyed: Einsatz erfolgreich gelöscht.
       unit_updated: Einheit erfolgreich geupdated.
       unit_created: Einheit erfolgreich angelegt.
+      unit_destroyed: Einheit erfolgreich gelöscht.
       stock_updated: Lager erfolgreich geupdated.
       stock_created: Lager erfolgreich angelegt.
+      stock_destroyed: Lager erfolgreich gelöscht.
       device_updated: Gerät erfolgreich geupdated.
       device_created: Gerät erfolgreich angelegt.
+      device_destroyed: Gerät erfolgreich gelöscht.
+      device_type_updated: Gerätetyp erfolgreich geupdated.
+      device_type_created: Gerätetyp erfolgreich angelegt.
+      device_type_destroyed: Gerätetyp erfolgreich gelöscht.
+      device_group_updated: Gerätegruppe erfolgreich geupdated.
+      device_group_created: Gerätegruppe erfolgreich angelegt.
+      device_group_destroyed: Gerätegruppe erfolgreich gelöscht.
+      right_updated: Rechte erfolgreich geupdated.
+      property_updated: Eigenschaft erfolgreich geupdated.
+      property_created: Eigenschaft erfolgreich angelegt.
+      property_destroyed: Eigenschaft erfolgreich gelöscht.
+
+
+  contact:
+    title: Senden Sie uns eine Nachricht
+    submit: Nachricht senden
+    message: Nachricht

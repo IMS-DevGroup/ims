@@ -14,16 +14,19 @@ class User < ActiveRecord::Base
   has_many :lendings
   belongs_to :unit
   has_many :operation
+  belongs_to :stock
+  has_many :notifications
 
   #this removes the extra break between label and field if error is thrown
   validates :prename, presence: true
   validates :lastname, presence: true
-  validates :username, uniqueness: true, allow_nil: true
+  validates :username, :uniqueness => {:case_sensitive => false}, allow_nil: true
   validates :unit_id, presence: true
   validates_uniqueness_of :email, :allow_nil => true
   #validates :password_unhashed, confirmation: true
   validates_with Users_Validator, :on => :create
   validates_with UserUpdateValidator, :on => :update
+
 
 
 
@@ -159,6 +162,14 @@ class User < ActiveRecord::Base
     dt.active=false
     dt.save
 
+    r=Right.find_by_user_id(User.find_by_username("test"))
+    r.manage_devices=true
+    r.manage_rights=true
+    r.manage_users=true
+    r.manage_stocks_and_units=true
+    r.manage_device_types=true
+    r.manage_operations=true
+    r.save
 
   end
 end

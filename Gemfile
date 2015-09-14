@@ -50,6 +50,10 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'rack-mini-profiler', require: false
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'bootstrap3-datetimepicker-rails'
+gem 'momentjs-rails'
+
+gem 'whenever', require: false
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'

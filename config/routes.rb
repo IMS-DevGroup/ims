@@ -1,18 +1,6 @@
 Rails.application.routes.draw do
-
-
-  #get 'password_resets/new' #'forgot_password' =>
-  #post 'password_resets' => 'password_resets#create' #'forgot_password' =>
-  #get 'password_resets/<token>/edit' #'password_reset' =>
-  #patch 'password_resets/<token>' => 'password_resets#update' # 'password_reset' =>
-
   get 'set_language/english'
   get 'set_language/german'
-
-  #get 'pwr' => 'password_resets#new'
-  #post 'pwr'=> 'password_resets#create'
-  #get 'pwc' => 'password_resets#edit'
-  #post 'pwc' => 'password_resets#update'
 
 
   root  'sessions#new'
@@ -41,10 +29,14 @@ Rails.application.routes.draw do
   resources :users
   resources :rights
   resources :barcode_tests
+  resources :barcodes
+  resources :lendings_selector
   resources :contacts, only: [:new, :create]
   match '/contacts', to: 'contacts#new', via: 'get'
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :notifications
+  resources :device_groups
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

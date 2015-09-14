@@ -14,7 +14,9 @@ class Value < ActiveRecord::Base
       return self.value
     elsif typ == "Fixnum"
       return self.value.to_i
-    elsif typ == "Time"
+    elsif typ == "Datetime"
+      return Time.parse(self.value)
+    elsif typ == "DateNote"
       return Time.parse(self.value)
     elsif typ =="Boolean"
       return true if self.value=="true"
@@ -23,23 +25,35 @@ class Value < ActiveRecord::Base
       return self.value.to_f
     end
   end
-  def setConvertedValue(v_karl)
 
-    typ =self.property.data_type.name
-    if typ==v_karl.class.to_s
+  def setConvertedValue(v)
 
-    self.value=v_karl.to_s
+    typ = self.property.data_type.name
+
+    if typ=="String"
+    self.value=v
+
+#TODO: Check data types
+    elsif typ=="Integer"
+      self.value=v
+
+    elsif typ=="Float"
+      self.value=v
+
+    elsif typ=="Boolean"
+      if v=="on"
+        self.value="true"
+      end
 
 
-    elsif v_karl.class.to_s=="TrueClass"&& typ=="Boolean"
-      self.value="true"
+    elsif typ=="Datetime"
+      self.value=Time.parse(v).to_s
 
-    elsif v_karl.class.to_s=="FalseClass"&& typ=="Boolean"
-      self.value="false"
+    elsif typ=="DateNote"
+      self.value=Time.parse(v).to_s
     else
-       flash[:ERROR] =self.property.name + " is " + v.class + " not " + @typ
+       #flash[:ERROR] =self.property.name + " is " + v.class + " not " + @typ
     end
-    self.save
 
   end
 

@@ -13,7 +13,7 @@
   </style>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+  <link rel="icon" type="image/png" href="../ims_logo.png">
 
 </head>
 <body>
@@ -24,26 +24,55 @@
 <script type="text/javascript">
     function updateTime() {
         var date = new Date();
-        var stunden = date.getHours();
-        var minuten = date.getMinutes();
-        var tag = date.getDate();
-        var monatDesJahres = date.getMonth();
-        var jahr = date.getFullYear();
-        var tagInWoche = date.getDay();
-        var jahr_t = date.getFullYear() - 2000;
-        var wochentag = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag");
-        var monat = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember");
-        var monat_t = new Array("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var day = date.getDate();
+        var monthOfTheYear = date.getMonth();
+        var year = date.getFullYear();
+        var dayInWeek = date.getDay();
+        var year_t = date.getFullYear() - 2000;
+        var weekday;
+        var month;
+        var resultDate;
+        var month_t = new Array("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
 
-        if(stunden < 10){stunden = "0" + stunden;}
-        if(minuten < 10){minuten = "0" + minuten;}
-        if(tag < 10){tag = "0" + tag;}
+        if (<%=I18n.locale.to_s == "de"%>) {
+            weekday = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag")
+            month = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember")
+        }else{
+            weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+            month = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+        }
 
-        var datum = wochentag[tagInWoche] + ", " + tag + ". " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
-        var datum_t = tag + "" + stunden + "" + minuten + "" + monat_t[monatDesJahres] + "" + jahr_t;
+        if (hours < 10) {
+            hours = "0" + hours;
+        }
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        if (day < 10) {
+            day = "0" + day;
+        }
 
-        document.getElementById('time').innerHTML = datum;
-        document.getElementById('time1').innerHTML = datum_t;
+        if (<%=I18n.locale.to_s == "de"%>) {
+            resultDate = weekday[dayInWeek] + ", " + day + ". " + month[monthOfTheYear] + " " + year + " " + hours + ":" + minutes;
+        } else {
+            if(day == 1 || day == 21 || day == 31) {
+                resultDate = weekday[dayInWeek] + ", the " + + day + "st of " + month[monthOfTheYear] + " " + year + " " + hours + ":" + minutes;
+            } else if(day == 2 || day == 22){
+                resultDate = weekday[dayInWeek] + ", the " + + day + "nd of " + month[monthOfTheYear] + " " + year + " " + hours + ":" + minutes;
+            } else if(day == 3 || day == 23){
+                resultDate = weekday[dayInWeek] + ", the " + + day + "rd of " + month[monthOfTheYear] + " " + year + " " + hours + ":" + minutes;
+            } else{
+                resultDate = weekday[dayInWeek] + ", the " + + day + "th of " + month[monthOfTheYear] + " " + year + " " + hours + ":" + minutes;
+            }
+        }
+
+        document.getElementById('time').innerHTML = resultDate;
+        var date_t = day + "" + hours + "" + minutes + "" + month_t[monthOfTheYear] + "" + year_t;
+
+        <!--document.getElementById('time').innerHTML = datum;-->
+        document.getElementById('time1').innerHTML = date_t;
         setTimeout(updateTime, 60000);
     }
 
@@ -65,8 +94,27 @@
 
 <div id="infobar">
     <ul class="nav nav-tabs" >
+      <% if current_user %>
+      <% if (current_user.right.manage_device_types == true) || (current_user.right.manage_stocks_and_units == true)%>
+      <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+          Administration <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <% if (current_user.right.manage_device_types == true) %>
+          <li role="presentation"><a href="/device_types/"><%= t "devices.device_type" %></a></li>
+          <li role="presentation"><a href="/properties/"><%= t "properties.propertie" %></a></li>
+          <% end %>
+          <% if (current_user.right.manage_stocks_and_units == true)%>
+          <li role="presentation"><a href="/units/"><%= t "buttons.main_menu.units" %></a></li>
+          <li role="presentation"><a href="/stocks/"><%= t "buttons.main_menu.stocks" %></a></li>
+          <% end %>
+        </ul>
+      </li>
+      <% end %>
+      <% end %>
       <li role="presentation"><a href="#">Impressum</a></li>
-      <li role="presentation"><a href= "/contacts/">Kontakt</a></li>
+      <li role="presentation"><a href= "/contacts/"><%=t "buttons.main_menu.contact" %></a></li>
       <% if logged_in? %><li role="presentation"><a href="/logout/"><b><%= current_user.username %></b> (Logout)</a></li><% end %>
     </ul>
 </div>
@@ -116,15 +164,15 @@
 <div class="nav-stacked" id="menucontainer">
 
   <% if logged_in? %>
-  <ul class="nav nav-pills nav-stacked">
+  <ul class="nav nav-pills nav-stacked ">
     <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> " ><a href="/starts/" >Start</a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'operations' %> "><a href="/operations/" ><%= t "buttons.main_menu.operations" %></a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'devices' %> "><a href="/devices/" ><%= t "buttons.main_menu.devices" %></a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'stocks' %> "><a href="/stocks/" ><%= t "buttons.main_menu.stocks" %></a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'users' %> "><a href="/users/" ><%= t "buttons.main_menu.users" %></a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >What</a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'units' %> "><a href="/units/" ><%= t "buttons.main_menu.units" %></a></li>
-    </ul>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'units' %> "><a href="/lendings/" ><strong><%= t "buttons.main_menu.lendings" %></strong></a></li>
+  </ul>
+
   <% end %>
 
   <% if !logged_in? %>
@@ -132,10 +180,9 @@
         <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> " ><a href="/login/" >Start</a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'operations' %> "><a href="/login/" ><%= t "buttons.main_menu.operations" %></a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'devices' %> "><a href="/login/" ><%= t "buttons.main_menu.devices" %></a></li>
-        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'stocks' %> "><a href="/login/" ><%= t "buttons.main_menu.stocks" %></a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'users' %> "><a href="/login/" ><%= t "buttons.main_menu.users" %></a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'starts' %> "><a href="/login/" >What</a></li>
-        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'units' %> "><a href="/login/" ><%= t "buttons.main_menu.units" %></a></li>
+        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'landings' %>"><a href="/lendings/" ><%= t "buttons.main_menu.lendings" %></a></li>
   </ul>
   <% end %>
 </div>

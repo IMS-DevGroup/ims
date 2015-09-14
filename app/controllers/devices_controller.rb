@@ -4,8 +4,14 @@ class DevicesController < ApplicationController
   # GET /devices
   # GET /devices.json
   def index
-    @devices = Device.all.eager_load(:stock, :device_type)
+    #check for set stock
+    if @current_user.stock.nil?
+      @devices = Device.all.eager_load(:stock, :device_type)
+    else
+      @devices = Device.where(stock_id: @current_user.stock_id).find_each
+    end
   end
+
 
   # GET /devices/1
   # GET /devices/1.json
@@ -14,11 +20,35 @@ class DevicesController < ApplicationController
 
   # GET /devices/new
   def new
-    @device = Device.new
+    if current_user.right.manage_devices == false
+      redirect_to "/device/"
+    else
+      @device = Device.new
+
+      @properties = Property.all
+      propmap = {}
+      @properties.each do |prop|
+        propmap[prop.id] = { :id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
+                             :device_type => prop.device_type.id, :value => nil }
+      end
+      gon.properties = propmap
+    end
   end
 
   # GET /devices/1/edit
   def edit
+    if current_user.right.manage_devices == false
+      redirect_to "/device/"
+    else
+      properties = Property.where("device_type_id = ?", @device.device_type_id)
+      propmap = {}
+      properties.each do |prop|
+        value = prop.values.find_by_device_id(@device.id).value
+        propmap[prop.id] = { :id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
+                             :device_type => prop.device_type.id, :value => value }
+      end
+      gon.properties = propmap
+    end
   end
 
   # POST /devices
@@ -62,31 +92,21 @@ class DevicesController < ApplicationController
   def destroy
     @device.destroy
     respond_to do |format|
-      format.html { redirect_to devices_url, notice: 'Device was successfully destroyed.' }
+      flash[:success] = (I18n.t "own.success.device_destroyed").to_s
+      format.html { redirect_to @device }
       format.json { head :no_content }
     end
   end
 
-  def get_properties
-    prop_ary = Array.new
-    DeviceType.find_by_id(params[:device_type]).properties.each do |property|
-      prop_ary.push(property)
-    end
-    respond_to do |format|
-      format.json {
-        render json: { result: prop_ary }
-      }
-    end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_device
+    @device = Device.find(params[:id])
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_device
-      @device = Device.find(params[:id])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def device_params
+    params.require(:device).permit(:ready, :info, :owner_id, :stock_id, :device_type_id, :data_type_id)
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def device_params
-      params.require(:device).permit(:ready, :info, :owner_id, :stock_id, :device_type_id)
-    end
 end

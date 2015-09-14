@@ -2,7 +2,7 @@
 
 <h1><%= t "operations.index.title" %></h1>
 
-<table id="operations" class="table table-striped">
+<table id="operations" class="dataTableJS table table-striped">
   <thead>
     <tr>
       <th><%= t "operations.user" %></th>
@@ -26,9 +26,9 @@
         <td><%= operation.info %></td>
         <td><%= operation.created_at+7200 %></td>       <!-- Hier Zeitzone Anpassen -->
         <td><%= operation.close_date %></td>
-        <td><%= link_to (t "buttons.show"), operation, class: 'btn btn-info' %>
+        <td width="180px"><%= link_to (t "buttons.show"), operation, class: 'btn btn-info' %>
         <%= link_to (t "buttons.edit"), edit_operation_path(operation), class: 'btn btn-warning' %>
-        <%= link_to (t "buttons.destroy"), operation, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <%= link_to (t "buttons.destroy"), operation, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>

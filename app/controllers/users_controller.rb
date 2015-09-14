@@ -14,11 +14,18 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    if current_user.right.manage_users == false
+      redirect_to '/users/'
+    else
+      @user = User.new
+    end
   end
 
   # GET /users/1/edit
   def edit
+    if current_user.right.manage_users == false
+      redirect_to '/users/'
+    end
   end
 
   # POST /users
@@ -63,12 +70,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def test_test
+  end
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      flash[:success] = (I18n.t "own.success.user_destroyed").to_s
+      format.html { redirect_to @user }
       format.json { head :no_content }
     end
   end

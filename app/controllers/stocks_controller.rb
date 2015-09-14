@@ -14,11 +14,17 @@ class StocksController < ApplicationController
 
   # GET /stocks/new
   def new
+    if current_user.right.manage_stocks_and_units == false
+      redirect_to '/stocks/'
+      else
     @stock = Stock.new
   end
-
+end
   # GET /stocks/1/edit
   def edit
+    if current_user.right.manage_stocks_and_units == false
+      redirect_to '/stocks/'
+  end
   end
 
   # POST /stocks
@@ -65,7 +71,8 @@ class StocksController < ApplicationController
 
     @stock.destroy
     respond_to do |format|
-      format.html { redirect_to stocks_url, notice: 'Stock was successfully destroyed.' }
+      flash[:success] = (I18n.t "own.success.stock_destroyed").to_s
+      format.html { redirect_to @stock }
       format.json { head :no_content }
     end
   end
