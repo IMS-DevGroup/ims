@@ -37,6 +37,11 @@ class DataType < ActiveRecord::Base
     dt_fixnum.name = "Fixnum"
     dt_fixnum.save
 
+    #Create standart value for things that can expire
+    dt_time= DataType.new
+    dt_time.name = "DateNote"
+    dt_time.save
+
 
   end
 
