@@ -4,24 +4,34 @@ class RightsController < ApplicationController
   # GET /rights
   # GET /rights.json
   def index
+    if current_user.right.manage_rights == true
+      redirect_to '/rights/'
+    else
     redirect_to '/starts/'
-
+    end
   end
 
   # GET /rights/1
   # GET /rights/1.json
   def show
-    redirect_to '/starts/'
+    if current_user.right.manage_rights == false
+      redirect_to '/starts/'
+    end
   end
 
   # GET /rights/new
   def new
+    if current_user.right.manage_rights == false
+      redirect_to '/starts/'
+    else
     @right = Right.new
   end
-
+end
   # GET /rights/1/edit
   def edit
-
+    if current_user.right.manage_rights == false
+      redirect_to '/starts/'
+      end
   end
 
   # POST /rights

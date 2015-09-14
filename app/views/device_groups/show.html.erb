@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%=(t "mixed_fields.name") + ": "%></strong>
+  <%= @device_group.name %>
+</p>
+
+<p>
+  <strong><%=(t "mixed_fields.info") + ": "%></strong>
+  <%= @device_group.info %>
+</p>
+
+<%= link_to (t "buttons.back"), device_groups_path, class: 'tn btn-primary' %>
+<%if current_user.right.manage_users==true%><%= link_to (t "buttons.edit"), edit_device_group_path(@device_group), class:'btn btn-warning' %><%end%>
+

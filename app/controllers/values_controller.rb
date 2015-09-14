@@ -4,9 +4,9 @@ class ValuesController < ApplicationController
   # GET /values
   # GET /values.json
   def index
-    redirect_to '/starts/'
+   #redirect_to '/starts/'
    #this reactivates the link to /values
-   # @values = Value.all
+   @values = Value.all
   end
 
   # GET /values/1
@@ -68,16 +68,17 @@ class ValuesController < ApplicationController
   end
 
   def ValuesController.transfer(prop_val, prop_id, device)
-   if !prop_val.nil?
-    prop_val.each do |i, val|
-      v = Value.new
-      v.property_id = prop_id[i]
-      v.value=prop_val[i]
-      v.device_id = device.id
-      v.save
+    if !prop_val.nil?
+      prop_val.each do |i, val|
+        v = Value.new
+        v.property_id = prop_id[i]
+        v.value=prop_val[i]
+        v.device_id = device.id
+        v.save
+      end
     end
   end
-end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_value

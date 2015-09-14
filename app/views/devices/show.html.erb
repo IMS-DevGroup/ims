@@ -31,5 +31,6 @@
 <%= @device.ready %>
 </p>
 
-<a href="/devices/"><button type="button" class = "btn btn-primary" ><%= t 'buttons.back'%></button></a>
-<%= link_to (t 'buttons.edit'), edit_device_path(@device), class:'btn btn-warning' %>
+    <a href="/devices/"><button type="button" class = "btn btn-primary" ><%= t 'buttons.back'%></button></a>
+    <%if current_user.right.manage_devices==true%><%= link_to (t 'buttons.edit'), edit_device_path(@device), class:'btn btn-warning' %><%end%>
+    <%if current_user.right.manage_devices==true%><%= link_to raw('Barcode <span class="glyphicon glyphicon-barcode"></span>'), "/barcodes?device_id=#{@device.id}", class:'btn btn-primary', :target => "_blank",  :popup => true  %><%end%>

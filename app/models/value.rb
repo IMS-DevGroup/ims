@@ -14,7 +14,9 @@ class Value < ActiveRecord::Base
       return self.value
     elsif typ == "Fixnum"
       return self.value.to_i
-    elsif typ == "Time"
+    elsif typ == "Datetime"
+      return Time.parse(self.value)
+    elsif typ == "DateNote"
       return Time.parse(self.value)
     elsif typ =="Boolean"
       return true if self.value=="true"
@@ -44,9 +46,11 @@ class Value < ActiveRecord::Base
       end
 
 
-    elsif typ=="Time"
+    elsif typ=="Datetime"
       self.value=Time.parse(v).to_s
 
+    elsif typ=="DateNote"
+      self.value=Time.parse(v).to_s
     else
        #flash[:ERROR] =self.property.name + " is " + v.class + " not " + @typ
     end
