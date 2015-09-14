@@ -53,6 +53,8 @@ gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'bootstrap3-datetimepicker-rails'
 
 
+gem 'whenever', require: false
+
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
 
