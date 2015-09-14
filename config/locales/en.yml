@@ -108,9 +108,6 @@ en:
     new:
       title: New Device
 
-  properties:
-    propertie: Properties
-
   device_types:
     index:
       title: Listing Device Types
@@ -129,6 +126,25 @@ en:
     form:
       h2: 'prohibited this device_group from being saved:'
 
+  rights:
+    edit:
+      title: Editing Rights of
+    manage_rights: Manage Rights
+    manage_users: Manage Users
+    manage_devices: Manage Devices
+    manage_device_types: Manage Device Types
+    manage_stocks_and_units: Manage Stocks and Units
+    manage_operations: Manage Operations
+
+  properties:
+    propertie: properties
+    edit:
+      title: Editing Property
+    new:
+      title: New Property
+    index:
+      title: Listing Properties
+
   mixed_fields:
     email: Email
     info: Info
@@ -142,6 +158,7 @@ en:
     user: User
     username: Username
     name: Name
+    data_type: Data Type
 
   buttons:
     back: Back
@@ -161,6 +178,7 @@ en:
       device: New Device
       device_types: New Device Type
       device_groups: New Device Group
+      property: New Property
     main_menu:
       operations: Operations
       devices: Devices
@@ -199,6 +217,10 @@ en:
       device_group_updated: Device group successfully updated.
       device_group_created: Device group successfully created.
       device_group_destroyed: Device group successfully deleted.
+      right_updated: Rights were successfully updated.
+      property_updated: Property successfully updated.
+      property_created: Property successfully created.
+      property_destroyed: Property successfully deleted.
 
 
   contact:
