@@ -28,9 +28,12 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
 
-        if !@user.email.nil? && @user.password == nil
-          @user.send_activation_email
-          flash[:warning] = "Please check your email to activate your account." #auskommentieren!
+        if !@user.email.nil? && @user.password == nil && @user.username != nil
+          @user.activate
+          #@user.create_activation_key
+          #@user.send_activation_email
+          #methodn aufruf
+          flash[:warning] = 'Please check your email to activate your account.' #auskommentieren!
         end
 
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -79,6 +82,6 @@ class UsersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info,
-                                 :unit_id, :right_id, :password_unhashed)
+                                 :unit_id, :right_id, :password_unhashed, :password_unhashed_confirmation)
   end
 end

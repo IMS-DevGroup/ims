@@ -1,6 +1,10 @@
 UserMailer#account_activation
 
-Moin <%= @user.username %>,
-voll krasser Email-Test oder?
+Guten Tag <%= @user.prename.capitalize%> <%= @user.lastname.capitalize%>
 
-<%= edit_account_activation_url(@user.reset_token, email: @user.email) %>
+Willkommen! Hier sind ihre Zugangsdaten mit generiertem Passwort für den erstmaligen Login:
+Wir empfehlen Ihnen, ihr Passwort nach dem ersten Einloggen zu ändern.
+
+
+Benutzername: <%= @user.username %>
+Passwort: <%= @tmp_password %>

@@ -5,7 +5,7 @@ class Users_Validator < ActiveModel::Validator
     if !user.active?
     #look for username and password combination
     if !user.active==false
-   if !(user.password_unhashed.blank?) && user.username.blank?
+   if !(user.password_unhashed.blank?) && user.username.blank?      ##das ist komisch kann nicht erreicht werden
      user.errors[:base] << "If password is inserted you have to insert a username"
    elsif !(user.username.blank?) && user.password_unhashed.blank?
      user.errors[:base] << "If username is inserted you have to insert a password"
@@ -18,6 +18,11 @@ class Users_Validator < ActiveModel::Validator
         user.errors[:base] << "Please enter a valid mobil number"
       end
     end
+    end
+    unless user.password_unhashed.blank? && user.password_unhashed_confirmation.blank?
+      if user.password_unhashed != user.password_unhashed_confirmation
+        user.errors[:base] << "Passwortfelder stimmen nicht überein"
+      end
     end
   end
 end

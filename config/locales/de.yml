@@ -111,6 +111,7 @@ de:
     user: "Benutzer"
     username: "Benutzername"
     name: "Name"
+    passwordconf: "Passwort bestätigen"
 
   buttons:
     back: Zurück

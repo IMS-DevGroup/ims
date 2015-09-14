@@ -112,6 +112,7 @@ en:
     user: "User"
     username: "Username"
     name: "Name"
+    passwordconf: "Password confirmation"
 
   buttons:
     back: Back

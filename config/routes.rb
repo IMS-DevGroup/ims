@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/new'
-  get 'password_resets/edit'
+
+  #get 'password_resets/new' #'forgot_password' =>
+  #post 'password_resets' => 'password_resets#create' #'forgot_password' =>
+  #get 'password_resets/<token>/edit' #'password_reset' =>
+  #patch 'password_resets/<token>' => 'password_resets#update' # 'password_reset' =>
 
   get 'set_language/english'
   get 'set_language/german'
+
+  #get 'pwr' => 'password_resets#new'
+  #post 'pwr'=> 'password_resets#create'
+  #get 'pwc' => 'password_resets#edit'
+  #post 'pwc' => 'password_resets#update'
+
 
   root  'sessions#new'
   get   'login'   =>  'sessions#new'
@@ -13,7 +22,8 @@ Rails.application.routes.draw do
   post  'get-prop'=>  'devices#get_properties'
   post  'set-val' =>  'values#transfer'
   get   'lendings/:id/return' => 'lendings#return'
-  get 'pwr' => 'password_resets#new'
+
+
   # route for first try of multiple-device-lending
   # post  'delete_from_list' => 'lendings#delete_from_list'
   resources :starts

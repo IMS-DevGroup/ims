@@ -8,9 +8,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   layout :detect_browser
 
-  before_filter :require_login
+  #before_filter :require_login
 
   def require_login
+    puts request.url
+    puts request.path
+
     if NO_LOGIN_ROUTES.include? request.env['PATH_INFO']
       return
     end
@@ -18,6 +21,7 @@ class ApplicationController < ActionController::Base
       redirect_to '/login/'
     end
   end
+
 
   def detect_browser
     agent = request.headers["HTTP_USER_AGENT"].downcase
@@ -30,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   private
   MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
-  NO_LOGIN_ROUTES = ["/contacts", "/pwr"] #passwort reset path to be added
+  NO_LOGIN_ROUTES = ["/contacts", "/password_resets"] #passwort reset path to be added
 
 
 

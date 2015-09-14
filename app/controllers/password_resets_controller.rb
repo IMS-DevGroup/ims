@@ -10,16 +10,14 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:password_reset][:email].downcase) #delete[:password_reset]
+    @user = User.find_by(email: params[:email].downcase) #delete[:password_reset]
     if @user
       @user.create_reset_key
-      if @user.validated
+
         @user.send_password_reset_email
-        flash[:notice] = "Email zum Zurücksetzen des Passworts gesendet."
+        flash[:notice] = 'Email zum Zurücksetzen des Passworts gesendet.'
         redirect_to root_url
-      else
-        @user.send_activation_email
-      end
+
     else
       flash[:error] = "Gesuchte Emailadresse nicht gefunden."
       render 'new'
@@ -30,14 +28,15 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    if params[:user][:password_unhashed].empty?
+    if params[:password_unhashed].empty?
       @user.errors.add(:password_unhashed, 'darf nicht leer sein')
       render 'edit'
-    elsif @user.update_attributes(user_params)
+    elsif @user.update_attribute(:password_unhashed, params[:password_unhashed])
+      @user.encrypt_password #vllt richtig??
+      @user.update_attribute(:reset_key, nil) ##damit link nur einmal benutzt werden kann
       log_in @user
-      @user.validated = true
       flash[:success] = 'Passwort wurde erfolgreich geändert/gesetzt'
-      redirect_to 'starts#index'
+      redirect_to '/starts'
     else
       render 'edit'
     end
@@ -47,7 +46,7 @@ class PasswordResetsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:passwort_unhashed, :password_unhashed_confirmation)
+    params.require(:user).permit(:passwort_unhashed) #password_unhashed_confirmation
   end
 
   def get_user
@@ -61,11 +60,9 @@ class PasswordResetsController < ApplicationController
   end
 
   def check_expiration
-    unless @user.validated
-      if @user.password_reset_expired?
-        flash[:error] = 'Ihr Link zum Zurücksetzen des Pasworts ist bereits abgelaufen.'
-        redirect_to new_password_reset_url
-      end
+    if @user.password_reset_expired?
+      flash[:error] = 'Ihr Link zum Zurücksetzen des Passworts ist bereits abgelaufen.'
+      redirect_to new_password_reset_url
     end
   end
 
