@@ -66,7 +66,7 @@
         <td>
           <div class="form-group">
             <%= f.label "locale", t(:"language") %>
-            <%= select_tag 'locale', options_for_select(I18n.available_locales, I18n.locale),:onchange => :update %>
+            z<%= select_tag 'locale', options_for_select(I18n.available_locales, I18n.locale) %>
           </div>
         </td>
         <td>
