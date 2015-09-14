@@ -22,16 +22,27 @@ class Device < ActiveRecord::Base
   def self.throw_expired_note
     Device.all.each do |d|
       d.values.each do |v|
-        n=Notification.new
-        if v.property.data_type.name == "DateNote" && Time.parse(v.value) < Time.now
-          n.subject="Let Up: "+ d.info + "ist abgelaufen"
-          n.info="Ablaufdatum: " + v.value
+
+
+        if v.property.data_type.name == "DateNote" && Time.parse(v.value) < Time.now &&(  Notification.find_by_device_id(d).nil? or !Notification.find_by_device_id(d).checked.nil?)
+          n=Notification.new
+          n.subject="Let Up: "+ d.device_type.name.to_s+" "+d.id.to_s+"ist abgelaufen"
+          n.info="Ablaufdatum: "+v.value.to_s
           n.unit=Stock.find(d.owner_id).unit
           n.device=d
           n.save
-        elsif v.property.data_type.name == "DateNote" && Time.parse(v.value) < Time.now+5259486
-          n.subject="Let Up: "+ d.info + "wird am "+v.value +" ablaufen"
-          n.info="Ablaufdatum: " + v.value
+        elsif v.property.data_type.name == "DateNote" && Time.parse(v.value) < Time.now+1209600 &&(  Notification.find_by_device_id(d).nil? or  !Notification.find_by_device_id(d).checked.nil?)
+          n=Notification.new
+          n.subject="Let Up: "+ d.info+ "wird am "+v.value.to_s+" ablaufen"
+          n.info="Ablaufdatum: " + v.value.to_s
+          n.unit=Stock.find(d.owner_id).unit
+          n.device=d
+          n.save
+
+        elsif v.property.data_type.name == "DateNote" && Time.parse(v.value) < Time.now+5259486 &&(  Notification.find_by_device_id(d).nil? or  !Notification.find_by_device_id(d).checked.nil?)
+          n=Notification.new
+          n.subject="Let Up: "+ d.info+ "wird am "+v.value.to_s+" ablaufen"
+          n.info="Ablaufdatum: " + v.value.to_s
           n.unit=Stock.find(d.owner_id).unit
           n.device=d
           n.save
