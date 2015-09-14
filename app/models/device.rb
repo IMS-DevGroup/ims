@@ -16,6 +16,21 @@ class Device < ActiveRecord::Base
 
 
 
+  def self.throw_expired_note
+      #puts "hello world"
+    Device.all.each do |d|
+      d.values.each do |v|
+        if v.property.data_type.name == "DateNote" && Time.parse(v.value) < Time.now
+          n=Notification.new
+          n.subject="Let Up: "+ d.info + "ist abgelaufen"
+          n.info="Ablaufdatum: " + v.value
+          n.unit=Stock.find(d.owner_id).unit
+          n.save
+          end
+       end
+      end
+  end
+
   def self.fill
 
 
