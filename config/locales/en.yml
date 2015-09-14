@@ -159,6 +159,7 @@ en:
     username: Username
     name: Name
     data_type: Data Type
+    hello: Hello
 
   buttons:
     back: Back
