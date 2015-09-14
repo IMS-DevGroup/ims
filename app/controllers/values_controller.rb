@@ -67,12 +67,12 @@ class ValuesController < ApplicationController
     end
   end
 
-  def ValuesController.transfer(prop_val, prop_id, device)
+  def ValuesController.insert(prop_val, prop_id, device)
     if !prop_val.nil?
-      prop_val.each do |i, val|
+      prop_val.each do |key, val|
         v = Value.new
-        v.property_id = prop_id[i]
-        v.value=prop_val[i]
+        v.property_id = prop_id[key]
+        v.value=prop_val[key]
         v.device_id = device.id
         v.save
       end
