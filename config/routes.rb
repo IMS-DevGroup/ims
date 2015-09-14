@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get   'logout'  =>  'sessions#remove'
   post  'get-prop' => 'devices#get_properties'
   get   'lendings/:id/return' => 'lendings#return' , as: 'return_lending'
+  get   'operations/show_lendings' => 'operations#show_lendings', as: 'show_lendings'
   # route for first try of multiple-device-lending
   # post  'delete_from_list' => 'lendings#delete_from_list'
   resources :starts

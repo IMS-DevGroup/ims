@@ -78,4 +78,9 @@ class OperationsController < ApplicationController
     def operation_params
       params.require(:operation).permit(:number, :operation_type, :info, :location, :close_date, :user_id, :stock_id)
     end
+
+
+  def show_lendings
+    puts 'hier kommt die maus'
+  end
 end
