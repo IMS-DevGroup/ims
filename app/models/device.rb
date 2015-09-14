@@ -1,5 +1,6 @@
 class Device < ActiveRecord::Base
-
+  require 'rufus-scheduler'
+  scheduler = Rufus::Scheduler.new
 
 
   has_many :lendings
@@ -14,10 +15,13 @@ class Device < ActiveRecord::Base
   validates :stock_id, presence: :true
 
 
-
+  scheduler.every '60s' do
+    puts 'Hello... Rufus'
+    Device.throw_expired_note
+  end
 
   def self.throw_expired_note
-      #puts "hello world"
+    puts "hello world"
     Device.all.each do |d|
       d.values.each do |v|
         if v.property.data_type.name == "DateNote" && Time.parse(v.value) < Time.now
