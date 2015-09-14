@@ -40,7 +40,7 @@ class UsersController < ApplicationController
           #@user.create_activation_key
           #@user.send_activation_email
           #methodn aufruf
-          flash[:warning] = 'Please check your email to activate your account.' #auskommentieren!
+          flash[:success] = (I18n.t "own.success.user_without_pw").to_s
         end
 
         format.html { redirect_to @user, notice: 'User was successfully created.' }

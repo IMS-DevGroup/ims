@@ -4,6 +4,7 @@ class PasswordResetsController < ApplicationController
   before_action :check_expiration,  only: [:edit, :update]
 
   attr_accessor :password_unhashed
+  skip_before_filter :require_login
 
 
   def new

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   layout :detect_browser
 
-  #before_filter :require_login
+  before_filter :require_login
 
   def require_login
     puts request.url
