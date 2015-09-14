@@ -49,5 +49,12 @@ class Property < ActiveRecord::Base
     dt_string.device_type=DeviceType.find_by_name("DeviceType2")
     dt_string.save
 
+    dt_string = Property.new
+    dt_string.name = "Property6"
+    dt_string.info = "Info5 DateNote"
+    dt_string.data_type= DataType.find_by_name("Datetime")
+    dt_string.device_type=DeviceType.find_by_name("DeviceType2")
+    dt_string.save
+
   end
 end

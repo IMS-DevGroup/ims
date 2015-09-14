@@ -1,7 +1,8 @@
 class Device < ActiveRecord::Base
+  require 'rufus-scheduler'
+  scheduler = Rufus::Scheduler.new
 
-
-
+  has_many :notifications
   has_many :lendings
   has_many :values
   belongs_to :device_type
@@ -14,22 +15,27 @@ class Device < ActiveRecord::Base
   validates :stock_id, presence: :true
 
 
-
+  scheduler.every '24h' do
+    Device.throw_expired_note
+  end
 
   def self.throw_expired_note
-      #puts "hello world"
     Device.all.each do |d|
       d.values.each do |v|
-        if v.property.data_type.name == "DateNote" && Time.parse(v.value) < Time.now
+        if v.property.data_type.name == "DateNote" && Time.parse(v.value) < Time.now+5259486 &&(  Notification.find_by_device_id(d).nil? or  !Notification.find_by_device_id(d).checked.nil?)
           n=Notification.new
-          n.subject="Let Up: "+ d.info + "ist abgelaufen"
-          n.info="Ablaufdatum: " + v.value
+          n.subject="Achtung: "+ d.device_type.name.to_s+" mit ID:"+d.id.to_s+"läuft ab"
+          n.info="Ablaufdatum: "+v.value.to_s
           n.unit=Stock.find(d.owner_id).unit
+          n.device=d
           n.save
+
           end
        end
       end
   end
+
+
 
   def self.fill
 
@@ -53,6 +59,7 @@ class Device < ActiveRecord::Base
     dt.save
 
   end
+
 
 
 end
