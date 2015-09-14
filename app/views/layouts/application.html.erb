@@ -13,7 +13,7 @@
   </style>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+  <link rel="icon" type="image/png" href="../ims_logo.png">
 
 </head>
 <body>
@@ -24,59 +24,55 @@
 <script type="text/javascript">
     function updateTime() {
         var date = new Date();
-        var stunden = date.getHours();
-        var minuten = date.getMinutes();
-        var tag = date.getDate();
-        var monatDesJahres = date.getMonth();
-        var jahr = date.getFullYear();
-        var tagInWoche = date.getDay();
-        var jahr_t = date.getFullYear() - 2000;
-        var wochentag;
-        var monat;
-        var datum;
-        var monat_t = new Array("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var day = date.getDate();
+        var monthOfTheYear = date.getMonth();
+        var year = date.getFullYear();
+        var dayInWeek = date.getDay();
+        var year_t = date.getFullYear() - 2000;
+        var weekday;
+        var month;
+        var resultDate;
+        var month_t = new Array("jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
 
         if (<%=I18n.locale.to_s == "de"%>) {
-            <%= puts I18n.locale %>
-            <%= puts "hier kommt die maus deutsche sprache" %>
-            wochentag = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag")
-            monat = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember")
+            weekday = new Array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag")
+            month = new Array("Januar", "Februar", "M&auml;rz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember")
         }else{
-            <%= puts I18n.locale %>
-            <%= puts "hier kommt die maus englische sprache" %>
-            wochentag = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
-            monat = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+            weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+            month = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
         }
 
-        if (stunden < 10) {
-            stunden = "0" + stunden;
+        if (hours < 10) {
+            hours = "0" + hours;
         }
-        if (minuten < 10) {
-            minuten = "0" + minuten;
+        if (minutes < 10) {
+            minutes = "0" + minutes;
         }
-        if (tag < 10) {
-            tag = "0" + tag;
+        if (day < 10) {
+            day = "0" + day;
         }
 
         if (<%=I18n.locale.to_s == "de"%>) {
-            datum = wochentag[tagInWoche] + ", " + tag + ". " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
-        } else { <!-- englisches Datum -->
-            if(tag == 1 || tag == 21 || tag == 31) {
-                datum = wochentag[tagInWoche] + ", the " + + tag + "st of " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
-            } else if(tag == 2 || tag == 22){
-                datum = wochentag[tagInWoche] + ", the " + + tag + "nd of " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
-            } else if(tag == 3 || tag == 23){
-                datum = wochentag[tagInWoche] + ", the " + + tag + "rd of " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
+            resultDate = weekday[dayInWeek] + ", " + day + ". " + month[monthOfTheYear] + " " + year + " " + hours + ":" + minutes;
+        } else {
+            if(day == 1 || day == 21 || day == 31) {
+                resultDate = weekday[dayInWeek] + ", the " + + day + "st of " + month[monthOfTheYear] + " " + year + " " + hours + ":" + minutes;
+            } else if(day == 2 || day == 22){
+                resultDate = weekday[dayInWeek] + ", the " + + day + "nd of " + month[monthOfTheYear] + " " + year + " " + hours + ":" + minutes;
+            } else if(day == 3 || day == 23){
+                resultDate = weekday[dayInWeek] + ", the " + + day + "rd of " + month[monthOfTheYear] + " " + year + " " + hours + ":" + minutes;
             } else{
-                datum = wochentag[tagInWoche] + ", the " + + tag + "th of " + monat[monatDesJahres] + " " + jahr + " " + stunden + ":" + minuten;
+                resultDate = weekday[dayInWeek] + ", the " + + day + "th of " + month[monthOfTheYear] + " " + year + " " + hours + ":" + minutes;
             }
         }
 
-        document.getElementById('time').innerHTML = datum;
-        var datum_t = tag + "" + stunden + "" + minuten + "" + monat_t[monatDesJahres] + "" + jahr_t;
+        document.getElementById('time').innerHTML = resultDate;
+        var date_t = day + "" + hours + "" + minutes + "" + month_t[monthOfTheYear] + "" + year_t;
 
         <!--document.getElementById('time').innerHTML = datum;-->
-        document.getElementById('time1').innerHTML = datum_t;
+        document.getElementById('time1').innerHTML = date_t;
         setTimeout(updateTime, 60000);
     }
 
@@ -118,7 +114,7 @@
       <% end %>
       <% end %>
       <li role="presentation"><a href="#">Impressum</a></li>
-      <li role="presentation"><a href= "/contacts/">Kontakt</a></li>
+      <li role="presentation"><a href= "/contacts/"><%=t "buttons.main_menu.contact" %></a></li>
       <% if logged_in? %><li role="presentation"><a href="/logout/"><b><%= current_user.username %></b> (Logout)</a></li><% end %>
     </ul>
 </div>

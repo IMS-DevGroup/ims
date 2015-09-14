@@ -51,7 +51,7 @@ gem 'autoprefixer-rails'
 gem 'rack-mini-profiler', require: false
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'bootstrap3-datetimepicker-rails'
-
+gem 'momentjs-rails'
 
 gem 'whenever', require: false
 
