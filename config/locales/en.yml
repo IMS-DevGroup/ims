@@ -160,6 +160,7 @@ en:
     name: Name
     data_type: Data Type
     passwordconf: Password confirmation
+    hello: Hello
 
   buttons:
     back: Back

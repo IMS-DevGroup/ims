@@ -161,6 +161,7 @@ de:
     name: Name
     data_type: Datentyp
     passwordconf: Passwort bestätigen
+    hello: Hallo
 
   buttons:
     back: Zurück
