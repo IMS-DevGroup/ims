@@ -160,6 +160,7 @@ de:
     username: Benutzername
     name: Name
     data_type: Datentyp
+    hello: Hallo
 
   buttons:
     back: Zurück
