@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= (t 'mixed_fields.name') + ": " %></strong>
   <%= @property.name %>
 </p>
 
 <p>
-  <strong>Info:</strong>
+  <strong><%= (t 'mixed_fields.info') + ": " %></strong>
   <%= @property.info %>
 </p>
 
 <p>
-  <strong>DataType:</strong>
+  <strong><%= (t 'mixed_fields.data_type') + ": " %></strong>
   <% unless @property.data_type.nil?%>
       <%= @property.data_type.name %>
   <%end%>
 </p>
 
 <p>
-  <strong>DeviceType:</strong>
+  <strong><%= (t 'devices.device_type') + ": " %></strong>
   <% unless @property.device_type.nil?%>
       <%= @property.device_type.name %>
   <%end%>
 </p>
 
 
-<%= link_to 'Back', properties_path, class: 'btn btn-primary' %>
-<%= link_to 'Edit', edit_property_path(@property), class: 'btn btn-warning' %>
+<%= link_to (t "buttons.back"), properties_path, class: 'btn btn-primary' %>
+<%= link_to (t "buttons.edit"), edit_property_path(@property), class: 'btn btn-warning' %>
