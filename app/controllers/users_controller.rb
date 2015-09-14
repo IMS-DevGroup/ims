@@ -39,7 +39,6 @@ class UsersController < ApplicationController
           @user.activate
           #@user.create_activation_key
           #@user.send_activation_email
-          #methodn aufruf
           flash[:success] = (I18n.t "own.success.user_without_pw").to_s
         end
 

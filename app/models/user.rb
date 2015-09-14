@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => {:case_sensitive => false}, allow_nil: true
   validates :unit_id, presence: true
   validates_uniqueness_of :email, :allow_nil => true
-  #validates :password_unhashed, confirmation: true
   validates_with Users_Validator, :on => :create
   validates_with UserUpdateValidator, :on => :update
 
@@ -51,15 +50,9 @@ class User < ActiveRecord::Base
 
   def encrypt_password
     if self.password_unhashed.present?
-      puts "encrypt1"
       self.salt = BCrypt::Engine.generate_salt
-      puts self.salt
-      puts self.username
       self.password = BCrypt::Engine.hash_secret(password_unhashed, salt)
-      puts self.password
-
     end
-    puts "encrypt2"
   end
 
 
@@ -88,16 +81,15 @@ class User < ActiveRecord::Base
 
   def activate
     self.password_unhashed = SecureRandom.urlsafe_base64(6, false)
-    #self.encrypt_password
     save
     send_activation_email
   end
-
+=begin
   def create_activation_key
     self.activation_token = User.new_token
     update_attribute(:reset_key, BCrypt::Password.create(activation_token))
   end
-
+=end
 
   def send_activation_email
     UserMailer.account_activation(self, self.password_unhashed).deliver_now
