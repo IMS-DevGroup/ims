@@ -58,12 +58,12 @@ class DevicesController < ApplicationController
 
     respond_to do |format|
       if @device.save
-        ValuesController.transfer(params['prop_val'], params['prop_id'], @device)
+        ValuesController.insert(params['prop_val'], params['prop_id'], @device)
         flash[:success] = (I18n.t "own.success.device_created").to_s
         format.html { redirect_to @device }
         format.json { render :show, status: :created, location: @device }
       else
-        #get all error messages and save it into a string
+        # get all error messages and save it into a string
         flash.now[:error] = (@device.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @device.errors, status: :unprocessable_entity }

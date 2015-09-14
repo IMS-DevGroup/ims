@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "drkfunktest@gmail.com"
+  default from: 'Kontakt.IMS@fw-technology.com'
   layout 'mailer'
 end

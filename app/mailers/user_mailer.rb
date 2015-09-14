@@ -22,4 +22,10 @@ class UserMailer < ApplicationMailer
 
     mail to: user.email, subject: "Passwort zurücksetzen"
   end
+
+  default from: 'Kontakt.IMS@fw-technology.com'
+  #def welcome_email(email)
+  #  mail(to: email, subject: 'Willkommen!')
+  #end
+
 end
