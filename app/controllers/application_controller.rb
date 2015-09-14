@@ -11,8 +11,6 @@ class ApplicationController < ActionController::Base
   before_filter :require_login
 
   def require_login
-    puts request.url
-    puts request.path
 
     if NO_LOGIN_ROUTES.include? request.env['PATH_INFO']
       return
