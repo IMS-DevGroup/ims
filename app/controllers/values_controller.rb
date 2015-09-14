@@ -72,8 +72,19 @@ class ValuesController < ApplicationController
       prop_val.each do |key, val|
         v = Value.new
         v.property_id = prop_id[key]
-        v.value=prop_val[key]
+        v.value = prop_val[key]
         v.device_id = device.id
+        v.save
+      end
+    end
+  end
+
+  def ValuesController.change(prop_val, prop_id, device)
+    if !prop_val.nil?
+      prop_val.each do |key, val|
+        prop = Property.find_by_id(prop_id[key])
+        v = prop.values.find_by_device_id(device.id)
+        v.value = prop_val[key]
         v.save
       end
     end
