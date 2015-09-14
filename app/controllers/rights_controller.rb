@@ -55,7 +55,8 @@ end
   def update
     respond_to do |format|
       if @right.update(right_params)
-        format.html { redirect_to (request.env["HTTP_REFERER"]) , notice: 'Right was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.right_updated").to_s
+        format.html { redirect_to (request.env["HTTP_REFERER"]) }
         format.json { render :show, status: :ok, location: @right }
       else
         format.html { render :edit }

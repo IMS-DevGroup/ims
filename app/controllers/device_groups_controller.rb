@@ -34,7 +34,8 @@ class DeviceGroupsController < ApplicationController
 
     respond_to do |format|
       if @device_group.save
-        format.html { redirect_to @device_group, notice: 'Device group was successfully created.' }
+        flash[:success] = (I18n.t "own.success.device_group_created").to_s
+        format.html { redirect_to @device_group }
         format.json { render :show, status: :created, location: @device_group }
       else
         format.html { render :new }
@@ -48,7 +49,8 @@ class DeviceGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @device_group.update(device_group_params)
-        format.html { redirect_to @device_group, notice: 'Device group was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.device_group_updated").to_s
+        format.html { redirect_to @device_group }
         format.json { render :show, status: :ok, location: @device_group }
       else
         format.html { render :edit }
@@ -62,7 +64,8 @@ class DeviceGroupsController < ApplicationController
   def destroy
     @device_group.destroy
     respond_to do |format|
-      format.html { redirect_to device_groups_url, notice: 'Device group was successfully destroyed.' }
+      flash[:success] = (I18n.t "own.success.device_type_destroyed").to_s
+      format.html { redirect_to @device_group }
       format.json { head :no_content }
     end
   end

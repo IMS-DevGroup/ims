@@ -2,7 +2,7 @@
 
 <h1><%= t "units.index.title" %></h1>
 
-<table id="units" class="table table-striped">
+<table id="units" class="dataTableJS table table-striped">
   <thead>
     <tr>
       <th><%= t "units.name" %></th>
@@ -20,7 +20,7 @@
         <td><%= unit.phone_number %></td>
         <td width="180px"><%= link_to (t "buttons.show"), unit, class: 'btn btn-info' %>
           <%if current_user.right.manage_stocks_and_units==true%><%= link_to (t "buttons.edit"), edit_unit_path(unit), class: 'btn btn-warning' %><%end%>
-          <%if current_user.right.manage_stocks_and_units==true%> <%= link_to (t "buttons.destroy"), unit, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td><%end%>
+          <%if current_user.right.manage_stocks_and_units==true%> <%= link_to (t "buttons.destroy"), unit, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td><%end%>
       </tr>
     <% end %>
   </tbody>
