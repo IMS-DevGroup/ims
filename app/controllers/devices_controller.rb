@@ -27,15 +27,13 @@ class DevicesController < ApplicationController
 
   # GET /devices/1/edit
   def edit
-    @properties = Property.all
+    properties = Property.where("device_type_id = ?", @device.device_type_id)
     propmap = {}
-    @properties.each do |prop|
-      value = Value.where("prop.id = property_id" and "@device.id = device_id").value
+    properties.each do |prop|
+      value = prop.values.find_by_device_id(@device.id).value
       propmap[prop.id] = { :id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
                            :device_type => prop.device_type.id, :value => value }
     end
-    puts 'Mein Gott Walter'
-    puts @device.id
     gon.properties = propmap
   end
 
@@ -85,19 +83,6 @@ class DevicesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def get_properties
-    #prop_ary = Array.new
-    #DeviceType.find_by_id(params[:device_type]).properties.each do |property|
-    #  prop_ary.push(property)
-    #end
-    #respond_to do |format|
-    #  format.json {
-    #    render json: { result: prop_ary }
-    #  }
-    #end
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
