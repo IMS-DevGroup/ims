@@ -8,7 +8,7 @@ en:
               blank: Please insert a prename.
             lastname:
               blank: Please insert a lastname.
-            unit:
+            unit_id:
               blank: Please choose a unit.
             username:
               taken: This username is already taken, please choose another one.

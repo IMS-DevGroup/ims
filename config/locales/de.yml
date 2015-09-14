@@ -8,7 +8,7 @@ de:
               blank: Bitte einen Vornamen eingeben.
             lastname:
               blank: Bitte einen Nachnamen eingeben.
-            unit:
+            unit_id:
               blank: Bitte eine Einheit wählen.
             username:
               taken: Dieser Username ist bereits vergeben.
