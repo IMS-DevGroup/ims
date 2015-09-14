@@ -194,6 +194,7 @@ en:
       only_username_no_pw: Please insert a password if you want to have a username.
       mobile_number_not_valid: Please insert a valid mobile number.
       user_login: Username and/or password are not valid.
+      username: "Username is not valid, allowed characters are letters, numbers, underline and dot."
     success:
       user_updated: User successfully updated.
       user_created: User successfully created.
