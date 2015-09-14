@@ -2,6 +2,7 @@ class Unit < ActiveRecord::Base
 
   has_many :stocks
   has_many :users
+  has_many :notifications
 
 
 
