@@ -1,3 +1,4 @@
+<form onsubmit="return false">
  <div class="form-group">
     <label for="barcode">Barcode</label>
 
@@ -12,52 +13,4 @@
     </div>
     <!-- /input-group -->
   </div>
-  <div class="collapse" id="collapseExample">
-    <div class="well">
-      <table id="devices" class="table table-striped">
-        <thead>
-        <tr>
-          <th></th>
-          <th>Device type</th>
-          <th>Info</th>
-          <th>Owner Stock</th>
-          <th>Stock</th>
-          <th>Ready</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <% @devices.each do |device| %>
-            <tr>
-              <td>
-                <button id="<%= device.id %>" type="button" class="btn btn-success add-dev">
-                  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-              </td>
-              <td><%= if device.device_type.nil? then
-                      else
-                        device.device_type.name
-                      end %></td>
-              <td><%= device.info %></td>
-              <td><%= Stock.find_by_id(device.owner_id).name %></td>
-              <td><%= if device.stock.nil? then
-                      else
-                        device.stock.name
-                      end %></td>
-              <td><%= device.ready %></td>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <input type="hidden" id="deviceids" name="deviceids">
-
-  <button id="btnselection" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSelection" aria-expanded="false" aria-controls="collapseSelection">
-    Auswahl <span class="badge">0</span>
-  </button>
-  <div class="collapse" id="collapseSelection">
-    <div class="well">
-  <ul id="seldevices" class="list-group">
-  </ul>
-        </div>
-      </div>
+</form>
