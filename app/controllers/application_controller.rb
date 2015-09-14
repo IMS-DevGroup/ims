@@ -44,10 +44,13 @@ class ApplicationController < ActionController::Base
 
   #sets localisation (magic)
   private
-  def set_locale
-    I18n.locale = session[:locale] || I18n.default_locale
-    session[:locale] = I18n.locale
-  end
 
+  def set_locale
+    if current_user != nil
+      I18n.locale = current_user.language
+    else
+      I18n.locale = :en
+    end
+  end
 
 end
