@@ -70,12 +70,6 @@
         </td>
       <tr>
         <td>
-          <div class="form-group">
-            <%= f.label "locale", t(:"language") %>
-            <%= select_tag 'locale', options_for_select(I18n.available_locales, I18n.locale) %>
-          </div>
-        </td>
-        <td>
           <% if @user.persisted? then %>
               <div class="form-group">
                 <%= f.label :label_text, (t 'users.edit.active') %><br>
