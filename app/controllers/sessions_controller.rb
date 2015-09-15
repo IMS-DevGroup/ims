@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   # POST /sessions
   # POST /sessions.json
-  # Logs in and sets stuff like remember me
+  # Logs in and sets remember me if whished, sets session - all if the login is successfull
   def create
     user = User.authenticate(params[:username], params[:password_unhashed])
     if user
