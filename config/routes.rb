@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'impressum/index'
+
   resources :boss_configs
   resources :notifications
   resources :device_groups
@@ -41,6 +43,8 @@ Rails.application.routes.draw do
   resources :boss_configs
   get '/new', to: redirect('/starts')   #TODO
   get '/*other', to: redirect('/starts')
+  resources :impressum
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
