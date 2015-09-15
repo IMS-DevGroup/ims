@@ -1,4 +1,4 @@
-classSpongebob wallpaper CreateLendings < ActiveRecord::Migration
+class CreateLendings < ActiveRecord::Migration
   def change
     create_table :lendings do |t|
       t.timestamp :receive
