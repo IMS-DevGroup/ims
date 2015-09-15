@@ -5,21 +5,21 @@ class ValuesController < ApplicationController
   # GET /values.json
   def index
    #redirect_to '/starts/'
-   #this reactivates the link to /values
+   # this reactivates the link to /values
    @values = Value.all
   end
 
   # GET /values/1
   # GET /values/1.json
   def show
-    #delete the following to reactivate link
+    # delete the following to reactivate link
     redirect_to '/starts/'
   end
 
   # GET /values/new
   def new
     redirect_to '/starts/'
-    #this reactivates the link to /values/new
+    # this reactivates the link to /values/new
     # @value = Value.new
   end
 

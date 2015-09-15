@@ -93,6 +93,10 @@ class DevicesController < ApplicationController
   # DELETE /devices/1
   # DELETE /devices/1.json
   def destroy
+    @device.values.each do |v|
+      v.destroy
+    end
+
     @device.destroy
     respond_to do |format|
       flash[:success] = (I18n.t "own.success.device_destroyed").to_s
