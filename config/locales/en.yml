@@ -173,6 +173,12 @@ en:
   starts:
     state: 'Databasestate: '
 
+  config:
+    online: Online?
+    org: Name of Organisation
+    edit:
+      title: Editing Database State
+
 
   mixed_fields:
     email: Email

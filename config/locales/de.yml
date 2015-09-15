@@ -173,6 +173,13 @@ de:
   starts:
     state: 'Datenbankstatus: '
 
+  config:
+    online: Online?
+    org: Name der Organisation
+    edit:
+      title: Datenbankstatus bearbeiten
+
+
 
   mixed_fields:
     email: Email
