@@ -187,6 +187,7 @@ de:
     data_type: Datentyp
     passwordconf: Passwort bestätigen
     hello: Hallo
+    req: '* Pflichtfeld'
 
   buttons:
     back: Zurück
