@@ -1,10 +1,12 @@
 class Users_Validator < ActiveModel::Validator
 
   def validate(user)
-    if !(user.password_unhashed.blank?) && user.username.blank?
-      user.errors[:base] << (I18n.t "own.errors.only_pw_no_username")
-    elsif !(user.username.blank?) && user.password_unhashed.blank? && user.email.blank?
-     user.errors[:base] << (I18n.t "own.errors.only_username_no_pw")
+    if !user.active==false
+      if !(user.password_unhashed.blank?) && user.username.blank?
+        user.errors[:base] << (I18n.t "own.errors.only_pw_no_username")
+      elsif !(user.username.blank?) && user.password_unhashed.blank?
+        user.errors[:base] << (I18n.t "own.errors.only_username_no_pw")
+      end
     end
     #look for correct mobile number
     unless user.mobile_number.blank?
