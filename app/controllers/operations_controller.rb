@@ -44,8 +44,6 @@ class OperationsController < ApplicationController
   def update
     respond_to do |format|
       if @operation.update(operation_params)
-        puts 'hier kommt die maus'
-        puts @operation.stocks.class
         flash[:success] = (I18n.t "own.success.operation_updated").to_s
         format.html { redirect_to @operation }
         format.json { render :show, status: :ok, location: @operation }
