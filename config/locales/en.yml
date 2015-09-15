@@ -170,6 +170,10 @@ en:
     index:
       title: Listing Properties
 
+  starts:
+    state: 'Databasestate: '
+
+
   mixed_fields:
     email: Email
     info: Info

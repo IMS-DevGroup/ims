@@ -170,6 +170,9 @@ de:
     index:
       title: Eigenschaftenliste
 
+  starts:
+    state: 'Datenbankstatus: '
+
 
   mixed_fields:
     email: Email
