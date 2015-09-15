@@ -47,6 +47,7 @@ $ ->
 
   $ ->
     for i in gon.selected_devices
+      i = parseInt(i)
       devcnt++
       device_array.push(i)
       $('#'+i).removeClass('btn btn-success').addClass('btn btn-danger')
