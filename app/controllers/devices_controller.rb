@@ -25,9 +25,10 @@ class DevicesController < ApplicationController
     else
       @device = Device.new
 
-      @properties = Property.all
+      properties = Property.all
       propmap = {}
-      @properties.each do |prop|
+
+      properties.each do |prop|
         propmap[prop.id] = { :id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
                              :device_type => prop.device_type.id, :value => nil }
       end
@@ -42,6 +43,7 @@ class DevicesController < ApplicationController
     else
       properties = Property.where("device_type_id = ?", @device.device_type_id)
       propmap = {}
+
       properties.each do |prop|
         value = prop.values.find_by_device_id(@device.id).value
         propmap[prop.id] = { :id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
@@ -76,6 +78,7 @@ class DevicesController < ApplicationController
   def update
     respond_to do |format|
       if @device.update(device_params)
+        ValuesController.change(params['prop_val'], params['prop_id'], @device)
         flash[:success] = (I18n.t "own.success.device_updated").to_s
         format.html { redirect_to @device }
         format.json { render :show, status: :ok, location: @device }

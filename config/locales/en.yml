@@ -16,12 +16,14 @@ en:
               taken: This email address already exists in the database, please choose another one.
         operation:
           attributes:
-            type:
+            operation_type:
               blank: Please insert an operation type.
             name:
               blank: Please insert an operation name.
             location:
               blank: Please insert a location.
+            user_id:
+              blank: Please choose a squad leader.
         stock:
           attributes:
             unit:
@@ -40,6 +42,18 @@ en:
               blank: Please choose a stock.
             ready:
               blank: Please insert if the device is ready.
+
+  mail_form:
+    errors:
+      models:
+        contact:
+          attributes:
+            email:
+              invalid: Invalid email address.
+              blank: Please insert your email address.
+            name:
+              blank: Please insert your name.
+
 
 
   users:
@@ -229,3 +243,5 @@ en:
     title: Send a message to us
     submit: Send message
     message: Message
+    thank_you: Thank you for your message. We will contact you soon!
+    error: Cannot send message, please check your input.
