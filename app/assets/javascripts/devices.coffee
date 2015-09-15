@@ -54,7 +54,7 @@ loadProperties = () ->
               '</div>'
             when "Datetime" then input =
               '<div class="col-sm-6">' +
-                '<input type="text" class="form-control jsdatepicker" name="prop_val[' + i + ']" value="' + gon.value + '">' +
+                '<input type="text" class="form-control jsdatepicker" name="prop_val[' + i + ']">' +
               '</div>'
             else input =
               '<div class="col-sm-6">' +
