@@ -173,6 +173,7 @@ en:
     username: Username
     name: Name
     data_type: Data Type
+    passwordconf: Password confirmation
     hello: Hello
 
   buttons:
@@ -206,10 +207,11 @@ en:
   own:
     errors:
       only_pw_no_username: Please insert a username if you want to have a password.
-      only_username_no_pw: Please insert a password if you want to have a username.
+      only_username_no_pw: Please insert an email or a password when you chose to have a username.
       mobile_number_not_valid: Please insert a valid mobile number.
       user_login: Username and/or password are not valid.
       username: "Username is not valid, allowed characters are letters, numbers, underline and dot."
+      password_confirmation: The passwords you entered did not match. Please try again.
     success:
       user_updated: User successfully updated.
       user_created: User successfully created.
@@ -237,6 +239,8 @@ en:
       property_updated: Property successfully updated.
       property_created: Property successfully created.
       property_destroyed: Property successfully deleted.
+    warning:
+      user_without_pw: Email with the generated password was successfully sent.
 
 
   contact:

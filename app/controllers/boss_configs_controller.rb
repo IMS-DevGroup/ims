@@ -32,7 +32,7 @@ class BossConfigsController < ApplicationController
 
   # GET /boss_configs/1/edit
   def edit
-    if current_user.right.manage_boss == false
+    if current_user.right.manage_boss == false or BossConfig.first.db_state == false
        redirect_to "/starts"
     end
   end
@@ -40,6 +40,7 @@ class BossConfigsController < ApplicationController
   # POST /boss_configs
   # POST /boss_configs.json
   def create
+    if BossConfig.first.nil?
     @boss_config = BossConfig.new(boss_config_params)
 
     respond_to do |format|
@@ -51,6 +52,7 @@ class BossConfigsController < ApplicationController
         format.json { render json: @boss_config.errors, status: :unprocessable_entity }
       end
     end
+      end
   end
 
   # PATCH/PUT /boss_configs/1

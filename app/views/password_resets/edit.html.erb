@@ -1,0 +1,22 @@
+<% provide(:title, 'Passwort zurücksetzen') %>
+<h1>Passwort zurücksetzen</h1>
+
+
+
+    <%= form_tag password_reset_path , :method => :patch do %>
+
+
+        <%= hidden_field_tag :email, @user.email %>
+
+
+    <div class="form-group">
+        <label_tag for="Passwort">Passwort</label_tag>
+        <%= password_field_tag :password_unhashed, params[:password_unhashed], :placeholder => 'Passwort' , class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <label_tag for="Passwort bestätigen">Passwort bestätigen</label_tag>
+        <%= password_field_tag :password_unhashed_confirmation, params[:password_unhashed_confirmation], :placeholder => 'Passwort bestätigen', class: 'form-control' %>
+    </div>
+    <p class="button"><%= submit_tag "Passwort ändern", class: 'btn btn-success' %></p>
+    <% end %>
+

@@ -16,6 +16,11 @@ class UserUpdateValidator < ActiveModel::Validator
         user.errors[:base] << (I18n.t "own.errors.username")
       end
     end
+    unless user.password_unhashed.blank? && user.password_unhashed_confirmation.blank?
+      if user.password_unhashed != user.password_unhashed_confirmation
+        user.errors[:base] << "Passwortfelder stimmen nicht überein"
+      end
+    end
   end
 end
 
