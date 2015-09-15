@@ -42,6 +42,12 @@ en:
               blank: Please choose a stock.
             ready:
               blank: Please insert if the device is ready.
+        notification:
+          attributes:
+            device_id:
+              blank: Bitte Gerät wählen.
+            unit_id:
+              blank: Bitte Einheit wählen.
 
   mail_form:
     errors:
