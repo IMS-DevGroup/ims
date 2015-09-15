@@ -22,6 +22,8 @@ de:
               blank: Bitte einen Einsatznamen eingeben.
             location:
               blank: Bitte einen Ort angeben.
+            user_id:
+              blank: Bitte einen Einsatzleiter wählen.
         stock:
           attributes:
             unit:
@@ -40,6 +42,18 @@ de:
               blank: Bitte ein Lager auswählen.
             ready:
               blank: Bitte angeben, ob das Gerät bereit ist.
+
+  mail_form:
+    errors:
+      models:
+        contact:
+          attributes:
+            email:
+              invalid: Ungültige eMail!
+              blank: Bitte geben Sie Ihre eMail Adresse ein.
+            name:
+              blank: Bitte geben Sie Ihren Namen ein.
+
 
   users:
     choose_active_stock: 'Bitte wählen Sie den Lagerort'
@@ -234,3 +248,5 @@ de:
     title: Senden Sie uns eine Nachricht
     submit: Nachricht senden
     message: Nachricht
+    thank_you: Danke für Ihre Nachricht, wir werden uns bald bei Ihnen melden!
+    error: Nachricht konnte nicht gesendet werden, bitte Eingaben überprüfen.
