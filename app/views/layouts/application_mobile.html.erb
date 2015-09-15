@@ -6,7 +6,7 @@
 
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-
+  <%= include_gon %>
   <style>
       #impressum {margin-top: 40px}
       .logoutdiv { text-align: right; margin-right: 4px}
@@ -110,7 +110,6 @@
                 <li role="navigation" class="<%= 'active'if params[:controller] == 'operations' %> "><a href="/operations/" ><%= t "buttons.main_menu.operations" %></a></li>
                 <li role="navigation" class="<%= 'active'if params[:controller] == 'devices' %> "><a href="/devices/" ><%= t "buttons.main_menu.devices" %></a></li>
                 <li role="navigation" class="<%= 'active'if params[:controller] == 'users' %> "><a href="/users/" ><%= t "buttons.main_menu.users" %></a></li>
-                <li role="navigation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >What</a></li>
                 <li role="navigation" class="<%= 'active'if params[:controller] == 'units' %> "><a href="/lendings/" ><strong><%= t "buttons.main_menu.lendings" %></strong></a></li>
                 <% if current_user %>
                     <% if (current_user.right.manage_device_types == true) || (current_user.right.manage_stocks_and_units == true)%>
@@ -138,7 +137,6 @@
                 <li role="navigation" class="<%= 'inactive'if params[:controller] == 'operations' %> "><a href="/login/" ><%= t "buttons.main_menu.operations" %></a></li>
                 <li role="navigation" class="<%= 'inactive'if params[:controller] == 'devices' %> "><a href="/login/" ><%= t "buttons.main_menu.devices" %></a></li>
                 <li role="navigation" class="<%= 'inactive'if params[:controller] == 'users' %> "><a href="/login/" ><%= t "buttons.main_menu.users" %></a></li>
-                <li role="navigation" class="<%= 'inactive'if params[:controller] == 'starts' %> "><a href="/login/" >What</a></li>
                 <li role="navigation" class="<%= 'inactive'if params[:controller] == 'landings' %>"><a href="/lendings/" ><%= t "buttons.main_menu.lendings" %></a></li>
               </ul>
           <% end %>
