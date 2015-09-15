@@ -109,6 +109,9 @@
           <li role="presentation"><a href="/units/"><%= t "buttons.main_menu.units" %></a></li>
           <li role="presentation"><a href="/stocks/"><%= t "buttons.main_menu.stocks" %></a></li>
           <% end %>
+          <% if (current_user.right.manage_boss == true)%>
+              <li role="presentation"><a href="/boss_configs/">Config</a></li>
+          <% end %>
         </ul>
       </li>
       <% end %>
