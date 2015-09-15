@@ -125,6 +125,9 @@
                             <% end %>
 
                     <% end %>
+                    <% if (current_user.right.manage_boss == true)%>
+                        <li role="presentation"><a href="/boss_configs/<%= @Boss = BossConfig.first.id%>/edit">>Config</a></li>
+                    <% end %>
                 <% end %>
               </ul>
           <% end %>

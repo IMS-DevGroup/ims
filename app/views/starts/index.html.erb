@@ -4,6 +4,7 @@ Nicht so tief, Rüdiger
 Adds Possibility for choosing an active stock.
 Ownly this stock is now displayed in the devices - view
 -->
+<h3>Datenbank Status: <% if @boss.db_state == false %><button type="button" class="btn btn-danger" disabled="disabled">Im Einsatz</button><% else %><button type="button" class="btn btn-success" disabled="disabled">Online</button><% end %></h3>
 <%= form_for(@current_user) do |f| %>
     <div class="form-group">
       <%= f.label :label_text, (t 'users.choose_active_stock') + ': ' %>
