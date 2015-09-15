@@ -45,4 +45,19 @@ $ ->
       $('#seldevices').append('<li class="list-group-item">'+gon.devices[x].type+' (<strong>'+gon.devices[x].owner+'</strong>, '+gon.devices[x].stock+')')
 
 
+  $ ->
+    for i in gon.selected_devices
+      i = parseInt(i)
+      devcnt++
+      device_array.push(i)
+      $('#'+i).removeClass('btn btn-success').addClass('btn btn-danger')
+      $('#'+i).html('<span class="glyphicon glyphicon-minus-sign" aria-hidden="true">')
+    $('#seldevices').empty()
+    $('#deviceids').empty()
+    $('#deviceids').val(device_array)
+    $('#btnselection').html('Auswahl <span class="badge">'+ devcnt + '</span>')
+    for x in device_array
+      $('#seldevices').append('<li class="list-group-item">'+gon.devices[x].type+' (<strong>'+gon.devices[x].owner+'</strong>, '+gon.devices[x].stock+')')
+
+
 
