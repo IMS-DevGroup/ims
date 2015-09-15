@@ -32,11 +32,13 @@ class LendingsController < ApplicationController
   def create
     @lending = Lending.new(lending_params)
     @device_list = params[:deviceids].delete(' ').split(',')
-    @errors = {}
+    @errors = []
 
     # handle quick-generation of user
     if params[:commit].eql?("Quick User")
-      quick_user_generation
+      if quick_user_generation
+        return
+      end
 
       #submission of entire lending
       #TODO: Error handling, json (?)
@@ -52,7 +54,7 @@ class LendingsController < ApplicationController
           if @lending.save
             @device_list.delete(d)
           else
-            @errors << @lending.errors
+            @errors.push(@lending.errors)
           end
         end
       end
@@ -64,7 +66,12 @@ class LendingsController < ApplicationController
         format.html { redirect_to '/lendings', notice: 'Lendings were successfully created.' }
         format.json { render :show, status: :created, location: @lending }
       else
-        flash.now[:error] = (@errors.values).join("<br/>").html_safe
+        puts 'Errors:'
+        errors_to_flash = []
+        @errors.each do |e|
+         errors_to_flash << ((e.values).join("<br/>").html_safe)
+        end
+        flash.now[:error] = errors_to_flash.join("<br/>").html_safe
         set_selected_devices
         format.html { render :new }
         format.json { render json: @errors, status: :unprocessable_entity }
@@ -126,8 +133,10 @@ class LendingsController < ApplicationController
       @lending.user_id = user.id
       set_selected_devices
       render :new
+      return true
     else
-      @errors << user.errors
+      @errors.push(user.errors)
+      return false
     end
   end
 
