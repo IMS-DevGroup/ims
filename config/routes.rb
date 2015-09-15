@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   resources :lendings_selector
   resources :contacts, only: [:new, :create]
   match '/contacts', to: 'contacts#new', via: 'get'
-  resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :notifications
   resources :device_groups
