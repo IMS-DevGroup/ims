@@ -9,34 +9,35 @@ class PasswordResetsController < ApplicationController
 
   def new
   end
-
+  # Searches for the given user by email, if found, a reset_key is created and send to the email
   def create
-    @user = User.find_by(email: params[:email].downcase) #delete[:password_reset]
+    @user = User.find_by(email: params[:email].downcase)
     if @user
       @user.create_reset_key
 
         @user.send_password_reset_email
-        flash[:notice] = 'Email zum Zurücksetzen des Passworts gesendet.'
+        flash[:notice] = (I18n.t "own.success.password_reset_email_sent").to_s
         redirect_to root_url
 
     else
-      flash[:error] = "Gesuchte Emailadresse nicht gefunden."
+      flash[:error] = (I18n.t "own.error.password_reset_email_not_found").to_s
       render 'new'
     end
   end
 
   def edit
   end
-
+  # Sets the new password if all entries were correct and resets the reset_key when used
   def update
     if params[:password_unhashed].empty?
-      @user.errors.add(:password_unhashed, 'darf nicht leer sein')
+#      @user.errors.add(:password_unhashed, 'darf nicht leer sein')
+      flash[:error] = (I18n.t "own.error.empty").to_s
       render 'edit'
     elsif @user.update_attribute(:password_unhashed, params[:password_unhashed])
       @user.encrypt_password #vllt richtig??
       @user.update_attribute(:reset_key, nil) ##damit link nur einmal benutzt werden kann
       log_in @user
-      flash[:success] = 'Passwort wurde erfolgreich geändert/gesetzt'
+      flash[:success] = (I18n.t "own.success.password_reset_changed").to_s
       redirect_to '/starts'
     else
       render 'edit'
@@ -45,24 +46,24 @@ class PasswordResetsController < ApplicationController
 
 
   private
-
+  # gets variables
   def user_params
     params.require(:user).permit(:passwort_unhashed) #password_unhashed_confirmation
   end
-
+  # finds user by email
   def get_user
     @user = User.find_by(email: params[:email])
   end
-
+  # checks if given token and token in the DB do match (reset_token)
   def valid_user
     unless @user && @user.activated?(params[:id])
     redirect_to root_url
     end
   end
-
+  # checks if the token is expired
   def check_expiration
     if @user.password_reset_expired?
-      flash[:error] = 'Ihr Link zum Zurücksetzen des Passworts ist bereits abgelaufen.'
+      flash[:error] = (I18n.t "own.error.password_reset_expired").to_s
       redirect_to new_password_reset_url
     end
   end
