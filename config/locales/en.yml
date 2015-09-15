@@ -239,7 +239,7 @@ en:
       property_updated: Property successfully updated.
       property_created: Property successfully created.
       property_destroyed: Property successfully deleted.
-    notice:
+    warning:
       user_without_pw: Email with the generated password was successfully sent.
 
 

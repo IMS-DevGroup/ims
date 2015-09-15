@@ -240,7 +240,7 @@ de:
       property_updated: Eigenschaft erfolgreich geupdated.
       property_created: Eigenschaft erfolgreich angelegt.
       property_destroyed: Eigenschaft erfolgreich gelöscht.
-    notice:
+    warning:
       user_without_pw: Email mit dem generiertem Passwort an angegebene Email gesendet.
 
 

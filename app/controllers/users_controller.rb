@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
         if !@user.email.nil? && @user.password == nil && @user.username != nil
           @user.activate
-          flash[:notice] = (I18n.t "own.notice.user_without_pw").to_s
+          flash[:warning] = (I18n.t "own.warning.user_without_pw").to_s
         end
 
         flash[:success] = (I18n.t "own.success.user_created").to_s
