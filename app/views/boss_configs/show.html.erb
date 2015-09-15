@@ -10,5 +10,5 @@
   <%= @boss_config.org_name %>
 </p>
 
-<%= link_to 'Edit', edit_boss_config_path(@boss_config) %> |
-<%= link_to 'Back', boss_configs_path %>
+<a href="/boss_configs/"><button type="button" class = "btn btn-primary" >Back</button></a>
+<%= link_to 'Edit', edit_boss_config_path(@boss_config), class:'btn btn-warning' %>
