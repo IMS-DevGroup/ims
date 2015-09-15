@@ -40,12 +40,12 @@ class Device < ActiveRecord::Base
     l_array = Lending.where("device_id = ?", self.id)
     l_array.each do |la|
       if la.receive.nil?
-        return false
+        return la
       end
 
     end
 
-    return true
+    return nil
   end
 
 

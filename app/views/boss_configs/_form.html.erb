@@ -11,15 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :db_state %><br>
     <%= f.check_box :db_state %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :org_name %><br>
     <%= f.text_field :org_name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <a href="/boss_configs/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+
+    <%= link_to (t "buttons.show"), @boss_config, class: 'btn btn-info' %>
+    <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
   </div>
 <% end %>
