@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   resources :notifications
   resources :device_groups
   resources :boss_configs
+  get '/new', to: redirect('/starts')   #TODO
   get '/*other', to: redirect('/starts')
 
   # The priority is based upon order of creation: first created -> highest priority.
