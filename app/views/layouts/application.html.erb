@@ -116,7 +116,7 @@
       </li>
       <% end %>
       <% end %>
-      <li role="presentation"><a href="#">Impressum</a></li>
+      <li role="presentation"><a href="/impressum/">Impressum</a></li>
       <li role="presentation"><a href= "/contacts/"><%=t "buttons.main_menu.contact" %></a></li>
       <% if logged_in? %><li role="presentation"><a href="/logout/"><b><%= current_user.username %></b> (Logout)</a></li><% end %>
     </ul>
@@ -172,7 +172,6 @@
     <li role="presentation" class="<%= 'active'if params[:controller] == 'operations' %> "><a href="/operations/" ><%= t "buttons.main_menu.operations" %></a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'devices' %> "><a href="/devices/" ><%= t "buttons.main_menu.devices" %></a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'users' %> "><a href="/users/" ><%= t "buttons.main_menu.users" %></a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'starts' %> "><a href="/starts/" >What</a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'units' %> "><a href="/lendings/" ><strong><%= t "buttons.main_menu.lendings" %></strong></a></li>
   </ul>
 
@@ -184,7 +183,6 @@
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'operations' %> "><a href="/login/" ><%= t "buttons.main_menu.operations" %></a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'devices' %> "><a href="/login/" ><%= t "buttons.main_menu.devices" %></a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'users' %> "><a href="/login/" ><%= t "buttons.main_menu.users" %></a></li>
-        <li role="presentation" class="<%= 'inactive'if params[:controller] == 'starts' %> "><a href="/login/" >What</a></li>
         <li role="presentation" class="<%= 'inactive'if params[:controller] == 'landings' %>"><a href="/lendings/" ><%= t "buttons.main_menu.lendings" %></a></li>
   </ul>
   <% end %>
