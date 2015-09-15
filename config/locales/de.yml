@@ -213,6 +213,9 @@ de:
       user_login: Benutzername und/oder Passwort sind nicht korrekt.
       username: "Ungültiger Benutzername, erlaubte Zeichen: Groß- und Kleinbuchstaben, Zahlen, Unterstrich, Punkt."
       password_confirmation: Die eingegebenen Passwörter stimmen nicht überein. Bitte probieren Sie es erneut.
+      empty_field: Passwortfeld darf nicht leer sein.
+      password_reset_email_not_found: Die eingegebene Email wurde nicht gefunden.
+      password_reset_expired: Ihr Link zum Zurücksetzen des Passworts ist bereits abgelaufen.
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
@@ -240,6 +243,8 @@ de:
       property_updated: Eigenschaft erfolgreich geupdated.
       property_created: Eigenschaft erfolgreich angelegt.
       property_destroyed: Eigenschaft erfolgreich gelöscht.
+      password_reset_email_sent: Email zum Zurücksetzen des Passwortes gesendet.
+      password_reset_changed: Passwort erfolgreich geändert.
     warning:
       user_without_pw: Email mit dem generiertem Passwort an angegebene Email gesendet.
 

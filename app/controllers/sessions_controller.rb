@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   before_action :set_session, only: [:show, :edit, :update, :destroy]
 
-  skip_before_filter :require_login
+  skip_before_filter :require_login # can be accessed without being logged in
   # GET /sessions/new
   def new
     redirect_to '/starts' if logged_in?
@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
 
   # POST /sessions
   # POST /sessions.json
+  # Logs in and sets remember me if whished, sets session - all if the login is successfull
   def create
     user = User.authenticate(params[:username], params[:password_unhashed])
     if user
@@ -22,6 +23,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # logs out the current user.
   def remove
       log_out if logged_in?
       redirect_to root_url

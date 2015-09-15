@@ -36,7 +36,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
 
-        if !@user.email.nil? && @user.password == nil && @user.username != nil
+        # When a user with email but without pw is generated, user.activate is called
+        # which does generate and send a random pw to the user
+        if !@user.email.nil? && @user.password.nil? && @user.username != nil
           @user.activate
           flash[:warning] = (I18n.t "own.warning.user_without_pw").to_s
         end
