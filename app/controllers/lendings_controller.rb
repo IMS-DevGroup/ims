@@ -31,42 +31,44 @@ class LendingsController < ApplicationController
   # POST /lendings.json
   def create
     @lending = Lending.new(lending_params)
+    @device_list = params[:deviceids].delete(' ').split(',')
+    @errors = {}
 
     # handle quick-generation of user
     if params[:commit].eql?("Quick User")
-      user = User.new(prename: params[:user_prename], lastname: params[:user_lastname], unit_id: params[:user_unit], info: params[:user_info])
-      puts user
-      if user.save
-        @lending.user_id = user.id
-      end
-      render :new
+      quick_user_generation
 
-    #submission of entire lending
-    #TODO: Error handling, json (?)
+      #submission of entire lending
+      #TODO: Error handling, json (?)
     else
-      device_list = params[:deviceids].delete(' ').split(',')
-      device_list.each do |d|
-        tmp_params = lending_params
-        tmp_params[:device_id] = d
-        @lending = Lending.new(tmp_params)
-        @failures = false
-        if @lending.save
-          puts 'success'
-        else
-          puts 'failure'
-          @failures = true
-        end
-      end
-      respond_to do |format|
-      if !@failures
-        format.html { redirect_to '/lendings', notice: 'Lendings were successfully created.' }
-        #format.json { render :show, status: :created, location: @lending }
+      if @device_list.empty?
+        @lending.save
+        @errors << @lending.errors
       else
-        format.html { render :new }
-        #format.json { render json: @lending.errors, status: :unprocessable_entity }
+        @device_list.each do |d|
+          tmp_params = lending_params
+          tmp_params[:device_id] = d
+          @lending = Lending.new(tmp_params)
+          if @lending.save
+            @device_list.delete(d)
+          else
+            @errors << @lending.errors
+          end
+        end
       end
     end
 
+    # handles either a failed user-generation or the creation of the actual lending
+    respond_to do |format|
+      if @errors.empty?
+        format.html { redirect_to '/lendings', notice: 'Lendings were successfully created.' }
+        format.json { render :show, status: :created, location: @lending }
+      else
+        flash.now[:error] = (@errors.values).join("<br/>").html_safe
+        set_selected_devices
+        format.html { render :new }
+        format.json { render json: @errors, status: :unprocessable_entity }
+      end
     end
 
   end
@@ -100,22 +102,37 @@ class LendingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lending
-      @lending = Lending.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_lending
+    @lending = Lending.find(params[:id])
+  end
 
-    def set_devices
-      @devices = Device.all.eager_load(:stock, :device_type)
-      devmap = {}
-      @devices.each do |dev|
-        devmap[dev.id] = { :type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
-      end
-      gon.devices = devmap
+  def set_devices
+    @devices = Device.all.eager_load(:stock, :device_type)
+    devmap = {}
+    @devices.each do |dev|
+      devmap[dev.id] = {:type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
     end
+    gon.devices = devmap
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def lending_params
-      params.require(:lending).permit(:receive, :lending_info, :receive_info, :user_id, :device_id, :lender_id, :receiver_id)
+  def set_selected_devices
+    gon.selected_devices = @device_list
+  end
+
+  def quick_user_generation
+    user = User.new(prename: params[:user_prename], lastname: params[:user_lastname], unit_id: params[:user_unit], info: params[:user_info])
+    if user.save
+      @lending.user_id = user.id
+      set_selected_devices
+      render :new
+    else
+      @errors << user.errors
     end
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def lending_params
+    params.require(:lending).permit(:receive, :lending_info, :receive_info, :user_id, :device_id, :lender_id, :receiver_id)
+  end
 end
