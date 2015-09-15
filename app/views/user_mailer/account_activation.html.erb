@@ -1,15 +1,14 @@
-<h1>UserMailer#account_activation</h1>
 
 <p>
 
-  Guten Tag <%= @user.prename.capitalize%> <%= @user.lastname.capitalize%>
+  Guten Tag, <%= @user.prename.capitalize%> <%= @user.lastname.capitalize%>!
 
-  Willkommen! Hier sind ihre Zugangsdaten mit generiertem Passwort für den erstmaligen Login:
-  Wir empfehlen Ihnen, ihr Passwort nach dem ersten Einloggen zu ändern.
-
+  Willkommen beim Inventory Management System! Hier sind ihre Zugangsdaten mit generiertem Passwort für den erstmaligen Login:
 
   Benutzername: <%= @user.username %>
   Passwort: <%= @tmp_password %>
+
+  Wir empfehlen Ihnen, ihr Passwort nach dem ersten Einloggen zu ändern.
 
 
 </p>

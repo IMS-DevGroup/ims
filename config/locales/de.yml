@@ -202,7 +202,6 @@ de:
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
-      user_without_pw: Email mit dem generiertem Passwort an angegebene Email gesendet.
       user_destroyed: Benutzer erfolgreich gelöscht.
       user_login: Benutzer erfolgreich eingeloggt.
       operation_updated: Einsatz erfolgreich geupdated.
@@ -227,6 +226,8 @@ de:
       property_updated: Eigenschaft erfolgreich geupdated.
       property_created: Eigenschaft erfolgreich angelegt.
       property_destroyed: Eigenschaft erfolgreich gelöscht.
+    notice:
+      user_without_pw: Email mit dem generiertem Passwort an angegebene Email gesendet.
 
 
   contact:
