@@ -19,10 +19,23 @@
     <%= f.label :info %><br>
     <%= f.text_area :info %>
   </div>
-  <div class="field">
-    <%= f.label :checked %><br>
-    <%= f.datetime_select :checked %>
-  </div>
+
+    <div class="field">
+      <%= f.label :label_text, (t "mixed_fields.unit") + " *" %>
+      <%= f.collection_select :unit_id, Unit.all, :id, :name, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :label_text, "Device" + " *" %>
+      <%= f.collection_select :device_id, Device.all, :id, :id, class: "form-control" %>
+    </div>
+
+<!-- This field makes an error!!!-->
+  <!--div class="field">
+    <!--%= f.label :checked %><br>
+    <!--%= f.datetime_select :checked %-->
+  <!--/div-->
+
   <div class="actions">
     <%= f.submit %>
   </div>

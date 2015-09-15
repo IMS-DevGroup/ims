@@ -15,5 +15,15 @@
   <%= @notification.checked %>
 </p>
 
+<p>
+  <strong>Unit:</strong>
+  <%= @notification.unit.name%>
+</p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @notification.device.id %>
+</p>
+
 <%= link_to 'Edit', edit_notification_path(@notification) %> |
 <%= link_to 'Back', notifications_path %>
