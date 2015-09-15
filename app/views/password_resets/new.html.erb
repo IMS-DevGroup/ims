@@ -1,0 +1,13 @@
+<% provide(:title, "Passwort vergessen") %>
+<h1>Passwort vergessen</h1>
+
+
+<%= form_tag password_resets_path, :method => :post do %>
+    <form>
+      <div class="form-group">
+        <label for="reset_email">Email</label>
+        <%= email_field_tag :email, params[:email], :placeholder => "Email", class: 'form-control' %>
+      </div>
+      <p class="button"><%= submit_tag "Link anfordern", class: 'btn btn-success' %></p>
+    </form>
+<% end %>
