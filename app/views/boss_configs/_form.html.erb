@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :db_state %><br>
+    <%= f.label :db_state, (t "config.online") %><br>
     <%= f.check_box :db_state %>
   </div>
   <div class="form-group">
-    <%= f.label :org_name %><br>
+    <%= f.label :org_name, (t "config.org") %><br>
     <%= f.text_field :org_name %>
   </div>
   <div class="actions">
