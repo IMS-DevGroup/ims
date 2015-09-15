@@ -12,7 +12,6 @@
 
 
 $ ->
-  console.log(gon.locale)
   locale = ''
   if gon.locale == 'de'
     locale = '../lang/German.json'

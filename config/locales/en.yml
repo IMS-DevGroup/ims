@@ -16,12 +16,14 @@ en:
               taken: This email address already exists in the database, please choose another one.
         operation:
           attributes:
-            type:
+            operation_type:
               blank: Please insert an operation type.
             name:
               blank: Please insert an operation name.
             location:
               blank: Please insert a location.
+            user_id:
+              blank: Please choose a squad leader.
         stock:
           attributes:
             unit:
@@ -40,6 +42,18 @@ en:
               blank: Please choose a stock.
             ready:
               blank: Please insert if the device is ready.
+
+  mail_form:
+    errors:
+      models:
+        contact:
+          attributes:
+            email:
+              invalid: Invalid email address.
+              blank: Please insert your email address.
+            name:
+              blank: Please insert your name.
+
 
 
   users:
@@ -159,6 +173,7 @@ en:
     username: Username
     name: Name
     data_type: Data Type
+    passwordconf: Password confirmation
     hello: Hello
 
   buttons:
@@ -192,10 +207,11 @@ en:
   own:
     errors:
       only_pw_no_username: Please insert a username if you want to have a password.
-      only_username_no_pw: Please insert a password if you want to have a username.
+      only_username_no_pw: Please insert an email or a password when you chose to have a username.
       mobile_number_not_valid: Please insert a valid mobile number.
       user_login: Username and/or password are not valid.
       username: "Username is not valid, allowed characters are letters, numbers, underline and dot."
+      password_confirmation: The passwords you entered did not match. Please try again.
     success:
       user_updated: User successfully updated.
       user_created: User successfully created.
@@ -223,9 +239,13 @@ en:
       property_updated: Property successfully updated.
       property_created: Property successfully created.
       property_destroyed: Property successfully deleted.
+    warning:
+      user_without_pw: Email with the generated password was successfully sent.
 
 
   contact:
     title: Send a message to us
     submit: Send message
     message: Message
+    thank_you: Thank you for your message. We will contact you soon!
+    error: Cannot send message, please check your input.

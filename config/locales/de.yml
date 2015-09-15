@@ -22,6 +22,8 @@ de:
               blank: Bitte einen Einsatznamen eingeben.
             location:
               blank: Bitte einen Ort angeben.
+            user_id:
+              blank: Bitte einen Einsatzleiter wählen.
         stock:
           attributes:
             unit:
@@ -40,6 +42,18 @@ de:
               blank: Bitte ein Lager auswählen.
             ready:
               blank: Bitte angeben, ob das Gerät bereit ist.
+
+  mail_form:
+    errors:
+      models:
+        contact:
+          attributes:
+            email:
+              invalid: Ungültige eMail!
+              blank: Bitte geben Sie Ihre eMail Adresse ein.
+            name:
+              blank: Bitte geben Sie Ihren Namen ein.
+
 
   users:
     choose_active_stock: 'Bitte wählen Sie den Lagerort'
@@ -160,6 +174,7 @@ de:
     username: Benutzername
     name: Name
     data_type: Datentyp
+    passwordconf: Passwort bestätigen
     hello: Hallo
 
   buttons:
@@ -193,10 +208,11 @@ de:
   own:
     errors:
       only_pw_no_username: Bitte auch einen Usernamen angeben, wenn ein Passwort eingegeben wird.
-      only_username_no_pw: Bitte auch ein Passwort angeben, wenn ein Username eingegeben wird.
+      only_username_no_pw: Bitte eine Email oder ein Passwort angeben, wenn ein Username angegeben wird.
       mobile_number_not_valid: Bitte eine gültige Telefonnummer angeben.
       user_login: Benutzername und/oder Passwort sind nicht korrekt.
       username: "Ungültiger Benutzername, erlaubte Zeichen: Groß- und Kleinbuchstaben, Zahlen, Unterstrich, Punkt."
+      password_confirmation: Die eingegebenen Passwörter stimmen nicht überein. Bitte probieren Sie es erneut.
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
@@ -224,9 +240,13 @@ de:
       property_updated: Eigenschaft erfolgreich geupdated.
       property_created: Eigenschaft erfolgreich angelegt.
       property_destroyed: Eigenschaft erfolgreich gelöscht.
+    warning:
+      user_without_pw: Email mit dem generiertem Passwort an angegebene Email gesendet.
 
 
   contact:
     title: Senden Sie uns eine Nachricht
     submit: Nachricht senden
     message: Nachricht
+    thank_you: Danke für Ihre Nachricht, wir werden uns bald bei Ihnen melden!
+    error: Nachricht konnte nicht gesendet werden, bitte Eingaben überprüfen.

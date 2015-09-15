@@ -25,7 +25,6 @@ class OperationsController < ApplicationController
   # POST /operations.json
   def create
     @operation = Operation.new(operation_params)
-
     respond_to do |format|
       if @operation.save
         flash[:success] = (I18n.t "own.success.operation_created").to_s
@@ -69,13 +68,18 @@ class OperationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_operation
-      @operation = Operation.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_operation
+    @operation = Operation.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def operation_params
-      params.require(:operation).permit(:number, :operation_type, :info, :location, :close_date, :user_id, :stock_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def operation_params
+    params.require(:operation).permit(:number, :operation_type, :info, :location, :close_date, :user_id, :stock_ids => [])
+  end
+
+
+  def show_lendings
+  end
+
 end

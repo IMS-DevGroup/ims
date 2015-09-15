@@ -12,12 +12,12 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(params[:username], params[:password_unhashed])
     if user
-      log_in user
-      params[:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to root_url
-      flash[:success] = (I18n.t "own.success.user_login").to_s
+        log_in user
+        params[:remember_me] == '1' ? remember(user) : forget(user)
+        redirect_to "/starts"
+        flash[:success] = (I18n.t "own.success.user_login").to_s
     else
-      redirect_to '/login'
+        redirect_to "/login"
       flash[:error] = (I18n.t "own.errors.user_login").to_s
     end
   end
