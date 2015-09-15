@@ -13,7 +13,6 @@
       <th><%= t "mixed_fields.mobile_number" %></th>
       <th><%= t "mixed_fields.username" %></th>
       <th><%= t "mixed_fields.index.info" %></th>
-      <th><%= t "mixed.fields.language" %></th>
       <th></th>
     </tr>
   </thead>
@@ -28,7 +27,6 @@
         <td><%= user.mobile_number %></td>
         <td><%= user.username %></td>
         <td><%= user.info %></td>
-        <td><%= user.language %></td>
 
         <td width="180px"><%= link_to (t "buttons.show"), user, class: 'btn btn-info' %>
           <%if current_user.right.manage_users==true%> <%= link_to (t "buttons.edit"), edit_user_path(user), class: 'btn btn-warning' %><%end%>
