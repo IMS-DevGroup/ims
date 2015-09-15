@@ -32,7 +32,7 @@
         <td width="180px"><%= link_to (t "buttons.show"), operation, class: 'btn btn-info' %>
           <%= link_to 'Lend', show_lendings_path(operation), class: 'btn btn-primary' %>
           <%if current_user.right.manage_operations==true%><%= link_to (t "buttons.edit"), edit_operation_path(operation), class: 'btn btn-warning' %><%end%>
-          <%if current_user.right.manage_operations==true%><%= link_to (t "buttons.destroy"), operation, method: :delete, data: {confirm: (t 'buttons.confirmation_sure_message')}, class: 'btn btn-danger' %></td><%end%>
+          <%if current_user.right.manage_operations==true && BossConfig.first.db_state==true%><%= link_to (t "buttons.destroy"), operation, method: :delete, data: {confirm: (t 'buttons.confirmation_sure_message')}, class: 'btn btn-danger' %></td><%end%>
       </tr>
   <% end %>
   </tbody>

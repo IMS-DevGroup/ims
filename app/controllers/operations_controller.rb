@@ -16,6 +16,9 @@ class OperationsController < ApplicationController
   def new
     if current_user.right.manage_operations == false
       redirect_to "/operations"
+    elsif BossConfig.first.db_state == false
+      redirect_to "/operations"
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
     else
     @operation = Operation.new
   end
@@ -24,7 +27,9 @@ end
   def edit
     if current_user.right.manage_operations == false
       redirect_to "/operations"
-
+    elsif BossConfig.first.db_state == false
+      redirect_to "/operations"
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
   end
   end
 
