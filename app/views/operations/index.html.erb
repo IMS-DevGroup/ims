@@ -30,7 +30,7 @@
         <!-- Hier Zeitzone Anpassen -->
         <td><%= operation.close_date %></td>
         <td width="180px"><%= link_to (t "buttons.show"), operation, class: 'btn btn-info' %>
-          <%= link_to 'Test', show_lendings_path(operation), class: 'btn btn-warning' %>
+          <%= link_to 'Lend', show_lendings_path(operation), class: 'btn btn-primary' %>
           <%= link_to (t "buttons.edit"), edit_operation_path(operation), class: 'btn btn-warning' %>
           <%= link_to (t "buttons.destroy"), operation, method: :delete, data: {confirm: (t 'buttons.confirmation_sure_message')}, class: 'btn btn-danger' %></td>
       </tr>
