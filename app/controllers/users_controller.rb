@@ -31,10 +31,15 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
+
+        if !@user.email.nil? && @user.password == nil && @user.username != nil
+          @user.activate
+          flash[:warning] = (I18n.t "own.warning.user_without_pw").to_s
+        end
+
         flash[:success] = (I18n.t "own.success.user_created").to_s
         format.html { redirect_to @user }
         format.json { render :show, status: :created, location: @user }
@@ -50,7 +55,6 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-
     respond_to do |format|
       if @user.update(user_params)
         flash[:success] = (I18n.t "own.success.user_updated").to_s
@@ -70,10 +74,7 @@ class UsersController < ApplicationController
   end
 
   def test_test
-
   end
-
-
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
@@ -94,9 +95,6 @@ class UsersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info,
-                                 :unit_id, :right_id, :password_unhashed, :stock_id)
+                                 :unit_id, :right_id, :password_unhashed, :password_unhashed_confirmation, :stock_id)
   end
-
 end
-
-

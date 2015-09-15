@@ -15,6 +15,12 @@
             <%= f.password_field :password_unhashed %>
           </div>
         </td>
+        <td>
+          <div class="form-group">
+            <%= f.label t "mixed_fields.passwordconf" %><br>
+            <%= f.password_field :password_unhashed_confirmation %>
+          </div>
+        </td>
       </tr>
 
       <tr>
