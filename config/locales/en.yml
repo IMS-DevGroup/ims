@@ -48,6 +48,11 @@ en:
               blank: Bitte Gerät wählen.
             unit_id:
               blank: Bitte Einheit wählen.
+        device_type:
+          attributes:
+            name:
+              blank: Please insert a name.
+              taken: This device type already exists.
 
   mail_form:
     errors:
