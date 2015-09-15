@@ -10,4 +10,15 @@ Ownly this stock is now displayed in the devices - view
       <%= f.collection_select :stock_id, Stock.all, :id, :name, {:include_blank => (t 'users.active_stock_all')}, class: 'form-control' %>
     </div>
     <%= f.submit (t 'buttons.start.set_stock'), class: 'btn btn-success'%>
+
+    <%= form_for(@current_user) do |f| %>
+        <div class="form-group">
+          <% cur = @current_user.unit.id %>
+          <% Notification.find_by_sql("SELECT device_id, info FROM notifications WHERE unit_id =" + cur.to_s ).each do |a| %>
+              <%= f.label :label_text,  ("Info zum Gerät " + a.device_id.to_s + ": " + a.info) %>
+              <%= f.button "Gelesen", :user => @current_user, :action => params[:action], :class => "btn btn-success" %>
+              <br/>
+          <% end %>
+        </div>
+    <% end %>
 <% end %>
