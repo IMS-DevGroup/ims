@@ -109,11 +109,14 @@
           <li role="presentation"><a href="/units/"><%= t "buttons.main_menu.units" %></a></li>
           <li role="presentation"><a href="/stocks/"><%= t "buttons.main_menu.stocks" %></a></li>
           <% end %>
+          <% if (current_user.right.manage_boss == true)%>
+              <li role="presentation"><a href="/boss_configs/<%= @Boss = BossConfig.first.id%>/edit">Config</a></li>
+          <% end %>
         </ul>
       </li>
       <% end %>
       <% end %>
-      <li role="presentation"><a href="#">Impressum</a></li>
+      <li role="presentation"><a href="/impressum/">Impressum</a></li>
       <li role="presentation"><a href= "/contacts/"><%=t "buttons.main_menu.contact" %></a></li>
       <% if logged_in? %><li role="presentation"><a href="/logout/"><b><%= current_user.username %></b> (Logout)</a></li><% end %>
     </ul>
