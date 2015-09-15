@@ -81,15 +81,10 @@ class User < ActiveRecord::Base
 
   def activate
     self.password_unhashed = SecureRandom.urlsafe_base64(6, false)
+    self.password_unhashed_confirmation = password_unhashed
     save
     send_activation_email
   end
-=begin
-  def create_activation_key
-    self.activation_token = User.new_token
-    update_attribute(:reset_key, BCrypt::Password.create(activation_token))
-  end
-=end
 
   def send_activation_email
     UserMailer.account_activation(self, self.password_unhashed).deliver_now
