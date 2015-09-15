@@ -11,7 +11,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:email].downcase) #delete[:password_reset]
+    @user = User.find_by(email: params[:email].downcase)
     if @user
       @user.create_reset_key
 
