@@ -35,6 +35,18 @@ class Device < ActiveRecord::Base
       end
   end
 
+  def available?
+
+    l_array = Lending.where("device_id = ?", self.id)
+    l_array.each do |la|
+      if la.receive.nil?
+        return la
+      end
+
+    end
+
+    return nil
+  end
 
 
   def self.fill

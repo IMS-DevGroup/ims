@@ -1,3 +1,4 @@
+<!-- input via barcode and dropdown-toggle for device-list -->
 <form onsubmit="return false">
   <div class="form-group">
     <label for="barcode">Barcode</label>
@@ -67,23 +68,13 @@
       </div>
 
 
-  <% if @lending.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lending.errors.count, "error") %> prohibited this lending from being saved:</h2>
-
-      <ul>
-      <% @lending.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+    <!-- lending info -->
   <div class="form-group">
     <%= f.label :lending_info %><br>
     <%= f.text_area :lending_info %>
   </div>
 
+    <!-- button for quick user generation -->
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#quick_generation" aria-expanded="false" aria-controls="quick_generation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 
       <div class = "collapse" id = "quick_generation">
