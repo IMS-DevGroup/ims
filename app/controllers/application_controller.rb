@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   before_filter :require_login
 
   def require_login
+
     if NO_LOGIN_ROUTES.include? request.env['PATH_INFO']
       return
     end
@@ -18,6 +19,7 @@ class ApplicationController < ActionController::Base
       redirect_to '/login/'
     end
   end
+
 
   def detect_browser
     agent = request.headers["HTTP_USER_AGENT"].downcase

@@ -4,33 +4,37 @@
 
 <table id="operations" class="dataTableJS table table-striped">
   <thead>
-    <tr>
-      <th><%= t "operations.user" %></th>
-      <th><%= t "operations.operation_dispatch_number" %></th>
-      <th><%= t "operations.operation_type" %></th>
-      <th><%= t "mixed_fields.location" %></th>
-      <th><%= t "mixed_fields.info" %></th>
-      <th><%= t "operations.begin_date" %></th>
-      <th><%= t "operations.ending_date" %></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th><%= t "operations.user" %></th>
+    <th><%= t "operations.operation_dispatch_number" %></th>
+    <th><%= t "operations.operation_type" %></th>
+    <th><%= t "mixed_fields.location" %></th>
+    <th><%= t "mixed_fields.info" %></th>
+    <th><%= t "operations.begin_date" %></th>
+    <th><%= t "operations.ending_date" %></th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @operations.each do |operation| %>
+  <% @operations.each do |operation| %>
       <tr>
-        <td><% unless operation.user.nil?%> <%= operation.user.prename%> <%= operation.user.lastname%> <%end%> </td>
+        <td>
+          <% unless operation.user.nil? %> <%= operation.user.prename %> <%= operation.user.lastname %>
+          <% end %> </td>
         <td><%= operation.number %></td>
         <td><%= operation.operation_type %></td>
         <td><%= operation.location %></td>
         <td><%= operation.info %></td>
-        <td><%= operation.created_at+7200 %></td>       <!-- Hier Zeitzone Anpassen -->
+        <td><%= operation.created_at+7200 %></td>
+        <!-- Hier Zeitzone Anpassen -->
         <td><%= operation.close_date %></td>
         <td width="180px"><%= link_to (t "buttons.show"), operation, class: 'btn btn-info' %>
-        <%= link_to (t "buttons.edit"), edit_operation_path(operation), class: 'btn btn-warning' %>
-        <%= link_to (t "buttons.destroy"), operation, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td>
+          <%= link_to 'Lend', show_lendings_path(operation), class: 'btn btn-primary' %>
+          <%= link_to (t "buttons.edit"), edit_operation_path(operation), class: 'btn btn-warning' %>
+          <%= link_to (t "buttons.destroy"), operation, method: :delete, data: {confirm: (t 'buttons.confirmation_sure_message')}, class: 'btn btn-danger' %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

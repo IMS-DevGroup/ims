@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :boss_configs
   resources :notifications
   resources :device_groups
+  
   get 'set_language/english'
   get 'set_language/german'
 
@@ -10,8 +11,9 @@ Rails.application.routes.draw do
   get   'login'   =>  'sessions#new'
   post  'login'   =>  'sessions#create'
   get   'logout'  =>  'sessions#remove'
-  post  'get-prop' => 'devices#get_properties'
-  get   'lendings/:id/return' => 'lendings#return' , as: 'return_lending'
+  post  'get-prop'=>  'devices#get_properties'
+  get   'lendings/:id/return' => 'lendings#return'
+  get   'operations/show_lendings' => 'operations#show_lendings', as: 'show_lendings'
   # route for first try of multiple-device-lending
   # post  'delete_from_list' => 'lendings#delete_from_list'
   resources :starts
@@ -31,9 +33,11 @@ Rails.application.routes.draw do
   resources :barcodes
   resources :lendings_selector
   resources :contacts, only: [:new, :create]
-  match '/contacts',     to: 'contacts#new',             via: 'get'
-
-
+  match '/contacts', to: 'contacts#new', via: 'get'
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :notifications
+  resources :device_groups
+  resources :boss_configs
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
