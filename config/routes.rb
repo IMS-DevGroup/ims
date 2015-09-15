@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   post  'login'   =>  'sessions#create'
   get   'logout'  =>  'sessions#remove'
   post  'get-prop'=>  'devices#get_properties'
-  post  'set-val' =>  'values#transfer'
   get   'lendings/:id/return' => 'lendings#return'
 
 

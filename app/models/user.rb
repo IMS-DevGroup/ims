@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   after_save :create_rights
 
 
-  attr_accessor :password_unhashed, :password_unhashed_confirmation, :remember_token, :reset_token, :activation_token
+  attr_accessor :password_unhashed, :password_unhashed_confirmation, :remember_token, :reset_token
 
   has_one :right, dependent: :destroy
 
