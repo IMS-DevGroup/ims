@@ -168,11 +168,11 @@ en:
   mixed_fields:
     email: Email
     info: Info
-    lastname: Lastname
+    lastname: Surname
     location: Location
     mobile_number: Mobile number
     password: Password
-    prename: Prename
+    prename: First Name
     stock: Stock
     unit: Unit
     user: User
