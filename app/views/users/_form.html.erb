@@ -85,7 +85,7 @@
 
     <br>
     <br>
-
+    <%= t "mixed_fields.req" %>
     <div>
       <a href="/users/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
       <% if !Right.find_by_user_id(@user.id).nil? && current_user.right.manage_rights==true %>
