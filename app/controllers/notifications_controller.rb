@@ -69,6 +69,6 @@ class NotificationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notification_params
-      params.require(:notification).permit(:subject, :info, :checked)
+      params.require(:notification).permit(:subject, :info, :checked, :unit_id, :device_id)
     end
 end
