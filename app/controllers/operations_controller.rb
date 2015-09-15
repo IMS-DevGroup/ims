@@ -14,11 +14,18 @@ class OperationsController < ApplicationController
 
   # GET /operations/new
   def new
+    if current_user.right.manage_operations == false
+      redirect_to "/operations"
+    else
     @operation = Operation.new
   end
-
+end
   # GET /operations/1/edit
   def edit
+    if current_user.right.manage_operations == false
+      redirect_to "/operations"
+
+  end
   end
 
   # POST /operations

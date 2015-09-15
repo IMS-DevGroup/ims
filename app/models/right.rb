@@ -14,6 +14,7 @@ class Right < ActiveRecord::Base
     self.manage_stocks_and_units = false
     self.manage_operations = false
     self.manage_rights = false
+    self.manage_boss = false
     self.save
   end
 end

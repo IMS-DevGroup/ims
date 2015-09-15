@@ -4,21 +4,37 @@ class BossConfigsController < ApplicationController
   # GET /boss_configs
   # GET /boss_configs.json
   def index
-    @boss_configs = BossConfig.all
+    if current_user.right.manage_boss == false
+      redirect_to "/starts"
+    else
+    redirect_to "/boss_configs/1"
+    #@boss_configs = BossConfig.all
   end
+    end
 
   # GET /boss_configs/1
   # GET /boss_configs/1.json
   def show
+    if current_user.right.manage_boss == false
+      redirect_to "/starts"
+    end
   end
 
   # GET /boss_configs/new
   def new
-    @boss_config = BossConfig.new
+    if current_user.right.manage_boss == false
+      redirect_to "/starts"
+    else
+    redirect_to "/boss_configs/1"
+   #@boss_config = BossConfig.new
+  end
   end
 
   # GET /boss_configs/1/edit
   def edit
+    if current_user.right.manage_boss == false
+       redirect_to "/starts"
+    end
   end
 
   # POST /boss_configs

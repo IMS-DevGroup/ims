@@ -83,6 +83,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def right_params
-      params.require(:right).permit(:manage_rights, :manage_users, :manage_devices, :manage_device_types, :manage_stocks_and_units, :manage_operations, )
+      params.require(:right).permit(:manage_rights, :manage_users, :manage_devices, :manage_device_types, :manage_stocks_and_units, :manage_operations, :manage_boss,)
     end
 end
