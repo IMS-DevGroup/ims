@@ -43,10 +43,12 @@ class DevicesController < ApplicationController
   def edit
     if current_user.right.manage_devices == false
       redirect_to "/devices/"
+
     elsif BossConfig.first.db_state == false
         flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
         redirect_to "/devices/"
-      else
+
+    else
       properties = Property.where("device_type_id = ?", @device.device_type_id)
       propmap = {}
 
@@ -99,15 +101,20 @@ class DevicesController < ApplicationController
   # DELETE /devices/1
   # DELETE /devices/1.json
   def destroy
-    @device.values.each do |v|
-      v.destroy
-    end
+    if BossConfig.first.db_state == false
+      redirect_to "/devices/"
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+    else
+      @device.values.each do |v|
+        v.destroy
+      end
 
-    @device.destroy
-    respond_to do |format|
-      flash[:success] = (I18n.t "own.success.device_destroyed").to_s
-      format.html { redirect_to @device }
-      format.json { head :no_content }
+      @device.destroy
+      respond_to do |format|
+        flash[:success] = (I18n.t "own.success.device_destroyed").to_s
+        format.html { redirect_to @device }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -119,7 +126,7 @@ class DevicesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def device_params
-    params.require(:device).permit(:ready, :info, :owner_id, :stock_id, :device_type_id, :data_type_id)
+    params.require(:device).permit(:ready, :info, :owner_id, :stock_id, :device_type_id, :data_type_id, :device_group_id)
   end
 
 end

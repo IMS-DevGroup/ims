@@ -42,6 +42,17 @@ de:
               blank: Bitte ein Lager auswählen.
             ready:
               blank: Bitte angeben, ob das Gerät bereit ist.
+        notification:
+          attributes:
+            device_id:
+              blank: Bitte Gerät wählen.
+            unit_id:
+              blank: Bitte Einheit wählen.
+        device_type:
+          attributes:
+            name:
+              blank: Bitte einen Namen angeben.
+              taken: Dieser Gerätetyp existiert bereits.
 
   mail_form:
     errors:
@@ -82,6 +93,8 @@ de:
       select_user: Wähle Einsatzleiter
     edit:
       title: Einsatz bearbeiten
+    show_lendings:
+      title: Ausgeliehene Geräte zum Einsatz
 
   units:
     name: Name
@@ -110,6 +123,7 @@ de:
     owner: Besitzer
     stock: Lager
     ready: Bereit
+    device_group: Gerätegruppe
     index:
       title: Geräteliste
     form:
@@ -159,6 +173,16 @@ de:
     index:
       title: Eigenschaftenliste
 
+  starts:
+    state: 'Datenbankstatus: '
+
+  config:
+    online: Online?
+    org: Name der Organisation
+    edit:
+      title: Datenbankstatus bearbeiten
+
+
 
   mixed_fields:
     email: Email
@@ -176,6 +200,8 @@ de:
     data_type: Datentyp
     passwordconf: Passwort bestätigen
     hello: Hallo
+    device: Gerät
+    req: '* Pflichtfeld'
 
   buttons:
     back: Zurück
@@ -185,6 +211,8 @@ de:
     rights: Rechte
     submit: Speichern
     confirmation_sure_message: Sind Sie sicher?
+    lendings: Ausleihe
+    return: Rückgabe
     start:
       set_stock: Bestätige Lager
     new:

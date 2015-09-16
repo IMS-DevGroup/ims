@@ -17,6 +17,10 @@ class DeviceGroupsController < ApplicationController
     if current_user.right.manage_devices == false
       redirect_to '/device_groups/'
 
+    elsif BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/device_groups/"
+
     else
       @device_group = DeviceGroup.new
       @devices = Device.all.eager_load(:stock, :device_type)
@@ -33,6 +37,10 @@ class DeviceGroupsController < ApplicationController
   def edit
     if current_user.right.manage_devices == false
       redirect_to '/device_groups/'
+
+    elsif BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/device_groups/"
     end
   end
 
@@ -50,9 +58,7 @@ class DeviceGroupsController < ApplicationController
     # try to create and save device group
     else
       @device_list.each do |d|
-        tmp_params = device_group_params
-        tmp_params[:device_id] = d
-        @device_group = DeviceGroup.new(tmp_params)
+        d.device_group_id = @device_group.id
         if @device_group.save
           @device_list.delete(d)
         else
@@ -97,11 +103,16 @@ class DeviceGroupsController < ApplicationController
   # DELETE /device_groups/1
   # DELETE /device_groups/1.json
   def destroy
-    @device_group.destroy
-    respond_to do |format|
-      flash[:success] = (I18n.t "own.success.device_type_destroyed").to_s
-      format.html { redirect_to @device_group }
-      format.json { head :no_content }
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/device_groups/"
+    else
+      @device_group.destroy
+      respond_to do |format|
+        flash[:success] = (I18n.t "own.success.device_type_destroyed").to_s
+        format.html { redirect_to @device_group }
+        format.json { head :no_content }
+      end
     end
   end
 

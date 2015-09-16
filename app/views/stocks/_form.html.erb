@@ -39,15 +39,19 @@
           </div>
         </td>
       </tr>
+      <%= t "mixed_fields.req" %>
       <tr>
         <td>
           <div class="actions">
-            <%= link_to (t "buttons.back"), stocks_path, class: 'btn btn-primary' %>
+
           </div>
         </td>
         <td>
           <div class="actions">
-            <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:0px;" %>
+
+            <%= link_to (t "buttons.back"), stocks_path, class:'btn btn-primary' %>
+            <%= link_to (t "buttons.show"), @stock, class: 'btn btn-info' %>
+            <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
           </div>
         </td>
       </tr>
