@@ -15,7 +15,7 @@ class DeviceTypesController < ApplicationController
   # GET /device_types/new
   def new
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
     @device_type = DeviceType.new
@@ -24,7 +24,7 @@ end
   # GET /device_types/1/edit
   def edit
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     end
   end
@@ -33,7 +33,7 @@ end
   # POST /device_types.json
   def create
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
     @device_type = DeviceType.new(device_type_params)
@@ -55,7 +55,7 @@ end
   # PATCH/PUT /device_types/1.json
   def update
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
     respond_to do |format|

@@ -18,7 +18,7 @@ class OperationsController < ApplicationController
       redirect_to "/operations"
     elsif BossConfig.first.db_state == false
       redirect_to "/operations"
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
     else
       @operation = Operation.new
     end
@@ -30,8 +30,10 @@ class OperationsController < ApplicationController
       redirect_to "/operations"
     elsif BossConfig.first.db_state == false
       redirect_to "/operations"
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
-    end
+
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
+  end
+
   end
 
   # POST /operations
@@ -74,7 +76,7 @@ class OperationsController < ApplicationController
   def destroy
     if BossConfig.first.db_state == false
       redirect_to "/operations"
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
     else
       @operation.destroy
       respond_to do |format|

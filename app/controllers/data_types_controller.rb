@@ -15,7 +15,7 @@ class DataTypesController < ApplicationController
   # GET /data_types/new
   def new
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
     @data_type = DataType.new
@@ -24,7 +24,7 @@ end
   # GET /data_types/1/edit
   def edit
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
   end
 end
@@ -33,7 +33,7 @@ end
   def create
 
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/users/"
     else
     @data_type = DataType.new(data_type_params)
@@ -53,7 +53,7 @@ end
   # PATCH/PUT /data_types/1.json
   def update
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/users/"
     else
 
@@ -72,7 +72,7 @@ end
   # DELETE /data_types/1.json
   def destroy
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/users/"
     else
     @data_type.destroy

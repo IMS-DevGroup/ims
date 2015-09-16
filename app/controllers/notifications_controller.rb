@@ -15,7 +15,7 @@ class NotificationsController < ApplicationController
   # GET /notifications/new
   def new
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
       @notification = Notification.new
@@ -25,7 +25,7 @@ class NotificationsController < ApplicationController
   # GET /notifications/1/edit
   def edit
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     end
   end
@@ -34,7 +34,7 @@ class NotificationsController < ApplicationController
   # POST /notifications.json
   def create
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
       @notification = Notification.new(notification_params)
@@ -55,7 +55,7 @@ class NotificationsController < ApplicationController
   # PATCH/PUT /notifications/1.json
   def update
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
       respond_to do |format|

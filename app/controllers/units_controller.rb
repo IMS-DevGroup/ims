@@ -15,7 +15,7 @@ class UnitsController < ApplicationController
   # GET /units/new
   def new
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/units/"
     elsif current_user.right.manage_stocks_and_units == false
       redirect_to '/units/'
@@ -27,7 +27,7 @@ class UnitsController < ApplicationController
   # GET /units/1/edit
   def edit
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/units/"
     elsif current_user.right.manage_stocks_and_units == false
       redirect_to '/units/'
@@ -38,7 +38,7 @@ class UnitsController < ApplicationController
   # POST /units.json
   def create
     if BossConfig.first.db_state == false
-               flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+               flash[:error] = (I18n.t "own.errors.db_offline").to_s
                redirect_to "/units/"
              else
     @unit = Unit.new(unit_params)
@@ -61,7 +61,7 @@ end
   # PATCH/PUT /units/1.json
   def update
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/units/"
     else
     respond_to do |format|
@@ -82,7 +82,7 @@ end
   # DELETE /units/1.json
   def destroy
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/units/"
     else
     @unit.destroy

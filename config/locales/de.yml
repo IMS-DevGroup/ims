@@ -259,6 +259,7 @@ de:
       password_reset_email_not_found: Die eingegebene Email wurde nicht gefunden.
       password_reset_expired: Ihr Link zum Zurücksetzen des Passworts ist bereits abgelaufen.
       open_lendings: Folgende Geräte sind noch verliehen
+      db_offline: 'Datenbank Status: Im Einsatz, keine Änderungen mölgich.'
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
