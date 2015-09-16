@@ -177,7 +177,7 @@ en:
     manage_operations: Manage Operations
 
   properties:
-    propertie: properties
+    propertie: Properties
     edit:
       title: Editing Property
     new:
