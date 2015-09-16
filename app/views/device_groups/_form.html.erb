@@ -20,6 +20,7 @@
     <%= f.text_area :info %>
   </div>
   <div class="actions">
+
     <a href="/device_groups/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
     <% if !current_page?(new_device_group_path) %><%= link_to (t "buttons.show"), @device_group, class: 'btn btn-info' %><% end %>
     <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>

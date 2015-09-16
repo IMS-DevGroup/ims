@@ -85,19 +85,19 @@
         <div class = "well">
           <div class = "form-group">
             <%= label_tag (t "mixed_fields.prename") + " *"%><br>
-            <%= text_field_tag(:user_prename, @quick_usr[:prename])  %>
+            <%= text_field_tag(:user_prename) %>
           </div>
           <div class = "form-group">
             <%= label_tag (t "mixed_fields.lastname") + " *"%><br>
-            <%= text_field_tag(:user_lastname, @quick_usr[:lastname])  %>
+            <%= text_field_tag(:user_lastname) %>
           </div>
           <div class = "form-group">
             <%= label_tag (t "mixed_fields.unit") + " *"%><br>
-            <%= select_tag('user_unit' , options_from_collection_for_select(Unit.all, 'id', 'name',  @quick_usr[:unit_id]))   %>
+            <%= select_tag('user_unit', options_from_collection_for_select(Unit.all, 'id', 'name')) %>
           </div>
           <div class = "form-group">
             <%= label_tag (t "mixed_fields.info")%><br>
-            <%= text_area_tag(:user_info, @quick_usr[:info])  %>
+            <%= text_area_tag(:user_info) %>
           </div>
           <div>
             <!-- Caution when translating, implies changes in lendings controller as well -->
@@ -109,8 +109,11 @@
     <!-- following field only to enable dummy generation
     TODO: change to proper field-->
     <div class="form-group">
-      <%= f.label :user_id %><br>
-      <%= f.text_field :user_id %>
+      <div class="ui-widget">
+        <label for="tags">Tags: </label>
+        <input id="tags">
+        <span id="accompl"></span>
+    </div>
     </div>
 
     <!-- hidden field to automatically include current user as lender -->
@@ -118,6 +121,7 @@
 
 
   <div class="actions">
+
     <a href="/lendings/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
     <% if !current_page?(new_lending_path) %><%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %><% end %>
     <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>

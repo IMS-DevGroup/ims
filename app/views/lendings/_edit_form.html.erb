@@ -43,8 +43,15 @@
     </div>
 
     <div class="actions">
+<<<<<<< HEAD
       <a href="/lendings/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
       <% if !current_page?(new_lending_path) %><%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %><% end %>
+=======
+      <a href="/lendings/">
+        <button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button>
+      </a>
+      <%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %>
+>>>>>>> f037a992e60d60dffe7f2c4be333e61abf78d729
       <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
     </div>
 <% end %>
