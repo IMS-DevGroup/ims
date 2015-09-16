@@ -32,11 +32,12 @@
 </p>
 
 <p>
+
   <% if !@device.values.nil? %>
       <% @device.values.each do |v| %>
           <% if !v.value.nil? %>
-              <%= v.property.name+" "+v.value %>
-          <% end %>
+              <strong><%= v.property.name%>:</strong><%=" "+v.value%><p></p>
+<% end %>
       <% end %>
   <% end %>
 </p>
