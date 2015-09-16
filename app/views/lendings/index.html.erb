@@ -20,7 +20,7 @@
         <td style="width:100px"> <% unless lending.device.nil?%>  <%= lending.device.id %> <%end%></td>
         <td style="width:220px"> <%= lending.created_at %></td>
         <td style="width:220px"> <%= lending.receive %></td>
-        <td><%= link_to (t 'buttons.show'), lending, class: 'btn btn-info' %>
+        <td width="200px"> <%= link_to (t 'buttons.show'), lending, class: 'btn btn-info' %>
         <%= link_to (t 'buttons.destroy'), lending, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
           <% if (lending.receive.nil?)%> <%= link_to (t 'buttons.return'), return_lending_path(lending), class: 'btn btn-warning' %> <% end %>
         </td>

@@ -28,7 +28,7 @@
         <!-- Hier Zeitzone Anpassen -->
         <td style="width:220px"> <%= operation.close_date %></td>
 
-        <td><%= link_to (t 'buttons.show'), operation, class: 'btn btn-info' %>
+        <td width="300px"><%= link_to (t 'buttons.show'), operation, class: 'btn btn-info' %>
           <%= link_to (t 'buttons.lending'), show_lendings_path(operation), class: 'btn btn-primary' %>
           <% if current_user.right.manage_operations==true %><%= link_to (t 'buttons.edit'), edit_operation_path(operation), class: 'btn btn-warning' %>
           <% end %>

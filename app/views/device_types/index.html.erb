@@ -16,7 +16,7 @@
       <tr>
         <td><%= device_type.name %></td>
         <td><%= device_type.info %></td>
-        <td width="190px"><%= link_to (t "buttons.show"), device_type, class: 'btn btn-info' %>
+        <td><%= link_to (t "buttons.show"), device_type, class: 'btn btn-info' %>
         <%= link_to (t "buttons.edit"), edit_device_type_path(device_type), class: 'btn btn-warning' %>
         <%= link_to (t "buttons.destroy"), device_type, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td>
       </tr>
