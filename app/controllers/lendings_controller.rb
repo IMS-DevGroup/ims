@@ -54,6 +54,7 @@ class LendingsController < ApplicationController
 
         #submission of entire lending
       else
+        devlen = @device_list.length
         #artificially recreate device can't be blank error
         if @device_list.empty?
           @lending.save
@@ -76,9 +77,12 @@ class LendingsController < ApplicationController
       # handles either a failed user-generation or the creation of the actual lending
       respond_to do |format|
         if @errors.empty?
-          format.html { redirect_to '/lendings', notice: 'Lendings were successfully created.' }
+          format.html { redirect_to '/lendings', notice: devlen + ' lendings were successfully created.' }
           format.json { render :show, status: :created, location: @lending }
         else
+          if (devlen > @device_list.length)
+            flash.now[:success] = ((devlen - @device_list.length).to_s + ' of ' + devlen.to_s + ' lendings were successfully created').html_safe
+          end
           errors_to_flash = []
           @errors.each do |e|
             errors_to_flash << ((e.values).join("<br/>").html_safe)
