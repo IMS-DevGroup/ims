@@ -18,17 +18,16 @@
   <tbody>
   <% @operations.each do |operation| %>
       <tr>
-        <td style="width:150px" >
+        <td>
           <% unless operation.user.nil? %> <%= operation.user.prename %> <%= operation.user.lastname %>
           <% end %> </td>
-        <td style="width:100px" > <%= operation.number %></td>
-        <td style="width:200px" > <%= operation.operation_type %></td>
-        <td style="width:200px" > <%= operation.location %></td>
-        <td style="width:220px"> <%= operation.created_at%></td>
+        <td> <%= operation.number %></td>
+        <td> <%= operation.operation_type %></td>
+        <td> <%= operation.location %></td>
+        <td> <%= operation.created_at %></td>
         <!-- Hier Zeitzone Anpassen -->
-        <td style="width:220px"> <%= operation.close_date %></td>
-
-        <td width="300px"><%= link_to (t 'buttons.show'), operation, class: 'btn btn-info' %>
+        <td> <%= operation.close_date %></td>
+        <td width="330px"><%= link_to (t 'buttons.show'), operation, class: 'btn btn-info' %>
           <%= link_to (t 'buttons.lending'), show_lendings_path(operation), class: 'btn btn-primary' %>
           <% if current_user.right.manage_operations==true %><%= link_to (t 'buttons.edit'), edit_operation_path(operation), class: 'btn btn-warning' %>
           <% end %>
