@@ -38,7 +38,7 @@
           <% unless dev.device_group.nil? %> <%= dev.device_group.name %>
           <% end %> </td>
         <td>
-          <%= link_to 'Return', return_lending_path( dev_hash[dh[0]]), class: 'btn btn-warning' %></td>
+          <%= link_to (t 'buttons.return'), return_lending_path( dev_hash[dh[0]]), class: 'btn btn-warning' %></td>
         </td>
       </tr>
   <% end %>

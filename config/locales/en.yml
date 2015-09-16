@@ -189,6 +189,7 @@ en:
     submit: Submit
     confirmation_sure_message: Are you sure?
     lendings: Lendings
+    return: Return
     start:
       set_stock: Set stock
     new:

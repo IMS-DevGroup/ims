@@ -190,6 +190,7 @@ de:
     submit: Speichern
     confirmation_sure_message: Sind Sie sicher?
     lendings: Ausleihe
+    return: Rückgabe
     start:
       set_stock: Bestätige Lager
     new:
