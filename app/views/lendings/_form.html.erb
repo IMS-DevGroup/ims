@@ -34,6 +34,7 @@
 
             <tbody>
             <% @devices.each do |device| %>
+                <% if device.available? %>
                 <tr>
                   <td>
                     <button id="<%= device.id %>" type="button" class="btn btn-success add-dev">
@@ -51,6 +52,7 @@
                           end %></td>
                   <td><%= device.ready %></td>
                 </tr>
+                <% end %>
             <% end %>
             </tbody>
           </table>
