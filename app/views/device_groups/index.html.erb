@@ -19,7 +19,7 @@
         <td><%= device_group.name %></td>
         <td><%= device_group.info %></td>
 
-        <td><%= link_to (t "buttons.show"), device_group, class: 'btn btn-info' %>
+        <td width="260px"><%= link_to (t "buttons.show"), device_group, class: 'btn btn-info' %>
         <%if current_user.right.manage_devices==true%><%= link_to (t "buttons.edit"), edit_device_group_path(device_group), class: 'btn btn-warning' %><%end%>
         <%if current_user.right.manage_devices==true%><%= link_to (t "buttons.destroy"), device_group, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %><%end%></td>
 
