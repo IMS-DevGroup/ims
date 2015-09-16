@@ -88,11 +88,15 @@ en:
 
   lendings:
     borrowed_at: Borrowed at
-    leding_info: Lending Info
+    lending_info: Lending Info
     receive: Receive
     receive_info: Receive Info
+    borrowed_to: Borrowed to
     index:
       title: Lending List
+    show:
+      lender: Lender
+      receiver: Receiver
 
   units:
     name: Name
