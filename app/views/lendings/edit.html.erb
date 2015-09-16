@@ -1,8 +1,4 @@
-<%= form_for(@lending) do |f| %>
+
 <h1>Editing Lending</h1>
 
 <%= render 'edit_form' %>
-    <a href="/lendings/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
-    <%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %>
-    <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
-<% end %>

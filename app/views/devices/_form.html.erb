@@ -1,37 +1,46 @@
-<%= form_for(@device) do |f|  %>
-  <div class="form-group">
-    <%= f.label t 'devices.device_type' %><br>
-    <%= f.collection_select :device_type_id, DeviceType.all, :id, :name,
-                            { prompt: (t 'devices.form.select_device_typ') }, class: 'form-control' %>
-  </div>
+<%= form_for(@device) do |f| %>
+    <div class="form-group">
+      <%= f.label t 'devices.device_type' %><br>
+      <% if current_page?(new_device_path) %><%= f.collection_select :device_type_id, DeviceType.all, :id, :name,
+                                                                     {prompt: (t 'devices.form.select_device_typ')}, class: 'form-control' %>
+      <% else %>
+          <% unless @device.device_type.nil? %>
+              <%= @device.device_type.name %>
+          <% end %>
+      <% end %>
+    </div>
 
-  <table id="properties">
-  </table>
+    <table id="properties">
+    </table>
 
-  <div class="form-group">
-    <%= f.label :label_text, (t 'mixed_fields.info') %><br>
-    <%= f.text_area :info %>
-  </div>
+    <div class="form-group">
+      <%= f.label :label_text, (t 'mixed_fields.info') %><br>
+      <%= f.text_area :info %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :label_text, (t 'devices.owner') + ' *' %><br>
-    <%= f.collection_select :owner_id, Stock.all, :id, :name,
-                            { prompt: (t 'devices.form.select_owner_stock') }, class: 'form-control' %>
-  </div>
+    <div class="form-group">
+      <%= f.label :label_text, (t 'devices.owner') + ' *' %><br>
+      <%= f.collection_select :owner_id, Stock.all, :id, :name,
+                              {prompt: (t 'devices.form.select_owner_stock')}, class: 'form-control' %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :label_text, (t 'devices.stock') + ' *' %><br>
-    <%= f.collection_select :stock_id, Stock.all, :id, :name,
-                            { prompt: (t 'devices.form.select_current_stock') }, class: 'form-control' %>
-  </div>
+    <div class="form-group">
+      <%= f.label :label_text, (t 'devices.stock') + ' *' %><br>
+      <%= f.collection_select :stock_id, Stock.all, :id, :name,
+                              {prompt: (t 'devices.form.select_current_stock')}, class: 'form-control' %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :label_text, (t 'devices.ready') + ' *' %><br>
-    <%= f.check_box :ready, { checked: true } %>
-  </div>
+    <div class="form-group">
+      <%= f.label :label_text, (t 'devices.ready') + ' *' %><br>
+      <%= f.check_box :ready, {checked: true} %>
+    </div>
     <%= t "mixed_fields.req" %>
 
-  <div class="actions">
-
-  </div>
+    <div class="actions">
+      <a href="/devices/">
+        <button type="button" class="btn btn-primary"><%= (t 'buttons.back') %></button>
+      </a>
+      <%= link_to (t 'buttons.show'), @device, class: 'btn btn-info' %>
+      <%= f.submit (t 'buttons.submit'), submit: '', class: 'btn btn-success', style: 'margin-left:230px' %>
+    </div>
 <% end %>

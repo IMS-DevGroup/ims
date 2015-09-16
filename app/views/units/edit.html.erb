@@ -1,10 +1,5 @@
-<%= form_for(@unit) do |f| %>
+
 <h1><%= t "units.edit.title" %></h1>
 
 <%= render 'form' %>
 
-
-<%= link_to (t "buttons.back"), units_path,class:'btn btn-primary' %>
-<%= link_to (t "buttons.show"), @unit, class:'btn btn-info'%>
-<%= f.submit (t "buttons.submit"), class:'btn btn-success', style:"margin-left:230px;"%>
-<% end %>
