@@ -83,6 +83,8 @@ en:
       select_user: Select Squad Leader
     edit:
       title: Editing Operation
+    show_lendings:
+      title: Lent devices
 
   units:
     name: Name
@@ -111,6 +113,7 @@ en:
     owner: Owner
     stock: Stock
     ready: Ready
+    device_group: Device Group
     index:
       title: Listing Devices
     form:
@@ -175,6 +178,7 @@ en:
     data_type: Data Type
     passwordconf: Password confirmation
     hello: Hello
+    device: Device
 
   buttons:
     back: Back
@@ -184,6 +188,8 @@ en:
     rights: Rights
     submit: Submit
     confirmation_sure_message: Are you sure?
+    lendings: Lendings
+    return: Return
     start:
       set_stock: Set stock
     new:
