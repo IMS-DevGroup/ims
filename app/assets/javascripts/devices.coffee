@@ -72,5 +72,5 @@ loadProperties = () ->
               '</div>'
         hidden = '<input type="hidden" name="prop_id[' + i + ']" value="' + gon.properties[p].id + '">'
         $('#properties').append('<tr height=35><td>' + gon.properties[p].name + '</td><td>' + input + hidden + '</td></tr>')
-        $('.jsdatepicker').datetimepicker({ defaultDate: new Date().getTime() })
+        $('.jsdatepicker').datetimepicker({format: 'YYYY-MM-DD',defaultDate: new Date().getTime() })
         i = i + 1
