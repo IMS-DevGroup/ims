@@ -45,6 +45,7 @@ class LendingsController < ApplicationController
       @lending = Lending.new(lending_params)
       @device_list = params[:deviceids].delete(' ').split(',')
       @errors = []
+      @error_lendings = []
       @quick_usr = {}
 
       # handle quick-generation of user
@@ -60,18 +61,20 @@ class LendingsController < ApplicationController
         if @device_list.empty?
           @lending.save
           @errors << @lending.errors
-          #try to create and save lendings
+          try to create and save lendings
         else
           @device_list.each do |d|
             tmp_params = lending_params
             tmp_params[:device_id] = d
             @lending = Lending.new(tmp_params)
             if @lending.save
-              @device_list.delete(d)
+
             else
               @errors.push(@lending.errors)
+              @error_lendings.push(d)
             end
           end
+          @device_list = @error_lendings
         end
       end
 
