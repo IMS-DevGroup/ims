@@ -41,11 +41,12 @@ class LendingsController < ApplicationController
       end
 
       #submission of entire lending
-      #TODO: Error handling, json (?)
     else
+      #artificially recreate device can't be blank error
       if @device_list.empty?
         @lending.save
         @errors << @lending.errors
+      #try to create and save lendings
       else
         @device_list.each do |d|
           tmp_params = lending_params
@@ -66,7 +67,6 @@ class LendingsController < ApplicationController
         format.html { redirect_to '/lendings', notice: 'Lendings were successfully created.' }
         format.json { render :show, status: :created, location: @lending }
       else
-        puts 'Errors:'
         errors_to_flash = []
         @errors.each do |e|
          errors_to_flash << ((e.values).join("<br/>").html_safe)
@@ -114,6 +114,7 @@ class LendingsController < ApplicationController
     @lending = Lending.find(params[:id])
   end
 
+  # Set all devices for later use in device-selector-coffeescript
   def set_devices
     @devices = Device.all.eager_load(:stock, :device_type)
     devmap = {}
@@ -123,10 +124,12 @@ class LendingsController < ApplicationController
     gon.devices = devmap
   end
 
+  # Set selected devices for later use in device-selector-coffeescript
   def set_selected_devices
     gon.selected_devices = @device_list
   end
 
+  # Try to generate a new user from data in params, return true if successful
   def quick_user_generation
     user = User.new(prename: params[:user_prename], lastname: params[:user_lastname], unit_id: params[:user_unit], info: params[:user_info])
     if user.save
