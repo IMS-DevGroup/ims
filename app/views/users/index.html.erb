@@ -12,7 +12,6 @@
       <th><%= t "mixed_fields.email" %></th>
       <th><%= t "mixed_fields.mobile_number" %></th>
       <th><%= t "mixed_fields.username" %></th>
-      <th><%= t "mixed_fields.index.info" %></th>
       <th></th>
     </tr>
   </thead>
@@ -26,9 +25,8 @@
         <td><%= user.email %></td>
         <td><%= user.mobile_number %></td>
         <td><%= user.username %></td>
-        <td><%= user.info %></td>
 
-        <td width="180px"><%= link_to (t "buttons.show"), user, class: 'btn btn-info' %>
+        <td width="260px"><%= link_to (t "buttons.show"), user, class: 'btn btn-info' %>
           <%if current_user.right.manage_users==true%> <%= link_to (t "buttons.edit"), edit_user_path(user), class: 'btn btn-warning' %><%end%>
           <%if current_user.right.manage_users==true%> <%= link_to (t "buttons.destroy"), user, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td><%end%>
 

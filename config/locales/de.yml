@@ -96,6 +96,18 @@ de:
     show_lendings:
       title: Ausgeliehene Geräte zum Einsatz
 
+  lendings:
+    borrowed_at: Verliehen am
+    lending_info: Verleihinfo
+    receive: Rückgabe
+    receive_info: Rückgabe Info
+    borrowed_to: Verliehen an
+    index:
+      title: Ausleihliste
+    show:
+      lender: Verleiher
+      receiver: Rücknahme durch
+
   units:
     name: Name
     phone_number: Telefonnummer
@@ -211,7 +223,7 @@ de:
     rights: Rechte
     submit: Speichern
     confirmation_sure_message: Sind Sie sicher?
-    lendings: Ausleihe
+    lending: Ausleihe
     return: Rückgabe
     start:
       set_stock: Bestätige Lager
@@ -231,7 +243,9 @@ de:
       stocks: Lagerorte
       units: Einheiten
       contact: Kontakt
-      lendings: Ausleihen
+      lendings: Ausleihe
+    lendings:
+      new_lending: Neue Ausleihe
 
   own:
     errors:

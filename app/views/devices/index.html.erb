@@ -1,42 +1,53 @@
 <% currentStock = t 'users.active_stock_all' %>
-<% if !(@current_user.stock.nil?) then currentStock = @current_user.stock.name end %>
+<% if !(@current_user.stock.nil?) then
+     currentStock = @current_user.stock.name
+   end %>
 
-<h1><%= (t 'devices.index.title') + '  (' +currentStock+ ')'%></h1>
+<h1><%= (t 'devices.index.title') + '  (' +currentStock+ ')' %></h1>
 
 <br>
 <table id='devices' class='dataTableJS table table-striped'>
   <thead>
-    <tr>
-      <th><%= t 'mixed_fields.info' %></th>
-      <th><%= t 'devices.device_type' %></th>
-      <th><%= t 'devices.owner' %></th>
-      <th><%= t 'devices.stock' %></th>
-      <th><%= t 'devices.ready' %></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th><%= (t 'mixed_fields.device') + ' ID' %></th>
+    <th><%= t 'devices.device_type' %></th>
+    <th><%= t 'devices.owner' %></th>
+    <th><%= t 'devices.stock' %></th>
+    <th><%= t 'devices.ready' %></th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
 
 
-    <% @devices.each do |device| %>
+  <% @devices.each do |device| %>
       <tr>
-        <td><%= device.info %></td>
-        <td><% unless device.device_type.nil?%>  <%= device.device_type.name %> <%end%></td>
-        <td><% unless (tmp = Stock.find_by_id(device.owner_id)).nil? %> <%=tmp.name %> <%end%></td>
-        <td><% unless device.stock.nil?%> <%= device.stock.name %> <%end%></td>
-        <td><%= device.ready %></td>
+        <td> <%= device.id %></td>
+        <td>
+          <% unless device.device_type.nil? %>  <%= device.device_type.name %>
+          <% end %></td>
+        <td>
+          <% unless (tmp = Stock.find_by_id(device.owner_id)).nil? %> <%= tmp.name %>
+          <% end %></td>
+        <td>
+          <% unless device.stock.nil? %> <%= device.stock.name %>
+          <% end %></td>
+        <td> <%= device.ready %></td>
 
-        <td width="180px"><%= link_to (t "buttons.show"), device, class: 'btn btn-info' %>
-          <%if current_user.right.manage_devices==true%> <%= link_to (t 'buttons.edit'), edit_device_path(device), class: 'btn btn-warning' %><%end%>
-          <%if current_user.right.manage_devices==true%><%= link_to (t 'buttons.destroy'), device, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td><%end%>
-
-      </tr>
-    <% end %>
+        <td width="260px"><%= link_to (t "buttons.show"), device, class: 'btn btn-info' %>
+          <% if current_user.right.manage_devices==true %> <%= link_to (t 'buttons.edit'), edit_device_path(device), class: 'btn btn-warning' %>
+          <% end %>
+          <% if current_user.right.manage_devices==true %><%= link_to (t 'buttons.destroy'), device, method: :delete, data: {confirm: (t 'buttons.confirmation_sure_message')}, class: 'btn btn-danger' %></td>
+          <% end %>
+          </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%if current_user.right.manage_devices==true%><%= link_to (t 'buttons.new.device'), new_device_path, class: 'btn btn-success' %><%end%>
-<%if current_user.right.manage_devices==true%><%= link_to (t 'device_groups.index.title'), device_groups_path, class: 'btn btn-success', style: "margin-left:230px;" %><%end%>
+<% if current_user.right.manage_devices==true %><%= link_to (t 'buttons.new.device'), new_device_path, class: 'btn btn-success' %>
+<% end %>
+<% if current_user.right.manage_devices==true %><%= link_to (t 'device_groups.index.title'), device_groups_path, class: 'btn btn-success', style: "margin-left:230px;" %>
+<% end %>
