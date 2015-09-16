@@ -20,7 +20,7 @@ class LendingsController < ApplicationController
   # GET /lendings/new
   def new
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
       @lending = Lending.new
@@ -37,7 +37,7 @@ class LendingsController < ApplicationController
   # POST /lendings.json
   def create
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
 
