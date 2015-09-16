@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
   def activate
     self.password_unhashed = SecureRandom.urlsafe_base64(6, false)
     self.password_unhashed_confirmation = password_unhashed
-    save
+    self.save
     UserMailer.account_activation(self, password_unhashed).deliver_now
   end
 
