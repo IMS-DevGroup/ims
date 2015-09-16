@@ -15,7 +15,7 @@
     <%= t "mixed_fields.req" %>
   <div class="actions">
     <%= link_to (t "buttons.back"), units_path,class:'btn btn-primary' %>
-    <%= link_to (t "buttons.show"), @unit, class:'btn btn-info'%>
+    <% if !current_page?(new_unit_path) %><%= link_to (t "buttons.show"), @unit, class:'btn btn-info'%><% end %>
     <%= f.submit (t "buttons.submit"), class:'btn btn-success', style:"margin-left:230px;"%>
 
   </div>
