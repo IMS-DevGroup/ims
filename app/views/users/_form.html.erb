@@ -94,7 +94,7 @@
     <div>
 
       <%= link_to (t "buttons.back"), @user, class: 'btn btn-primary' %>
-      <%= link_to (t "buttons.show"), @user, class: 'btn btn-info' %>
+      <% if !current_page?(new_user_path) %><%= link_to (t "buttons.show"), @user, class: 'btn btn-info' %><% end %>
       <% if !Right.find_by_user_id(@user.id).nil? && current_user.right.manage_rights==true %>
           <%= link_to (t "buttons.rights"), edit_right_path(Right.find_by_user_id(@user.id)), class: 'btn btn-info' %>
       <% end %>
