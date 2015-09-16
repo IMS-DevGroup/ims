@@ -1,6 +1,11 @@
+<%= form_for(@lending) do |f| %>
 <h1>New Lending</h1>
 
 <%= render 'form' %>
 
 <!--partial for first try of multiple-device-lending
 %= render 'device_list' %-->
+<a href="/lendings/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+
+<%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
+<% end %>
