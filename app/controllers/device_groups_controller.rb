@@ -53,7 +53,6 @@ class DeviceGroupsController < ApplicationController
 
     # artificial recreated device can't be blank
     if @device_list.empty?
-      @device_group.save
       @errors << @device_group.errors
     # try to create and save device group
     else
@@ -79,6 +78,7 @@ class DeviceGroupsController < ApplicationController
         errors_to_flash = []
         @errors.each do |e|
           errors_to_flash << ((e.values).join("<br/>").html_safe)
+          errors_to_flash << (I18n.t "own.errors.missing_device").to_s
         end
         flash.now[:error] = errors_to_flash.join("<br/>").html_safe
         set_selected_devices
