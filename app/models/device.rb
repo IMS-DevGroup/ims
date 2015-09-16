@@ -15,7 +15,7 @@ class Device < ActiveRecord::Base
   validates :stock_id, presence: :true
 
 
-  scheduler.every '2m' do
+  scheduler.every '1h' do
     Device.throw_expired_note
   end
 

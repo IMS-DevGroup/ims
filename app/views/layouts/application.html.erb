@@ -85,7 +85,9 @@
 <div id="banner" >
   <div id="logo" onclick="javascript:window.location.href='/starts/';"></div>
     <div id="language">
-      <% if BossConfig.first.db_state == false %><button type="button" class="btn btn-danger" disabled="disabled">Im Einsatz</button><% end %>
+      <% if BossConfig.first.db_state == false %>
+          <button type="button" class="btn btn-danger" disabled="disabled">Im Einsatz</button>
+      <% end %>
     <input id="switch"  type="checkbox" data-cur_lang="<%= I18n.locale %>" <% if I18n.locale == :en %>checked<% end %> />
     </div>
 
@@ -169,7 +171,8 @@
     <li role="presentation" class="<%= 'active'if params[:controller] == 'operations' %> "><a href="/operations/" ><%= t "buttons.main_menu.operations" %></a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'devices' %> "><a href="/devices/" ><%= t "buttons.main_menu.devices" %></a></li>
     <li role="presentation" class="<%= 'active'if params[:controller] == 'users' %> "><a href="/users/" ><%= t "buttons.main_menu.users" %></a></li>
-    <li role="presentation" class="<%= 'active'if params[:controller] == 'units' %> "><a href="/lendings/" ><%= t "buttons.main_menu.lendings" %></a></li>
+    <li role="presentation" class="<%= 'active'if params[:controller] == 'lendings' %> "><a href="/lendings/" ><%= t "buttons.main_menu.lendings" %></a></li>
+
   </ul>
 
   <% end %>
