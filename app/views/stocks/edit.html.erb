@@ -1,9 +1,4 @@
-<%= form_for(@stock) do |f| %>
+
 <h1><%= t "stocks.edit.title" %></h1>
 
 <%= render 'form' %>
-
-<%= link_to (t "buttons.back"), stocks_path, class:'btn btn-primary' %>
-<%= link_to (t "buttons.show"), @stock, class: 'btn btn-info' %>
-<%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
-<% end %>

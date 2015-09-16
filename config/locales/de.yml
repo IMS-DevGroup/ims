@@ -42,6 +42,17 @@ de:
               blank: Bitte ein Lager auswählen.
             ready:
               blank: Bitte angeben, ob das Gerät bereit ist.
+        notification:
+          attributes:
+            device_id:
+              blank: Bitte Gerät wählen.
+            unit_id:
+              blank: Bitte Einheit wählen.
+        device_type:
+          attributes:
+            name:
+              blank: Bitte einen Namen angeben.
+              taken: Dieser Gerätetyp existiert bereits.
 
   mail_form:
     errors:
@@ -174,6 +185,16 @@ de:
     index:
       title: Eigenschaftenliste
 
+  starts:
+    state: 'Datenbankstatus: '
+
+  config:
+    online: Online?
+    org: Name der Organisation
+    edit:
+      title: Datenbankstatus bearbeiten
+
+
 
   mixed_fields:
     email: Email
@@ -192,6 +213,7 @@ de:
     passwordconf: Passwort bestätigen
     hello: Hallo
     device: Gerät
+    req: '* Pflichtfeld'
 
   buttons:
     back: Zurück

@@ -21,7 +21,10 @@ class RightsController < ApplicationController
 
   # GET /rights/new
   def new
-    if current_user.right.manage_rights == false
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    elsif current_user.right.manage_rights == false
       redirect_to '/starts/'
     else
     @right = Right.new
@@ -29,7 +32,10 @@ class RightsController < ApplicationController
 end
   # GET /rights/1/edit
   def edit
-    if current_user.right.manage_rights == false
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    elsif current_user.right.manage_rights == false
       redirect_to '/starts/'
       end
   end
@@ -37,6 +43,10 @@ end
   # POST /rights
   # POST /rights.json
   def create
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    else
     @right = Right.new(right_params)
 
     respond_to do |format|
@@ -49,10 +59,14 @@ end
       end
     end
   end
-
+end
   # PATCH/PUT /rights/1
   # PATCH/PUT /rights/1.json
   def update
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    else
     respond_to do |format|
       if @right.update(right_params)
         flash[:success] = (I18n.t "own.success.right_updated").to_s
@@ -64,17 +78,21 @@ end
       end
     end
   end
-
+end
   # DELETE /rights/1
   # DELETE /rights/1.json
   def destroy
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    else
     @right.destroy
     respond_to do |format|
       format.html { redirect_to rights_url, notice: 'Right was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_right

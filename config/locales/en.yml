@@ -42,6 +42,17 @@ en:
               blank: Please choose a stock.
             ready:
               blank: Please insert if the device is ready.
+        notification:
+          attributes:
+            device_id:
+              blank: Bitte Gerät wählen.
+            unit_id:
+              blank: Bitte Einheit wählen.
+        device_type:
+          attributes:
+            name:
+              blank: Please insert a name.
+              taken: This device type already exists.
 
   mail_form:
     errors:
@@ -174,14 +185,24 @@ en:
     index:
       title: Listing Properties
 
+  starts:
+    state: 'Databasestate: '
+
+  config:
+    online: Online?
+    org: Name of Organisation
+    edit:
+      title: Editing Database State
+
+
   mixed_fields:
     email: Email
     info: Info
-    lastname: Lastname
+    lastname: Surname
     location: Location
     mobile_number: Mobile number
     password: Password
-    prename: Prename
+    prename: First Name
     stock: Stock
     unit: Unit
     user: User
@@ -191,6 +212,7 @@ en:
     passwordconf: Password confirmation
     hello: Hello
     device: Device
+    req: '* This field is required.'
 
   buttons:
     back: Back
