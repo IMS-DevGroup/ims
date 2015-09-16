@@ -14,25 +14,39 @@ class NotificationsController < ApplicationController
 
   # GET /notifications/new
   def new
-    @notification = Notification.new
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    else
+      @notification = Notification.new
+    end
   end
 
   # GET /notifications/1/edit
   def edit
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    end
   end
 
   # POST /notifications
   # POST /notifications.json
   def create
-    @notification = Notification.new(notification_params)
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    else
+      @notification = Notification.new(notification_params)
 
-    respond_to do |format|
-      if @notification.save
-        format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
-        format.json { render :show, status: :created, location: @notification }
-      else
-        format.html { render :new }
-        format.json { render json: @notification.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @notification.save
+          format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
+          format.json { render :show, status: :created, location: @notification }
+        else
+          format.html { render :new }
+          format.json { render json: @notification.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -40,13 +54,18 @@ class NotificationsController < ApplicationController
   # PATCH/PUT /notifications/1
   # PATCH/PUT /notifications/1.json
   def update
-    respond_to do |format|
-      if @notification.update(notification_params)
-        format.html { redirect_to @notification, notice: 'Notification was successfully updated.' }
-        format.json { render :show, status: :ok, location: @notification }
-      else
-        format.html { render :edit }
-        format.json { render json: @notification.errors, status: :unprocessable_entity }
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    else
+      respond_to do |format|
+        if @notification.update(notification_params)
+          format.html { redirect_to @notification, notice: 'Notification was successfully updated.' }
+          format.json { render :show, status: :ok, location: @notification }
+        else
+          format.html { render :edit }
+          format.json { render json: @notification.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -62,13 +81,13 @@ class NotificationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_notification
-      @notification = Notification.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_notification
+    @notification = Notification.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def notification_params
-      params.require(:notification).permit(:subject, :info, :checked)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def notification_params
+    params.require(:notification).permit(:subject, :info, :checked)
+  end
 end
