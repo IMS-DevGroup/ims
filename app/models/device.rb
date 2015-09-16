@@ -11,7 +11,7 @@ class Device < ActiveRecord::Base
 
 
   validates :owner_id, presence: :true
-
+  validates :device_type_id, presence:  :true
   validates :stock_id, presence: :true
 
 
