@@ -32,7 +32,7 @@
       </tr>
 
 
-      <tr>
+      <tr>a
         <td colspan="2">
           <div class="form-group">
             <%= f.label :label_text, (t "mixed_fields.info") %><br>
@@ -53,6 +53,7 @@
 
       <%= link_to (t "buttons.back"), operations_path , class:'btn btn-primary'%>
       <% if !current_page?(new_operation_path) %><%= link_to (t "buttons.show"), @operation , class:'btn btn-info'%><% end %>
+
       <%= f.submit (t "buttons.submit"), class:'btn btn-success', style:"margin-left:230px;"%>
 
     </div>
