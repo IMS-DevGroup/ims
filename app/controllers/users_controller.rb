@@ -83,17 +83,21 @@ class UsersController < ApplicationController
     end
   end
 
-  def test_test
-  end
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    if BossConfig.first.db_state == false
+    flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+    redirect_to "/users/"
+  else
     @user.destroy
     respond_to do |format|
       flash[:success] = (I18n.t "own.success.user_destroyed").to_s
       format.html { redirect_to @user }
       format.json { head :no_content }
     end
+   end
   end
 
   private
