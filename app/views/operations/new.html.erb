@@ -1,4 +1,9 @@
+<%= form_for(@operation) do |f| %>
 <h1><%= t "operations.new.title" %></h1>
 
 <%= render 'form' %>
 
+<%= link_to (t "buttons.back"), operations_path , class:'btn btn-primary'%>
+
+<%= f.submit (t "buttons.submit"), class:'btn btn-success', style:"margin-left:230px;"%>
+<% end %>

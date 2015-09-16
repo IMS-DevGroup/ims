@@ -17,6 +17,7 @@
 </form>
 <%= form_for(@lending) do |f| %>
 
+        <!-- Dropdown for manual device selection -->
       <div class="collapse" id="collapseExample">
         <div class="well">
           <table id="devices" class="table table-striped">
@@ -33,6 +34,7 @@
 
             <tbody>
             <% @devices.each do |device| %>
+                <% if device.available? %>
                 <tr>
                   <td>
                     <button id="<%= device.id %>" type="button" class="btn btn-success add-dev">
@@ -50,6 +52,7 @@
                           end %></td>
                   <td><%= device.ready %></td>
                 </tr>
+                <% end %>
             <% end %>
             </tbody>
           </table>
@@ -57,6 +60,7 @@
       </div>
       <input type="hidden" id="deviceids" name="deviceids">
 
+        <!-- Dropdown to show list of currently selected devices -->
       <button id="btnselection" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSelection" aria-expanded="false" aria-controls="collapseSelection">
         Auswahl <span class="badge">0</span>
       </button>
@@ -81,19 +85,19 @@
         <div class = "well">
           <div class = "form-group">
             <%= label_tag (t "mixed_fields.prename") + " *"%><br>
-            <%= text_field_tag(:user_prename)  %>
+            <%= text_field_tag(:user_prename, @quick_usr[:prename])  %>
           </div>
           <div class = "form-group">
             <%= label_tag (t "mixed_fields.lastname") + " *"%><br>
-            <%= text_field_tag(:user_lastname)  %>
+            <%= text_field_tag(:user_lastname, @quick_usr[:lastname])  %>
           </div>
           <div class = "form-group">
             <%= label_tag (t "mixed_fields.unit") + " *"%><br>
-            <%= select_tag('user_unit' , options_from_collection_for_select(Unit.all, 'id', 'name'))   %>
+            <%= select_tag('user_unit' , options_from_collection_for_select(Unit.all, 'id', 'name',  @quick_usr[:unit_id]))   %>
           </div>
           <div class = "form-group">
             <%= label_tag (t "mixed_fields.info")%><br>
-            <%= text_area_tag(:user_info)  %>
+            <%= text_area_tag(:user_info, @quick_usr[:info])  %>
           </div>
           <div>
             <!-- Caution when translating, implies changes in lendings controller as well -->
@@ -102,8 +106,8 @@
         </div>
       </div>
 
-    <!-- following 2 fields only to enable dummy generation
-    TODO: change to proper fields-->
+    <!-- following field only to enable dummy generation
+    TODO: change to proper field-->
     <div class="form-group">
       <%= f.label :user_id %><br>
       <%= f.text_field :user_id %>
@@ -114,10 +118,6 @@
 
 
   <div class="actions">
-    <a href="/lendings/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
-    <!-- todo multiple device lending show -->
-    <!--%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %-->
-    <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
 
   </div>
 

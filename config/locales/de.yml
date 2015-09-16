@@ -93,6 +93,8 @@ de:
       select_user: Wähle Einsatzleiter
     edit:
       title: Einsatz bearbeiten
+    show_lendings:
+      title: Ausgeliehene Geräte zum Einsatz
 
   units:
     name: Name
@@ -121,6 +123,7 @@ de:
     owner: Besitzer
     stock: Lager
     ready: Bereit
+    device_group: Gerätegruppe
     index:
       title: Geräteliste
     form:
@@ -197,6 +200,7 @@ de:
     data_type: Datentyp
     passwordconf: Passwort bestätigen
     hello: Hallo
+    device: Gerät
     req: '* Pflichtfeld'
 
   buttons:
@@ -207,6 +211,8 @@ de:
     rights: Rechte
     submit: Speichern
     confirmation_sure_message: Sind Sie sicher?
+    lendings: Ausleihe
+    return: Rückgabe
     start:
       set_stock: Bestätige Lager
     new:

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post  'login'   =>  'sessions#create'
   get   'logout'  =>  'sessions#remove'
   post  'get-prop'=>  'devices#get_properties'
-  get   'lendings/:id/return' => 'lendings#return'
+  get   'lendings/:id/return' => 'lendings#return', as: 'return_lending'
   get   'operations/show_lendings' => 'operations#show_lendings', as: 'show_lendings'
   # post  'notifications/:user' => 'notifications#updateread'
   # post  'notifications/:checked' => 'notifications#updateread'
@@ -37,12 +37,18 @@ Rails.application.routes.draw do
   resources :barcodes
   resources :lendings_selector
   resources :contacts, only: [:new, :create]
+  resources :impressum
+
   match '/contacts', to: 'contacts#new', via: 'get'
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :notifications
   resources :device_groups
   resources :boss_configs
-  resources :impressum
+
+  get '/new', to: redirect('/starts')   #TODO
+  get '/*other', to: redirect('/starts')
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

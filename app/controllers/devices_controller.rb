@@ -21,7 +21,10 @@ class DevicesController < ApplicationController
   # GET /devices/new
   def new
     if current_user.right.manage_devices == false
-      redirect_to "/device/"
+      redirect_to "/devices/"
+    elsif BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/devices/"
     else
       @device = Device.new
 
@@ -39,8 +42,11 @@ class DevicesController < ApplicationController
   # GET /devices/1/edit
   def edit
     if current_user.right.manage_devices == false
-      redirect_to "/device/"
-    else
+      redirect_to "/devices/"
+    elsif BossConfig.first.db_state == false
+        flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+        redirect_to "/devices/"
+      else
       properties = Property.where("device_type_id = ?", @device.device_type_id)
       propmap = {}
 

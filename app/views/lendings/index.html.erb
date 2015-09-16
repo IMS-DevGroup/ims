@@ -26,7 +26,9 @@
         <td><%= lending.receive_info %></td>
         <td width="190px"><%= link_to 'Show', lending, class: 'btn btn-info' %>
         <%= link_to 'Edit', edit_lending_path(lending), class: 'btn btn-warning' %>
-        <%= link_to 'Destroy', lending, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <%= link_to 'Destroy', lending, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% if (lending.receive.nil?)%> <%= link_to 'Return', return_lending_path(lending), class: 'btn btn-warning' %> <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
