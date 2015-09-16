@@ -20,6 +20,7 @@ class LendingsController < ApplicationController
   # GET /lendings/new
   def new
     @lending = Lending.new
+    @quick_usr = {}
   end
 
   # GET /lendings/1/edit
@@ -33,6 +34,7 @@ class LendingsController < ApplicationController
     @lending = Lending.new(lending_params)
     @device_list = params[:deviceids].delete(' ').split(',')
     @errors = []
+    @quick_usr = {}
 
     # handle quick-generation of user
     if params[:commit].eql?("Quick User")
@@ -41,11 +43,12 @@ class LendingsController < ApplicationController
       end
 
       #submission of entire lending
-      #TODO: Error handling, json (?)
     else
+      #artificially recreate device can't be blank error
       if @device_list.empty?
         @lending.save
         @errors << @lending.errors
+        #try to create and save lendings
       else
         @device_list.each do |d|
           tmp_params = lending_params
@@ -66,10 +69,9 @@ class LendingsController < ApplicationController
         format.html { redirect_to '/lendings', notice: 'Lendings were successfully created.' }
         format.json { render :show, status: :created, location: @lending }
       else
-        puts 'Errors:'
         errors_to_flash = []
         @errors.each do |e|
-         errors_to_flash << ((e.values).join("<br/>").html_safe)
+          errors_to_flash << ((e.values).join("<br/>").html_safe)
         end
         flash.now[:error] = errors_to_flash.join("<br/>").html_safe
         set_selected_devices
@@ -114,21 +116,35 @@ class LendingsController < ApplicationController
     @lending = Lending.find(params[:id])
   end
 
+  # Set all devices for later use in device-selector-coffeescript
   def set_devices
-    @devices = Device.all.eager_load(:stock, :device_type)
+    #check for set stock
+    if @current_user.stock.nil?
+      @devices = Device.all.eager_load(:stock, :device_type)
+    else
+      @devices = Device.where(stock_id: @current_user.stock_id).find_each
+    end
     devmap = {}
     @devices.each do |dev|
-      devmap[dev.id] = {:type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+      if dev.available?
+        devmap[dev.id] = {:type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+      end
     end
     gon.devices = devmap
   end
 
+  # Set selected devices for later use in device-selector-coffeescript
   def set_selected_devices
     gon.selected_devices = @device_list
   end
 
+  # Try to generate a new user from data in params, return true if successful
   def quick_user_generation
-    user = User.new(prename: params[:user_prename], lastname: params[:user_lastname], unit_id: params[:user_unit], info: params[:user_info])
+    @quick_usr[:prename] = params[:user_prename]
+    @quick_usr[:lastname] = params[:user_lastname]
+    @quick_usr[:unit_id] = params[:user_unit]
+    @quick_usr[:info] = params[:user_info]
+    user = User.new(@quick_usr)
     if user.save
       @lending.user_id = user.id
       set_selected_devices
