@@ -36,6 +36,7 @@ class LendingsController < ApplicationController
   # POST /lendings
   # POST /lendings.json
   def create
+    puts params
     if BossConfig.first.db_state == false
       flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
       redirect_to "/starts/"
