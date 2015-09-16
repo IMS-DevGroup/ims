@@ -26,11 +26,17 @@ loadProperties = () ->
               '<div class="col-sm-6">' +
                 '<input type="text" name="prop_val[' + i + ']" value="' + gon.properties[p].value + '" pattern="^[0-9]+((.|,)[0-9]+){0,1}$" required>' +
               '</div>'
-            when "Boolean" then input =
-              '<div class="col-sm-6">' +
-                '<input type="hidden" name="prop_val[' + i + ']" value="' + gon.properties[p].value + '">' +
-                '<input type="checkbox" name="prop_val[' + i + ']">' +
-              '</div>'
+            when "Boolean"
+              if gon.properties[p].value == 'on' then input =
+                '<div class="col-sm-6">' +
+                  '<input type="hidden" name="prop_val[' + i + ']" value="false">' +
+                  '<input type="checkbox" name="prop_val[' + i + ']" checked>' +
+                '</div>'
+              else input =
+                '<div class="col-sm-6">' +
+                  '<input type="hidden" name="prop_val[' + i + ']" value="false">' +
+                  '<input type="checkbox" name="prop_val[' + i + ']">' +
+                '</div>'
             when "Datetime" then input =
               '<div class="col-sm-6">' +
                 '<input type="text" class="form-control jsdatepicker" name="prop_val[' + i + ']" value="' + gon.properties[p].value + '">' +
@@ -56,7 +62,7 @@ loadProperties = () ->
             when "Boolean" then input =
               '<div class="col-sm-6">' +
                 '<input type="hidden" name="prop_val[' + i + ']" value="false">' +
-                '<input type="checkbox" name="prop_val[' + i + ']" value="true">' +
+                '<input type="checkbox" name="prop_val[' + i + ']" value="on">' +
               '</div>'
             when "Datetime" then input =
               '<div class="col-sm-6">' +
