@@ -169,9 +169,9 @@ class LendingsController < ApplicationController
 
   def pick_user_data
     users = User.all
-    usrmap = {}
+    usrmap = []
     users.each do |user|
-      usrmap[user.id] = {:prename => user.prename, :lastname => user.lastname}
+      usrmap << user.prename.to_s+' '+user.lastname.to_s
     end
     gon.users = usrmap
   end
