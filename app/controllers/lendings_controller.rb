@@ -20,6 +20,7 @@ class LendingsController < ApplicationController
   # GET /lendings/new
   def new
     @lending = Lending.new
+    @quick_usr = {}
   end
 
   # GET /lendings/1/edit
@@ -33,6 +34,7 @@ class LendingsController < ApplicationController
     @lending = Lending.new(lending_params)
     @device_list = params[:deviceids].delete(' ').split(',')
     @errors = []
+    @quick_usr = {}
 
     # handle quick-generation of user
     if params[:commit].eql?("Quick User")
@@ -138,7 +140,11 @@ class LendingsController < ApplicationController
 
   # Try to generate a new user from data in params, return true if successful
   def quick_user_generation
-    user = User.new(prename: params[:user_prename], lastname: params[:user_lastname], unit_id: params[:user_unit], info: params[:user_info])
+    @quick_usr[:prename] = params[:user_prename]
+    @quick_usr[:lastname] = params[:user_lastname]
+    @quick_usr[:unit_id] = params[:user_unit]
+    @quick_usr[:info] = params[:user_info]
+    user = User.new(@quick_usr)
     if user.save
       @lending.user_id = user.id
       set_selected_devices
