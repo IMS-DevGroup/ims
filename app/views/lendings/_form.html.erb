@@ -109,8 +109,11 @@
     <!-- following field only to enable dummy generation
     TODO: change to proper field-->
     <div class="form-group">
-      <%= f.label :user_id %><br>
-      <%= f.text_field :user_id %>
+      <div class="ui-widget">
+        <label for="tags">Tags: </label>
+        <input id="tags">
+        <span id="accompl"></span>
+    </div>
     </div>
 
     <!-- hidden field to automatically include current user as lender -->
