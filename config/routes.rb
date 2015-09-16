@@ -35,12 +35,16 @@ Rails.application.routes.draw do
   resources :barcodes
   resources :lendings_selector
   resources :contacts, only: [:new, :create]
+
   match '/contacts', to: 'contacts#new', via: 'get'
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :notifications
   resources :device_groups
   resources :boss_configs
+  get '/new', to: redirect('/starts')   #TODO
+  get '/*other', to: redirect('/starts')
   resources :impressum
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

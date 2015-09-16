@@ -14,11 +14,23 @@ class OperationsController < ApplicationController
 
   # GET /operations/new
   def new
+    if current_user.right.manage_operations == false
+      redirect_to "/operations"
+    elsif BossConfig.first.db_state == false
+      redirect_to "/operations"
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+    else
     @operation = Operation.new
   end
-
+end
   # GET /operations/1/edit
   def edit
+    if current_user.right.manage_operations == false
+      redirect_to "/operations"
+    elsif BossConfig.first.db_state == false
+      redirect_to "/operations"
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+  end
   end
 
   # POST /operations

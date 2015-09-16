@@ -16,7 +16,11 @@ class UsersController < ApplicationController
   def new
     if current_user.right.manage_users == false
       redirect_to '/users/'
+    elsif BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/users/"
     else
+
       @user = User.new
     end
   end
@@ -25,6 +29,10 @@ class UsersController < ApplicationController
   def edit
     if current_user.right.manage_users == false
       redirect_to '/users/'
+
+    elsif BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/users/"
     end
   end
 
