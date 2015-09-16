@@ -77,7 +77,7 @@ class LendingsController < ApplicationController
       # handles either a failed user-generation or the creation of the actual lending
       respond_to do |format|
         if @errors.empty?
-          format.html { redirect_to '/lendings', notice: devlen + ' lendings were successfully created.' }
+          format.html { redirect_to '/lendings', notice: devlen.to_s + ' lendings were successfully created.' }
           format.json { render :show, status: :created, location: @lending }
         else
           if (devlen > @device_list.length)
