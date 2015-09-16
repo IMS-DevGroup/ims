@@ -36,11 +36,10 @@
     </div>
     <%= t "mixed_fields.req" %>
 
-    <div class="actions">
-      <a href="/devices/">
-        <button type="button" class="btn btn-primary"><%= (t 'buttons.back') %></button>
-      </a>
-      <%= link_to (t 'buttons.show'), @device, class: 'btn btn-info' %>
-      <%= f.submit (t 'buttons.submit'), submit: '', class: 'btn btn-success', style: 'margin-left:230px' %>
-    </div>
+  <div class="actions">
+    <a href="/devices/"><button type="button" class="btn btn-primary" ><%=(t 'buttons.back')%></button></a>
+    <% if !current_page?(new_device_path) %><%= link_to (t 'buttons.show'), @device, class: 'btn btn-info' %><% end %>
+    <%= f.submit (t 'buttons.submit'), submit: '', class: 'btn btn-success', style: 'margin-left:230px' %>
+  </div>
+
 <% end %>
