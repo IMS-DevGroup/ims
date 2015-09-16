@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   private
   MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
-  NO_LOGIN_ROUTES = ["/contacts", "/impressum"]
+  NO_LOGIN_ROUTES = ["/contacts"]
 
 
 
@@ -47,17 +47,10 @@ class ApplicationController < ActionController::Base
   #sets localisation (magic)
   private
   def set_locale
-    if current_user then
-      I18n.locale = session[:locale]
-      session[:locale] = @current_user.language
-      @current_user.language = I18n.locale
-      gon.locale = I18n.locale
-      session[:locale] = @current_user.language
-    else
-      I18n.locale = session[:locale] || I18n.default_locale
-      session[:locale] = I18n.locale
-      gon.locale = I18n.locale
-    end
+    I18n.locale = session[:locale] || I18n.default_locale
+    session[:locale] = I18n.locale
+    gon.locale = I18n.locale
   end
+
 
 end
