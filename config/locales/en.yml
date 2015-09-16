@@ -80,7 +80,7 @@ en:
 
   operations:
     operation_type: Operation type
-    operation_dispatch_number: Operation number dispatch
+    operation_dispatch_number: Op. number
     begin_date: Begin date
     ending_date: Close date
     user: Squad Leader
@@ -222,7 +222,7 @@ en:
     rights: Rights
     submit: Submit
     confirmation_sure_message: Are you sure?
-    lendings: Lendings
+    lending: Lendings
     return: Return
     start:
       set_stock: Set stock

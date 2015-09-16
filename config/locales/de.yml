@@ -223,7 +223,7 @@ de:
     rights: Rechte
     submit: Speichern
     confirmation_sure_message: Sind Sie sicher?
-    lendings: Ausleihe
+    lending: Ausleihe
     return: Rückgabe
     start:
       set_stock: Bestätige Lager
