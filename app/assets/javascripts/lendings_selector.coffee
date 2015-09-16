@@ -52,8 +52,8 @@ $ ->
       $('#seldevices').append('<li class="list-group-item">' + gon.devices[x].type + ' (<strong>' + gon.devices[x].owner + '</strong>, ' + gon.devices[x].stock + ')')
 
   #autocomplete for user
-  ###$('#lending_user_id').autocomplete
-    soruce: gon.users###
+  $('#lending_user_id').autocomplete
+    soruce: gon.users
   #set already selected devices as selected
   $ ->
     try
