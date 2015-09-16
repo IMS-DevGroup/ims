@@ -32,6 +32,7 @@ class DeviceTypesController < ApplicationController
         format.html { redirect_to @device_type }
         format.json { render :show, status: :created, location: @device_type }
       else
+        flash.now[:error] = (@device_type.errors.values).join("<br/>").html_safe
         format.html { render :new }
         format.json { render json: @device_type.errors, status: :unprocessable_entity }
       end
@@ -47,6 +48,7 @@ class DeviceTypesController < ApplicationController
         format.html { redirect_to @device_type }
         format.json { render :show, status: :ok, location: @device_type }
       else
+        flash.now[:error] = (@device_type.errors.values).join("<br/>").html_safe
         format.html { render :edit }
         format.json { render json: @device_type.errors, status: :unprocessable_entity }
       end

@@ -1,18 +1,7 @@
 <%= form_for(@device_type) do |f| %>
-  <% if @device_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@device_type.errors.count, "error") %> prohibited this device_type from being saved:</h2>
-
-      <ul>
-      <% @device_type.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="form-group">
-    <%= f.label :label_text, (t "mixed_fields.name") %><br>
+    <%= f.label :label_text, (t "mixed_fields.name") + "*" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="form-group">
@@ -20,7 +9,9 @@
     <%= f.text_area :info %>
   </div>
     <br>
+    <%= t "mixed_fields.req" %>
   <div class="actions">
 
   </div>
+
 <% end %>
