@@ -32,8 +32,8 @@ class DevicesController < ApplicationController
       propmap = {}
 
       properties.each do |prop|
-        propmap[prop.id] = { :id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
-                             :device_type => prop.device_type.id, :value => nil }
+        propmap[prop.id] = {:id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
+                            :device_type => prop.device_type.id, :value => nil}
       end
       gon.properties = propmap
     end
@@ -44,18 +44,20 @@ class DevicesController < ApplicationController
     if current_user.right.manage_devices == false
       redirect_to "/devices/"
     elsif BossConfig.first.db_state == false
-        flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
-        redirect_to "/devices/"
-      else
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/devices/"
+    else
       properties = Property.where("device_type_id = ?", @device.device_type_id)
       propmap = {}
 
       properties.each do |prop|
+        if !prop.values.find_by_device_id(@device.id).nil?
         value = prop.values.find_by_device_id(@device.id).value
-        propmap[prop.id] = { :id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
-                             :device_type => prop.device_type.id, :value => value }
+          propmap[prop.id] = {:id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
+                              :device_type => prop.device_type.id, :value => value}
+        end
+        gon.properties = propmap
       end
-      gon.properties = propmap
     end
   end
 
@@ -100,14 +102,14 @@ class DevicesController < ApplicationController
   # DELETE /devices/1.json
   def destroy
     if BossConfig.first.db_state == false
-       redirect_to "/devices/"
-       flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/devices/"
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
     else
-    @device.destroy
-    respond_to do |format|
-      flash[:success] = (I18n.t "own.success.device_destroyed").to_s
-      format.html { redirect_to @device }
-      format.json { head :no_content }
+      @device.destroy
+      respond_to do |format|
+        flash[:success] = (I18n.t "own.success.device_destroyed").to_s
+        format.html { redirect_to @device }
+        format.json { head :no_content }
       end
     end
   end
