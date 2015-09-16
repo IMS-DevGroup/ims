@@ -3,10 +3,10 @@
 #=require dataTables/jquery.dataTables
 #= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 #= require dataTables/jquery.dataTables
-
 #= require_tree .
 #= require bootstrap-sprockets
 #= require bootstrap-switch
+#= require jquery-ui/autocomplete
 #= require moment
 #= require bootstrap-datetimepicker
 
