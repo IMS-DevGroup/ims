@@ -1,12 +1,12 @@
 <h1><%= t 'operations.show_lendings.title' %></h1>
 
-<% @arr = [] %>
+<% dev_hash = Hash.new %>
 <% stock_ids = (Operation.find(params[:format]).stocks).to_a.map(&:serializable_hash) %>
 <% stock_ids.each do |k| %>
     <% Device.where(stock_id: k['id']).find_each do |dev| %>
         <% dev.lendings.each do |ldevs| %>
             <% if ldevs.receiver_id.nil? %>
-                <% @arr.push(ldevs.device.id) %>
+                <% dev_hash[ldevs.device.id] = ldevs %>
             <% end %>
         <% end %>
     <% end %>
@@ -25,8 +25,9 @@
   </thead>
 
   <tbody>
-  <% @arr.each do |id| %>
-      <% dev = Device.find(id) %>
+
+  <% dev_hash.each do |dh| %>
+      <% dev = Device.find(dh[0]) %>
       <tr>
         <td><%= dev.id %></td>
         <td><%= dev.info %></td>
@@ -37,9 +38,10 @@
           <% unless dev.device_group.nil? %> <%= dev.device_group.name %>
           <% end %> </td>
         <td>
-
+          <%= link_to 'Return', return_lending_path( dev_hash[dh[0]]), class: 'btn btn-warning' %></td>
         </td>
       </tr>
   <% end %>
+
   </tbody>
 </table>

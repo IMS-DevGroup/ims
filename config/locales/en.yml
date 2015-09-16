@@ -188,6 +188,7 @@ en:
     rights: Rights
     submit: Submit
     confirmation_sure_message: Are you sure?
+    lendings: Lendings
     start:
       set_stock: Set stock
     new:
