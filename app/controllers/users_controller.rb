@@ -39,6 +39,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
@@ -65,6 +66,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
     respond_to do |format|
       if @user.update(user_params)
         flash[:success] = (I18n.t "own.success.user_updated").to_s
@@ -107,4 +109,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info,
                                  :unit_id, :right_id, :password_unhashed, :password_unhashed_confirmation, :stock_id)
   end
+
 end
+
+
