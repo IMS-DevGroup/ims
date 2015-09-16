@@ -23,6 +23,7 @@ gem 'node', platforms: :ruby
 gem 'execjs'
 gem 'heroku-deflater', :group => :production
 gem 'barby'
+gem 'jquery-ui-rails'
 gem 'chunky_png'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
