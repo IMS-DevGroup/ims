@@ -48,8 +48,8 @@ class ApplicationController < ActionController::Base
   private
   def set_locale
     if current_user then
-      I18n.locale = @current_user[:language]
-      session[:locale] = I18n.locale
+      I18n.locale = session[:locale]
+      session[:locale] = @current_user.language
       gon.locale = I18n.locale
     else
       I18n.locale = session[:locale] || I18n.default_locale
@@ -57,6 +57,5 @@ class ApplicationController < ActionController::Base
       gon.locale = I18n.locale
     end
   end
-
 
 end
