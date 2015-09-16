@@ -2,7 +2,7 @@ class Users_Validator < ActiveModel::Validator
 
   def validate(user)
 
-    if !user.active?
+    if user.active.nil?
       if !(user.password_unhashed.blank?) && user.username.blank?
         user.errors[:base] << (I18n.t "own.errors.only_pw_no_username")
       elsif !(user.username.blank?) && user.password_unhashed.blank? && user.email.blank?

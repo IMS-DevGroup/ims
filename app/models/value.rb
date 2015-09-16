@@ -34,10 +34,11 @@ class Value < ActiveRecord::Base
     self.value=v
 
 #TODO: Check data types
-    elsif typ=="Integer"
+    elsif typ=="Integer"&& ( v =~ /^[0-9]+$/)
+
       self.value=v
 
-    elsif typ=="Float"
+    elsif typ=="Float"&& ( v =~ /^[0-9]+((.|,)[0-9]+){0,1}$/)
       self.value=v
 
     elsif typ=="Boolean"
