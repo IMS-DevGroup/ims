@@ -47,6 +47,10 @@ class LendingsController < ApplicationController
       @errors = []
       @error_lendings = []
       @quick_usr = {}
+      names = params[:user_auto].split(',')
+      autofill_user = User.find_by_lastname_and_prename( names[0] , names[1] )
+      tmp_params = lending_params
+      tmp_params[:user_id] = autofill_user.id
 
       # handle quick-generation of user
       if params[:commit].eql?("Quick User")
@@ -64,7 +68,6 @@ class LendingsController < ApplicationController
           try to create and save lendings
         else
           @device_list.each do |d|
-            tmp_params = lending_params
             tmp_params[:device_id] = d
             @lending = Lending.new(tmp_params)
             if @lending.save
@@ -175,7 +178,7 @@ class LendingsController < ApplicationController
     users = User.all
     usrmap = []
     users.each do |user|
-      usrmap << user.prename.to_s+' '+user.lastname.to_s
+      usrmap << user.lastname.to_s + ',' + user.prename.to_s
     end
     gon.users = usrmap
   end
