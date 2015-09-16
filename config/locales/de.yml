@@ -85,6 +85,14 @@ de:
     show_lendings:
       title: Ausgeliehene Geräte zum Einsatz
 
+  lendings:
+    borrowed_at: Geliehen am
+    leding_info: Verleihinfo
+    receive: Rückgabe
+    receive_info: Rückgabe Info
+    index:
+      title: Ausleihliste
+
   units:
     name: Name
     phone_number: Telefonnummer
@@ -209,7 +217,9 @@ de:
       stocks: Lagerorte
       units: Einheiten
       contact: Kontakt
-      lendings: Ausleihen
+      lendings: Ausleihe
+    lendings:
+      new_lending: Neue Ausleihe
 
   own:
     errors:

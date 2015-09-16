@@ -86,6 +86,14 @@ en:
     show_lendings:
       title: Lent devices
 
+  lendings:
+    borrowed_at: Borrowed at
+    leding_info: Lending Info
+    receive: Receive
+    receive_info: Receive Info
+    index:
+      title: Lending List
+
   units:
     name: Name
     phone_number: Phone Number
@@ -209,6 +217,8 @@ en:
       units: Units
       contact: Contact
       lendings: Lendings
+    lendings:
+      new_lending: Neue Ausleihe
 
   own:
     errors:
