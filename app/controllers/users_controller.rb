@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung möglich'
       redirect_to "/users/"
     else
     respond_to do |format|
@@ -98,7 +98,7 @@ end
   # DELETE /users/1.json
   def destroy
     if BossConfig.first.db_state == false
-    flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+    flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung möglich'
     redirect_to "/users/"
   else
     @user.destroy
@@ -119,7 +119,7 @@ end
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:username, :password, :active, :email, :prename, :lastname, :mobile_number, :info,
-                                 :unit_id, :right_id, :password_unhashed, :password_unhashed_confirmation, :stock_id)
+                                 :unit_id, :right_id, :password_unhashed, :password_unhashed_confirmation, :stock_id, :language)
   end
 
 end
