@@ -80,14 +80,21 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def updateread
+    @notification = Notification.find(params[:id])
+    NotificationController.change(params[@current_user], params[Data.getTime()], @notification)
+    format.html { redirect_to @starts }
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_notification
     @notification = Notification.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def notification_params
-    params.require(:notification).permit(:subject, :info, :checked)
-  end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def notification_params
+      params.require(:notification).permit(:subject, :info, :checked, :unit_id, :device_id)
+    end
 end
