@@ -47,10 +47,15 @@ class ApplicationController < ActionController::Base
   #sets localisation (magic)
   private
   def set_locale
-    I18n.locale = session[:locale] || I18n.default_locale
-    session[:locale] = I18n.locale
-    gon.locale = I18n.locale
+    if current_user then
+      I18n.locale = session[:locale]
+      session[:locale] = @current_user.language
+      gon.locale = I18n.locale
+    else
+      I18n.locale = session[:locale] || I18n.default_locale
+      session[:locale] = I18n.locale
+      gon.locale = I18n.locale
+    end
   end
-
 
 end
