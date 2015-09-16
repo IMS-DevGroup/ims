@@ -27,6 +27,7 @@
     <%= f.label :device_type, (t 'devices.device_type') %>
     <%= f.collection_select :device_type_id, DeviceType.all, :id, :name, {}, class: "form-control", include_blank: "choose device_type"%>
   </div>
+    <%= t "mixed_fields.req" %>
   <div class="actions">
 
 

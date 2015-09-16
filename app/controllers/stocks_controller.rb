@@ -14,7 +14,10 @@ class StocksController < ApplicationController
 
   # GET /stocks/new
   def new
-    if current_user.right.manage_stocks_and_units == false
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/stocks/"
+    elsif current_user.right.manage_stocks_and_units == false
       redirect_to '/stocks/'
       else
     @stock = Stock.new
@@ -22,7 +25,10 @@ class StocksController < ApplicationController
 end
   # GET /stocks/1/edit
   def edit
-    if current_user.right.manage_stocks_and_units == false
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/stocks/"
+    elsif current_user.right.manage_stocks_and_units == false
       redirect_to '/stocks/'
   end
   end
@@ -30,6 +36,10 @@ end
   # POST /stocks
   # POST /stocks.json
   def create
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/stocks/"
+    else
     @stock = Stock.new(stock_params)
 
     respond_to do |format|
@@ -47,10 +57,14 @@ end
     end
 
   end
-
+end
   # PATCH/PUT /stocks/1
   # PATCH/PUT /stocks/1.json
   def update
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/stocks/"
+    else
     respond_to do |format|
       if @stock.update(stock_params)
         flash[:success] = (I18n.t "own.success.stock_updated").to_s
@@ -64,10 +78,14 @@ end
       end
     end
   end
-
+end
   # DELETE /stocks/1
   # DELETE /stocks/1.json
   def destroy
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/stocks/"
+    else
 
     @stock.destroy
     respond_to do |format|
@@ -76,7 +94,7 @@ end
       format.json { head :no_content }
     end
   end
-
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stock

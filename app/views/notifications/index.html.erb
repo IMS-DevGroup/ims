@@ -8,6 +8,10 @@
       <th>Subject</th>
       <th>Info</th>
       <th>Checked</th>
+      <th>Unit</th>
+      <th>Device ID</th>
+      <th>User</th>
+      <th>ID</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +22,10 @@
         <td><%= notification.subject %></td>
         <td><%= notification.info %></td>
         <td><%= notification.checked %></td>
+        <td><%= notification.unit.name %></td>
+        <td><%= notification.device_id %></td>
+        <td><%= notification.user %></td>
+        <td><%= notification.id %></td>
         <td><%= link_to 'Show', notification %></td>
         <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
         <td><%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
