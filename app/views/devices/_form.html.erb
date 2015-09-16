@@ -1,13 +1,9 @@
 <%= form_for(@device) do |f| %>
     <div class="form-group">
       <%= f.label t 'devices.device_type' %><br>
-      <% if current_page?(new_device_path) %><%= f.collection_select :device_type_id, DeviceType.all, :id, :name,
+    <%= f.collection_select :device_type_id, DeviceType.all, :id, :name,
                                                                      {prompt: (t 'devices.form.select_device_typ')}, class: 'form-control' %>
-      <% else %>
-          <% unless @device.device_type.nil? %>
-              <%= @device.device_type.name %>
-          <% end %>
-      <% end %>
+      
     </div>
 
     <table id="properties">

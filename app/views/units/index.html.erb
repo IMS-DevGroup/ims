@@ -18,7 +18,7 @@
         <td><%= unit.name %></td>
         <td><%= unit.info %></td>
         <td><%= unit.phone_number %></td>
-        <td width="180px"><%= link_to (t "buttons.show"), unit, class: 'btn btn-info' %>
+        <td width="260px"><%= link_to (t "buttons.show"), unit, class: 'btn btn-info' %>
           <%if current_user.right.manage_stocks_and_units==true%><%= link_to (t "buttons.edit"), edit_unit_path(unit), class: 'btn btn-warning' %><%end%>
           <%if current_user.right.manage_stocks_and_units==true%> <%= link_to (t "buttons.destroy"), unit, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td><%end%>
       </tr>

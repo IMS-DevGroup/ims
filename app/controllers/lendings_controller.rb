@@ -20,7 +20,7 @@ class LendingsController < ApplicationController
   # GET /lendings/new
   def new
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
       @lending = Lending.new
@@ -37,7 +37,7 @@ class LendingsController < ApplicationController
   # POST /lendings.json
   def create
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
 
@@ -115,7 +115,7 @@ class LendingsController < ApplicationController
   # DELETE /lendings/1.json
   def destroy
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
       @lending.destroy
@@ -129,7 +129,7 @@ class LendingsController < ApplicationController
   # GET lendings/1/return
   def return
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     end
   end
@@ -138,7 +138,7 @@ class LendingsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_lending
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
       @lending = Lending.find(params[:id])
@@ -148,7 +148,7 @@ class LendingsController < ApplicationController
   # Set all devices for later use in device-selector-coffeescript
   def set_devices
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
       #check for set stock
@@ -169,9 +169,9 @@ class LendingsController < ApplicationController
 
   def pick_user_data
     users = User.all
-    usrmap = {}
+    usrmap = []
     users.each do |user|
-      usrmap[user.id] = {:prename => user.prename, :lastname => user.lastname}
+      usrmap << user.prename.to_s+' '+user.lastname.to_s
     end
     gon.users = usrmap
   end

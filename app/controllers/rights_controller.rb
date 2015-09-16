@@ -22,7 +22,7 @@ class RightsController < ApplicationController
   # GET /rights/new
   def new
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     elsif current_user.right.manage_rights == false
       redirect_to '/starts/'
@@ -33,7 +33,7 @@ end
   # GET /rights/1/edit
   def edit
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     elsif current_user.right.manage_rights == false
       redirect_to '/starts/'
@@ -44,7 +44,7 @@ end
   # POST /rights.json
   def create
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
     @right = Right.new(right_params)
@@ -64,7 +64,7 @@ end
   # PATCH/PUT /rights/1.json
   def update
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
     respond_to do |format|
@@ -83,7 +83,7 @@ end
   # DELETE /rights/1.json
   def destroy
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
     else
     @right.destroy
