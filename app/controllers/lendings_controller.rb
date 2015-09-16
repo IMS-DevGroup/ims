@@ -46,7 +46,7 @@ class LendingsController < ApplicationController
       if @device_list.empty?
         @lending.save
         @errors << @lending.errors
-      #try to create and save lendings
+        #try to create and save lendings
       else
         @device_list.each do |d|
           tmp_params = lending_params
@@ -69,7 +69,7 @@ class LendingsController < ApplicationController
       else
         errors_to_flash = []
         @errors.each do |e|
-         errors_to_flash << ((e.values).join("<br/>").html_safe)
+          errors_to_flash << ((e.values).join("<br/>").html_safe)
         end
         flash.now[:error] = errors_to_flash.join("<br/>").html_safe
         set_selected_devices
@@ -116,10 +116,17 @@ class LendingsController < ApplicationController
 
   # Set all devices for later use in device-selector-coffeescript
   def set_devices
-    @devices = Device.all.eager_load(:stock, :device_type)
+    #check for set stock
+    if @current_user.stock.nil?
+      @devices = Device.all.eager_load(:stock, :device_type)
+    else
+      @devices = Device.where(stock_id: @current_user.stock_id).find_each
+    end
     devmap = {}
     @devices.each do |dev|
-      devmap[dev.id] = {:type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+      if dev.available?
+        devmap[dev.id] = {:type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+      end
     end
     gon.devices = devmap
   end
