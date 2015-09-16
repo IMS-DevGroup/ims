@@ -71,11 +71,16 @@ end
   # DELETE /operations/1
   # DELETE /operations/1.json
   def destroy
+    if BossConfig.first.db_state == false
+      redirect_to "/operations"
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+    else
     @operation.destroy
     respond_to do |format|
       flash[:success] = (I18n.t "own.success.operation_destroyed").to_s
       format.html { redirect_to @operation }
       format.json { head :no_content }
+      end
     end
   end
 

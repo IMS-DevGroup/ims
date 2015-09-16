@@ -1,3 +1,9 @@
+<%= form_for(@device_group) do |f| %>
 <h1><%= t "device_groups.new.title" %></h1>
 
 <%= render 'form' %>
+
+<a href="/device_groups/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+
+<%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
+<% end %>

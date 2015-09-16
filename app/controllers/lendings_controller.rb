@@ -19,8 +19,13 @@ class LendingsController < ApplicationController
 
   # GET /lendings/new
   def new
-    @lending = Lending.new
-    @quick_usr = {}
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    else
+      @lending = Lending.new
+      @quick_usr = {}
+    end
   end
 
   # GET /lendings/1/edit
@@ -31,55 +36,61 @@ class LendingsController < ApplicationController
   # POST /lendings
   # POST /lendings.json
   def create
-    @lending = Lending.new(lending_params)
-    @device_list = params[:deviceids].delete(' ').split(',')
-    @errors = []
-    @quick_usr = {}
-
-    # handle quick-generation of user
-    if params[:commit].eql?("Quick User")
-      if quick_user_generation
-        return
-      end
-
-      #submission of entire lending
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
     else
-      #artificially recreate device can't be blank error
-      if @device_list.empty?
-        @lending.save
-        @errors << @lending.errors
-        #try to create and save lendings
+
+      @lending = Lending.new(lending_params)
+      @device_list = params[:deviceids].delete(' ').split(',')
+      @errors = []
+      @quick_usr = {}
+
+      # handle quick-generation of user
+      if params[:commit].eql?("Quick User")
+        if quick_user_generation
+          return
+        end
+
+        #submission of entire lending
       else
-        @device_list.each do |d|
-          tmp_params = lending_params
-          tmp_params[:device_id] = d
-          @lending = Lending.new(tmp_params)
-          if @lending.save
-            @device_list.delete(d)
-          else
-            @errors.push(@lending.errors)
+        #artificially recreate device can't be blank error
+        if @device_list.empty?
+          @lending.save
+          @errors << @lending.errors
+          #try to create and save lendings
+        else
+          @device_list.each do |d|
+            tmp_params = lending_params
+            tmp_params[:device_id] = d
+            @lending = Lending.new(tmp_params)
+            if @lending.save
+              @device_list.delete(d)
+            else
+              @errors.push(@lending.errors)
+            end
           end
         end
       end
-    end
 
-    # handles either a failed user-generation or the creation of the actual lending
-    respond_to do |format|
-      if @errors.empty?
-        format.html { redirect_to '/lendings', notice: 'Lendings were successfully created.' }
-        format.json { render :show, status: :created, location: @lending }
-      else
-        errors_to_flash = []
-        @errors.each do |e|
-          errors_to_flash << ((e.values).join("<br/>").html_safe)
+      # handles either a failed user-generation or the creation of the actual lending
+      respond_to do |format|
+        if @errors.empty?
+          format.html { redirect_to '/lendings', notice: 'Lendings were successfully created.' }
+          format.json { render :show, status: :created, location: @lending }
+        else
+          errors_to_flash = []
+          @errors.each do |e|
+            errors_to_flash << ((e.values).join("<br/>").html_safe)
+          end
+          flash.now[:error] = errors_to_flash.join("<br/>").html_safe
+          set_selected_devices
+          format.html { render :new }
+          format.json { render json: @errors, status: :unprocessable_entity }
         end
-        flash.now[:error] = errors_to_flash.join("<br/>").html_safe
-        set_selected_devices
-        format.html { render :new }
-        format.json { render json: @errors, status: :unprocessable_entity }
       end
-    end
 
+    end
   end
 
   # PATCH/PUT /lendings/1
@@ -99,38 +110,57 @@ class LendingsController < ApplicationController
   # DELETE /lendings/1
   # DELETE /lendings/1.json
   def destroy
-    @lending.destroy
-    respond_to do |format|
-      format.html { redirect_to lendings_url, notice: 'Lending was successfully destroyed.' }
-      format.json { head :no_content }
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    else
+      @lending.destroy
+      respond_to do |format|
+        format.html { redirect_to lendings_url, notice: 'Lending was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
   # GET lendings/1/return
   def return
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    end
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_lending
-    @lending = Lending.find(params[:id])
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    else
+      @lending = Lending.find(params[:id])
+    end
   end
 
   # Set all devices for later use in device-selector-coffeescript
   def set_devices
-    #check for set stock
-    if @current_user.stock.nil?
-      @devices = Device.all.eager_load(:stock, :device_type)
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
     else
-      @devices = Device.where(stock_id: @current_user.stock_id).find_each
-    end
-    devmap = {}
-    @devices.each do |dev|
-      if dev.available?
-        devmap[dev.id] = {:type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+      #check for set stock
+      if @current_user.stock.nil?
+        @devices = Device.all.eager_load(:stock, :device_type)
+      else
+        @devices = Device.where(stock_id: @current_user.stock_id).find_each
       end
+      devmap = {}
+      @devices.each do |dev|
+        if dev.available?
+          devmap[dev.id] = {:type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+        end
+      end
+      gon.devices = devmap
     end
-    gon.devices = devmap
   end
 
   def pick_user_data
