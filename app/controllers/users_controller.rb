@@ -41,6 +41,10 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new(user_params)
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/users/"
+    else
     respond_to do |format|
       if @user.save
 
@@ -62,10 +66,14 @@ class UsersController < ApplicationController
       end
     end
   end
-
+end
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/users/"
+    else
 
     respond_to do |format|
       if @user.update(user_params)
@@ -84,7 +92,7 @@ class UsersController < ApplicationController
       end
     end
   end
-
+end
 
   # DELETE /users/1
   # DELETE /users/1.json

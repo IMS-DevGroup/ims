@@ -71,7 +71,7 @@ r.manage_users=true
 r.manage_stocks_and_units=true
 r.manage_device_types=true
 r.manage_operations=true
-self.manage_boss = true
+r.manage_boss = true
 r.save
 
 

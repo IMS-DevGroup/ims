@@ -14,7 +14,10 @@ class UnitsController < ApplicationController
 
   # GET /units/new
   def new
-    if current_user.right.manage_stocks_and_units == false
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/units/"
+    elsif current_user.right.manage_stocks_and_units == false
       redirect_to '/units/'
     else
     @unit = Unit.new
@@ -23,7 +26,10 @@ class UnitsController < ApplicationController
 
   # GET /units/1/edit
   def edit
-    if current_user.right.manage_stocks_and_units == false
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/units/"
+    elsif current_user.right.manage_stocks_and_units == false
       redirect_to '/units/'
     end
   end
@@ -31,6 +37,10 @@ class UnitsController < ApplicationController
   # POST /units
   # POST /units.json
   def create
+    if BossConfig.first.db_state == false
+               flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+               redirect_to "/units/"
+             else
     @unit = Unit.new(unit_params)
 
     respond_to do |format|
@@ -46,10 +56,14 @@ class UnitsController < ApplicationController
       end
     end
   end
-
+end
   # PATCH/PUT /units/1
   # PATCH/PUT /units/1.json
   def update
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/units/"
+    else
     respond_to do |format|
       if @unit.update(unit_params)
         flash[:success] = (I18n.t "own.success.unit_updated").to_s
@@ -63,10 +77,14 @@ class UnitsController < ApplicationController
       end
     end
   end
-
+end
   # DELETE /units/1
   # DELETE /units/1.json
   def destroy
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/units/"
+    else
     @unit.destroy
     respond_to do |format|
       flash[:success] = (I18n.t "own.success.unit_destroyed").to_s
@@ -74,7 +92,7 @@ class UnitsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_unit
