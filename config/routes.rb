@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post  'get-prop'=>  'devices#get_properties'
   get   'lendings/:id/return' => 'lendings#return', as: 'return_lending'
   get   'operations/show_lendings' => 'operations#show_lendings', as: 'show_lendings'
+  get   'operations/:id/close' => 'operations#close_op' , as: 'close_op'
   # post  'notifications/:user' => 'notifications#updateread'
   # post  'notifications/:checked' => 'notifications#updateread'
   # route for first try of multiple-device-lending
