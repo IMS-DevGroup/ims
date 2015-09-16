@@ -20,7 +20,7 @@ class PasswordResetsController < ApplicationController
         redirect_to root_url
 
     else
-      flash[:error] = (I18n.t "own.error.password_reset_email_not_found").to_s
+      flash[:error] = (I18n.t "own.errors.password_reset_email_not_found").to_s
       render 'new'
     end
   end
@@ -31,7 +31,7 @@ class PasswordResetsController < ApplicationController
   def update
     if params[:password_unhashed].empty?
 #      @user.errors.add(:password_unhashed, 'darf nicht leer sein')
-      flash[:error] = (I18n.t "own.error.empty").to_s
+      flash[:error] = (I18n.t "own.errors.empty_field").to_s
       render 'edit'
     elsif @user.update_attribute(:password_unhashed, params[:password_unhashed])
       @user.encrypt_password #vllt richtig??
@@ -63,7 +63,7 @@ class PasswordResetsController < ApplicationController
   # checks if the token is expired
   def check_expiration
     if @user.password_reset_expired?
-      flash[:error] = (I18n.t "own.error.password_reset_expired").to_s
+      flash[:error] = (I18n.t "own.errors.password_reset_expired").to_s
       redirect_to new_password_reset_url
     end
   end

@@ -23,7 +23,7 @@ class DevicesController < ApplicationController
     if current_user.right.manage_devices == false
       redirect_to "/devices/"
     elsif BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/devices/"
     else
       @device = Device.new
@@ -45,7 +45,7 @@ class DevicesController < ApplicationController
       redirect_to "/devices/"
 
     elsif BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/devices/"
     else
       properties = Property.where("device_type_id = ?", @device.device_type_id)
@@ -104,7 +104,7 @@ class DevicesController < ApplicationController
   def destroy
     if BossConfig.first.db_state == false
       redirect_to "/devices/"
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
     else
           @device.values.each do |v|
             v.destroy

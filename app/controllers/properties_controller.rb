@@ -15,7 +15,7 @@ class PropertiesController < ApplicationController
   # GET /properties/new
   def new
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/properties/"
     else
       @property = Property.new
@@ -25,7 +25,7 @@ class PropertiesController < ApplicationController
   # GET /properties/1/edit
   def edit
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/properties/"
     end
   end
@@ -34,10 +34,10 @@ class PropertiesController < ApplicationController
   # POST /properties.json
   def create
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/properties/"
-    elsif BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+    elsif BossConfig.first.db_state == false  ###useless, da doppelt #TODO
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/properties/"
     else
       @property = Property.new(property_params)
@@ -59,7 +59,7 @@ class PropertiesController < ApplicationController
   # PATCH/PUT /properties/1.json
   def update
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/units/"
     else
       respond_to do |format|
@@ -79,7 +79,7 @@ class PropertiesController < ApplicationController
   # DELETE /properties/1.json
   def destroy
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/units/"
     else
       @property.destroy

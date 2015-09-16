@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if current_user.right.manage_users == false
       redirect_to '/users/'
     elsif BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/users/"
     else
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       redirect_to '/users/'
 
     elsif BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/users/"
     end
   end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung möglich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/users/"
     else
     respond_to do |format|
@@ -71,7 +71,7 @@ end
   # PATCH/PUT /users/1.json
   def update
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/users/"
     else
 
@@ -98,7 +98,7 @@ end
   # DELETE /users/1.json
   def destroy
     if BossConfig.first.db_state == false
-    flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung möglich'
+    flash[:error] = (I18n.t "own.errors.db_offline").to_s
     redirect_to "/users/"
   else
     @user.destroy
