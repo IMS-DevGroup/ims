@@ -58,7 +58,10 @@ class DeviceGroupsController < ApplicationController
     # try to create and save device group
     else
       @device_list.each do |d|
-        d.device_group_id = @device_group.id
+        d = d.to_i
+        device = Device.find_by_id(d)
+        device.device_group_id = @device_group.id
+        device.save
         if @device_group.save
           @device_list.delete(d)
         else
