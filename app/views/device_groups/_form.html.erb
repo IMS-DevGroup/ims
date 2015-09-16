@@ -18,14 +18,14 @@
 
   <form onsubmit="return false">
     <div class="form-group">
-      <label for="barcode">Barcode</label>
+      <label for="devgroupbarcode">Barcode</label>
       <div style="width:200px" class="input-group">
-        <input type="text" autofocus class="form-control" placeholder="Barcode" id="barcode">
+        <input type="text" autofocus class="form-control" placeholder="Barcode" id="devgroupbarcode">
         <span class="input-group-btn">
-          <button id="btnsearch" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <button id="btndevgroupsearch" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
           </button>
-          <button id="adddev" type="submit" class="btn btn-success add-dev">
+          <button id="adddevgroup" type="submit" class="btn btn-success add-dev-group">
             <span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
           </button>
         </span>
@@ -50,7 +50,7 @@
         <%= Device.all.each do |device| %>
           <tr>
             <td>
-              <button id="<%= device.id %>" type="button" class="btn btn-success add-dev">
+              <button id="<%= device.id %>" type="button" class="btn btn-success add-dev-group">
                 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
               </button>
             </td>
@@ -65,15 +65,15 @@
       </table>
     </div>
   </div>
-  <input type="hidden" id="deviceids" name="deviceids">
+  <input type="hidden" id="devicegroupids" name="devicegroupids">
 
-  <button id="btnselection" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSelection" aria-expanded="false" aria-controls="collapseSelection">
+  <button id="btndevgroupselection" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSelection" aria-expanded="false" aria-controls="collapseSelection">
     Auswahl
     <span class="badge">0</span>
   </button>
   <div class="collapse" id="collapseSelection">
     <div class="well">
-      <ul id="seldevices" class="list-group"></ul>
+      <ul id="seldevicegroups" class="list-group"></ul>
     </div>
   </div>
 
@@ -85,7 +85,6 @@
   <div class="actions">
     <a href="/device_groups/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
     <%= link_to (t "buttons.show"), @device_group, class: 'btn btn-info' %>
-    <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
-
+    <%= f.submit (t "buttons.submit"), submit: '', class: 'btn btn-success', style: "margin-left:230px;" %>
   </div>
 <% end %>

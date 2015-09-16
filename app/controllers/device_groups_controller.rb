@@ -16,10 +16,19 @@ class DeviceGroupsController < ApplicationController
   def new
     if current_user.right.manage_devices == false
       redirect_to '/device_groups/'
+
     else
-    @device_group = DeviceGroup.new
+      @device_group = DeviceGroup.new
+      @devices = Device.all.eager_load(:stock, :device_type)
+      devmap = {}
+
+      @devices.each do |dev|
+        devmap[dev.id] = { :type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+      end
+      gon.devices = devmap
     end
   end
+
   # GET /device_groups/1/edit
   def edit
     if current_user.right.manage_devices == false
@@ -31,15 +40,41 @@ class DeviceGroupsController < ApplicationController
   # POST /device_groups.json
   def create
     @device_group = DeviceGroup.new(device_group_params)
+    @device_list = params[:devicegroupids].delete(' ').split(',')
+    @errors = []
 
+    # artificial recreated device can't be blank
+    if @device_list.empty?
+      @device_group.save
+      @errors << @device_group.errors
+    # try to create and save device group
+    else
+      @device_list.each do |d|
+        tmp_params = device_group_params
+        tmp_params[:device_id] = d
+        @device_group = DeviceGroup.new(tmp_params)
+        if @device_group.save
+          @device_list.delete(d)
+        else
+          @errors.push(@device_group.errors)
+        end
+      end
+    end
+
+    # handles the creation of the actual device group
     respond_to do |format|
-      if @device_group.save
-        flash[:success] = (I18n.t "own.success.device_group_created").to_s
-        format.html { redirect_to @device_group }
+      if @errors.empty?
+        format.html { redirect_to '/device_groups', notice: 'Device group was successfully created.' }
         format.json { render :show, status: :created, location: @device_group }
       else
+        errors_to_flash = []
+        @errors.each do |e|
+          errors_to_flash << ((e.values).join("<br/>").html_safe)
+        end
+        flash.now[:error] = errors_to_flash.join("<br/>").html_safe
+        set_selected_devices
         format.html { render :new }
-        format.json { render json: @device_group.errors, status: :unprocessable_entity }
+        format.json { render json: @errors, status: :unprocessable_entity }
       end
     end
   end
@@ -79,5 +114,10 @@ class DeviceGroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_group_params
       params.require(:device_group).permit(:name, :info)
+    end
+
+    # Set selected devices for later use in device-groups.coffee
+    def set_selected_devices
+      gon.selected_devices = @device_list
     end
 end
