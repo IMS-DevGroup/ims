@@ -1,9 +1,5 @@
-<%= form_for(@device) do |f|  %>
+
 <h1><%= t 'devices.new.title' %></h1>
 
 <%= render 'form' %>
 
-<a href="/devices/"><button type="button" class="btn btn-primary" ><%=(t 'buttons.back')%></button></a>
-<%= link_to (t 'buttons.show'), @device, class: 'btn btn-info' %>
-<%= f.submit (t 'buttons.submit'), submit: '', class: 'btn btn-success', style: 'margin-left:230px' %>
-<% end %>
