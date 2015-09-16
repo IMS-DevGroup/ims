@@ -17,6 +17,7 @@
 </form>
 <%= form_for(@lending) do |f| %>
 
+        <!-- Dropdown for manual device selection -->
       <div class="collapse" id="collapseExample">
         <div class="well">
           <table id="devices" class="table table-striped">
@@ -57,6 +58,7 @@
       </div>
       <input type="hidden" id="deviceids" name="deviceids">
 
+        <!-- Dropdown to show list of currently selected devices -->
       <button id="btnselection" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSelection" aria-expanded="false" aria-controls="collapseSelection">
         Auswahl <span class="badge">0</span>
       </button>
@@ -102,8 +104,8 @@
         </div>
       </div>
 
-    <!-- following 2 fields only to enable dummy generation
-    TODO: change to proper fields-->
+    <!-- following field only to enable dummy generation
+    TODO: change to proper field-->
     <div class="form-group">
       <%= f.label :user_id %><br>
       <%= f.text_field :user_id %>
@@ -115,8 +117,6 @@
 
   <div class="actions">
     <a href="/lendings/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
-    <!-- todo multiple device lending show -->
-    <!--%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %-->
     <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
 
   </div>
