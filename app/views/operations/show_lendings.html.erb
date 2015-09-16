@@ -1,8 +1,6 @@
-<h1>Test of show lendings from operation</h1>
+<h1><%= t 'operations.show_lendings.title' %></h1>
 
 <% @arr = [] %>
-
-<%= puts 'Hier kommt die Maus' %>
 <% stock_ids = (Operation.find(params[:format]).stocks).to_a.map(&:serializable_hash) %>
 <% stock_ids.each do |k| %>
     <% Device.where(stock_id: k['id']).find_each do |dev| %>
@@ -17,35 +15,31 @@
 <table id="lended_devices" class="dataTableJS table table-striped">
   <thead>
   <tr>
-    <th><%= 'ID' %></th>
-    <th><%= 'INFO' %></th>
-    <th><%= 'Owner name' %></th>
-    <th><%= 'Stock name' %></th>
-    <th><%= 'Device Type' %></th>
-    <th><%= 'Device Group' %></th>
-
+    <th><%= (t 'mixed_fields.device') + ' ID' %></th>
+    <th><%= (t 'mixed_fields.info') %></th>
+    <th><%= (t 'devices.owner') %></th>
+    <th><%= (t 'devices.stock') %></th>
+    <th><%= (t 'devices.device_type') %></th>
+    <th><%= (t 'devices.device_group') %></th>
   </tr>
   </thead>
 
   <tbody>
   <% @arr.each do |id| %>
-    <% dev = Device.find(id) %>
+      <% dev = Device.find(id) %>
       <tr>
         <td><%= dev.id %></td>
         <td><%= dev.info %></td>
         <td><%= (Stock.find(dev.owner_id)).name %></td>
         <td><%= dev.stock.name %></td>
         <td><%= dev.device_type.name %></td>
-        <td><% unless dev.device_group.nil? %> <%= dev.device_group.name %> <%end%> </td>
+        <td>
+          <% unless dev.device_group.nil? %> <%= dev.device_group.name %>
+          <% end %> </td>
+        <td>
+
+        </td>
       </tr>
   <% end %>
   </tbody>
 </table>
-
-
-
-
-
-
-
-<!-- %= puts Device.find_by_stock_id(Operation.find(params[:format]).stocks.ids) %-->
