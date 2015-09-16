@@ -23,7 +23,7 @@ class DevicesController < ApplicationController
     if current_user.right.manage_devices == false
       redirect_to "/devices/"
     elsif BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine Änderung mölgich'
       redirect_to "/devices/"
     else
       @device = Device.new
@@ -43,8 +43,9 @@ class DevicesController < ApplicationController
   def edit
     if current_user.right.manage_devices == false
       redirect_to "/devices/"
+
     elsif BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine Änderung mölgich'
       redirect_to "/devices/"
     else
       properties = Property.where("device_type_id = ?", @device.device_type_id)
@@ -52,7 +53,7 @@ class DevicesController < ApplicationController
 
       properties.each do |prop|
         if !prop.values.find_by_device_id(@device.id).nil?
-        value = prop.values.find_by_device_id(@device.id).value
+          value = prop.values.find_by_device_id(@device.id).value
           propmap[prop.id] = {:id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
                               :device_type => prop.device_type.id, :value => value}
         end
@@ -103,8 +104,11 @@ class DevicesController < ApplicationController
   def destroy
     if BossConfig.first.db_state == false
       redirect_to "/devices/"
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine Änderung mölgich'
     else
+          @device.values.each do |v|
+            v.destroy
+          end
       @device.destroy
       respond_to do |format|
         flash[:success] = (I18n.t "own.success.device_destroyed").to_s
@@ -122,7 +126,7 @@ class DevicesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def device_params
-    params.require(:device).permit(:ready, :info, :owner_id, :stock_id, :device_type_id, :data_type_id)
+    params.require(:device).permit(:ready, :info, :owner_id, :stock_id, :device_type_id, :data_type_id, :device_group_id)
   end
 
 end

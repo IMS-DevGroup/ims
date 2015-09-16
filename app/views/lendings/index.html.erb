@@ -1,16 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Lendings</h1>
+<h1><%= (t 'lendings.index.title') %></h1>
 
 <table id="lendings" class="dataTableJS table table-striped">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Device</th>
-      <th>Borrowed at</th>
-      <th>Lending info</th>
-      <th>Receive</th>
-      <th>Receive info</th>
+      <th><%= (t 'lendings.borrowed_to') %></th>
+      <th><%= (t 'mixed_fields.device') + ' ID' %></th>
+      <th><%= (t 'lendings.borrowed_at') %></th>
+      <th><%= (t 'lendings.receive') %></th>
       <th></th>
     </tr>
   </thead>
@@ -18,16 +16,13 @@
   <tbody>
     <% @lendings.each do |lending| %>
       <tr>
-        <td><% unless lending.user.nil?%>  <%=lending.user.prename %> <%= lending.user.lastname %> <%end%></td>
-        <td><% unless lending.device.nil?%>  <%= lending.device.info %> <%end%></td>
-        <td><%= lending.created_at %></td>
-        <td><%= lending.lending_info %></td>
-        <td><%= lending.receive %></td>
-        <td><%= lending.receive_info %></td>
-        <td width="190px"><%= link_to 'Show', lending, class: 'btn btn-info' %>
-        <%= link_to 'Edit', edit_lending_path(lending), class: 'btn btn-warning' %>
-        <%= link_to 'Destroy', lending, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-          <% if (lending.receive.nil?)%> <%= link_to 'Return', return_lending_path(lending), class: 'btn btn-warning' %> <% end %>
+        <td> <% unless lending.user.nil?%>  <%=lending.user.prename %> <%= lending.user.lastname %> <%end%>
+        <td> <% unless lending.device.nil?%>  <%= lending.device.id %> <%end%></td>
+        <td> <%= lending.created_at %></td>
+        <td> <%= lending.receive %></td>
+        <td width="260px"> <%= link_to (t 'buttons.show'), lending, class: 'btn btn-info' %>
+        <%= link_to (t 'buttons.destroy'), lending, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% if (lending.receive.nil?)%> <%= link_to (t 'buttons.return'), return_lending_path(lending), class: 'btn btn-warning' %> <% end %>
         </td>
       </tr>
     <% end %>
@@ -36,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Lending', new_lending_path, class: 'btn btn-success' %>
+<%= link_to (t 'buttons.lendings.new_lending'), new_lending_path, class: 'btn btn-success' %>

@@ -52,32 +52,8 @@ $ ->
       $('#seldevices').append('<li class="list-group-item">' + gon.devices[x].type + ' (<strong>' + gon.devices[x].owner + '</strong>, ' + gon.devices[x].stock + ')')
 
   #autocomplete for user
-  tags = [
-    "ActionScript",
-    "AppleScript",
-    "Asp",
-    "BASIC",
-    "C",
-    "C++",
-    "Clojure",
-    "COBOL",
-    "ColdFusion",
-    "Erlang",
-    "Fortran",
-    "Groovy",
-    "Haskell",
-    "Java",
-    "JavaScript",
-    "Lisp",
-    "Perl",
-    "PHP",
-    "Python",
-    "Ruby",
-    "Scala",
-    "Scheme"
-  ]
-  $('#tags').autocomplete
-    source: tags
+  $('#lending_user_id').autocomplete
+    source: gon.users
     appendTo: '#accompl'
     messages:
       noResults: ''
