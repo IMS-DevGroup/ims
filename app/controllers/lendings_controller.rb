@@ -1,6 +1,6 @@
 class LendingsController < ApplicationController
   before_action :set_lending, only: [:show, :edit, :update, :destroy, :return]
-  before_action :set_devices, only: [:new, :create]
+  before_action :set_devices, :pick_user_data, only: [:new, :create]
   # Global list of devices that were already selected to be borrowed in this session
   # Currently disabled remainder of first try of multiple-device-lending
   # @@global_list = []
@@ -165,6 +165,15 @@ class LendingsController < ApplicationController
       end
       gon.devices = devmap
     end
+  end
+
+  def pick_user_data
+    users = User.all
+    usrmap = {}
+    users.each do |user|
+      usrmap[user.id] = {:prename => user.prename, :lastname => user.lastname}
+    end
+    gon.users = usrmap
   end
 
   # Set selected devices for later use in device-selector-coffeescript
