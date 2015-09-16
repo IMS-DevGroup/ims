@@ -18,7 +18,7 @@ class DeviceGroupsController < ApplicationController
       redirect_to '/device_groups/'
 
     elsif BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/device_groups/"
 
     else
@@ -39,7 +39,7 @@ class DeviceGroupsController < ApplicationController
       redirect_to '/device_groups/'
 
     elsif BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/device_groups/"
     end
   end
@@ -107,7 +107,7 @@ class DeviceGroupsController < ApplicationController
   # DELETE /device_groups/1.json
   def destroy
     if BossConfig.first.db_state == false
-      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/device_groups/"
     else
       @device_group.destroy
