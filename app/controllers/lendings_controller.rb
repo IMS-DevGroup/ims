@@ -124,29 +124,43 @@ class LendingsController < ApplicationController
 
   # GET lendings/1/return
   def return
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    end
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_lending
-    @lending = Lending.find(params[:id])
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
+    else
+      @lending = Lending.find(params[:id])
+    end
   end
 
   # Set all devices for later use in device-selector-coffeescript
   def set_devices
-    #check for set stock
-    if @current_user.stock.nil?
-      @devices = Device.all.eager_load(:stock, :device_type)
+    if BossConfig.first.db_state == false
+      flash[:error] = 'Datenbank Status: Im Einsatz, keine keine Änderung mölgich'
+      redirect_to "/starts/"
     else
-      @devices = Device.where(stock_id: @current_user.stock_id).find_each
-    end
-    devmap = {}
-    @devices.each do |dev|
-      if dev.available?
-        devmap[dev.id] = {:type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+      #check for set stock
+      if @current_user.stock.nil?
+        @devices = Device.all.eager_load(:stock, :device_type)
+      else
+        @devices = Device.where(stock_id: @current_user.stock_id).find_each
       end
+      devmap = {}
+      @devices.each do |dev|
+        if dev.available?
+          devmap[dev.id] = {:type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+        end
+      end
+      gon.devices = devmap
     end
-    gon.devices = devmap
   end
 
   # Set selected devices for later use in device-selector-coffeescript
