@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
 
   # authenticates the user by checking if the given username or email exists and has a valid login
-  #
+  # with the given password
   def self.authenticate(username, password_unhashed)
     return nil if username == nil
     username.downcase!
