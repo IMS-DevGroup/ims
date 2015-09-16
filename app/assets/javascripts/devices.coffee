@@ -35,6 +35,10 @@ loadProperties = () ->
               '<div class="col-sm-6">' +
                 '<input type="text" class="form-control jsdatepicker" name="prop_val[' + i + ']" value="' + gon.properties[p].value + '">' +
               '</div>'
+            when "DateNote" then input =
+              '<div class="col-sm-6">' +
+                '<input type="text" class="form-control jsdatepicker" name="prop_val[' + i + ']" value="' + gon.properties[p].value + '">' +
+              '</div>'
             else input =
               '<div class="col-sm-6">' +
                 '<input type="text" name="prop_val[' + i + ']" value="' + gon.properties[p].value + '" required>' +
@@ -55,6 +59,10 @@ loadProperties = () ->
                 '<input type="checkbox" name="prop_val[' + i + ']" value="true">' +
               '</div>'
             when "Datetime" then input =
+              '<div class="col-sm-6">' +
+                '<input type="text" class="form-control jsdatepicker" name="prop_val[' + i + ']">' +
+              '</div>'
+            when "DateNote" then input =
               '<div class="col-sm-6">' +
                 '<input type="text" class="form-control jsdatepicker" name="prop_val[' + i + ']">' +
               '</div>'
