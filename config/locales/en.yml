@@ -80,7 +80,7 @@ en:
 
   operations:
     operation_type: Operation type
-    operation_dispatch_number: Operation number dispatch
+    operation_dispatch_number: Op. number
     begin_date: Begin date
     ending_date: Close date
     user: Squad Leader
@@ -96,6 +96,18 @@ en:
       title: Editing Operation
     show_lendings:
       title: Lent devices
+
+  lendings:
+    borrowed_at: Borrowed at
+    lending_info: Lending Info
+    receive: Receive
+    receive_info: Receive Info
+    borrowed_to: Borrowed to
+    index:
+      title: Lending List
+    show:
+      lender: Lender
+      receiver: Receiver
 
   units:
     name: Name
@@ -210,7 +222,7 @@ en:
     rights: Rights
     submit: Submit
     confirmation_sure_message: Are you sure?
-    lendings: Lendings
+    lending: Lendings
     return: Return
     start:
       set_stock: Set stock
@@ -231,6 +243,8 @@ en:
       units: Units
       contact: Contact
       lendings: Lendings
+    lendings:
+      new_lending: New Lending
 
   own:
     errors:
@@ -243,6 +257,7 @@ en:
       empty_field: Password field is required to be not empty
       password_reset_email_not_found: The entered email was not found.
       password_reset_expired: The reset link is already expired.
+      db_offline: 'Database status: In operation, no changes possible.'
     success:
       user_updated: User successfully updated.
       user_created: User successfully created.

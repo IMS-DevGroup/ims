@@ -12,13 +12,13 @@
         <td>
           <div class="form-group">
             <%= f.label :label_text, (t "mixed_fields.password") %><br>
-            <%= f.password_field :password_unhashed, :autocomplete => :off %>
+            <%= f.password_field :password_unhashed, :autocomplete => :off, :maxlength => 60, :size => 20 %>
           </div>
         </td>
         <td>
           <div class="form-group">
             <%= f.label t "mixed_fields.passwordconf" %><br>
-            <%= f.password_field :password_unhashed_confirmation, :autocomplete => :off%>
+            <%= f.password_field :password_unhashed_confirmation, :autocomplete => :off, :maxlength => 60, :size => 20 %>
           </div>
         </td>
       </tr>
@@ -83,6 +83,13 @@
       <%= f.label :label_text, (t "devices.ready") + " *" %><br>
       <%= f.check_box :active %>
       </div>
+
+      <div class="form-group">
+        <%= f.label :label_text, (t "mixed.fields.language") + " *" %><br>
+        <%= f.select :language, options_for_select([['de', 'de'] , ['en', 'en']]) %>
+      </div>
+
+
 
     </table>
 
