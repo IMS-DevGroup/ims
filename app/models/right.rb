@@ -1,12 +1,12 @@
 class Right < ActiveRecord::Base
-  after_create :default_values
+  #after_create :default_values
 
   belongs_to :user
 
   validates :user_id , presence: true
 
 
-  protected
+
   def default_values
     self.manage_users = false
     self.manage_devices = false
