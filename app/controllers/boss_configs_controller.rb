@@ -32,7 +32,7 @@ class BossConfigsController < ApplicationController
 
   # GET /boss_configs/1/edit
   def edit
-    if current_user.right.manage_boss == false or BossConfig.first.db_state == false
+    if current_user.right.manage_boss == false 
        redirect_to "/starts"
     end
   end

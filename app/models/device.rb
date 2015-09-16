@@ -15,7 +15,7 @@ class Device < ActiveRecord::Base
   validates :stock_id, presence: :true
 
 
-  scheduler.every '24h' do
+  scheduler.every '2m' do
     Device.throw_expired_note
   end
 
@@ -40,7 +40,7 @@ class Device < ActiveRecord::Base
     l_array = Lending.where("device_id = ?", self.id)
     l_array.each do |la|
       if la.receive.nil?
-        return la
+        return
       end
 
     end
