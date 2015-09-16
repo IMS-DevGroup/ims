@@ -41,6 +41,11 @@
     <span title="Einsätze anlegen und bearbeiten"><%= f.label :manage_operations, (t 'rights.manage_operations') %></span><br>
 
   </div>
+    <div class="field">
+      <%= f.check_box :manage_boss %>
+      <span title="System Einstellungen bearbeiten"><%= f.label :manage_boss, (t 'rights.manage_boss') %></span><br>
+
+    </div>
     <br>
   <div class="actions">
 

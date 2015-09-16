@@ -38,9 +38,10 @@
           <% unless dev.device_group.nil? %> <%= dev.device_group.name %>
           <% end %> </td>
         <td>
-          <%= link_to (t 'buttons.return'), return_lending_path( dev_hash[dh[0]]), class: 'btn btn-warning' %></td>
-        </td>
-      </tr>
+          <% if current_user.right.manage_operations==true && BossConfig.first.db_state==true %>  <%= link_to (t 'buttons.return'), return_lending_path(dev_hash[dh[0]]), class: 'btn btn-warning' %></td>
+          <% end %>
+          </td>
+          </tr>
   <% end %>
 
   </tbody>

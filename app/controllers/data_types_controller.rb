@@ -19,6 +19,7 @@ class DataTypesController < ApplicationController
 
   # GET /data_types/1/edit
   def edit
+
   end
 
   # POST /data_types
