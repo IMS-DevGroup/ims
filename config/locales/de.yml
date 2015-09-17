@@ -189,6 +189,8 @@ de:
     state: 'Datenbankstatus: '
 
   config:
+    config: Konfiguration
+    in_use: Im Einsatz
     online: Online?
     org: Name der Organisation
     edit:
@@ -259,7 +261,7 @@ de:
       password_reset_email_not_found: Die eingegebene Email wurde nicht gefunden.
       password_reset_expired: Ihr Link zum Zurücksetzen des Passworts ist bereits abgelaufen.
       open_lendings: Folgende Geräte sind noch verliehen
-      db_offline: 'Datenbank Status: Im Einsatz, keine Änderungen mölgich.'
+      db_offline: 'Datenbank Status: Im Einsatz, keine Änderungen möglich.'
       missing_device: Bitte Geräte hinzufügen.
     success:
       user_updated: Benutzer erfolgreich geupdated.
@@ -290,6 +292,7 @@ de:
       property_destroyed: Eigenschaft erfolgreich gelöscht.
       password_reset_email_sent: Email zum Zurücksetzen des Passwortes gesendet.
       password_reset_changed: Passwort erfolgreich geändert.
+      boss_config_updated: Konfiguration erfolgreich geupdated.
     warning:
       user_without_pw: Email mit dem generiertem Passwort an angegebene Email gesendet.
 

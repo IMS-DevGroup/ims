@@ -189,6 +189,8 @@ en:
     state: 'Databasestate: '
 
   config:
+    config: Configurations
+    in_use: In Use
     online: Online?
     org: Name of Organisation
     edit:
@@ -290,6 +292,7 @@ en:
       property_destroyed: Property successfully deleted.
       password_reset_email_sent: Email to reset your password was sent.
       password_reset_changed: Password was successfully changed.
+      boss_config_updated: Configuration successfully updated.
     warning:
       user_without_pw: Email with the generated password was successfully sent.
 
