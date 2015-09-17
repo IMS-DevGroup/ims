@@ -88,14 +88,17 @@ class OperationsController < ApplicationController
   end
 
   def close_op
+    # save operation to variable and create new hash if user has rights
     op=Operation.find(params[:id])
     if current_user.right.manage_operations == true && op.close_date.nil?
       dev_hash = Hash.new
 
+      # iterate through stocks, the devices and the lendings
       stock_ids = (op.stocks).to_a.map(&:serializable_hash)
       stock_ids.each do |k|
         Device.where(stock_id: k['id']).find_each do |dev|
           dev.lendings.each do |ldevs|
+            # insert in hash if lending is active
             if ldevs.receiver_id.nil?
               dev_hash[ldevs.device.id] = ldevs
             end
@@ -104,11 +107,13 @@ class OperationsController < ApplicationController
 
       end
 
+      # close operation by date if lendings are closed
       if dev_hash.count == 0
        op.close_date = Time.now
        op.save
         redirect_to '/operations/'
       else
+        #otherwise show open lendings
         redirect_to ('/operations/show_lendings.')+(op.id).to_s
         flash[:error] = t 'own.errors.open_lendings'
       end

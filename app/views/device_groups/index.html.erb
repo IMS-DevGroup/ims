@@ -33,5 +33,4 @@
 
 
 <%if current_user.right.manage_devices==true%><%= link_to (t "buttons.new.device_groups"), new_device_group_path, class: 'btn btn-success' %><%end%>
-<%if current_user.right.manage_devices==true%><%= link_to (t 'buttons.device_group'), devices_path, class: 'btn btn-success', style: "margin-left:230px;" %><%end%>
 
