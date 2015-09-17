@@ -102,7 +102,10 @@ en:
     lending_info: Lending Info
     receive: Receive
     receive_info: Receive Info
+    borrow_to: Borrow to
     borrowed_to: Borrowed to
+    selected: Selected
+    quick_user: Quick User
     index:
       title: Lending List
     show:

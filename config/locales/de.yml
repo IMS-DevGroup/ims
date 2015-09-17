@@ -101,7 +101,10 @@ de:
     lending_info: Verleihinfo
     receive: Rückgabe
     receive_info: Rückgabe Info
+    borrow_to: Verleihen an
     borrowed_to: Verliehen an
+    selected: Auswahl
+    quick_user: Schnelle Benutzererstellung
     index:
       title: Ausleihliste
     show:
