@@ -101,10 +101,11 @@ de:
     lending_info: Verleihinfo
     receive: Rückgabe
     receive_info: Rückgabe Info
-    borrow_to: Verleihen an
     borrowed_to: Verliehen an
     selected: Auswahl
     quick_user: Schnelle Benutzererstellung
+    new:
+      title: Neue Ausleihe
     index:
       title: Ausleihliste
     show:
@@ -296,6 +297,9 @@ de:
       password_reset_email_sent: Email zum Zurücksetzen des Passwortes gesendet.
       password_reset_changed: Passwort erfolgreich geändert.
       boss_config_updated: Konfiguration erfolgreich geupdated.
+      lendings_created: Ausleihe(n) erfolreich angelegt.
+      lendings_updated: Ausleihe erfolgreich geändert.
+      lendings_destroyed: Ausleihe erfolgreich gelöscht.
     warning:
       user_without_pw: Email mit dem generiertem Passwort an angegebene Email gesendet.
 

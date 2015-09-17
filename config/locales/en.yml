@@ -102,7 +102,6 @@ en:
     lending_info: Lending Info
     receive: Receive
     receive_info: Receive Info
-    borrow_to: Borrow to
     borrowed_to: Borrowed to
     selected: Selected
     quick_user: Quick User
@@ -296,6 +295,9 @@ en:
       password_reset_email_sent: Email to reset your password was sent.
       password_reset_changed: Password was successfully changed.
       boss_config_updated: Configuration successfully updated.
+      lendings_created: lending(s) were successfully created.
+      lendings_updated: Lending was successfully updated.
+      lendings_destroyed: Lending was successfully deleted.
     warning:
       user_without_pw: Email with the generated password was successfully sent.
 
