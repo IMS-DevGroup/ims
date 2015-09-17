@@ -202,8 +202,10 @@ class LendingsController < ApplicationController
     @quick_usr[:info] = params[:user_info]
     user = User.new(@quick_usr)
     if user.save
-      #@lending.user_id = user.id
       @keep_user = @quick_usr[:lastname] + ',' + @quick_usr[:prename]
+      usrmap = gon.users
+      usrmap << @keep_user
+      gon.users = usrmap
       set_selected_devices
       render :new
       return true
