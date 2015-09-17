@@ -24,11 +24,11 @@
           <thead>
           <tr>
             <th></th>
-            <th>Device type</th>
-            <th>Info</th>
-            <th>Owner Stock</th>
-            <th>Stock</th>
-            <th>Ready</th>
+            <th><%= t "devices.device_type"%></th>
+            <th><%= t "mixed_fields.info"%></th>
+            <th><%= t "devices.owner"%></th>
+            <th><%= t "devices.stock"%></th>
+            <th><%= t "devices.ready"%></th>
           </tr>
           </thead>
 
@@ -74,14 +74,14 @@
 
     <!-- lending info -->
     <div class="form-group">
-      <%= f.label :lending_info %><br>
+      <%= f.label t "mixed_fields.info" %><br>
       <%= f.text_area :lending_info %>
     </div>
 
     <!-- user (with autofill) -->
     <div class="form-group">
       <div class="ui-widget">
-        <%= f.label :user_id %><br>
+        <%= f.label t "mixed_fields.user" %><br>
         <%= text_field_tag(:user_auto, @keep_user) %>
         <span id="accompl"></span>
       </div>
@@ -89,7 +89,7 @@
 
     <!-- button for quick user generation -->
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#quick_generation" aria-expanded="false" aria-controls="quick_generation">
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"> Quick User</span></button>
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"> <%= t "lendings.quick_user"%></span></button>
     </div>
 
     <div class="collapse" id="quick_generation">
@@ -112,7 +112,7 @@
         </div>
         <div>
           <!-- Caution when translating, implies changes in lendings controller as well -->
-          <%= submit_tag("Quick User") %>
+          <%= submit_tag(t "lendings.quick_user") %>
         </div>
       </div>
     </div>
