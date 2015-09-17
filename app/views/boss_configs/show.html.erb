@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Db state:</strong>
+  <strong><%= t "config.online" %></strong>
   <%= @boss_config.db_state %>
 </p>
 
 <p>
-  <strong>Org name:</strong>
+  <strong><%= t "config.org" %></strong>
   <%= @boss_config.org_name %>
 </p>
 
-<a href="/boss_configs/"><button type="button" class = "btn btn-primary" >Back</button></a>
-<%= link_to 'Edit', edit_boss_config_path(@boss_config), class:'btn btn-warning' %>
+<a href="/boss_configs/"><button type="button" class = "btn btn-primary" ><%= t "buttons.back" %></button></a>
+<%= link_to (t 'buttons.edit'), edit_boss_config_path(@boss_config), class:'btn btn-warning' %>
