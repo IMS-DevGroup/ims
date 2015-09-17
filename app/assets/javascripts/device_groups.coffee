@@ -54,15 +54,17 @@ $ ->
 
   # set already selected devices as selected
   $ ->
-    for i in gon.selected_devices
-      i = parseInt(i)
-      devcnt++
-      device_array.push(i)
-      $('#' + i).removeClass('btn btn-success').addClass('btn btn-danger')
-      $('#' + i).html('<span class="glyphicon glyphicon-minus-sign" aria-hidden="true">')
-    $('#seldevicegroups').empty()
-    $('#devicegroupids').empty()
-    $('#devicegroupids').val(device_array)
-    $('#btndevgroupselection').html('Auswahl <span class="badge">' + devcnt + '</span>')
-    for x in device_array
-      $('#seldevicegroups').append('<li class="list-group-item">' + gon.devices[x].type + ' (<strong>' + gon.devices[x].owner + '</strong>, ' + gon.devices[x].stock + ')')
+    try
+      if gon.selected_devices?
+        for i in gon.selected_devices
+          i = parseInt(i)
+          devcnt++
+          device_array.push(i)
+          $('#' + i).removeClass('btn btn-success').addClass('btn btn-danger')
+          $('#' + i).html('<span class="glyphicon glyphicon-minus-sign" aria-hidden="true">')
+        $('#seldevicegroups').empty()
+        $('#devicegroupids').empty()
+        $('#devicegroupids').val(device_array)
+        $('#btndevgroupselection').html('Auswahl <span class="badge">' + devcnt + '</span>')
+        for x in device_array
+          $('#seldevicegroups').append('<li class="list-group-item">' + gon.devices[x].type + ' (<strong>' + gon.devices[x].owner + '</strong>, ' + gon.devices[x].stock + ')')
