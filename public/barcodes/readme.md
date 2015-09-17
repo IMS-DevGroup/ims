@@ -1,1 +1,1 @@
-this has to be here, otherwise the folder won't be generated
+this has to be here, otherwise there is no valid folder on heroku

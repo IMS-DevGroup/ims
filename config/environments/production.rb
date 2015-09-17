@@ -78,14 +78,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host:'localhost', port: '3000' }
+  config.action_mailer.default_url_options = { host:'rk-inventory.herokuapp.com' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
       :address => ENV["EMAIL_ADRESS_SMTP"],
       :port => 587,
-      :domain => 'localhost:3000',
+      :domain => 'rk-inventory.herokuapp.com',
       :user_name => ENV["EMAIL_USERNAME"],
       :password => ENV["EMAIL_PASSWORD"],
       :authentication => :plain,
