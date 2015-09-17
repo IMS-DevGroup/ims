@@ -51,7 +51,7 @@
             </td>
             <td><%= if device.device_type.nil? then else device.device_type.name end %></td>
             <td><%= device.info %></td>
-            <td><%= Stock.find_by_id(device.owner_id).name %></td>
+            <td></td>
             <td><%= if device.stock.nil? then else device.stock.name end %></td>
             <td><%= device.ready %></td>
           </tr>
