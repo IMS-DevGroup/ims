@@ -30,7 +30,7 @@
 
   <div class="collapse" id="collapseExample">
     <div class="well">
-      <table id="devices" class="table table-striped">
+      <table id="devices" class="table table-striped dataTableJS">
         <thead>
           <tr>
             <th></th>
@@ -49,7 +49,10 @@
                 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
               </button>
             </td>
-            <td><%= if device.device_type.nil? then else device.device_type.name end %></td>
+            <td><%= if device.device_type.nil? then
+                    else
+                      device.device_type.name
+                    end %></td>
             <td><%= device.info %></td>
             <td><%= Stock.find_by_id(device.owner_id).name %></td>
             <td><%= if device.stock.nil? then else device.stock.name end %></td>

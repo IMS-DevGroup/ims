@@ -27,7 +27,7 @@ class DeviceGroupsController < ApplicationController
       devmap = {}
 
       @devices.each do |dev|
-        devmap[dev.id] = { :type => dev.device_type.name, :owner => Unit.find_by_id(Stock.find_by_id(dev.owner_id).id).name, :stock => dev.stock.name}
+        devmap[dev.id] = {:type => dev.device_type.name, :owner => Stock.find_by_id(dev.owner_id).unit.name, :stock => dev.stock.name}
       end
       gon.devices = devmap
     end
