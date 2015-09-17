@@ -295,7 +295,7 @@ en:
       password_reset_email_sent: Email to reset your password was sent.
       password_reset_changed: Password was successfully changed.
       boss_config_updated: Configuration successfully updated.
-      lendings_created: lending(s) were successfully created.
+      lendings_created: ' lending(s) were successfully created.'
       lendings_updated: Lending was successfully updated.
       lendings_destroyed: Lending was successfully deleted.
     warning:

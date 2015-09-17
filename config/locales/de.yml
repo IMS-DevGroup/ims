@@ -297,7 +297,7 @@ de:
       password_reset_email_sent: Email zum Zurücksetzen des Passwortes gesendet.
       password_reset_changed: Passwort erfolgreich geändert.
       boss_config_updated: Konfiguration erfolgreich geupdated.
-      lendings_created: Ausleihe(n) erfolreich angelegt.
+      lendings_created: ' Ausleihe(n) erfolreich angelegt.'
       lendings_updated: Ausleihe erfolgreich geändert.
       lendings_destroyed: Ausleihe erfolgreich gelöscht.
     warning:
