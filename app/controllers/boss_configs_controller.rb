@@ -60,7 +60,8 @@ class BossConfigsController < ApplicationController
   def update
     respond_to do |format|
       if @boss_config.update(boss_config_params)
-        format.html { redirect_to @boss_config, notice: 'Boss config was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.boss_config_updated").to_s
+        format.html { redirect_to @boss_config }
         format.json { render :show, status: :ok, location: @boss_config }
       else
         format.html { render :edit }

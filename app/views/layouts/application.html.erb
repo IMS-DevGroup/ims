@@ -86,7 +86,7 @@
   <div id="logo" onclick="javascript:window.location.href='/starts/';"></div>
     <div id="language">
       <% if BossConfig.first.db_state == false %>
-          <button type="button" class="btn btn-danger" disabled="disabled">Im Einsatz</button>
+          <button type="button" class="btn btn-danger" disabled="disabled"><%= t "config.in_use" %></button>
       <% end %>
     <input id="switch"  type="checkbox" data-cur_lang="<%= I18n.locale %>" <% if I18n.locale == :en %>checked<% end %> />
     </div>
@@ -109,7 +109,7 @@
           <li role="presentation"><a href="/stocks/"><%= t "buttons.main_menu.stocks" %></a></li>
           <% end %>
           <% if (current_user.right.manage_boss == true)%>
-              <li role="presentation"><a href="/boss_configs/<%= @Boss = BossConfig.first.id%>/edit">Config</a></li>
+              <li role="presentation"><a href="/boss_configs/<%= @Boss = BossConfig.first.id%>/edit"><%= t "config.config"%></a></li>
           <% end %>
         </ul>
       </li>

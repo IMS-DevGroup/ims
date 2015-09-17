@@ -102,6 +102,12 @@ de:
     receive: Rückgabe
     receive_info: Rückgabe Info
     borrowed_to: Verliehen an
+    selected: Auswahl
+    quick_user: Schnelle Benutzererstellung
+    edit:
+      title: Ausleihe bearbeiten
+    new:
+      title: Neue Ausleihe
     index:
       title: Ausleihliste
     show:
@@ -189,6 +195,8 @@ de:
     state: 'Datenbankstatus: '
 
   config:
+    config: Konfiguration
+    in_use: Im Einsatz
     online: Online?
     org: Name der Organisation
     edit:
@@ -261,7 +269,7 @@ de:
       password_reset_email_not_found: Die eingegebene Email wurde nicht gefunden.
       password_reset_expired: Ihr Link zum Zurücksetzen des Passworts ist bereits abgelaufen.
       open_lendings: Folgende Geräte sind noch verliehen
-      db_offline: 'Datenbank Status: Im Einsatz, keine Änderungen mölgich.'
+      db_offline: 'Datenbank Status: Im Einsatz, keine Änderungen möglich.'
       missing_device: Bitte Geräte hinzufügen.
     success:
       user_updated: Benutzer erfolgreich geupdated.
@@ -292,6 +300,10 @@ de:
       property_destroyed: Eigenschaft erfolgreich gelöscht.
       password_reset_email_sent: Email zum Zurücksetzen des Passwortes gesendet.
       password_reset_changed: Passwort erfolgreich geändert.
+      boss_config_updated: Konfiguration erfolgreich geupdated.
+      lendings_created: ' Ausleihe(n) erfolreich angelegt.'
+      lendings_updated: Ausleihe erfolgreich geändert.
+      lendings_destroyed: Ausleihe erfolgreich gelöscht.
     warning:
       user_without_pw: Email mit dem generiertem Passwort an angegebene Email gesendet.
 

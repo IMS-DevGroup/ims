@@ -21,7 +21,7 @@
         <td> <%= lending.created_at %></td>
         <td> <%= lending.receive %></td>
         <td width="260px"> <%= link_to (t 'buttons.show'), lending, class: 'btn btn-info' %>
-        <%= link_to (t 'buttons.destroy'), lending, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <%= link_to (t 'buttons.destroy'), lending, method: :delete, data: { confirm: (t "buttons.confirmation_sure_message") }, class: 'btn btn-danger' %>
           <% if (lending.receive.nil?)%> <%= link_to (t 'buttons.return'), return_lending_path(lending), class: 'btn btn-warning' %> <% end %>
         </td>
       </tr>

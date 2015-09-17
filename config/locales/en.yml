@@ -103,6 +103,12 @@ en:
     receive: Receive
     receive_info: Receive Info
     borrowed_to: Borrowed to
+    selected: Selected
+    quick_user: Quick User
+    edit:
+      title: Editing Lending
+    new:
+      title: New Lending
     index:
       title: Lending List
     show:
@@ -189,6 +195,8 @@ en:
     state: 'Databasestate: '
 
   config:
+    config: Configurations
+    in_use: In Use
     online: Online?
     org: Name of Organisation
     edit:
@@ -292,6 +300,10 @@ en:
       property_destroyed: Property successfully deleted.
       password_reset_email_sent: Email to reset your password was sent.
       password_reset_changed: Password was successfully changed.
+      boss_config_updated: Configuration successfully updated.
+      lendings_created: ' lending(s) were successfully created.'
+      lendings_updated: Lending was successfully updated.
+      lendings_destroyed: Lending was successfully deleted.
     warning:
       user_without_pw: Email with the generated password was successfully sent.
 
