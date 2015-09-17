@@ -59,7 +59,7 @@ class LendingsController < ApplicationController
       end
 
       # handle quick-generation of user
-      if params[:commit].eql?("Quick User")
+      if params[:commit].eql?(t "lendings.quick_user")
         if quick_user_generation
           return
         end
@@ -90,7 +90,8 @@ class LendingsController < ApplicationController
       # handles either a failed user-generation or the creation of the actual lending
       respond_to do |format|
         if @errors.empty?
-          format.html { redirect_to '/lendings', notice: devlen.to_s + ' lendings were successfully created.' }
+          flash[:success] = devlen.to_s + (I18n.t "own.success.lendings_created").to_s
+          format.html { redirect_to @lendings }
           format.json { render :show, status: :created, location: @lending }
         else
           if (devlen.to_i > @device_list.count.to_i)
@@ -115,7 +116,8 @@ class LendingsController < ApplicationController
   def update
     respond_to do |format|
       if @lending.update(lending_params)
-        format.html { redirect_to @lending, notice: 'Lending was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.lendings_updated").to_s
+        format.html { redirect_to @lendings }
         format.json { render :show, status: :ok, location: @lending }
       else
         format.html { render :edit }
@@ -133,7 +135,8 @@ class LendingsController < ApplicationController
     else
       @lending.destroy
       respond_to do |format|
-        format.html { redirect_to lendings_url, notice: 'Lending was successfully destroyed.' }
+        flash[:success] = (I18n.t "own.success.lendings_destroyed").to_s
+        format.html { redirect_to @lendings }
         format.json { head :no_content }
       end
     end
