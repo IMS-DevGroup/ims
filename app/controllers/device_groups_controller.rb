@@ -26,6 +26,7 @@ class DeviceGroupsController < ApplicationController
       @devices = Device.all.eager_load(:stock, :device_type)
       devmap = {}
 
+      # find all devices and send them to the device group
       @devices.each do |dev|
         devmap[dev.id] = {:type => dev.device_type.name, :owner => Stock.find_by_id(dev.owner_id).unit.name, :stock => dev.stock.name}
       end
@@ -56,6 +57,7 @@ class DeviceGroupsController < ApplicationController
       @errors << @device_group.errors
     # try to create and save device group
     else
+      # add devices to device group
       @device_list.each do |d|
         d = d.to_i
         device = Device.find_by_id(d)

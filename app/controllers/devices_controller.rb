@@ -31,6 +31,7 @@ class DevicesController < ApplicationController
       properties = Property.all
       propmap = {}
 
+      # find all properties from the chosen device type
       properties.each do |prop|
         propmap[prop.id] = {:id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
                             :device_type => prop.device_type.id, :value => nil}
@@ -53,6 +54,7 @@ class DevicesController < ApplicationController
 
       properties.each do |prop|
         if !prop.values.find_by_device_id(@device.id).nil?
+          # find values to each property of the device type
           value = prop.values.find_by_device_id(@device.id).value
           propmap[prop.id] = {:id => prop.id, :name => prop.name, :data_type => DataType.find_by_id(prop.data_type_id).name,
                               :device_type => prop.device_type.id, :value => value}
@@ -109,9 +111,10 @@ class DevicesController < ApplicationController
       redirect_to "/devices/"
       flash[:error] = (I18n.t "own.errors.db_offline").to_s
     else
-          @device.values.each do |v|
-            v.destroy
-          end
+      # delete all linked values, when device is destroyed
+      @device.values.each do |v|
+        v.destroy
+      end
       @device.destroy
       respond_to do |format|
         flash[:success] = (I18n.t "own.success.device_destroyed").to_s
