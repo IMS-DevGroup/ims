@@ -177,7 +177,7 @@ en:
     manage_operations: Manage Operations
 
   properties:
-    propertie: properties
+    propertie: Properties
     edit:
       title: Editing Property
     new:
@@ -257,7 +257,10 @@ en:
       empty_field: Password field is required to be not empty
       password_reset_email_not_found: The entered email was not found.
       password_reset_expired: The reset link is already expired.
+      open_lendings: The following Devices have not been returned
       db_offline: 'Database status: In operation, no changes possible.'
+      missing_device: Please enter a device.
+
     success:
       user_updated: User successfully updated.
       user_created: User successfully created.

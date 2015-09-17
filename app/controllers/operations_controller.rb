@@ -20,17 +20,20 @@ class OperationsController < ApplicationController
       redirect_to "/operations"
       flash[:error] = (I18n.t "own.errors.db_offline").to_s
     else
-    @operation = Operation.new
+      @operation = Operation.new
+    end
   end
-end
+
   # GET /operations/1/edit
   def edit
     if current_user.right.manage_operations == false
       redirect_to "/operations"
     elsif BossConfig.first.db_state == false
       redirect_to "/operations"
+
       flash[:error] = (I18n.t "own.errors.db_offline").to_s
   end
+
   end
 
   # POST /operations
@@ -75,13 +78,44 @@ end
       redirect_to "/operations"
       flash[:error] = (I18n.t "own.errors.db_offline").to_s
     else
-    @operation.destroy
-    respond_to do |format|
-      flash[:success] = (I18n.t "own.success.operation_destroyed").to_s
-      format.html { redirect_to @operation }
-      format.json { head :no_content }
+      @operation.destroy
+      respond_to do |format|
+        flash[:success] = (I18n.t "own.success.operation_destroyed").to_s
+        format.html { redirect_to @operation }
+        format.json { head :no_content }
       end
     end
+  end
+
+  def close_op
+    op=Operation.find(params[:id])
+    if current_user.right.manage_operations == true && op.close_date.nil?
+      dev_hash = Hash.new
+
+      stock_ids = (op.stocks).to_a.map(&:serializable_hash)
+      stock_ids.each do |k|
+        Device.where(stock_id: k['id']).find_each do |dev|
+          dev.lendings.each do |ldevs|
+            if ldevs.receiver_id.nil?
+              dev_hash[ldevs.device.id] = ldevs
+            end
+          end
+        end
+
+      end
+
+      if dev_hash.count == 0
+       op.close_date = Time.now
+       op.save
+        redirect_to '/operations/'
+      else
+        redirect_to ('/operations/show_lendings.')+(op.id).to_s
+        flash[:error] = t 'own.errors.open_lendings'
+      end
+    else
+      redirect_to '/operations/'
+    end
+
   end
 
   private
@@ -98,5 +132,6 @@ end
 
   def show_lendings
   end
+
 
 end

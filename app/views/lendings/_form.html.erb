@@ -86,19 +86,19 @@
       <div class="well">
         <div class="form-group">
           <%= label_tag (t "mixed_fields.prename") + " *" %><br>
-          <%= text_field_tag(:user_prename) %>
+          <%= text_field_tag(:user_prename, @quick_usr[:prename])  %>
         </div>
         <div class="form-group">
           <%= label_tag (t "mixed_fields.lastname") + " *" %><br>
-          <%= text_field_tag(:user_lastname) %>
+          <%= text_field_tag(:user_lastname, @quick_usr[:lastname])  %>
         </div>
         <div class="form-group">
           <%= label_tag (t "mixed_fields.unit") + " *" %><br>
-          <%= select_tag('user_unit', options_from_collection_for_select(Unit.all, 'id', 'name')) %>
+          <%= select_tag('user_unit' , options_from_collection_for_select(Unit.all, 'id', 'name',  @quick_usr[:unit_id]))   %>
         </div>
         <div class="form-group">
           <%= label_tag (t "mixed_fields.info") %><br>
-          <%= text_area_tag(:user_info) %>
+          <%= text_area_tag(:user_info, @quick_usr[:info])  %>
         </div>
         <div>
           <!-- Caution when translating, implies changes in lendings controller as well -->
@@ -112,7 +112,7 @@
     <div class="form-group">
       <div class="ui-widget">
         <%= f.label :user_id %><br>
-        <%= f.text_field :user_id %>
+        <%= text_field_tag :user_auto %>
         <span id="accompl"></span>
       </div>
     </div>
