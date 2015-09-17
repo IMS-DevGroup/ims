@@ -40,4 +40,4 @@
 <%= link_to (t "buttons.back"), operations_path , class:'btn btn-primary'%>
 
 <%if current_user.right.manage_operations==true%><%= link_to (t "buttons.edit"), edit_operation_path(@operation), class:'btn btn-warning' %><%end%>
-<%if current_user.right.manage_operations==true && @operation.close_date.nil?%><%= link_to 'Close OP', close_op_path(@operation) , class:'btn btn-danger'%><%end%>
+<%if current_user.right.manage_operations==true && @operation.close_date.nil?%><%= link_to (t 'buttons.operations.close_operation'), close_op_path(@operation) , class:'btn btn-danger'%><%end%>
