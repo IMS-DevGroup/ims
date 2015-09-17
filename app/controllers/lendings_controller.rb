@@ -25,6 +25,7 @@ class LendingsController < ApplicationController
     else
       @lending = Lending.new
       @quick_usr = {}
+      @keep_user = ''
     end
   end
 
@@ -47,10 +48,15 @@ class LendingsController < ApplicationController
       @errors = []
       @error_lendings = []
       @quick_usr = {}
-      names = params[:user_auto].split(',')
+
+      #handle user inserted in the autofill-field
+      @keep_user = params[:user_auto]
+      names = @keep_user.split(',')
       autofill_user = User.find_by_lastname_and_prename( names[0] , names[1] )
       tmp_params = lending_params
-      tmp_params[:user_id] = autofill_user.id
+      unless autofill_user.nil?
+        tmp_params[:user_id] = autofill_user.id
+      end
 
       # handle quick-generation of user
       if params[:commit].eql?("Quick User")
@@ -60,7 +66,7 @@ class LendingsController < ApplicationController
 
         #submission of entire lending
       else
-        devlen = @device_list.length
+        devlen = @device_list.count
         #artificially recreate device can't be blank error
         if @device_list.empty?
           @lending.save
@@ -87,8 +93,8 @@ class LendingsController < ApplicationController
           format.html { redirect_to '/lendings', notice: devlen.to_s + ' lendings were successfully created.' }
           format.json { render :show, status: :created, location: @lending }
         else
-          if (devlen > @device_list.length)
-            flash.now[:success] = ((devlen - @device_list.length).to_s + ' of ' + devlen.to_s + ' lendings were successfully created').html_safe
+          if (devlen.to_i > @device_list.count.to_i)
+            flash.now[:success] = ((devlen - @device_list.count).to_s + ' of ' + devlen.to_s + ' lendings were successfully created').html_safe
           end
           errors_to_flash = []
           @errors.each do |e|
@@ -196,7 +202,10 @@ class LendingsController < ApplicationController
     @quick_usr[:info] = params[:user_info]
     user = User.new(@quick_usr)
     if user.save
-      @lending.user_id = user.id
+      @keep_user = @quick_usr[:lastname] + ',' + @quick_usr[:prename]
+      usrmap = gon.users
+      usrmap << @keep_user
+      gon.users = usrmap
       set_selected_devices
       render :new
       return true
