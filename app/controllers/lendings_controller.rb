@@ -91,7 +91,7 @@ class LendingsController < ApplicationController
       respond_to do |format|
         if @errors.empty?
           flash[:success] = devlen.to_s + (I18n.t "own.success.lendings_created").to_s
-          format.html { redirect_to @lending }
+          format.html { redirect_to lendings_url}
           format.json { render :show, status: :created, location: @lending }
         else
           if (devlen.to_i > @device_list.count.to_i)
