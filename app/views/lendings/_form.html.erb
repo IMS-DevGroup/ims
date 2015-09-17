@@ -125,8 +125,6 @@
       <a href="/lendings/">
         <button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button>
       </a>
-      <% if !current_page?(new_lending_path) %><%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %>
-      <% end %>
       <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
     </div>
 
