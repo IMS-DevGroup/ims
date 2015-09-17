@@ -2,43 +2,43 @@
 
 
 <p>
-  <strong><%= t 'lendings.borrowed_to' %> :</strong>
+  <strong><%= t 'lendings.borrowed_to' %>:</strong>
   <% unless @lending.user.nil?%>
       <%=@lending.user.prename %> <%= @lending.user.lastname %>
   <%end%>
 </p>
 
 <p>
-  <strong><%= t 'mixed_fields.device' %> :</strong>
+  <strong><%= t 'mixed_fields.device' %>:</strong>
   <% unless @lending.device.nil?%>
       <%= @lending.device.info %>
   <%end%>
 </p>
 
 <p>
-  <strong><%= t 'lendings.borrowed_at' %> :</strong>
+  <strong><%= t 'lendings.borrowed_at' %>:</strong>
   <%= @lending.created_at %>
 </p>
 
 <p>
-  <strong><%= t 'lendings.lending_info' %> :</strong>
+  <strong><%= t 'lendings.lending_info' %>:</strong>
   <%= @lending.lending_info %>
 </p>
 
 <p>
-  <strong><%= t 'lendings.show.lender' %> :</strong>
+  <strong><%= t 'lendings.show.lender' %>:</strong>
   <% unless (tmp = User.find_by_id(@lending.lender_id)).nil?  %>
       <%= tmp.username %>
   <% end %>
 </p>
 
 <p>
-  <strong><%= t 'lendings.receive' %> :</strong>
+  <strong><%= t 'lendings.receive' %>:</strong>
   <%= @lending.receive %>
 </p>
 
 <p>
-  <strong><%= t 'lendings.receive_info' %> :</strong>
+  <strong><%= t 'lendings.receive_info' %>:</strong>
   <%= @lending.receive_info %>
 </p>
 
