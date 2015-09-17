@@ -37,7 +37,7 @@ class LendingsController < ApplicationController
   # POST /lendings
   # POST /lendings.json
   def create
-    puts params
+
     if BossConfig.first.db_state == false
       flash[:error] = (I18n.t "own.errors.db_offline").to_s
       redirect_to "/starts/"
@@ -52,9 +52,9 @@ class LendingsController < ApplicationController
       #handle user inserted in the autofill-field
       @keep_user = params[:user_auto]
       names = @keep_user.split(',')
-      autofill_user = User.find_by_lastname_and_prename( names[0] , names[1] )
+      autofill_user = User.find_by lastname: names[0], prename: names[1]
       tmp_params = lending_params
-      unless autofill_user.nil?
+      if !(autofill_user.nil?)
         tmp_params[:user_id] = autofill_user.id
       end
 
@@ -71,7 +71,8 @@ class LendingsController < ApplicationController
         if @device_list.empty?
           @lending.save
           @errors << @lending.errors
-          try to create and save lendings
+
+          #try to create and save lendings
         else
           @device_list.each do |d|
             tmp_params[:device_id] = d
