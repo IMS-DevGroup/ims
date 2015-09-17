@@ -53,6 +53,12 @@ en:
             name:
               blank: Please insert a name.
               taken: This device type already exists.
+        lending:
+          attributes:
+            device_id:
+              blank: Please choose at least one device.
+            user_id:
+              blank: Please insert a user.
 
   mail_form:
     errors:
@@ -270,7 +276,11 @@ en:
       open_lendings: The following Devices have not been returned
       db_offline: 'Database status: In operation, no changes possible.'
       missing_device: Please enter a device.
-
+      user_not_exists: This user does not exist.
+      lender_not_exists: This lender does not exist.
+      receiver_not_exists: This receiver does not exist.
+      device_not_exists: This device does not exist.
+      receive_problem: Receiver cannot be blank when other receive-data exists
     success:
       user_updated: User successfully updated.
       user_created: User successfully created.

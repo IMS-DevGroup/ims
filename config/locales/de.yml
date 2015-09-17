@@ -53,6 +53,12 @@ de:
             name:
               blank: Bitte einen Namen angeben.
               taken: Dieser Gerätetyp existiert bereits.
+        lending:
+          attributes:
+            device_id:
+              blank: Bitte mindestens ein Gerät wählen.
+            user_id:
+              blank: Bitte Benutzer wählen.
 
   mail_form:
     errors:
@@ -271,6 +277,11 @@ de:
       open_lendings: Folgende Geräte sind noch verliehen
       db_offline: 'Datenbank Status: Im Einsatz, keine Änderungen möglich.'
       missing_device: Bitte Geräte hinzufügen.
+      user_not_exists: Dieser Benutzer existiert nicht.
+      lender_not_exists: Dieser Verleiher existiert nicht.
+      receiver_not_exists: Dieser Rücknehmer existiert nicht.
+      device_not_exists: Dieses Gerät existiert nicht.
+      receive_problem: Wenn Rücknahmedaten existieren, muss auch ein Rücknehmer angegeben werden.
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
