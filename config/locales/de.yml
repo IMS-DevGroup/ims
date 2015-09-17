@@ -104,6 +104,8 @@ de:
     borrowed_to: Verliehen an
     selected: Auswahl
     quick_user: Schnelle Benutzererstellung
+    edit:
+      title: Ausleihe bearbeiten
     new:
       title: Neue Ausleihe
     index:

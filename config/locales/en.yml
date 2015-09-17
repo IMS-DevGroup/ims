@@ -105,6 +105,10 @@ en:
     borrowed_to: Borrowed to
     selected: Selected
     quick_user: Quick User
+    edit:
+      title: Editing Lending
+    new:
+      title: New Lending
     index:
       title: Lending List
     show:
