@@ -78,9 +78,19 @@
       <%= f.text_area :lending_info %>
     </div>
 
+    <!-- user (with autofill) -->
+    <div class="form-group">
+      <div class="ui-widget">
+        <%= f.label :user_id %><br>
+        <%= text_field_tag(:user_auto, @keep_user) %>
+        <span id="accompl"></span>
+      </div>
+
+
     <!-- button for quick user generation -->
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#quick_generation" aria-expanded="false" aria-controls="quick_generation">
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"> Quick User</span></button>
+    </div>
 
     <div class="collapse" id="quick_generation">
       <div class="well">
@@ -107,15 +117,6 @@
       </div>
     </div>
 
-    <!-- following field only to enable dummy generation
-    TODO: change to proper field-->
-    <div class="form-group">
-      <div class="ui-widget">
-        <%= f.label :user_id %><br>
-        <%= text_field_tag(:user_auto, @keep_user) %>
-        <span id="accompl"></span>
-      </div>
-    </div>
 
     <!-- hidden field to automatically include current user as lender -->
     <%= f.hidden_field :lender_id, :value => current_user.id %>
