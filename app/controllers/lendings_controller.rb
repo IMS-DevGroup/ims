@@ -136,7 +136,7 @@ class LendingsController < ApplicationController
       @lending.destroy
       respond_to do |format|
         flash[:success] = (I18n.t "own.success.lendings_destroyed").to_s
-        format.html { redirect_to @lendings }
+        format.html { redirect_to lendings_url }
         format.json { head :no_content }
       end
     end
