@@ -30,11 +30,14 @@ class PasswordResetsController < ApplicationController
   # Sets the new password if all entries were correct and resets the reset_key when used
   def update
     if params[:password_unhashed].empty?
-#      @user.errors.add(:password_unhashed, 'darf nicht leer sein')
       flash[:error] = (I18n.t "own.errors.empty_field").to_s
       render 'edit'
+    elsif params[:password_unhashed_confirmation] != params[:password_unhashed]
+      flash[:error] = (I18n.t "own.errors.password_confirmation").to_s
+      render 'edit'
+
     elsif @user.update_attribute(:password_unhashed, params[:password_unhashed])
-      @user.encrypt_password #vllt richtig??
+      @user.encrypt_password
       @user.update_attribute(:reset_key, nil) ##damit link nur einmal benutzt werden kann
       log_in @user
       flash[:success] = (I18n.t "own.success.password_reset_changed").to_s
@@ -48,7 +51,7 @@ class PasswordResetsController < ApplicationController
   private
   # gets variables
   def user_params
-    params.require(:user).permit(:passwort_unhashed) #password_unhashed_confirmation
+    params.require(:user).permit(:passwort_unhashed, :password_unhashed_confirmation)
   end
   # finds user by email
   def get_user
