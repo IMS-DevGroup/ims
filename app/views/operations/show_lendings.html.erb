@@ -14,14 +14,15 @@
 
 <table id="lended_devices" class="dataTableJS table table-striped">
   <thead>
-  <tr>
-    <th><%= (t 'mixed_fields.device') + ' ID' %></th>
-    <th><%= (t 'mixed_fields.info') %></th>
-    <th><%= (t 'devices.owner') %></th>
-    <th><%= (t 'devices.stock') %></th>
-    <th><%= (t 'devices.device_type') %></th>
-    <th><%= (t 'devices.device_group') %></th>
-  </tr>
+    <tr>
+        <th><%= (t 'mixed_fields.device') + ' ID' %></th>
+        <th><%= (t 'mixed_fields.info') %></th>
+        <th><%= (t 'devices.owner') %></th>
+        <th><%= (t 'devices.stock') %></th>
+        <th><%= (t 'devices.device_type') %></th>
+        <th><%= (t 'devices.device_group') %></th>
+        <th></th>
+    </tr>
   </thead>
 
   <tbody>
@@ -34,14 +35,9 @@
         <td><%= (Stock.find(dev.owner_id)).name %></td>
         <td><%= dev.stock.name %></td>
         <td><%= dev.device_type.name %></td>
-        <td>
-          <% unless dev.device_group.nil? %> <%= dev.device_group.name %>
-          <% end %> </td>
-        <td>
-          <% if current_user.right.manage_operations==true && BossConfig.first.db_state==true %>  <%= link_to (t 'buttons.return'), return_lending_path(dev_hash[dh[0]]), class: 'btn btn-warning' %></td>
-          <% end %>
-          </td>
-          </tr>
+        <td><% unless dev.device_group.nil? %> <%= dev.device_group.name %><% end %></td>
+        <td><% if current_user.right.manage_operations==true && BossConfig.first.db_state==true %>  <%= link_to (t 'buttons.return'), return_lending_path(dev_hash[dh[0]]), class: 'btn btn-warning' %> <% end %></td>
+      </tr>
   <% end %>
 
   </tbody>

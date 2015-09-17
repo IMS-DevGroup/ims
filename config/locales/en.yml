@@ -249,6 +249,8 @@ en:
       lendings: Lendings
     lendings:
       new_lending: New Lending
+    operations:
+      close_operation: Close Operation
 
   own:
     errors:

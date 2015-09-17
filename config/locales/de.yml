@@ -252,6 +252,8 @@ de:
       lendings: Ausleihe
     lendings:
       new_lending: Neue Ausleihe
+    operations:
+      close_operation: Beende Einsatz
 
   own:
     errors:
