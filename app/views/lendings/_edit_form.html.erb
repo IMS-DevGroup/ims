@@ -12,33 +12,33 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label :user_id %><br>
+      <%= f.label :label_text, (t "mixed_fields.user") %><br>
       <%= f.text_field :user_id %>
     </div>
 
     <div class="form-group">
-      <%= f.label :device_id %><br>
+      <%= f.label :label_text, (t "mixed_fields.device") %><br>
       <%= f.text_field :device_id %>
     </div>
 
     <div class="form-group">
-      <%= f.label :lending_info %><br>
+      <%= f.label :label_text, (t "lendings.lending_info") %><br>
       <%= f.text_area :lending_info %>
     </div>
 
     <div class="form-group">
-      <%= f.label :lender_id %><br>
+      <%= f.label :label_text, (t "lendings.show.lender") %><br>
       <%= f.text_field :lender_id %>
     </div>
 
 
     <div class="form-group">
-      <%= f.label :recieve_info %><br>
+      <%= f.label :label_text, (t "lendings.receive_info") %><br>
       <%= f.text_area :receive_info %>
     </div>
 
     <div class="form-group">
-      <%= f.label :receiver_id %><br>
+      <%= f.label :label_text, (t "lendings.borrowed_to") %><br>
       <%= f.text_field :receiver_id %>
     </div>
 
