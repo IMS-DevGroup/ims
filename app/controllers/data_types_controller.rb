@@ -14,16 +14,28 @@ class DataTypesController < ApplicationController
 
   # GET /data_types/new
   def new
+    if BossConfig.first.db_state == false
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
+      redirect_to "/starts/"
+    else
     @data_type = DataType.new
   end
-
+end
   # GET /data_types/1/edit
   def edit
+    if BossConfig.first.db_state == false
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
+      redirect_to "/starts/"
   end
-
+end
   # POST /data_types
   # POST /data_types.json
   def create
+
+    if BossConfig.first.db_state == false
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
+      redirect_to "/users/"
+    else
     @data_type = DataType.new(data_type_params)
 
     respond_to do |format|
@@ -36,10 +48,15 @@ class DataTypesController < ApplicationController
       end
     end
   end
-
+end
   # PATCH/PUT /data_types/1
   # PATCH/PUT /data_types/1.json
   def update
+    if BossConfig.first.db_state == false
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
+      redirect_to "/users/"
+    else
+
     respond_to do |format|
       if @data_type.update(data_type_params)
         format.html { redirect_to @data_type, notice: 'Data type was successfully updated.' }
@@ -50,17 +67,21 @@ class DataTypesController < ApplicationController
       end
     end
   end
-
+end
   # DELETE /data_types/1
   # DELETE /data_types/1.json
   def destroy
+    if BossConfig.first.db_state == false
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
+      redirect_to "/users/"
+    else
     @data_type.destroy
     respond_to do |format|
       format.html { redirect_to data_types_url, notice: 'Data type was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_data_type

@@ -1,0 +1,42 @@
+<%= form_for(@notification) do |f| %>
+  <% if @notification.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@notification.errors.count, "error") %> prohibited this notification from being saved:</h2>
+
+      <ul>
+      <% @notification.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :subject %><br>
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    <%= f.label :info %><br>
+    <%= f.text_area :info %>
+  </div>
+
+    <div class="field">
+      <%= f.label :label_text, (t "mixed_fields.unit") + " *" %>
+      <%= f.collection_select :unit_id, Unit.all, :id, :name, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :label_text, "Device" + " *" %>
+      <%= f.collection_select :device_id, Device.all, :id, :id, class: "form-control" %>
+    </div>
+
+<!-- This field makes an error!!!-->
+  <!--div class="field">
+    <!--%= f.label :checked %><br>
+    <!--%= f.datetime_select :checked %-->
+  <!--/div-->
+    <%= t "mixed_fields.req" %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

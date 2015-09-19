@@ -1,67 +1,132 @@
-<%= form_for(@lending) do |f| %>
-  <% if @lending.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lending.errors.count, "error") %> prohibited this lending from being saved:</h2>
-
-      <ul>
-      <% @lending.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<!-- input via barcode and dropdown-toggle for device-list -->
+<form onsubmit="return false">
   <div class="form-group">
-    <%= f.label :lending_info %><br>
-    <%= f.text_area :lending_info %>
+    <label for="barcode">Barcode *</label>
+
+    <div style="width:200px" class="input-group">
+      <input type="text" autofocus class="form-control" placeholder="Barcode" id="barcode">
+      <span class="input-group-btn">
+        <button id="btnsearch" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        <button id="adddev" type="submit" class="btn btn-success add-dev">
+          <span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+      </span>
+    </div>
+    <!-- /input-group -->
   </div>
+</form>
+<%= form_for(@lending) do |f| %>
 
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#quick_generation" aria-expanded="false" aria-controls="quick_generation"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    <!-- Dropdown for manual device selection -->
+    <div class="collapse" id="collapseExample">
+      <div class="well">
+        <table id="devices" class="table table-striped dataTableJS">
+          <thead>
+          <tr>
+            <th></th>
+            <th><%= t "devices.device_type"%></th>
+            <th><%= t "mixed_fields.info"%></th>
+            <th><%= t "devices.owner"%></th>
+            <th><%= t "devices.stock"%></th>
+            <th><%= t "devices.ready"%></th>
+          </tr>
+          </thead>
 
-      <div class = "collapse" id = "quick_generation">
-        <div class = "well">
-          <div class = "form-group">
-            <%= label_tag (t "mixed_fields.prename") + " *"%><br>
-            <%= text_field_tag(:user_prename)  %>
-          </div>
-          <div class = "form-group">
-            <%= label_tag (t "mixed_fields.lastname") + " *"%><br>
-            <%= text_field_tag(:user_lastname)  %>
-          </div>
-          <div class = "form-group">
-            <%= label_tag (t "mixed_fields.unit") + " *"%><br>
-            <%= select_tag('user_unit' , options_from_collection_for_select(Unit.all, 'id', 'name'))   %>
-          </div>
-          <div class = "form-group">
-            <%= label_tag (t "mixed_fields.info")%><br>
-            <%= text_area_tag(:user_info)  %>
-          </div>
-          <div>
-            <!-- Caution when translating, implies changes in lendings controller as well -->
-            <%= submit_tag("Quick User") %>
-          </div>
-        </div>
+          <tbody>
+          <% @devices.each do |device| %>
+              <% if device.available? %>
+                  <tr>
+                    <td>
+                      <button id="<%= device.id %>" type="button" class="btn btn-success add-dev">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+                    </td>
+                    <td><%= if device.device_type.nil? then
+                            else
+                              device.device_type.name
+                            end %></td>
+                    <td><%= device.info %></td>
+                    <td><%= Stock.find_by_id(device.owner_id).name %></td>
+                    <td><%= if device.stock.nil? then
+                            else
+                              device.stock.name
+                            end %></td>
+                    <td><%= device.ready %></td>
+                  </tr>
+              <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <input type="hidden" id="deviceids" name="deviceids">
+
+    <!-- Dropdown to show list of currently selected devices -->
+    <button id="btnselection" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSelection" aria-expanded="false" aria-controls="collapseSelection">
+      Auswahl <span class="badge">0</span>
+    </button>
+    <div class="collapse" id="collapseSelection">
+      <div class="well">
+        <ul id="seldevices" class="list-group">
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- lending info -->
+    <div class="form-group">
+      <%= f.label t "mixed_fields.info" %><br>
+      <%= f.text_area :lending_info %>
+    </div>
+
+    <!-- user (with autofill) -->
+    <div class="form-group">
+      <div class="ui-widget">
+        <%= f.label (t "mixed_fields.user") + " *" %><br>
+        <%= text_field_tag(:user_auto, @keep_user) %>
+        <span id="accompl"></span>
       </div>
 
-    <!-- following 2 fields only to enable dummy generation
-    TODO: change to proper fields-->
-    <div class="form-group">
-      <%= f.label :user_id %><br>
-      <%= f.text_field :user_id %>
+
+    <!-- button for quick user generation -->
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#quick_generation" aria-expanded="false" aria-controls="quick_generation">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"> <%= t "lendings.quick_user"%></span></button>
     </div>
+
+    <div class="collapse" id="quick_generation">
+      <div class="well">
+        <div class="form-group">
+          <%= label_tag (t "mixed_fields.prename") + " *" %><br>
+          <%= text_field_tag(:user_prename, @quick_usr[:prename])  %>
+        </div>
+        <div class="form-group">
+          <%= label_tag (t "mixed_fields.lastname") + " *" %><br>
+          <%= text_field_tag(:user_lastname, @quick_usr[:lastname])  %>
+        </div>
+        <div class="form-group">
+          <%= label_tag (t "mixed_fields.unit") + " *" %><br>
+          <%= select_tag('user_unit' , options_from_collection_for_select(Unit.all, 'id', 'name',  @quick_usr[:unit_id]))   %>
+        </div>
+        <div class="form-group">
+          <%= label_tag (t "mixed_fields.info") %><br>
+          <%= text_area_tag(:user_info, @quick_usr[:info])  %>
+        </div>
+        <div>
+          <%= submit_tag(t "lendings.quick_user") %>
+        </div>
+      </div>
+    </div>
+
 
     <!-- hidden field to automatically include current user as lender -->
     <%= f.hidden_field :lender_id, :value => current_user.id %>
+    <%= t "mixed_fields.req" %>
+    <div class="actions">
 
-    <div>
-      <%= render partial: 'lendings_selector/index', :locals => {:devices => @devices }%>
+      <a href="/lendings/">
+        <button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button>
+      </a>
+      <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
     </div>
 
 
-  <div class="actions">
-    <a href="/lendings/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
-    <!-- todo multiple device lending show -->
-    <!--%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %-->
-    <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
-  </div>
 <% end %>

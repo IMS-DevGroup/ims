@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   before_filter :require_login
 
   def require_login
+
     if NO_LOGIN_ROUTES.include? request.env['PATH_INFO']
       return
     end
@@ -18,6 +19,7 @@ class ApplicationController < ActionController::Base
       redirect_to '/login/'
     end
   end
+
 
   def detect_browser
     agent = request.headers["HTTP_USER_AGENT"].downcase
@@ -30,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   private
   MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
-  NO_LOGIN_ROUTES = ["/contacts"]
+  NO_LOGIN_ROUTES = ["/contacts", "/impressum"]
 
 
 
@@ -47,6 +49,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = session[:locale] || I18n.default_locale
     session[:locale] = I18n.locale
+    gon.locale = I18n.locale
   end
 
 

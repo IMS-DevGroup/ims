@@ -4,22 +4,22 @@ class ValuesController < ApplicationController
   # GET /values
   # GET /values.json
   def index
-    redirect_to '/starts/'
-   #this reactivates the link to /values
+   redirect_to '/starts/'
+   # this reactivates the link to /values
    # @values = Value.all
   end
 
   # GET /values/1
   # GET /values/1.json
   def show
-    #delete the following to reactivate link
+    # delete the following to reactivate link
     redirect_to '/starts/'
   end
 
   # GET /values/new
   def new
     redirect_to '/starts/'
-    #this reactivates the link to /values/new
+    # this reactivates the link to /values/new
     # @value = Value.new
   end
 
@@ -67,17 +67,31 @@ class ValuesController < ApplicationController
     end
   end
 
-  def ValuesController.transfer(prop_val, prop_id, device)
-   if !prop_val.nil?
-    prop_val.each do |i, val|
-      v = Value.new
-      v.property_id = prop_id[i]
-      v.value=prop_val[i]
-      v.device_id = device.id
-      v.save
+  # insert values, when new device was created
+  def ValuesController.insert(prop_val, prop_id, device)
+    if !prop_val.nil?
+      prop_val.each do |key, val|
+        v = Value.new
+        v.property_id = prop_id[key]
+        v.value = prop_val[key]
+        v.device_id = device.id
+        v.save
+      end
     end
   end
-end
+
+  # change values, when device is editing
+  def ValuesController.change(prop_val, prop_id, device)
+    if !prop_val.nil?
+      prop_val.each do |key, val|
+        prop = Property.find_by_id(prop_id[key])
+        v = prop.values.find_by_device_id(device.id)
+        v.value = prop_val[key]
+        v.save
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_value

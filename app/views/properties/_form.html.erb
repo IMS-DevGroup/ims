@@ -12,24 +12,26 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :name %><br>
+    <%= f.label :name , (t 'mixed_fields.name')%><br>
     <%= f.text_field :name %>
   </div>
   <div class="form-group">
-    <%= f.label :info %><br>
+    <%= f.label :info , (t 'mixed_fields.info')%><br>
     <%= f.text_area :info %>
   </div>
   <div class="form-group">
-    <%= f.label :data_type %>
+    <%= f.label :data_type, (t 'mixed_fields.data_type') %>
     <%= f.collection_select :data_type_id, DataType.all, :id, :name, {}, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :device_type %>
+    <%= f.label :device_type, (t 'devices.device_type') %>
     <%= f.collection_select :device_type_id, DeviceType.all, :id, :name, {}, class: "form-control", include_blank: "choose device_type"%>
   </div>
+    <%= t "mixed_fields.req" %>
   <div class="actions">
+
     <a href="/properties/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
-    <%= link_to (t "buttons.show"), @property, class: 'btn btn-info' %>
+    <% if !current_page?(new_property_path) %><%= link_to (t "buttons.show"), @property, class: 'btn btn-info' %><% end %>
     <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
 
   </div>

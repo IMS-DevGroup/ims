@@ -2,9 +2,9 @@
   <h3><%=(t "contact.title")%></h3>
 
   <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
-    <%= f.input :name, :required => true %>
-    <%= f.input :email, :required => true %>
-    <%= f.input :message, :as => :text, :required => true %>
+    <%= f.input :name, :required => false %>
+    <%= f.input :email, :required => false %>
+    <%= f.input :message, :label => (t "contact.message"), :as => :text, :required => false %>
     <div class= "hidden">
       <%= f.input :nickname, :hint => 'Leave this field blank!' %>
     </div>

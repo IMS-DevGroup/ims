@@ -8,7 +8,7 @@ de:
               blank: Bitte einen Vornamen eingeben.
             lastname:
               blank: Bitte einen Nachnamen eingeben.
-            unit:
+            unit_id:
               blank: Bitte eine Einheit wählen.
             username:
               taken: Dieser Username ist bereits vergeben.
@@ -22,6 +22,8 @@ de:
               blank: Bitte einen Einsatznamen eingeben.
             location:
               blank: Bitte einen Ort angeben.
+            user_id:
+              blank: Bitte einen Einsatzleiter wählen.
         stock:
           attributes:
             unit:
@@ -40,6 +42,35 @@ de:
               blank: Bitte ein Lager auswählen.
             ready:
               blank: Bitte angeben, ob das Gerät bereit ist.
+        notification:
+          attributes:
+            device_id:
+              blank: Bitte Gerät wählen.
+            unit_id:
+              blank: Bitte Einheit wählen.
+        device_type:
+          attributes:
+            name:
+              blank: Bitte einen Namen angeben.
+              taken: Dieser Gerätetyp existiert bereits.
+        lending:
+          attributes:
+            device_id:
+              blank: Bitte mindestens ein Gerät wählen.
+            user_id:
+              blank: Bitte Benutzer wählen.
+
+  mail_form:
+    errors:
+      models:
+        contact:
+          attributes:
+            email:
+              invalid: Ungültige eMail!
+              blank: Bitte geben Sie Ihre eMail Adresse ein.
+            name:
+              blank: Bitte geben Sie Ihren Namen ein.
+
 
   users:
     choose_active_stock: 'Bitte wählen Sie den Lagerort'
@@ -68,6 +99,26 @@ de:
       select_user: Wähle Einsatzleiter
     edit:
       title: Einsatz bearbeiten
+    show_lendings:
+      title: Ausgeliehene Geräte zum Einsatz
+
+  lendings:
+    borrowed_at: Verliehen am
+    lending_info: Verleihinfo
+    receive: Rückgabe
+    receive_info: Rückgabe Info
+    borrowed_to: Verliehen an
+    selected: Auswahl
+    quick_user: Schnelle Benutzererstellung
+    edit:
+      title: Ausleihe bearbeiten
+    new:
+      title: Neue Ausleihe
+    index:
+      title: Ausleihliste
+    show:
+      lender: Verleiher
+      receiver: Rücknahme durch
 
   units:
     name: Name
@@ -96,6 +147,7 @@ de:
     owner: Besitzer
     stock: Lager
     ready: Bereit
+    device_group: Gerätegruppe
     index:
       title: Geräteliste
     form:
@@ -107,8 +159,6 @@ de:
     new:
       title: Neues Gerät anlegen
 
-  properties:
-    propertie: Eigenschaften
 
   device_types:
     index:
@@ -128,6 +178,38 @@ de:
     form:
       h2: 'Das Speichern dieser Gerätegruppe wurde abgefangen:'
 
+  rights:
+    edit:
+      title: Rechte bearbeiten von
+    manage_rights: Darf Rechte vergeben
+    manage_users: User anlegen und bearbeiten
+    manage_devices: Geräte anlegen und bearbeiten
+    manage_device_types: Gerätetypen anlegen und bearbeiten
+    manage_stocks_and_units: Einheiten und Standorte anlegen und bearbeiten
+    manage_operations: Einsätze anlegen und bearbeiten
+
+  properties:
+    propertie: Eigenschaften
+    edit:
+      title: Eigenschaften bearbeiten
+    new:
+      title: Neue Eigenschaft
+    index:
+      title: Eigenschaftenliste
+
+  starts:
+    state: 'Datenbankstatus: '
+
+  config:
+    config: Konfiguration
+    in_use: Im Einsatz
+    online: Online?
+    org: Name der Organisation
+    edit:
+      title: Datenbankstatus bearbeiten
+
+
+
   mixed_fields:
     email: Email
     info: Information
@@ -141,6 +223,11 @@ de:
     user: Benutzer
     username: Benutzername
     name: Name
+    data_type: Datentyp
+    passwordconf: Passwort bestätigen
+    hello: Hallo
+    device: Gerät
+    req: '* Pflichtfeld'
 
   buttons:
     back: Zurück
@@ -150,6 +237,8 @@ de:
     rights: Rechte
     submit: Speichern
     confirmation_sure_message: Sind Sie sicher?
+    lending: Ausleihe
+    return: Rückgabe
     start:
       set_stock: Bestätige Lager
     new:
@@ -160,6 +249,7 @@ de:
       device: Neues Gerät
       device_types: Neuer Gerätetyp
       device_groups: Neue Gerätegruppe
+      property: Neue Eigenschaft
     main_menu:
       operations: Einsätze
       devices: Geräte
@@ -167,14 +257,31 @@ de:
       stocks: Lagerorte
       units: Einheiten
       contact: Kontakt
-      lendings: Ausleihen
+      lendings: Ausleihe
+    lendings:
+      new_lending: Neue Ausleihe
+    operations:
+      close_operation: Beende Einsatz
 
   own:
     errors:
       only_pw_no_username: Bitte auch einen Usernamen angeben, wenn ein Passwort eingegeben wird.
-      only_username_no_pw: Bitte auch ein Passwort angeben, wenn ein Username eingegeben wird.
+      only_username_no_pw: Bitte eine Email oder ein Passwort angeben, wenn ein Username angegeben wird.
       mobile_number_not_valid: Bitte eine gültige Telefonnummer angeben.
       user_login: Benutzername und/oder Passwort sind nicht korrekt.
+      username: "Ungültiger Benutzername, erlaubte Zeichen: Groß- und Kleinbuchstaben, Zahlen, Unterstrich, Punkt."
+      password_confirmation: Die eingegebenen Passwörter stimmen nicht überein. Bitte probieren Sie es erneut.
+      empty_field: Passwortfeld darf nicht leer sein.
+      password_reset_email_not_found: Die eingegebene Email wurde nicht gefunden.
+      password_reset_expired: Ihr Link zum Zurücksetzen des Passworts ist bereits abgelaufen.
+      open_lendings: Folgende Geräte sind noch verliehen
+      db_offline: 'Datenbank Status: Im Einsatz, keine Änderungen möglich.'
+      missing_device: Bitte Geräte hinzufügen.
+      user_not_exists: Dieser Benutzer existiert nicht.
+      lender_not_exists: Dieser Verleiher existiert nicht.
+      receiver_not_exists: Dieser Rücknehmer existiert nicht.
+      device_not_exists: Dieses Gerät existiert nicht.
+      receive_problem: Wenn Rücknahmedaten existieren, muss auch ein Rücknehmer angegeben werden.
     success:
       user_updated: Benutzer erfolgreich geupdated.
       user_created: Benutzer erfolgreich angelegt.
@@ -198,8 +305,23 @@ de:
       device_group_updated: Gerätegruppe erfolgreich geupdated.
       device_group_created: Gerätegruppe erfolgreich angelegt.
       device_group_destroyed: Gerätegruppe erfolgreich gelöscht.
+      right_updated: Rechte erfolgreich geupdated.
+      property_updated: Eigenschaft erfolgreich geupdated.
+      property_created: Eigenschaft erfolgreich angelegt.
+      property_destroyed: Eigenschaft erfolgreich gelöscht.
+      password_reset_email_sent: Email zum Zurücksetzen des Passwortes gesendet.
+      password_reset_changed: Passwort erfolgreich geändert.
+      boss_config_updated: Konfiguration erfolgreich geupdated.
+      lendings_created: ' Ausleihe(n) erfolreich angelegt.'
+      lendings_updated: Ausleihe erfolgreich geändert.
+      lendings_destroyed: Ausleihe erfolgreich gelöscht.
+    warning:
+      user_without_pw: Email mit dem generiertem Passwort an angegebene Email gesendet.
+
 
   contact:
     title: Senden Sie uns eine Nachricht
     submit: Nachricht senden
     message: Nachricht
+    thank_you: Danke für Ihre Nachricht, wir werden uns bald bei Ihnen melden!
+    error: Nachricht konnte nicht gesendet werden, bitte Eingaben überprüfen.

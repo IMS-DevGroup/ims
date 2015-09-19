@@ -14,25 +14,78 @@ class DeviceGroupsController < ApplicationController
 
   # GET /device_groups/new
   def new
-    @device_group = DeviceGroup.new
+    if current_user.right.manage_devices == false
+      redirect_to '/device_groups/'
+
+    elsif BossConfig.first.db_state == false
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
+      redirect_to "/device_groups/"
+
+    else
+      @device_group = DeviceGroup.new
+      @devices = Device.all.eager_load(:stock, :device_type)
+      devmap = {}
+
+      # find all devices and send them to the device group
+      @devices.each do |dev|
+        devmap[dev.id] = {:type => dev.device_type.name, :owner => Stock.find_by_id(dev.owner_id).unit.name, :stock => dev.stock.name}
+      end
+      gon.devices = devmap
+    end
   end
 
   # GET /device_groups/1/edit
   def edit
+    if current_user.right.manage_devices == false
+      redirect_to '/device_groups/'
+
+    elsif BossConfig.first.db_state == false
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
+      redirect_to "/device_groups/"
+    end
   end
 
   # POST /device_groups
   # POST /device_groups.json
   def create
     @device_group = DeviceGroup.new(device_group_params)
+    @device_list = params[:devicegroupids].delete(' ').split(',')
+    @errors = []
 
+    # artificial recreated device can't be blank
+    if @device_list.empty?
+      @errors << @device_group.errors
+    # try to create and save device group
+    else
+      # add devices to device group
+      @device_list.each do |d|
+        d = d.to_i
+        device = Device.find_by_id(d)
+        device.device_group_id = @device_group.id
+        device.save
+        if @device_group.save
+          @device_list.delete(d)
+        else
+          @errors.push(@device_group.errors)
+        end
+      end
+    end
+
+    # handles the creation of the actual device group
     respond_to do |format|
-      if @device_group.save
-        format.html { redirect_to @device_group, notice: 'Device group was successfully created.' }
+      if @errors.empty?
+        format.html { redirect_to '/device_groups', notice: 'Device group was successfully created.' }
         format.json { render :show, status: :created, location: @device_group }
       else
+        errors_to_flash = []
+        @errors.each do |e|
+          errors_to_flash << ((e.values).join("<br/>").html_safe)
+          errors_to_flash << (I18n.t "own.errors.missing_device").to_s
+        end
+        flash.now[:error] = errors_to_flash.join("<br/>").html_safe
+        set_selected_devices
         format.html { render :new }
-        format.json { render json: @device_group.errors, status: :unprocessable_entity }
+        format.json { render json: @errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,7 +95,8 @@ class DeviceGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @device_group.update(device_group_params)
-        format.html { redirect_to @device_group, notice: 'Device group was successfully updated.' }
+        flash[:success] = (I18n.t "own.success.device_group_updated").to_s
+        format.html { redirect_to @device_group }
         format.json { render :show, status: :ok, location: @device_group }
       else
         format.html { render :edit }
@@ -54,10 +108,16 @@ class DeviceGroupsController < ApplicationController
   # DELETE /device_groups/1
   # DELETE /device_groups/1.json
   def destroy
-    @device_group.destroy
-    respond_to do |format|
-      format.html { redirect_to device_groups_url, notice: 'Device group was successfully destroyed.' }
-      format.json { head :no_content }
+    if BossConfig.first.db_state == false
+      flash[:error] = (I18n.t "own.errors.db_offline").to_s
+      redirect_to "/device_groups/"
+    else
+      @device_group.destroy
+      respond_to do |format|
+        flash[:success] = (I18n.t "own.success.device_type_destroyed").to_s
+        format.html { redirect_to @device_group }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -70,5 +130,10 @@ class DeviceGroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_group_params
       params.require(:device_group).permit(:name, :info)
+    end
+
+    # Set selected devices for later use in device-groups.coffee
+    def set_selected_devices
+      gon.selected_devices = @device_list
     end
 end

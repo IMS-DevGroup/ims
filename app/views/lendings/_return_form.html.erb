@@ -13,29 +13,29 @@
 
 <div>
     <p>
-      <strong>User:</strong>
+      <strong><%= (t "mixed_fields.user") + ":" %></strong>
       <%= @lending.user_id %>
     </p>
 
     <p>
-      <strong>Lending:</strong>
+      <strong><%= (t "lendings.borrowed_at") + ":" %></strong>
       <%= @lending.created_at %>
     </p>
 
     <p>
-      <strong>Lending info:</strong>
+      <strong><%= (t "lendings.lending_info") + ":" %></strong>
       <%= @lending.lending_info %>
     </p>
 
     <!-- TODO: Change to username instead of ID -->
     <p>
-      <strong>Lender:</strong>
+      <strong><%=(t "lendings.borrowed_to" ) + ":" %></strong>
       <%= @lending.lender_id %>
     </p>
 </div>
 
     <div class="field">
-  <%= f.label :recieve_info %><br>
+  <%= f.label :label_text, (t "lendings.receive_info" ) %><br>
   <%= f.text_area :receive_info %>
 </div>
 
@@ -44,6 +44,6 @@
 
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit (t "buttons.submit" )%>
     </div>
 <% end %>

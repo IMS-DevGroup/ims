@@ -2,7 +2,7 @@
 
 <h1><%= t "stocks.index.title" %></h1>
 
-<table id="stocks" class="table table-striped">
+<table id="stocks" class="dataTableJS table table-striped">
   <thead>
     <tr>
       <th><%= t "mixed_fields.name" %></th>
@@ -22,9 +22,9 @@
         <td><% unless stock.unit.nil?%>  <%= stock.unit.name %> <%end%> </td>
         <td><%= stock.city %></td>
         <td><%= stock.street %></td>
-        <td width="180px"><%= link_to (t "buttons.show"), stock, class: 'btn btn-info' %>
+        <td width="260px"><%= link_to (t "buttons.show"), stock, class: 'btn btn-info' %>
           <%if current_user.right.manage_stocks_and_units==true%> <%= link_to (t "buttons.edit"), edit_stock_path(stock), class: 'btn btn-warning' %> <%end%>
-          <%if current_user.right.manage_stocks_and_units==true%>  <%= link_to (t "buttons.destroy"), stock, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td><%end%>
+          <%if current_user.right.manage_stocks_and_units==true%>  <%= link_to (t "buttons.destroy"), stock, method: :delete, data: { confirm: (t 'buttons.confirmation_sure_message') }, class: 'btn btn-danger' %></td><%end%>
       </tr>
     <% end %>
   </tbody>

@@ -14,8 +14,6 @@
             <%= f.text_field :number %>
           </div>
         </td>
-
-
       </tr>
 
       <tr>
@@ -28,7 +26,7 @@
         <td>
           <div class="form-group">
             <%= f.label :label_text, (t "mixed_fields.stock") %><br>
-            <%= f.collection_select :id, Stock.all, :id, :name, { prompt: (t 'operations.form.select_stock') }, class: "form-control" , include_blank:'choose stock'%>
+            <%= f.collection_select(:stock_ids, Stock.all, :id, :name, {:prompt => ""}, {:multiple => true}) %>
           </div>
         </td>
       </tr>
@@ -45,15 +43,18 @@
 
       <div class="form-group">
         <%= f.label :label_text, (t "operations.user") + " *" %> <br>
-        <%= f.collection_select :user_id, User.all, :id, :username, { prompt: (t 'operations.form.select_user') }, class: "form-control", include_blank:'choose user'%>
+        <%= f.collection_select :user_id, User.where('users.username IS NOT NULL'), :id, :username, { prompt: (t 'operations.form.select_user') }, class: "form-control", include_blank:'choose user'%>
+
       </div>
 
     </table>
-
+    <%= t "mixed_fields.req" %>
     <div class="actions">
 
       <%= link_to (t "buttons.back"), operations_path , class:'btn btn-primary'%>
-      <%= link_to (t "buttons.show"), @operation , class:'btn btn-info'%>
+      <% if !current_page?(new_operation_path) %><%= link_to (t "buttons.show"), @operation , class:'btn btn-info'%><% end %>
+
       <%= f.submit (t "buttons.submit"), class:'btn btn-success', style:"margin-left:230px;"%>
+
     </div>
 <% end %>
