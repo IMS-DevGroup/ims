@@ -11,7 +11,7 @@
   </tr>
   <tr>
     <th>Besitzer:</th>
-    <td><%= Unit.find_by_id(Stock.find_by_id(@device.owner_id).id).name %></td>
+    <td><%= Stock.find_by_id(@device.owner_id).unit.name %></td>
   </tr>
   <tr>
     <th>Lagerort:</th>

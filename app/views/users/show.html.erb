@@ -2,65 +2,50 @@
 
 <table class="userCreation" width=300 height=100>
   <tr>
-    <td>
       <p>
-        <strong><%= t "mixed_fields.username" %></strong><br>
+        <strong><%= (t "mixed_fields.username") + ": " %></strong>
         <%= @user.username %>
       </p>
-    </td>
 
   </tr>
 
   <tr>
-    <td>
       <p>
-        <strong><%= t "mixed_fields.prename" %></strong><br>
+        <strong><%= (t "mixed_fields.prename") + ": " %></strong>
         <%= @user.prename %>
       </p>
-    </td>
 
-    <td>
       <p>
-        <strong><%= t "mixed_fields.lastname" %></strong><br>
+        <strong><%= (t "mixed_fields.lastname") + ": " %></strong>
         <%= @user.lastname %>
       </p>
-    </td>
   </tr>
 
   <tr>
-    <td>
       <p>
-        <strong><%= t "mixed_fields.email" %></strong><br>
+        <strong><%= (t "mixed_fields.email") + ": " %></strong>
         <%= @user.email %>
       </p>
-    </td>
-    <td>
+
       <p>
-        <strong><%= t "mixed_fields.mobile_number" %></strong><br>
+        <strong><%= (t "mixed_fields.mobile_number") + ": " %></strong>
         <%= @user.mobile_number %>
       </p>
-    </td>
   </tr>
 
   <tr>
-    <td>
       <p>
-        <strong><%= t "mixed_fields.show.info" %></strong><br>
+        <strong><%= (t "mixed_fields.show.info") + ": " %></strong>
         <%= @user.info %>
       </p>
-    </td>
   </tr>
   <tr>
-
-
-    <td>
       <p>
-        <strong><%= t "mixed_fields.show.unit" %></strong><br>
+        <strong><%= (t "mixed_fields.show.unit") + ": " %></strong>
         <% unless @user.unit.nil?%>
             <%= @user.unit.name %>
         <%end%>
       </p>
-    </td>
 
   </tr>
 
@@ -70,4 +55,4 @@
 
 
 <a href="/users/"><button type="button" class = "btn btn-primary" >Back</button></a>
-<%= link_to 'Edit', edit_user_path(@user), class:'btn btn-warning' %>
+<%if current_user.right.manage_users==true%><%= link_to 'Edit', edit_user_path(@user), class:'btn btn-warning' %><%end%>

@@ -3,32 +3,30 @@
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label  (t "operations.operation_type") + " *" %><br>
+            <%= f.label :label_text, (t "operations.operation_type") + " *" %><br>
             <%= f.text_field :operation_type %>
           </div>
         </td>
 
         <td>
           <div class="form-group">
-            <%= f.label t "operations.operation_dispatch_number" %><br>
+            <%= f.label :label_text, (t "operations.operation_dispatch_number") %><br>
             <%= f.text_field :number %>
           </div>
         </td>
-
-
       </tr>
 
       <tr>
         <td>
           <div class="form-group">
-            <%= f.label (t "mixed_fields.location") + " *" %><br>
+            <%= f.label :label_text, (t "mixed_fields.location") + " *" %><br>
             <%= f.text_field :location%>
           </div>
         </td>
         <td>
           <div class="form-group">
-            <%= f.label t "mixed_fields.stock" %><br>
-            <%= f.collection_select :id, Stock.all, :id, :name, {}, class: "form-control" , include_blank:'choose stock'%>
+            <%= f.label :label_text, (t "mixed_fields.stock") %><br>
+            <%= f.collection_select(:stock_ids, Stock.all, :id, :name, {:prompt => ""}, {:multiple => true}) %>
           </div>
         </td>
       </tr>
@@ -37,23 +35,26 @@
       <tr>
         <td colspan="2">
           <div class="form-group">
-            <%= f.label t "mixed_fields.info" %><br>
+            <%= f.label :label_text, (t "mixed_fields.info") %><br>
             <%= f.text_area :info, :rows => 3, :cols => 41 %>
           </div>
         </td>
       </tr>
 
       <div class="form-group">
-        <%= f.label (t "operations.user") + " *" %> <br>
-        <%= f.collection_select :user_id, User.all, :id, :prename, {}, class: "form-control", include_blank:'choose user'%>
+        <%= f.label :label_text, (t "operations.user") + " *" %> <br>
+        <%= f.collection_select :user_id, User.where('users.username IS NOT NULL'), :id, :username, { prompt: (t 'operations.form.select_user') }, class: "form-control", include_blank:'choose user'%>
+
       </div>
 
     </table>
-
+    <%= t "mixed_fields.req" %>
     <div class="actions">
 
-      <%= link_to 'Back', operations_path , class:'btn btn-primary'%>
-      <%= link_to 'Show', @operation , class:'btn btn-info'%>
-      <%= f.button :submit => "", class:'btn btn-success', style:"margin-left:230px;"%>
+      <%= link_to (t "buttons.back"), operations_path , class:'btn btn-primary'%>
+      <% if !current_page?(new_operation_path) %><%= link_to (t "buttons.show"), @operation , class:'btn btn-info'%><% end %>
+
+      <%= f.submit (t "buttons.submit"), class:'btn btn-success', style:"margin-left:230px;"%>
+
     </div>
 <% end %>

@@ -1,25 +1,20 @@
 <%= form_for(@device_type) do |f| %>
-  <% if @device_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@device_type.errors.count, "error") %> prohibited this device_type from being saved:</h2>
 
-      <ul>
-      <% @device_type.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
+  <div class="form-group">
+    <%= f.label :label_text, (t "mixed_fields.name") + "*" %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :info %><br>
+  <div class="form-group">
+    <%= f.label :label_text, (t "mixed_fields.info") %><br>
     <%= f.text_area :info %>
   </div>
+    <br>
+    <%= t "mixed_fields.req" %>
   <div class="actions">
-    <%= f.submit %>
+
+    <a href="/device_types/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+    <% if !current_page?(new_device_type_path) %><%= link_to (t "buttons.show"), @device_type, class: 'btn btn-info' %><% end %>
+    <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
   </div>
+
 <% end %>

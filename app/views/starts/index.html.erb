@@ -1,1 +1,15 @@
-Hier könnte Ihre Werbung stehen.
+<!--
+Adds Possibility for choosing an active stock.
+Ownly this stock is now displayed in the devices - view
+-->
+<%= form_for(@current_user) do |f| %>
+    <div class="form-group">
+     <%if BossConfig.first.db_state == true  %><%= f.label :label_text, (t 'users.choose_active_stock') + ': ' %>
+      <%= f.collection_select :stock_id, Stock.all, :id, :name, {:include_blank => (t 'users.active_stock_all')}, class: 'form-control' %>
+    </div>
+    <%= f.submit (t 'buttons.start.set_stock'), class: 'btn btn-success'%>
+      <%else%>
+
+      <p><%=(I18n.t "own.errors.db_offline").to_s%></p>
+      <%end%>
+<% end %>

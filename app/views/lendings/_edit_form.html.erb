@@ -11,38 +11,41 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :user_id %><br>
-      <%= f.number_field :user_id %>
+    <div class="form-group">
+      <%= f.label :label_text, (t "mixed_fields.user") %><br>
+      <%= f.text_field :user_id %>
     </div>
 
-    <div class="field">
-      <%= f.label :device_id %><br>
-      <%= f.number_field :device_id %>
+    <div class="form-group">
+      <%= f.label :label_text, (t "mixed_fields.device") %><br>
+      <%= f.text_field :device_id %>
     </div>
 
-    <div class="field">
-      <%= f.label :lending_info %><br>
+    <div class="form-group">
+      <%= f.label :label_text, (t "lendings.lending_info") %><br>
       <%= f.text_area :lending_info %>
     </div>
 
-    <div class="field">
-      <%= f.label :lender_id %><br>
-      <%= f.number_field :lender_id %>
+    <div class="form-group">
+      <%= f.label :label_text, (t "lendings.show.lender") %><br>
+      <%= f.text_field :lender_id %>
     </div>
 
 
-    <div class="field">
-      <%= f.label :recieve_info %><br>
+    <div class="form-group">
+      <%= f.label :label_text, (t "lendings.receive_info") %><br>
       <%= f.text_area :receive_info %>
     </div>
 
-    <div class="field">
-      <%= f.label :receiver_id %><br>
-      <%= f.number_field :receiver_id %>
+    <div class="form-group">
+      <%= f.label :label_text, (t "lendings.borrowed_to") %><br>
+      <%= f.text_field :receiver_id %>
     </div>
 
     <div class="actions">
-      <%= f.submit %>
+
+      <a href="/lendings/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+      <% if !current_page?(new_lending_path) %><%= link_to (t "buttons.show"), @lending, class: 'btn btn-info' %><% end %>
+      <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
     </div>
 <% end %>

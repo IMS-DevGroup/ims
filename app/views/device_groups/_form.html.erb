@@ -1,0 +1,93 @@
+<form onsubmit="return false">
+  <div class="form-group">
+    <label for="devgroupbarcode">Barcode</label>
+    <div style="width:200px" class="input-group">
+      <input type="text" autofocus class="form-control" placeholder="Barcode" id="devgroupbarcode">
+        <span class="input-group-btn">
+          <button id="btndevgroupsearch" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </button>
+          <button id="adddevgroup" type="submit" class="btn btn-success add-dev-group">
+            <span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+          </button>
+        </span>
+    </div>
+  </div>
+</form>
+
+<%= form_for(@device_group) do |f| %>
+  <% if @device_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@device_group.errors.count, "error") %> <%= t "device_groups.form.h2" %></h2>
+
+      <ul>
+      <% @device_group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="collapse" id="collapseExample">
+    <div class="well">
+      <table id="devices" class="table table-striped dataTableJS">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Device Type</th>
+            <th>Info</th>
+            <th>Owner Stock</th>
+            <th>Stock</th>
+            <th>Ready</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% Device.all.each do |device| %>
+          <tr>
+            <td>
+              <button id="<%= device.id %>" type="button" class="btn btn-success add-dev-group">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+              </button>
+            </td>
+            <td><%= if device.device_type.nil? then
+                    else
+                      device.device_type.name
+                    end %></td>
+            <td><%= device.info %></td>
+            <td><%= Stock.find_by_id(device.owner_id).name %></td>
+            <td><%= if device.stock.nil? then else device.stock.name end %></td>
+            <td><%= device.ready %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <input type="hidden" id="devicegroupids" name="devicegroupids">
+
+  <button id="btndevgroupselection" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSelection" aria-expanded="false" aria-controls="collapseSelection">
+    Auswahl
+    <span class="badge">0</span>
+  </button>
+  <div class="collapse" id="collapseSelection">
+    <div class="well">
+      <ul id="seldevicegroups" class="list-group"></ul>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label (t "mixed_fields.name") %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label (t "mixed_fields.info") %><br>
+    <%= f.text_area :info %>
+  </div>
+
+  <div class="actions">
+    <a href="/device_groups/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+    <% if !current_page?(new_device_group_path) %><%= link_to (t "buttons.show"), @device_group, class: 'btn btn-info' %><% end %>
+    <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
+  </div>
+<% end %>

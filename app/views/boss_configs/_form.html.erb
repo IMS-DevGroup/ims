@@ -1,0 +1,27 @@
+<%= form_for(@boss_config) do |f| %>
+  <% if @boss_config.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@boss_config.errors.count, "error") %> prohibited this boss_config from being saved:</h2>
+
+      <ul>
+      <% @boss_config.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :db_state, (t "config.online") %><br>
+    <%= f.check_box :db_state %>
+  </div>
+  <div class="form-group">
+    <%= f.label :org_name, (t "config.org") %><br>
+    <%= f.text_field :org_name %>
+  </div>
+  <div class="actions">
+    <a href="/boss_configs/"><button type="button" class="btn btn-primary"><%= (t "buttons.back") %></button></a>
+    
+    <%= f.submit (t "buttons.submit"), class: 'btn btn-success', style: "margin-left:230px;" %>
+  </div>
+<% end %>
