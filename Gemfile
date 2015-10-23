@@ -4,6 +4,8 @@ ruby "2.2.2"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 
+gem 'nokogiri', '~> 1.6.7.rc3'
+
 gem 'bootstrap-switch-rails'
 gem 'flag-icon-sass'
 
