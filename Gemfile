@@ -1,17 +1,34 @@
 source 'https://rubygems.org'
-ruby "2.2.2"
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 
-gem 'nokogiri', '~> 1.6.7.rc3'
 gem 'tzinfo-data'
-
 gem 'bootstrap-switch-rails'
 gem 'flag-icon-sass'
-
 gem 'mail_form'
 gem 'simple_form'
+gem 'tilt', '~> 1.4.1'
+gem 'rake'
+gem 'dotenv-rails'
+gem 'gon'
+gem 'travis'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+gem 'rack-mini-profiler', require: false
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'bootstrap3-datetimepicker-rails'
+gem 'momentjs-rails'
+gem 'rufus-scheduler'
+gem 'whenever', require: false
+gem 'node', platforms: :ruby
+gem 'barby'
+gem 'jquery-ui-rails'
+gem 'chunky_png'
+
+# fix for windows systems
+gem 'nokogiri', '~> 1.6.7.rc3'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
@@ -22,55 +39,33 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'node', platforms: :ruby
 gem 'execjs'
-gem 'heroku-deflater', :group => :production
-gem 'barby'
-gem 'jquery-ui-rails'
-gem 'chunky_png'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'tilt', '~> 1.4.1'
-
-gem 'rake'
-
-gem 'dotenv-rails'
-
-gem 'rails_12factor', group: :production
-
-gem 'puma'
-gem 'gon'
-gem 'travis'
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
-gem 'rack-mini-profiler', require: false
-gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
-gem 'bootstrap3-datetimepicker-rails'
-gem 'momentjs-rails'
-
-
-gem 'rufus-scheduler'
-
-
-gem 'whenever', require: false
-
-# Use ActiveModel has_secure_password
+# Use ActiveModel has_secure_password. Specify platforms for windows fix
  gem 'bcrypt', '~> 3.1.7', :platforms => [:ruby, :mswin]
 
-# Use Unicorn as the app server
-# gem 'unicorn'
+# Use Puma webserver
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+group :production do
+ gem 'heroku-deflater'
+ gem 'rails_12factor'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
