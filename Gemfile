@@ -5,6 +5,7 @@ ruby "2.2.2"
 gem 'rails'
 
 gem 'nokogiri', '~> 1.6.7.rc3'
+gem 'tzinfo-data'
 
 gem 'bootstrap-switch-rails'
 gem 'flag-icon-sass'
