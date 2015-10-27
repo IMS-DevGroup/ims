@@ -16,12 +16,6 @@ ActiveRecord::Schema.define(version: 20150915100151) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "barcode_tests", force: :cascade do |t|
-    t.integer  "device_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "boss_configs", force: :cascade do |t|
     t.boolean  "db_state"
     t.string   "org_name"
@@ -124,13 +118,6 @@ ActiveRecord::Schema.define(version: 20150915100151) do
     t.boolean  "manage_boss"
   end
 
-  create_table "startpages", force: :cascade do |t|
-    t.string   "title"
-    t.text     "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "stocks", force: :cascade do |t|
     t.string   "name"
     t.text     "info"
@@ -144,13 +131,6 @@ ActiveRecord::Schema.define(version: 20150915100151) do
   create_table "stocks_operations", id: false, force: :cascade do |t|
     t.integer "stock_id"
     t.integer "operation_id"
-  end
-
-  create_table "todos", force: :cascade do |t|
-    t.string   "title"
-    t.text     "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "units", force: :cascade do |t|
@@ -180,11 +160,6 @@ ActiveRecord::Schema.define(version: 20150915100151) do
     t.datetime "reset_sent_at"
     t.string   "language"
     t.integer  "stock_id"
-  end
-
-  create_table "users_rights", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "right_id"
   end
 
   create_table "values", force: :cascade do |t|
